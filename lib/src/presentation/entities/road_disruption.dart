@@ -3,9 +3,10 @@ import './road_disruption_line.dart';
 import './road_disruption_schedule.dart';
 import './road_project.dart';
 import './street.dart';
+import '../../internal/serializable.dart';
 import '../../system/data/spacial/db_geography.dart';
 
-class RoadDisruption {
+class RoadDisruption implements Serializable {
   String id;
 
   /// The URL to retrieve this road disruption.
@@ -63,7 +64,7 @@ class RoadDisruption {
   DbGeography geometry;
 
   /// The collection of zero or more streets affected by the disruption.
-  List<Street> streets = [];
+  List<Street> streets;
 
   /// True if the disruption is planned on a future date that is open to change; otherwise, false.
   bool isProvisional;
@@ -92,7 +93,86 @@ class RoadDisruption {
 
   List<RoadDisruptionSchedule> recurringSchedules;
 
-  RoadDisruption();
+  RoadDisruption({
+    this.id,
+    this.url,
+    this.point,
+    this.severity,
+    this.ordinal,
+    this.category,
+    this.subCategory,
+    this.comments,
+    this.currentUpdate,
+    this.currentUpdateDateTime,
+    this.corridorIds,
+    this.startDateTime,
+    this.endDateTime,
+    this.lastModifiedTime,
+    this.levelOfInterest,
+    this.location,
+    this.status,
+    this.geography,
+    this.geometry,
+    this.streets,
+    this.isProvisional,
+    this.hasClosures,
+    this.linkText,
+    this.linkUrl,
+    this.roadProject,
+    this.publishStartDate,
+    this.publishEndDate,
+    this.timeFrame,
+    this.roadDisruptionLines,
+    this.roadDisruptionImpactAreas,
+    this.recurringSchedules,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'url': url,
+      'point': point,
+      'severity': severity,
+      'ordinal': ordinal,
+      'category': category,
+      'subCategory': subCategory,
+      'comments': comments,
+      'currentUpdate': currentUpdate,
+      'currentUpdateDateTime': currentUpdateDateTime == null
+          ? ''
+          : currentUpdateDateTime.toUtc().toIso8601String(),
+      'corridorIds': corridorIds,
+      'startDateTime':
+          startDateTime == null ? '' : startDateTime.toUtc().toIso8601String(),
+      'endDateTime':
+          endDateTime == null ? '' : endDateTime.toUtc().toIso8601String(),
+      'lastModifiedTime': lastModifiedTime == null
+          ? ''
+          : lastModifiedTime.toUtc().toIso8601String(),
+      'levelOfInterest': levelOfInterest,
+      'location': location,
+      'status': status,
+      'geography': geography,
+      'geometry': geometry,
+      'streets': streets,
+      'isProvisional': isProvisional,
+      'hasClosures': hasClosures,
+      'linkText': linkText,
+      'linkUrl': linkUrl,
+      'roadProject': roadProject,
+      'publishStartDate': publishStartDate == null
+          ? ''
+          : publishStartDate.toUtc().toIso8601String(),
+      'publishEndDate': publishEndDate == null
+          ? ''
+          : publishEndDate.toUtc().toIso8601String(),
+      'timeFrame': timeFrame,
+      'roadDisruptionLines': roadDisruptionLines,
+      'roadDisruptionImpactAreas': roadDisruptionImpactAreas,
+      'recurringSchedules': recurringSchedules,
+    };
+  }
 
   @override
   String toString() {
@@ -101,6 +181,7 @@ class RoadDisruption {
 
   RoadDisruption.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     url = json['url'];
     point = json['point'];
@@ -150,65 +231,20 @@ class RoadDisruption {
         RoadDisruptionSchedule.listFromJson(json['recurringSchedules']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'url': url,
-      'point': point,
-      'severity': severity,
-      'ordinal': ordinal,
-      'category': category,
-      'subCategory': subCategory,
-      'comments': comments,
-      'currentUpdate': currentUpdate,
-      'currentUpdateDateTime': currentUpdateDateTime == null
-          ? ''
-          : currentUpdateDateTime.toUtc().toIso8601String(),
-      'corridorIds': corridorIds,
-      'startDateTime':
-          startDateTime == null ? '' : startDateTime.toUtc().toIso8601String(),
-      'endDateTime':
-          endDateTime == null ? '' : endDateTime.toUtc().toIso8601String(),
-      'lastModifiedTime': lastModifiedTime == null
-          ? ''
-          : lastModifiedTime.toUtc().toIso8601String(),
-      'levelOfInterest': levelOfInterest,
-      'location': location,
-      'status': status,
-      'geography': geography,
-      'geometry': geometry,
-      'streets': streets,
-      'isProvisional': isProvisional,
-      'hasClosures': hasClosures,
-      'linkText': linkText,
-      'linkUrl': linkUrl,
-      'roadProject': roadProject,
-      'publishStartDate': publishStartDate == null
-          ? ''
-          : publishStartDate.toUtc().toIso8601String(),
-      'publishEndDate': publishEndDate == null
-          ? ''
-          : publishEndDate.toUtc().toIso8601String(),
-      'timeFrame': timeFrame,
-      'roadDisruptionLines': roadDisruptionLines,
-      'roadDisruptionImpactAreas': roadDisruptionImpactAreas,
-      'recurringSchedules': recurringSchedules
-    };
-  }
-
-  static List<RoadDisruption> listFromJson(List<dynamic> json) {
+  static List<RoadDisruption> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<RoadDisruption>()
         : json.map((value) => RoadDisruption.fromJson(value)).toList();
   }
 
   static Map<String, RoadDisruption> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, RoadDisruption>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = RoadDisruption.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, RoadDisruption>()
+        : json
+            .map((key, value) => MapEntry(key, RoadDisruption.fromJson(value)));
   }
 }

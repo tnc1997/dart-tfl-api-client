@@ -1,9 +1,22 @@
-class TwentyFourHourClockTime {
+import '../../internal/serializable.dart';
+
+class TwentyFourHourClockTime implements Serializable {
   String hour;
 
   String minute;
 
-  TwentyFourHourClockTime();
+  TwentyFourHourClockTime({
+    this.hour,
+    this.minute,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'hour': hour,
+      'minute': minute,
+    };
+  }
 
   @override
   String toString() {
@@ -12,27 +25,25 @@ class TwentyFourHourClockTime {
 
   TwentyFourHourClockTime.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     hour = json['hour'];
     minute = json['minute'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {'hour': hour, 'minute': minute};
-  }
-
-  static List<TwentyFourHourClockTime> listFromJson(List<dynamic> json) {
+  static List<TwentyFourHourClockTime> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<TwentyFourHourClockTime>()
         : json.map((value) => TwentyFourHourClockTime.fromJson(value)).toList();
   }
 
   static Map<String, TwentyFourHourClockTime> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, TwentyFourHourClockTime>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = TwentyFourHourClockTime.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, TwentyFourHourClockTime>()
+        : json.map((key, value) =>
+            MapEntry(key, TwentyFourHourClockTime.fromJson(value)));
   }
 }

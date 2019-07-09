@@ -1,4 +1,6 @@
-class FaresPeriod {
+import '../../../internal/serializable.dart';
+
+class FaresPeriod implements Serializable {
   int id;
 
   DateTime startDate;
@@ -9,7 +11,25 @@ class FaresPeriod {
 
   bool isFuture;
 
-  FaresPeriod();
+  FaresPeriod({
+    this.id,
+    this.startDate,
+    this.viewableDate,
+    this.endDate,
+    this.isFuture,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'startDate': startDate == null ? '' : startDate.toUtc().toIso8601String(),
+      'viewableDate':
+          viewableDate == null ? '' : viewableDate.toUtc().toIso8601String(),
+      'endDate': endDate == null ? '' : endDate.toUtc().toIso8601String(),
+      'isFuture': isFuture,
+    };
+  }
 
   @override
   String toString() {
@@ -18,6 +38,7 @@ class FaresPeriod {
 
   FaresPeriod.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     startDate =
         json['startDate'] == null ? null : DateTime.parse(json['startDate']);
@@ -28,30 +49,19 @@ class FaresPeriod {
     isFuture = json['isFuture'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'startDate': startDate == null ? '' : startDate.toUtc().toIso8601String(),
-      'viewableDate':
-          viewableDate == null ? '' : viewableDate.toUtc().toIso8601String(),
-      'endDate': endDate == null ? '' : endDate.toUtc().toIso8601String(),
-      'isFuture': isFuture
-    };
-  }
-
-  static List<FaresPeriod> listFromJson(List<dynamic> json) {
+  static List<FaresPeriod> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<FaresPeriod>()
         : json.map((value) => FaresPeriod.fromJson(value)).toList();
   }
 
   static Map<String, FaresPeriod> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, FaresPeriod>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = FaresPeriod.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, FaresPeriod>()
+        : json.map((key, value) => MapEntry(key, FaresPeriod.fromJson(value)));
   }
 }

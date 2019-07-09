@@ -1,12 +1,13 @@
 import './additional_properties.dart';
+import '../../internal/serializable.dart';
 
-class Place {
+class Place implements Serializable {
   String id;
 
   /// The unique location of this resource.
   String url;
 
-  /// A human readable name.
+  /// The human readable name.
   String commonName;
 
   /// The distance of the place from its search point.
@@ -15,20 +16,47 @@ class Place {
   /// The type of the place.
   String placeType;
 
-  /// A bag of additional key/value pairs with extra information about this place.
+  /// The bag of additional key/value pairs with extra information about this place.
   List<AdditionalProperties> additionalProperties;
 
   List<Place> children;
 
   List<String> childrenUrls;
 
-  /// WGS84 latitude of the location.
+  /// The WGS84 latitude of the location.
   double lat;
 
-  /// WGS84 longitude of the location.
+  /// The WGS84 longitude of the location.
   double lon;
 
-  Place();
+  Place({
+    this.id,
+    this.url,
+    this.commonName,
+    this.distance,
+    this.placeType,
+    this.additionalProperties,
+    this.children,
+    this.childrenUrls,
+    this.lat,
+    this.lon,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'url': url,
+      'commonName': commonName,
+      'distance': distance,
+      'placeType': placeType,
+      'additionalProperties': additionalProperties,
+      'children': children,
+      'childrenUrls': childrenUrls,
+      'lat': lat,
+      'lon': lon,
+    };
+  }
 
   @override
   String toString() {
@@ -37,6 +65,7 @@ class Place {
 
   Place.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     url = json['url'];
     commonName = json['commonName'];
@@ -51,34 +80,19 @@ class Place {
     lon = json['lon'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'url': url,
-      'commonName': commonName,
-      'distance': distance,
-      'placeType': placeType,
-      'additionalProperties': additionalProperties,
-      'children': children,
-      'childrenUrls': childrenUrls,
-      'lat': lat,
-      'lon': lon
-    };
-  }
-
-  static List<Place> listFromJson(List<dynamic> json) {
+  static List<Place> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Place>()
         : json.map((value) => Place.fromJson(value)).toList();
   }
 
   static Map<String, Place> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Place>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Place.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Place>()
+        : json.map((key, value) => MapEntry(key, Place.fromJson(value)));
   }
 }

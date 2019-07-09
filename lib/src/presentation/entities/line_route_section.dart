@@ -1,4 +1,6 @@
-class LineRouteSection {
+import '../../internal/serializable.dart';
+
+class LineRouteSection implements Serializable {
   int routeId;
 
   String direction;
@@ -13,7 +15,28 @@ class LineRouteSection {
 
   String vehicleDestinationText;
 
-  LineRouteSection();
+  LineRouteSection({
+    this.routeId,
+    this.direction,
+    this.destination,
+    this.fromStation,
+    this.toStation,
+    this.serviceType,
+    this.vehicleDestinationText,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'routeId': routeId,
+      'direction': direction,
+      'destination': destination,
+      'fromStation': fromStation,
+      'toStation': toStation,
+      'serviceType': serviceType,
+      'vehicleDestinationText': vehicleDestinationText,
+    };
+  }
 
   @override
   String toString() {
@@ -22,6 +45,7 @@ class LineRouteSection {
 
   LineRouteSection.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     routeId = json['routeId'];
     direction = json['direction'];
     destination = json['destination'];
@@ -31,31 +55,20 @@ class LineRouteSection {
     vehicleDestinationText = json['vehicleDestinationText'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'routeId': routeId,
-      'direction': direction,
-      'destination': destination,
-      'fromStation': fromStation,
-      'toStation': toStation,
-      'serviceType': serviceType,
-      'vehicleDestinationText': vehicleDestinationText
-    };
-  }
-
-  static List<LineRouteSection> listFromJson(List<dynamic> json) {
+  static List<LineRouteSection> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<LineRouteSection>()
         : json.map((value) => LineRouteSection.fromJson(value)).toList();
   }
 
   static Map<String, LineRouteSection> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, LineRouteSection>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = LineRouteSection.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, LineRouteSection>()
+        : json.map(
+            (key, value) => MapEntry(key, LineRouteSection.fromJson(value)));
   }
 }

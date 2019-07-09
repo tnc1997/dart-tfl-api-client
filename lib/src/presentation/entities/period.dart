@@ -1,7 +1,8 @@
 import './service_frequency.dart';
 import './twenty_four_hour_clock_time.dart';
+import '../../internal/serializable.dart';
 
-class Period {
+class Period implements Serializable {
   String type;
   // enum typeEnum {  Normal,  FrequencyHours,  FrequencyMinutes,  Unknown,  };
 
@@ -11,7 +12,22 @@ class Period {
 
   ServiceFrequency frequency;
 
-  Period();
+  Period({
+    this.type,
+    this.fromTime,
+    this.toTime,
+    this.frequency,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'type': type,
+      'fromTime': fromTime,
+      'toTime': toTime,
+      'frequency': frequency,
+    };
+  }
 
   @override
   String toString() {
@@ -20,34 +36,26 @@ class Period {
 
   Period.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     type = json['type'];
     fromTime = TwentyFourHourClockTime.fromJson(json['fromTime']);
     toTime = TwentyFourHourClockTime.fromJson(json['toTime']);
     frequency = ServiceFrequency.fromJson(json['frequency']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'type': type,
-      'fromTime': fromTime,
-      'toTime': toTime,
-      'frequency': frequency
-    };
-  }
-
-  static List<Period> listFromJson(List<dynamic> json) {
+  static List<Period> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Period>()
         : json.map((value) => Period.fromJson(value)).toList();
   }
 
   static Map<String, Period> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Period>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Period.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Period>()
+        : json.map((key, value) => MapEntry(key, Period.fromJson(value)));
   }
 }

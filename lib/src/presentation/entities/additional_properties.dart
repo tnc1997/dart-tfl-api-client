@@ -1,4 +1,6 @@
-class AdditionalProperties {
+import '../../internal/serializable.dart';
+
+class AdditionalProperties implements Serializable {
   String category;
 
   String key;
@@ -9,7 +11,24 @@ class AdditionalProperties {
 
   DateTime modified;
 
-  AdditionalProperties();
+  AdditionalProperties({
+    this.category,
+    this.key,
+    this.sourceSystemKey,
+    this.value,
+    this.modified,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'category': category,
+      'key': key,
+      'sourceSystemKey': sourceSystemKey,
+      'value': value,
+      'modified': modified == null ? '' : modified.toUtc().toIso8601String(),
+    };
+  }
 
   @override
   String toString() {
@@ -18,6 +37,7 @@ class AdditionalProperties {
 
   AdditionalProperties.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     category = json['category'];
     key = json['key'];
     sourceSystemKey = json['sourceSystemKey'];
@@ -26,29 +46,20 @@ class AdditionalProperties {
         json['modified'] == null ? null : DateTime.parse(json['modified']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'category': category,
-      'key': key,
-      'sourceSystemKey': sourceSystemKey,
-      'value': value,
-      'modified': modified == null ? '' : modified.toUtc().toIso8601String()
-    };
-  }
-
-  static List<AdditionalProperties> listFromJson(List<dynamic> json) {
+  static List<AdditionalProperties> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<AdditionalProperties>()
         : json.map((value) => AdditionalProperties.fromJson(value)).toList();
   }
 
   static Map<String, AdditionalProperties> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, AdditionalProperties>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = AdditionalProperties.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, AdditionalProperties>()
+        : json.map((key, value) =>
+            MapEntry(key, AdditionalProperties.fromJson(value)));
   }
 }

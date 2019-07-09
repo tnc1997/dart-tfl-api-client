@@ -1,4 +1,6 @@
-class ApiVersionInfo {
+import '../internal/serializable.dart';
+
+class ApiVersionInfo implements Serializable {
   String label;
 
   DateTime timestamp;
@@ -7,7 +9,22 @@ class ApiVersionInfo {
 
   List<String> assemblies;
 
-  ApiVersionInfo();
+  ApiVersionInfo({
+    this.label,
+    this.timestamp,
+    this.version,
+    this.assemblies,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'label': label,
+      'timestamp': timestamp == null ? '' : timestamp.toUtc().toIso8601String(),
+      'version': version,
+      'assemblies': assemblies,
+    };
+  }
 
   @override
   String toString() {
@@ -16,6 +33,7 @@ class ApiVersionInfo {
 
   ApiVersionInfo.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     label = json['label'];
     timestamp =
         json['timestamp'] == null ? null : DateTime.parse(json['timestamp']);
@@ -24,28 +42,20 @@ class ApiVersionInfo {
         (json['assemblies'] as List).map((item) => item as String).toList();
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'label': label,
-      'timestamp': timestamp == null ? '' : timestamp.toUtc().toIso8601String(),
-      'version': version,
-      'assemblies': assemblies
-    };
-  }
-
-  static List<ApiVersionInfo> listFromJson(List<dynamic> json) {
+  static List<ApiVersionInfo> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<ApiVersionInfo>()
         : json.map((value) => ApiVersionInfo.fromJson(value)).toList();
   }
 
   static Map<String, ApiVersionInfo> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, ApiVersionInfo>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = ApiVersionInfo.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, ApiVersionInfo>()
+        : json
+            .map((key, value) => MapEntry(key, ApiVersionInfo.fromJson(value)));
   }
 }

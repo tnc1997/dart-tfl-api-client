@@ -1,9 +1,22 @@
-class StopPointCategory {
+import '../../internal/serializable.dart';
+
+class StopPointCategory implements Serializable {
   String category;
 
   List<String> availableKeys;
 
-  StopPointCategory();
+  StopPointCategory({
+    this.category,
+    this.availableKeys,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'category': category,
+      'availableKeys': availableKeys,
+    };
+  }
 
   @override
   String toString() {
@@ -12,28 +25,26 @@ class StopPointCategory {
 
   StopPointCategory.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     category = json['category'];
     availableKeys =
         (json['availableKeys'] as List).map((item) => item as String).toList();
   }
 
-  Map<String, dynamic> toJson() {
-    return {'category': category, 'availableKeys': availableKeys};
-  }
-
-  static List<StopPointCategory> listFromJson(List<dynamic> json) {
+  static List<StopPointCategory> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<StopPointCategory>()
         : json.map((value) => StopPointCategory.fromJson(value)).toList();
   }
 
   static Map<String, StopPointCategory> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, StopPointCategory>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = StopPointCategory.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, StopPointCategory>()
+        : json.map(
+            (key, value) => MapEntry(key, StopPointCategory.fromJson(value)));
   }
 }

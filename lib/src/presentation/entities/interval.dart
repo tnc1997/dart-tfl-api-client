@@ -1,9 +1,22 @@
-class Interval {
+import '../../internal/serializable.dart';
+
+class Interval implements Serializable {
   String stopId;
 
   double timeToArrival;
 
-  Interval();
+  Interval({
+    this.stopId,
+    this.timeToArrival,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'stopId': stopId,
+      'timeToArrival': timeToArrival,
+    };
+  }
 
   @override
   String toString() {
@@ -12,27 +25,24 @@ class Interval {
 
   Interval.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     stopId = json['stopId'];
     timeToArrival = json['timeToArrival'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {'stopId': stopId, 'timeToArrival': timeToArrival};
-  }
-
-  static List<Interval> listFromJson(List<dynamic> json) {
+  static List<Interval> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Interval>()
         : json.map((value) => Interval.fromJson(value)).toList();
   }
 
   static Map<String, Interval> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Interval>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Interval.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Interval>()
+        : json.map((key, value) => MapEntry(key, Interval.fromJson(value)));
   }
 }

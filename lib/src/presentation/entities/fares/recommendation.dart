@@ -1,6 +1,7 @@
 import '../message.dart';
+import '../../../internal/serializable.dart';
 
-class Recommendation {
+class Recommendation implements Serializable {
   int id;
 
   int rule;
@@ -37,7 +38,50 @@ class Recommendation {
 
   double singleFare;
 
-  Recommendation();
+  Recommendation({
+    this.id,
+    this.rule,
+    this.rank,
+    this.fareType,
+    this.product,
+    this.ticketType,
+    this.ticketTime,
+    this.productType,
+    this.discountCard,
+    this.zones,
+    this.cost,
+    this.priceDescription,
+    this.priceComparison,
+    this.recommendedTopUp,
+    this.notes,
+    this.keyFeatures,
+    this.gettingYourTicket,
+    this.singleFare,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'rule': rule,
+      'rank': rank,
+      'fareType': fareType,
+      'product': product,
+      'ticketType': ticketType,
+      'ticketTime': ticketTime,
+      'productType': productType,
+      'discountCard': discountCard,
+      'zones': zones,
+      'cost': cost,
+      'priceDescription': priceDescription,
+      'priceComparison': priceComparison,
+      'recommendedTopUp': recommendedTopUp,
+      'notes': notes,
+      'keyFeatures': keyFeatures,
+      'gettingYourTicket': gettingYourTicket,
+      'singleFare': singleFare,
+    };
+  }
 
   @override
   String toString() {
@@ -46,6 +90,7 @@ class Recommendation {
 
   Recommendation.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     rule = json['rule'];
     rank = json['rank'];
@@ -66,42 +111,20 @@ class Recommendation {
     singleFare = json['singleFare'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'rule': rule,
-      'rank': rank,
-      'fareType': fareType,
-      'product': product,
-      'ticketType': ticketType,
-      'ticketTime': ticketTime,
-      'productType': productType,
-      'discountCard': discountCard,
-      'zones': zones,
-      'cost': cost,
-      'priceDescription': priceDescription,
-      'priceComparison': priceComparison,
-      'recommendedTopUp': recommendedTopUp,
-      'notes': notes,
-      'keyFeatures': keyFeatures,
-      'gettingYourTicket': gettingYourTicket,
-      'singleFare': singleFare
-    };
-  }
-
-  static List<Recommendation> listFromJson(List<dynamic> json) {
+  static List<Recommendation> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Recommendation>()
         : json.map((value) => Recommendation.fromJson(value)).toList();
   }
 
   static Map<String, Recommendation> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Recommendation>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Recommendation.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Recommendation>()
+        : json
+            .map((key, value) => MapEntry(key, Recommendation.fromJson(value)));
   }
 }

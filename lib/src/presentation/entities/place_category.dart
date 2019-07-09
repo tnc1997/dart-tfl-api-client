@@ -1,9 +1,22 @@
-class PlaceCategory {
+import '../../internal/serializable.dart';
+
+class PlaceCategory implements Serializable {
   String category;
 
   List<String> availableKeys;
 
-  PlaceCategory();
+  PlaceCategory({
+    this.category,
+    this.availableKeys,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'category': category,
+      'availableKeys': availableKeys,
+    };
+  }
 
   @override
   String toString() {
@@ -12,28 +25,26 @@ class PlaceCategory {
 
   PlaceCategory.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     category = json['category'];
     availableKeys =
         (json['availableKeys'] as List).map((item) => item as String).toList();
   }
 
-  Map<String, dynamic> toJson() {
-    return {'category': category, 'availableKeys': availableKeys};
-  }
-
-  static List<PlaceCategory> listFromJson(List<dynamic> json) {
+  static List<PlaceCategory> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<PlaceCategory>()
         : json.map((value) => PlaceCategory.fromJson(value)).toList();
   }
 
   static Map<String, PlaceCategory> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, PlaceCategory>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = PlaceCategory.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, PlaceCategory>()
+        : json
+            .map((key, value) => MapEntry(key, PlaceCategory.fromJson(value)));
   }
 }

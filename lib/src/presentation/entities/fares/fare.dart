@@ -1,4 +1,6 @@
-class Fare {
+import '../../../internal/serializable.dart';
+
+class Fare implements Serializable {
   int id;
 
   String passengerType;
@@ -21,7 +23,37 @@ class Fare {
 
   String mode;
 
-  Fare();
+  Fare({
+    this.id,
+    this.passengerType,
+    this.validFrom,
+    this.validUntil,
+    this.ticketTime,
+    this.ticketType,
+    this.cost,
+    this.cap,
+    this.description,
+    this.zone,
+    this.mode,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'passengerType': passengerType,
+      'validFrom': validFrom == null ? '' : validFrom.toUtc().toIso8601String(),
+      'validUntil':
+          validUntil == null ? '' : validUntil.toUtc().toIso8601String(),
+      'ticketTime': ticketTime,
+      'ticketType': ticketType,
+      'cost': cost,
+      'cap': cap,
+      'description': description,
+      'zone': zone,
+      'mode': mode,
+    };
+  }
 
   @override
   String toString() {
@@ -30,6 +62,7 @@ class Fare {
 
   Fare.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     passengerType = json['passengerType'];
     validFrom =
@@ -45,35 +78,19 @@ class Fare {
     mode = json['mode'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'passengerType': passengerType,
-      'validFrom': validFrom == null ? '' : validFrom.toUtc().toIso8601String(),
-      'validUntil':
-          validUntil == null ? '' : validUntil.toUtc().toIso8601String(),
-      'ticketTime': ticketTime,
-      'ticketType': ticketType,
-      'cost': cost,
-      'cap': cap,
-      'description': description,
-      'zone': zone,
-      'mode': mode
-    };
-  }
-
-  static List<Fare> listFromJson(List<dynamic> json) {
+  static List<Fare> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Fare>()
         : json.map((value) => Fare.fromJson(value)).toList();
   }
 
-  static Map<String, Fare> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Fare>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Fare.fromJson(value));
-    }
-    return map;
+  static Map<String, Fare> mapFromJson(
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Fare>()
+        : json.map((key, value) => MapEntry(key, Fare.fromJson(value)));
   }
 }

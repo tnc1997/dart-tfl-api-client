@@ -1,6 +1,7 @@
 import './search_match.dart';
+import '../../internal/serializable.dart';
 
-class SearchResponse {
+class SearchResponse implements Serializable {
   String query;
 
   int from;
@@ -17,7 +18,30 @@ class SearchResponse {
 
   double maxScore;
 
-  SearchResponse();
+  SearchResponse({
+    this.query,
+    this.from,
+    this.page,
+    this.pageSize,
+    this.provider,
+    this.total,
+    this.matches,
+    this.maxScore,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'query': query,
+      'from': from,
+      'page': page,
+      'pageSize': pageSize,
+      'provider': provider,
+      'total': total,
+      'matches': matches,
+      'maxScore': maxScore,
+    };
+  }
 
   @override
   String toString() {
@@ -26,6 +50,7 @@ class SearchResponse {
 
   SearchResponse.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     query = json['query'];
     from = json['from'];
     page = json['page'];
@@ -36,32 +61,20 @@ class SearchResponse {
     maxScore = json['maxScore'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'query': query,
-      'from': from,
-      'page': page,
-      'pageSize': pageSize,
-      'provider': provider,
-      'total': total,
-      'matches': matches,
-      'maxScore': maxScore
-    };
-  }
-
-  static List<SearchResponse> listFromJson(List<dynamic> json) {
+  static List<SearchResponse> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<SearchResponse>()
         : json.map((value) => SearchResponse.fromJson(value)).toList();
   }
 
   static Map<String, SearchResponse> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, SearchResponse>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = SearchResponse.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, SearchResponse>()
+        : json
+            .map((key, value) => MapEntry(key, SearchResponse.fromJson(value)));
   }
 }

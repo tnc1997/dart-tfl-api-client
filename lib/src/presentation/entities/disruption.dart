@@ -1,7 +1,8 @@
 import './route_section.dart';
 import './stop_point.dart';
+import '../../internal/serializable.dart';
 
-class Disruption {
+class Disruption implements Serializable {
   /// Gets or sets the category of this disruption.
   String category;
   // enum categoryEnum {  Undefined,  RealTime,  PlannedWork,  Information,  Event,  Crowding,  StatusAlert,  };
@@ -28,15 +29,45 @@ class Disruption {
   DateTime lastUpdate;
 
   /// Gets or sets the routes affected by this disruption.
-  List<RouteSection> affectedRoutes = [];
+  List<RouteSection> affectedRoutes;
 
   /// Gets or sets the stops affected by this disruption.
-  List<StopPoint> affectedStops = [];
+  List<StopPoint> affectedStops;
 
   /// Gets or sets the text describing the closure type.
   String closureText;
 
-  Disruption();
+  Disruption({
+    this.category,
+    this.type,
+    this.categoryDescription,
+    this.description,
+    this.summary,
+    this.additionalInfo,
+    this.created,
+    this.lastUpdate,
+    this.affectedRoutes,
+    this.affectedStops,
+    this.closureText,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'category': category,
+      'type': type,
+      'categoryDescription': categoryDescription,
+      'description': description,
+      'summary': summary,
+      'additionalInfo': additionalInfo,
+      'created': created == null ? '' : created.toUtc().toIso8601String(),
+      'lastUpdate':
+          lastUpdate == null ? '' : lastUpdate.toUtc().toIso8601String(),
+      'affectedRoutes': affectedRoutes,
+      'affectedStops': affectedStops,
+      'closureText': closureText,
+    };
+  }
 
   @override
   String toString() {
@@ -45,6 +76,7 @@ class Disruption {
 
   Disruption.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     category = json['category'];
     type = json['type'];
     categoryDescription = json['categoryDescription'];
@@ -59,36 +91,19 @@ class Disruption {
     closureText = json['closureText'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'category': category,
-      'type': type,
-      'categoryDescription': categoryDescription,
-      'description': description,
-      'summary': summary,
-      'additionalInfo': additionalInfo,
-      'created': created == null ? '' : created.toUtc().toIso8601String(),
-      'lastUpdate':
-          lastUpdate == null ? '' : lastUpdate.toUtc().toIso8601String(),
-      'affectedRoutes': affectedRoutes,
-      'affectedStops': affectedStops,
-      'closureText': closureText
-    };
-  }
-
-  static List<Disruption> listFromJson(List<dynamic> json) {
+  static List<Disruption> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Disruption>()
         : json.map((value) => Disruption.fromJson(value)).toList();
   }
 
   static Map<String, Disruption> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Disruption>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Disruption.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Disruption>()
+        : json.map((key, value) => MapEntry(key, Disruption.fromJson(value)));
   }
 }

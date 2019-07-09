@@ -1,7 +1,8 @@
 import './journey_fare.dart';
 import './leg.dart';
+import '../../../internal/serializable.dart';
 
-class Journey {
+class Journey implements Serializable {
   DateTime startDateTime;
 
   int duration;
@@ -12,7 +13,27 @@ class Journey {
 
   JourneyFare fare;
 
-  Journey();
+  Journey({
+    this.startDateTime,
+    this.duration,
+    this.arrivalDateTime,
+    this.legs,
+    this.fare,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'startDateTime':
+          startDateTime == null ? '' : startDateTime.toUtc().toIso8601String(),
+      'duration': duration,
+      'arrivalDateTime': arrivalDateTime == null
+          ? ''
+          : arrivalDateTime.toUtc().toIso8601String(),
+      'legs': legs,
+      'fare': fare,
+    };
+  }
 
   @override
   String toString() {
@@ -21,6 +42,7 @@ class Journey {
 
   Journey.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     startDateTime = json['startDateTime'] == null
         ? null
         : DateTime.parse(json['startDateTime']);
@@ -32,32 +54,19 @@ class Journey {
     fare = JourneyFare.fromJson(json['fare']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'startDateTime':
-          startDateTime == null ? '' : startDateTime.toUtc().toIso8601String(),
-      'duration': duration,
-      'arrivalDateTime': arrivalDateTime == null
-          ? ''
-          : arrivalDateTime.toUtc().toIso8601String(),
-      'legs': legs,
-      'fare': fare
-    };
-  }
-
-  static List<Journey> listFromJson(List<dynamic> json) {
+  static List<Journey> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Journey>()
         : json.map((value) => Journey.fromJson(value)).toList();
   }
 
   static Map<String, Journey> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Journey>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Journey.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Journey>()
+        : json.map((key, value) => MapEntry(key, Journey.fromJson(value)));
   }
 }

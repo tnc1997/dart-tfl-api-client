@@ -1,4 +1,6 @@
-class StreetSegment {
+import '../../internal/serializable.dart';
+
+class StreetSegment implements Serializable {
   /// The 16 digit unique integer identifying an OS (Ordnance Survey) ITN (Integrated Transport Network) road link.
   String toid;
 
@@ -11,7 +13,22 @@ class StreetSegment {
   /// The key of the source system of the disruption that this street belongs to.
   String sourceSystemKey;
 
-  StreetSegment();
+  StreetSegment({
+    this.toid,
+    this.lineString,
+    this.sourceSystemId,
+    this.sourceSystemKey,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'toid': toid,
+      'lineString': lineString,
+      'sourceSystemId': sourceSystemId,
+      'sourceSystemKey': sourceSystemKey,
+    };
+  }
 
   @override
   String toString() {
@@ -20,34 +37,27 @@ class StreetSegment {
 
   StreetSegment.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     toid = json['toid'];
     lineString = json['lineString'];
     sourceSystemId = json['sourceSystemId'];
     sourceSystemKey = json['sourceSystemKey'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'toid': toid,
-      'lineString': lineString,
-      'sourceSystemId': sourceSystemId,
-      'sourceSystemKey': sourceSystemKey
-    };
-  }
-
-  static List<StreetSegment> listFromJson(List<dynamic> json) {
+  static List<StreetSegment> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<StreetSegment>()
         : json.map((value) => StreetSegment.fromJson(value)).toList();
   }
 
   static Map<String, StreetSegment> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, StreetSegment>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = StreetSegment.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, StreetSegment>()
+        : json
+            .map((key, value) => MapEntry(key, StreetSegment.fromJson(value)));
   }
 }

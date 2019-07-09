@@ -3,8 +3,9 @@ import './identifier.dart';
 import './line_group.dart';
 import './line_mode_group.dart';
 import './place.dart';
+import '../../internal/serializable.dart';
 
-class StopPoint {
+class StopPoint implements Serializable {
   String naptanId;
 
   String platformName;
@@ -68,7 +69,68 @@ class StopPoint {
   /// The WGS84 longitude of the location.
   double lon;
 
-  StopPoint();
+  StopPoint({
+    this.naptanId,
+    this.platformName,
+    this.indicator,
+    this.stopLetter,
+    this.modes,
+    this.icsCode,
+    this.smsCode,
+    this.stopType,
+    this.stationNaptan,
+    this.accessibilitySummary,
+    this.hubNaptanCode,
+    this.lines,
+    this.lineGroup,
+    this.lineModeGroups,
+    this.fullName,
+    this.naptanMode,
+    this.status,
+    this.id,
+    this.url,
+    this.commonName,
+    this.distance,
+    this.placeType,
+    this.additionalProperties,
+    this.children,
+    this.childrenUrls,
+    this.lat,
+    this.lon,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'naptanId': naptanId,
+      'platformName': platformName,
+      'indicator': indicator,
+      'stopLetter': stopLetter,
+      'modes': modes,
+      'icsCode': icsCode,
+      'smsCode': smsCode,
+      'stopType': stopType,
+      'stationNaptan': stationNaptan,
+      'accessibilitySummary': accessibilitySummary,
+      'hubNaptanCode': hubNaptanCode,
+      'lines': lines,
+      'lineGroup': lineGroup,
+      'lineModeGroups': lineModeGroups,
+      'fullName': fullName,
+      'naptanMode': naptanMode,
+      'status': status,
+      'id': id,
+      'url': url,
+      'commonName': commonName,
+      'distance': distance,
+      'placeType': placeType,
+      'additionalProperties': additionalProperties,
+      'children': children,
+      'childrenUrls': childrenUrls,
+      'lat': lat,
+      'lon': lon,
+    };
+  }
 
   @override
   String toString() {
@@ -77,6 +139,7 @@ class StopPoint {
 
   StopPoint.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     naptanId = json['naptanId'];
     platformName = json['platformName'];
     indicator = json['indicator'];
@@ -108,51 +171,19 @@ class StopPoint {
     lon = json['lon'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'naptanId': naptanId,
-      'platformName': platformName,
-      'indicator': indicator,
-      'stopLetter': stopLetter,
-      'modes': modes,
-      'icsCode': icsCode,
-      'smsCode': smsCode,
-      'stopType': stopType,
-      'stationNaptan': stationNaptan,
-      'accessibilitySummary': accessibilitySummary,
-      'hubNaptanCode': hubNaptanCode,
-      'lines': lines,
-      'lineGroup': lineGroup,
-      'lineModeGroups': lineModeGroups,
-      'fullName': fullName,
-      'naptanMode': naptanMode,
-      'status': status,
-      'id': id,
-      'url': url,
-      'commonName': commonName,
-      'distance': distance,
-      'placeType': placeType,
-      'additionalProperties': additionalProperties,
-      'children': children,
-      'childrenUrls': childrenUrls,
-      'lat': lat,
-      'lon': lon
-    };
-  }
-
-  static List<StopPoint> listFromJson(List<dynamic> json) {
+  static List<StopPoint> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<StopPoint>()
         : json.map((value) => StopPoint.fromJson(value)).toList();
   }
 
   static Map<String, StopPoint> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, StopPoint>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = StopPoint.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, StopPoint>()
+        : json.map((key, value) => MapEntry(key, StopPoint.fromJson(value)));
   }
 }

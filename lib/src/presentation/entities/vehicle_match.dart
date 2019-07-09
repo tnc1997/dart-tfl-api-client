@@ -1,4 +1,6 @@
-class VehicleMatch {
+import '../../internal/serializable.dart';
+
+class VehicleMatch implements Serializable {
   String vrm;
 
   String type;
@@ -12,7 +14,26 @@ class VehicleMatch {
   String compliance;
   // enum complianceEnum {  NotAvailable,  NotCompliant,  Compliant,  Exempt,  };
 
-  VehicleMatch();
+  VehicleMatch({
+    this.vrm,
+    this.type,
+    this.make,
+    this.model,
+    this.colour,
+    this.compliance,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'vrm': vrm,
+      'type': type,
+      'make': make,
+      'model': model,
+      'colour': colour,
+      'compliance': compliance,
+    };
+  }
 
   @override
   String toString() {
@@ -21,6 +42,7 @@ class VehicleMatch {
 
   VehicleMatch.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     vrm = json['vrm'];
     type = json['type'];
     make = json['make'];
@@ -29,30 +51,19 @@ class VehicleMatch {
     compliance = json['compliance'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'vrm': vrm,
-      'type': type,
-      'make': make,
-      'model': model,
-      'colour': colour,
-      'compliance': compliance
-    };
-  }
-
-  static List<VehicleMatch> listFromJson(List<dynamic> json) {
+  static List<VehicleMatch> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<VehicleMatch>()
         : json.map((value) => VehicleMatch.fromJson(value)).toList();
   }
 
   static Map<String, VehicleMatch> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, VehicleMatch>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = VehicleMatch.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, VehicleMatch>()
+        : json.map((key, value) => MapEntry(key, VehicleMatch.fromJson(value)));
   }
 }

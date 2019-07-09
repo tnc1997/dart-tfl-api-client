@@ -1,19 +1,38 @@
-class BikePointOccupancy {
+import '../../internal/serializable.dart';
+
+class BikePointOccupancy implements Serializable {
   String id;
 
-  /// Name / Common name of the bike point.
+  /// The name of the bike point.
   String name;
 
-  /// Total bike counts.
+  /// The total bike count.
   int bikesCount;
 
-  /// Empty docks.
+  /// The number of empty docks.
   int emptyDocks;
 
-  /// Total docks available.
+  /// The total docks available.
   int totalDocks;
 
-  BikePointOccupancy();
+  BikePointOccupancy({
+    this.id,
+    this.name,
+    this.bikesCount,
+    this.emptyDocks,
+    this.totalDocks,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'bikesCount': bikesCount,
+      'emptyDocks': emptyDocks,
+      'totalDocks': totalDocks,
+    };
+  }
 
   @override
   String toString() {
@@ -22,6 +41,7 @@ class BikePointOccupancy {
 
   BikePointOccupancy.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     name = json['name'];
     bikesCount = json['bikesCount'];
@@ -29,29 +49,20 @@ class BikePointOccupancy {
     totalDocks = json['totalDocks'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'bikesCount': bikesCount,
-      'emptyDocks': emptyDocks,
-      'totalDocks': totalDocks
-    };
-  }
-
-  static List<BikePointOccupancy> listFromJson(List<dynamic> json) {
+  static List<BikePointOccupancy> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<BikePointOccupancy>()
         : json.map((value) => BikePointOccupancy.fromJson(value)).toList();
   }
 
   static Map<String, BikePointOccupancy> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, BikePointOccupancy>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = BikePointOccupancy.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, BikePointOccupancy>()
+        : json.map(
+            (key, value) => MapEntry(key, BikePointOccupancy.fromJson(value)));
   }
 }

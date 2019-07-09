@@ -1,4 +1,6 @@
-class Obstacle {
+import '../../../internal/serializable.dart';
+
+class Obstacle implements Serializable {
   String type;
 
   String incline;
@@ -7,7 +9,22 @@ class Obstacle {
 
   String position;
 
-  Obstacle();
+  Obstacle({
+    this.type,
+    this.incline,
+    this.stopId,
+    this.position,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'type': type,
+      'incline': incline,
+      'stopId': stopId,
+      'position': position,
+    };
+  }
 
   @override
   String toString() {
@@ -16,34 +33,26 @@ class Obstacle {
 
   Obstacle.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     type = json['type'];
     incline = json['incline'];
     stopId = json['stopId'];
     position = json['position'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'type': type,
-      'incline': incline,
-      'stopId': stopId,
-      'position': position
-    };
-  }
-
-  static List<Obstacle> listFromJson(List<dynamic> json) {
+  static List<Obstacle> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Obstacle>()
         : json.map((value) => Obstacle.fromJson(value)).toList();
   }
 
   static Map<String, Obstacle> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Obstacle>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Obstacle.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Obstacle>()
+        : json.map((key, value) => MapEntry(key, Obstacle.fromJson(value)));
   }
 }

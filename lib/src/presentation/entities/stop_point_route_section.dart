@@ -1,4 +1,6 @@
-class StopPointRouteSection {
+import '../../internal/serializable.dart';
+
+class StopPointRouteSection implements Serializable {
   String naptanId;
 
   String lineId;
@@ -23,7 +25,38 @@ class StopPointRouteSection {
 
   String destinationName;
 
-  StopPointRouteSection();
+  StopPointRouteSection({
+    this.naptanId,
+    this.lineId,
+    this.mode,
+    this.validFrom,
+    this.validTo,
+    this.direction,
+    this.routeSectionName,
+    this.lineString,
+    this.isActive,
+    this.serviceType,
+    this.vehicleDestinationText,
+    this.destinationName,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'naptanId': naptanId,
+      'lineId': lineId,
+      'mode': mode,
+      'validFrom': validFrom == null ? '' : validFrom.toUtc().toIso8601String(),
+      'validTo': validTo == null ? '' : validTo.toUtc().toIso8601String(),
+      'direction': direction,
+      'routeSectionName': routeSectionName,
+      'lineString': lineString,
+      'isActive': isActive,
+      'serviceType': serviceType,
+      'vehicleDestinationText': vehicleDestinationText,
+      'destinationName': destinationName,
+    };
+  }
 
   @override
   String toString() {
@@ -32,6 +65,7 @@ class StopPointRouteSection {
 
   StopPointRouteSection.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     naptanId = json['naptanId'];
     lineId = json['lineId'];
     mode = json['mode'];
@@ -47,36 +81,20 @@ class StopPointRouteSection {
     destinationName = json['destinationName'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'naptanId': naptanId,
-      'lineId': lineId,
-      'mode': mode,
-      'validFrom': validFrom == null ? '' : validFrom.toUtc().toIso8601String(),
-      'validTo': validTo == null ? '' : validTo.toUtc().toIso8601String(),
-      'direction': direction,
-      'routeSectionName': routeSectionName,
-      'lineString': lineString,
-      'isActive': isActive,
-      'serviceType': serviceType,
-      'vehicleDestinationText': vehicleDestinationText,
-      'destinationName': destinationName
-    };
-  }
-
-  static List<StopPointRouteSection> listFromJson(List<dynamic> json) {
+  static List<StopPointRouteSection> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<StopPointRouteSection>()
         : json.map((value) => StopPointRouteSection.fromJson(value)).toList();
   }
 
   static Map<String, StopPointRouteSection> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, StopPointRouteSection>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = StopPointRouteSection.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, StopPointRouteSection>()
+        : json.map((key, value) =>
+            MapEntry(key, StopPointRouteSection.fromJson(value)));
   }
 }

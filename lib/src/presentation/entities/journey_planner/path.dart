@@ -1,14 +1,28 @@
 import '../identifier.dart';
 import '../../../common/journey_planner/elevation.dart';
+import '../../../internal/serializable.dart';
 
-class Path {
+class Path implements Serializable {
   String lineString;
 
   List<Identifier> stopPoints;
 
   List<Elevation> elevation;
 
-  Path();
+  Path({
+    this.lineString,
+    this.stopPoints,
+    this.elevation,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'lineString': lineString,
+      'stopPoints': stopPoints,
+      'elevation': elevation,
+    };
+  }
 
   @override
   String toString() {
@@ -17,31 +31,25 @@ class Path {
 
   Path.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     lineString = json['lineString'];
     stopPoints = Identifier.listFromJson(json['stopPoints']);
     elevation = Elevation.listFromJson(json['elevation']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'lineString': lineString,
-      'stopPoints': stopPoints,
-      'elevation': elevation
-    };
-  }
-
-  static List<Path> listFromJson(List<dynamic> json) {
+  static List<Path> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Path>()
         : json.map((value) => Path.fromJson(value)).toList();
   }
 
-  static Map<String, Path> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Path>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Path.fromJson(value));
-    }
-    return map;
+  static Map<String, Path> mapFromJson(
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Path>()
+        : json.map((key, value) => MapEntry(key, Path.fromJson(value)));
   }
 }

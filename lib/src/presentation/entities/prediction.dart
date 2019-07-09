@@ -1,6 +1,7 @@
 import './prediction_timing.dart';
+import '../../internal/serializable.dart';
 
-class Prediction {
+class Prediction implements Serializable {
   String id;
 
   /// The type of the operation (1: is new or has been updated, 2: should be deleted from any client cache).
@@ -60,7 +61,57 @@ class Prediction {
   /// Keep the original timestamp from MongoDB for debugging purposes.
   PredictionTiming timing;
 
-  Prediction();
+  Prediction({
+    this.id,
+    this.operationType,
+    this.vehicleId,
+    this.naptanId,
+    this.stationName,
+    this.lineId,
+    this.lineName,
+    this.platformName,
+    this.direction,
+    this.bearing,
+    this.destinationNaptanId,
+    this.destinationName,
+    this.timestamp,
+    this.timeToStation,
+    this.currentLocation,
+    this.towards,
+    this.expectedArrival,
+    this.timeToLive,
+    this.modeName,
+    this.timing,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'operationType': operationType,
+      'vehicleId': vehicleId,
+      'naptanId': naptanId,
+      'stationName': stationName,
+      'lineId': lineId,
+      'lineName': lineName,
+      'platformName': platformName,
+      'direction': direction,
+      'bearing': bearing,
+      'destinationNaptanId': destinationNaptanId,
+      'destinationName': destinationName,
+      'timestamp': timestamp == null ? '' : timestamp.toUtc().toIso8601String(),
+      'timeToStation': timeToStation,
+      'currentLocation': currentLocation,
+      'towards': towards,
+      'expectedArrival': expectedArrival == null
+          ? ''
+          : expectedArrival.toUtc().toIso8601String(),
+      'timeToLive':
+          timeToLive == null ? '' : timeToLive.toUtc().toIso8601String(),
+      'modeName': modeName,
+      'timing': timing,
+    };
+  }
 
   @override
   String toString() {
@@ -69,6 +120,7 @@ class Prediction {
 
   Prediction.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     operationType = json['operationType'];
     vehicleId = json['vehicleId'];
@@ -95,47 +147,19 @@ class Prediction {
     timing = PredictionTiming.fromJson(json['timing']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'operationType': operationType,
-      'vehicleId': vehicleId,
-      'naptanId': naptanId,
-      'stationName': stationName,
-      'lineId': lineId,
-      'lineName': lineName,
-      'platformName': platformName,
-      'direction': direction,
-      'bearing': bearing,
-      'destinationNaptanId': destinationNaptanId,
-      'destinationName': destinationName,
-      'timestamp': timestamp == null ? '' : timestamp.toUtc().toIso8601String(),
-      'timeToStation': timeToStation,
-      'currentLocation': currentLocation,
-      'towards': towards,
-      'expectedArrival': expectedArrival == null
-          ? ''
-          : expectedArrival.toUtc().toIso8601String(),
-      'timeToLive':
-          timeToLive == null ? '' : timeToLive.toUtc().toIso8601String(),
-      'modeName': modeName,
-      'timing': timing
-    };
-  }
-
-  static List<Prediction> listFromJson(List<dynamic> json) {
+  static List<Prediction> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Prediction>()
         : json.map((value) => Prediction.fromJson(value)).toList();
   }
 
   static Map<String, Prediction> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Prediction>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Prediction.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Prediction>()
+        : json.map((key, value) => MapEntry(key, Prediction.fromJson(value)));
   }
 }

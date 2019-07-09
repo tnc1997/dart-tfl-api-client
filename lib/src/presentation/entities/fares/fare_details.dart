@@ -1,7 +1,8 @@
 import './ticket.dart';
 import '../message.dart';
+import '../../../internal/serializable.dart';
 
-class FareDetails {
+class FareDetails implements Serializable {
   int boundsId;
 
   DateTime startDate;
@@ -44,7 +45,56 @@ class FareDetails {
 
   List<Message> messages;
 
-  FareDetails();
+  FareDetails({
+    this.boundsId,
+    this.startDate,
+    this.endDate,
+    this.mode,
+    this.passengerType,
+    this.from,
+    this.to,
+    this.fromStation,
+    this.toStation,
+    this.via,
+    this.routeCode,
+    this.displayName,
+    this.displayOrder,
+    this.routeDescription,
+    this.validatorInformation,
+    this.operator,
+    this.specialFare,
+    this.throughFare,
+    this.isTour,
+    this.ticketsAvailable,
+    this.messages,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'boundsId': boundsId,
+      'startDate': startDate == null ? '' : startDate.toUtc().toIso8601String(),
+      'endDate': endDate == null ? '' : endDate.toUtc().toIso8601String(),
+      'mode': mode,
+      'passengerType': passengerType,
+      'from': from,
+      'to': to,
+      'fromStation': fromStation,
+      'toStation': toStation,
+      'via': via,
+      'routeCode': routeCode,
+      'displayName': displayName,
+      'displayOrder': displayOrder,
+      'routeDescription': routeDescription,
+      'validatorInformation': validatorInformation,
+      'operator': operator,
+      'specialFare': specialFare,
+      'throughFare': throughFare,
+      'isTour': isTour,
+      'ticketsAvailable': ticketsAvailable,
+      'messages': messages,
+    };
+  }
 
   @override
   String toString() {
@@ -53,6 +103,7 @@ class FareDetails {
 
   FareDetails.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     boundsId = json['boundsId'];
     startDate =
         json['startDate'] == null ? null : DateTime.parse(json['startDate']);
@@ -77,45 +128,19 @@ class FareDetails {
     messages = Message.listFromJson(json['messages']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'boundsId': boundsId,
-      'startDate': startDate == null ? '' : startDate.toUtc().toIso8601String(),
-      'endDate': endDate == null ? '' : endDate.toUtc().toIso8601String(),
-      'mode': mode,
-      'passengerType': passengerType,
-      'from': from,
-      'to': to,
-      'fromStation': fromStation,
-      'toStation': toStation,
-      'via': via,
-      'routeCode': routeCode,
-      'displayName': displayName,
-      'displayOrder': displayOrder,
-      'routeDescription': routeDescription,
-      'validatorInformation': validatorInformation,
-      'operator': operator,
-      'specialFare': specialFare,
-      'throughFare': throughFare,
-      'isTour': isTour,
-      'ticketsAvailable': ticketsAvailable,
-      'messages': messages
-    };
-  }
-
-  static List<FareDetails> listFromJson(List<dynamic> json) {
+  static List<FareDetails> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<FareDetails>()
         : json.map((value) => FareDetails.fromJson(value)).toList();
   }
 
   static Map<String, FareDetails> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, FareDetails>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = FareDetails.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, FareDetails>()
+        : json.map((key, value) => MapEntry(key, FareDetails.fromJson(value)));
   }
 }

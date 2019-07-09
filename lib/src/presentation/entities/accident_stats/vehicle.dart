@@ -1,7 +1,18 @@
-class Vehicle {
+import '../../../internal/serializable.dart';
+
+class Vehicle implements Serializable {
   String type;
 
-  Vehicle();
+  Vehicle({
+    this.type,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'type': type,
+    };
+  }
 
   @override
   String toString() {
@@ -10,26 +21,23 @@ class Vehicle {
 
   Vehicle.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     type = json['type'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {'type': type};
-  }
-
-  static List<Vehicle> listFromJson(List<dynamic> json) {
+  static List<Vehicle> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Vehicle>()
         : json.map((value) => Vehicle.fromJson(value)).toList();
   }
 
   static Map<String, Vehicle> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Vehicle>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Vehicle.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Vehicle>()
+        : json.map((key, value) => MapEntry(key, Vehicle.fromJson(value)));
   }
 }

@@ -1,4 +1,6 @@
-class CycleHireDockingStationData {
+import '../../../internal/serializable.dart';
+
+class CycleHireDockingStationData implements Serializable {
   int originNumberOfBikes;
 
   int destinationNumberOfBikes;
@@ -11,7 +13,26 @@ class CycleHireDockingStationData {
 
   String destinationId;
 
-  CycleHireDockingStationData();
+  CycleHireDockingStationData({
+    this.originNumberOfBikes,
+    this.destinationNumberOfBikes,
+    this.originNumberOfEmptySlots,
+    this.destinationNumberOfEmptySlots,
+    this.originId,
+    this.destinationId,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'originNumberOfBikes': originNumberOfBikes,
+      'destinationNumberOfBikes': destinationNumberOfBikes,
+      'originNumberOfEmptySlots': originNumberOfEmptySlots,
+      'destinationNumberOfEmptySlots': destinationNumberOfEmptySlots,
+      'originId': originId,
+      'destinationId': destinationId,
+    };
+  }
 
   @override
   String toString() {
@@ -20,6 +41,7 @@ class CycleHireDockingStationData {
 
   CycleHireDockingStationData.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     originNumberOfBikes = json['originNumberOfBikes'];
     destinationNumberOfBikes = json['destinationNumberOfBikes'];
     originNumberOfEmptySlots = json['originNumberOfEmptySlots'];
@@ -28,18 +50,9 @@ class CycleHireDockingStationData {
     destinationId = json['destinationId'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'originNumberOfBikes': originNumberOfBikes,
-      'destinationNumberOfBikes': destinationNumberOfBikes,
-      'originNumberOfEmptySlots': originNumberOfEmptySlots,
-      'destinationNumberOfEmptySlots': destinationNumberOfEmptySlots,
-      'originId': originId,
-      'destinationId': destinationId
-    };
-  }
-
-  static List<CycleHireDockingStationData> listFromJson(List<dynamic> json) {
+  static List<CycleHireDockingStationData> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<CycleHireDockingStationData>()
         : json
@@ -48,12 +61,11 @@ class CycleHireDockingStationData {
   }
 
   static Map<String, CycleHireDockingStationData> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, CycleHireDockingStationData>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = CycleHireDockingStationData.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, CycleHireDockingStationData>()
+        : json.map((key, value) =>
+            MapEntry(key, CycleHireDockingStationData.fromJson(value)));
   }
 }

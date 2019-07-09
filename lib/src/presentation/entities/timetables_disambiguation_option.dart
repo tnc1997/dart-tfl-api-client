@@ -1,9 +1,22 @@
-class TimetablesDisambiguationOption {
+import '../../internal/serializable.dart';
+
+class TimetablesDisambiguationOption implements Serializable {
   String description;
 
   String uri;
 
-  TimetablesDisambiguationOption();
+  TimetablesDisambiguationOption({
+    this.description,
+    this.uri,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'description': description,
+      'uri': uri,
+    };
+  }
 
   @override
   String toString() {
@@ -12,15 +25,14 @@ class TimetablesDisambiguationOption {
 
   TimetablesDisambiguationOption.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     description = json['description'];
     uri = json['uri'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {'description': description, 'uri': uri};
-  }
-
-  static List<TimetablesDisambiguationOption> listFromJson(List<dynamic> json) {
+  static List<TimetablesDisambiguationOption> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<TimetablesDisambiguationOption>()
         : json
@@ -29,12 +41,11 @@ class TimetablesDisambiguationOption {
   }
 
   static Map<String, TimetablesDisambiguationOption> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, TimetablesDisambiguationOption>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = TimetablesDisambiguationOption.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, TimetablesDisambiguationOption>()
+        : json.map((key, value) =>
+            MapEntry(key, TimetablesDisambiguationOption.fromJson(value)));
   }
 }

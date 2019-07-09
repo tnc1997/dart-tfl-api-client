@@ -1,4 +1,6 @@
-class DisruptedPoint {
+import '../../internal/serializable.dart';
+
+class DisruptedPoint implements Serializable {
   String atcoCode;
 
   DateTime fromDate;
@@ -19,7 +21,34 @@ class DisruptedPoint {
 
   String additionalInformation;
 
-  DisruptedPoint();
+  DisruptedPoint({
+    this.atcoCode,
+    this.fromDate,
+    this.toDate,
+    this.description,
+    this.commonName,
+    this.type,
+    this.mode,
+    this.stationAtcoCode,
+    this.appearance,
+    this.additionalInformation,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'atcoCode': atcoCode,
+      'fromDate': fromDate == null ? '' : fromDate.toUtc().toIso8601String(),
+      'toDate': toDate == null ? '' : toDate.toUtc().toIso8601String(),
+      'description': description,
+      'commonName': commonName,
+      'type': type,
+      'mode': mode,
+      'stationAtcoCode': stationAtcoCode,
+      'appearance': appearance,
+      'additionalInformation': additionalInformation,
+    };
+  }
 
   @override
   String toString() {
@@ -28,6 +57,7 @@ class DisruptedPoint {
 
   DisruptedPoint.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     atcoCode = json['atcoCode'];
     fromDate =
         json['fromDate'] == null ? null : DateTime.parse(json['fromDate']);
@@ -41,34 +71,20 @@ class DisruptedPoint {
     additionalInformation = json['additionalInformation'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'atcoCode': atcoCode,
-      'fromDate': fromDate == null ? '' : fromDate.toUtc().toIso8601String(),
-      'toDate': toDate == null ? '' : toDate.toUtc().toIso8601String(),
-      'description': description,
-      'commonName': commonName,
-      'type': type,
-      'mode': mode,
-      'stationAtcoCode': stationAtcoCode,
-      'appearance': appearance,
-      'additionalInformation': additionalInformation
-    };
-  }
-
-  static List<DisruptedPoint> listFromJson(List<dynamic> json) {
+  static List<DisruptedPoint> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<DisruptedPoint>()
         : json.map((value) => DisruptedPoint.fromJson(value)).toList();
   }
 
   static Map<String, DisruptedPoint> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, DisruptedPoint>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = DisruptedPoint.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, DisruptedPoint>()
+        : json
+            .map((key, value) => MapEntry(key, DisruptedPoint.fromJson(value)));
   }
 }

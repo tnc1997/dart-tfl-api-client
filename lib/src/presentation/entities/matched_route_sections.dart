@@ -1,7 +1,18 @@
-class MatchedRouteSections {
+import '../../internal/serializable.dart';
+
+class MatchedRouteSections implements Serializable {
   int id;
 
-  MatchedRouteSections();
+  MatchedRouteSections({
+    this.id,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+    };
+  }
 
   @override
   String toString() {
@@ -10,26 +21,24 @@ class MatchedRouteSections {
 
   MatchedRouteSections.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {'id': id};
-  }
-
-  static List<MatchedRouteSections> listFromJson(List<dynamic> json) {
+  static List<MatchedRouteSections> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<MatchedRouteSections>()
         : json.map((value) => MatchedRouteSections.fromJson(value)).toList();
   }
 
   static Map<String, MatchedRouteSections> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, MatchedRouteSections>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = MatchedRouteSections.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, MatchedRouteSections>()
+        : json.map((key, value) =>
+            MapEntry(key, MatchedRouteSections.fromJson(value)));
   }
 }

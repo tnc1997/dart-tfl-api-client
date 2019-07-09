@@ -1,4 +1,6 @@
-class TimeAdjustment {
+import '../../../internal/serializable.dart';
+
+class TimeAdjustment implements Serializable {
   String date;
 
   String time;
@@ -7,7 +9,22 @@ class TimeAdjustment {
 
   String uri;
 
-  TimeAdjustment();
+  TimeAdjustment({
+    this.date,
+    this.time,
+    this.timeIs,
+    this.uri,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'date': date,
+      'time': time,
+      'timeIs': timeIs,
+      'uri': uri,
+    };
+  }
 
   @override
   String toString() {
@@ -16,29 +33,27 @@ class TimeAdjustment {
 
   TimeAdjustment.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     date = json['date'];
     time = json['time'];
     timeIs = json['timeIs'];
     uri = json['uri'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {'date': date, 'time': time, 'timeIs': timeIs, 'uri': uri};
-  }
-
-  static List<TimeAdjustment> listFromJson(List<dynamic> json) {
+  static List<TimeAdjustment> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<TimeAdjustment>()
         : json.map((value) => TimeAdjustment.fromJson(value)).toList();
   }
 
   static Map<String, TimeAdjustment> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, TimeAdjustment>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = TimeAdjustment.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, TimeAdjustment>()
+        : json
+            .map((key, value) => MapEntry(key, TimeAdjustment.fromJson(value)));
   }
 }

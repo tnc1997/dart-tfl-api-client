@@ -1,6 +1,7 @@
+import '../../internal/serializable.dart';
 import '../../system/data/spacial/db_geography.dart';
 
-class RoadDisruptionImpactArea {
+class RoadDisruptionImpactArea implements Serializable {
   int id;
 
   String roadDisruptionId;
@@ -15,7 +16,28 @@ class RoadDisruptionImpactArea {
 
   String endTime;
 
-  RoadDisruptionImpactArea();
+  RoadDisruptionImpactArea({
+    this.id,
+    this.roadDisruptionId,
+    this.polygon,
+    this.startDate,
+    this.endDate,
+    this.startTime,
+    this.endTime,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'roadDisruptionId': roadDisruptionId,
+      'polygon': polygon,
+      'startDate': startDate == null ? '' : startDate.toUtc().toIso8601String(),
+      'endDate': endDate == null ? '' : endDate.toUtc().toIso8601String(),
+      'startTime': startTime,
+      'endTime': endTime,
+    };
+  }
 
   @override
   String toString() {
@@ -24,6 +46,7 @@ class RoadDisruptionImpactArea {
 
   RoadDisruptionImpactArea.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     roadDisruptionId = json['roadDisruptionId'];
     polygon = DbGeography.fromJson(json['polygon']);
@@ -34,19 +57,9 @@ class RoadDisruptionImpactArea {
     endTime = json['endTime'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'roadDisruptionId': roadDisruptionId,
-      'polygon': polygon,
-      'startDate': startDate == null ? '' : startDate.toUtc().toIso8601String(),
-      'endDate': endDate == null ? '' : endDate.toUtc().toIso8601String(),
-      'startTime': startTime,
-      'endTime': endTime
-    };
-  }
-
-  static List<RoadDisruptionImpactArea> listFromJson(List<dynamic> json) {
+  static List<RoadDisruptionImpactArea> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<RoadDisruptionImpactArea>()
         : json
@@ -55,12 +68,11 @@ class RoadDisruptionImpactArea {
   }
 
   static Map<String, RoadDisruptionImpactArea> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, RoadDisruptionImpactArea>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = RoadDisruptionImpactArea.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, RoadDisruptionImpactArea>()
+        : json.map((key, value) =>
+            MapEntry(key, RoadDisruptionImpactArea.fromJson(value)));
   }
 }

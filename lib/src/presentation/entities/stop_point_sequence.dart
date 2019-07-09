@@ -1,6 +1,7 @@
 import './matched_stop.dart';
+import '../../internal/serializable.dart';
 
-class StopPointSequence {
+class StopPointSequence implements Serializable {
   String lineId;
 
   String lineName;
@@ -21,7 +22,30 @@ class StopPointSequence {
   String serviceType;
   // enum serviceTypeEnum {  Regular,  Night,  };
 
-  StopPointSequence();
+  StopPointSequence({
+    this.lineId,
+    this.lineName,
+    this.direction,
+    this.branchId,
+    this.nextBranchIds,
+    this.prevBranchIds,
+    this.stopPoint,
+    this.serviceType,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'lineId': lineId,
+      'lineName': lineName,
+      'direction': direction,
+      'branchId': branchId,
+      'nextBranchIds': nextBranchIds,
+      'prevBranchIds': prevBranchIds,
+      'stopPoint': stopPoint,
+      'serviceType': serviceType,
+    };
+  }
 
   @override
   String toString() {
@@ -30,6 +54,7 @@ class StopPointSequence {
 
   StopPointSequence.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     lineId = json['lineId'];
     lineName = json['lineName'];
     direction = json['direction'];
@@ -42,32 +67,20 @@ class StopPointSequence {
     serviceType = json['serviceType'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'lineId': lineId,
-      'lineName': lineName,
-      'direction': direction,
-      'branchId': branchId,
-      'nextBranchIds': nextBranchIds,
-      'prevBranchIds': prevBranchIds,
-      'stopPoint': stopPoint,
-      'serviceType': serviceType
-    };
-  }
-
-  static List<StopPointSequence> listFromJson(List<dynamic> json) {
+  static List<StopPointSequence> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<StopPointSequence>()
         : json.map((value) => StopPointSequence.fromJson(value)).toList();
   }
 
   static Map<String, StopPointSequence> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, StopPointSequence>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = StopPointSequence.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, StopPointSequence>()
+        : json.map(
+            (key, value) => MapEntry(key, StopPointSequence.fromJson(value)));
   }
 }

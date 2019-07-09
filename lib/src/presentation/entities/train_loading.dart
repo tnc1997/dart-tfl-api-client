@@ -1,4 +1,6 @@
-class TrainLoading {
+import '../../internal/serializable.dart';
+
+class TrainLoading implements Serializable {
   /// The line name.
   String line;
 
@@ -20,7 +22,28 @@ class TrainLoading {
   /// The scale between 1-6. 1 = Very quiet. 2 = Quiet. 3 = Fairly busy. 4 = Busy. 5 = Very busy. 6 = Exceptionally busy.
   int value;
 
-  TrainLoading();
+  TrainLoading({
+    this.line,
+    this.lineDirection,
+    this.platformDirection,
+    this.direction,
+    this.naptanTo,
+    this.timeSlice,
+    this.value,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'line': line,
+      'lineDirection': lineDirection,
+      'platformDirection': platformDirection,
+      'direction': direction,
+      'naptanTo': naptanTo,
+      'timeSlice': timeSlice,
+      'value': value,
+    };
+  }
 
   @override
   String toString() {
@@ -29,6 +52,7 @@ class TrainLoading {
 
   TrainLoading.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     line = json['line'];
     lineDirection = json['lineDirection'];
     platformDirection = json['platformDirection'];
@@ -38,31 +62,19 @@ class TrainLoading {
     value = json['value'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'line': line,
-      'lineDirection': lineDirection,
-      'platformDirection': platformDirection,
-      'direction': direction,
-      'naptanTo': naptanTo,
-      'timeSlice': timeSlice,
-      'value': value
-    };
-  }
-
-  static List<TrainLoading> listFromJson(List<dynamic> json) {
+  static List<TrainLoading> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<TrainLoading>()
         : json.map((value) => TrainLoading.fromJson(value)).toList();
   }
 
   static Map<String, TrainLoading> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, TrainLoading>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = TrainLoading.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, TrainLoading>()
+        : json.map((key, value) => MapEntry(key, TrainLoading.fromJson(value)));
   }
 }

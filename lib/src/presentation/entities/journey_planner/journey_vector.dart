@@ -1,4 +1,6 @@
-class JourneyVector {
+import '../../../internal/serializable.dart';
+
+class JourneyVector implements Serializable {
   String from;
 
   String to;
@@ -7,7 +9,22 @@ class JourneyVector {
 
   String uri;
 
-  JourneyVector();
+  JourneyVector({
+    this.from,
+    this.to,
+    this.via,
+    this.uri,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'from': from,
+      'to': to,
+      'via': via,
+      'uri': uri,
+    };
+  }
 
   @override
   String toString() {
@@ -16,29 +33,27 @@ class JourneyVector {
 
   JourneyVector.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     from = json['from'];
     to = json['to'];
     via = json['via'];
     uri = json['uri'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {'from': from, 'to': to, 'via': via, 'uri': uri};
-  }
-
-  static List<JourneyVector> listFromJson(List<dynamic> json) {
+  static List<JourneyVector> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<JourneyVector>()
         : json.map((value) => JourneyVector.fromJson(value)).toList();
   }
 
   static Map<String, JourneyVector> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, JourneyVector>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = JourneyVector.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, JourneyVector>()
+        : json
+            .map((key, value) => MapEntry(key, JourneyVector.fromJson(value)));
   }
 }

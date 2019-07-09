@@ -1,11 +1,26 @@
-class KnownJourney {
+import '../../internal/serializable.dart';
+
+class KnownJourney implements Serializable {
   String hour;
 
   String minute;
 
   int intervalId;
 
-  KnownJourney();
+  KnownJourney({
+    this.hour,
+    this.minute,
+    this.intervalId,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'hour': hour,
+      'minute': minute,
+      'intervalId': intervalId,
+    };
+  }
 
   @override
   String toString() {
@@ -14,28 +29,25 @@ class KnownJourney {
 
   KnownJourney.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     hour = json['hour'];
     minute = json['minute'];
     intervalId = json['intervalId'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {'hour': hour, 'minute': minute, 'intervalId': intervalId};
-  }
-
-  static List<KnownJourney> listFromJson(List<dynamic> json) {
+  static List<KnownJourney> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<KnownJourney>()
         : json.map((value) => KnownJourney.fromJson(value)).toList();
   }
 
   static Map<String, KnownJourney> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, KnownJourney>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = KnownJourney.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, KnownJourney>()
+        : json.map((key, value) => MapEntry(key, KnownJourney.fromJson(value)));
   }
 }

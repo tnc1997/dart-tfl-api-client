@@ -1,8 +1,9 @@
 import './ticket_time.dart';
 import './ticket_type.dart';
 import '../message.dart';
+import '../../../internal/serializable.dart';
 
-class Ticket {
+class Ticket implements Serializable {
   String passengerType;
 
   TicketType ticketType;
@@ -19,7 +20,30 @@ class Ticket {
 
   List<Message> messages;
 
-  Ticket();
+  Ticket({
+    this.passengerType,
+    this.ticketType,
+    this.ticketTime,
+    this.cost,
+    this.description,
+    this.mode,
+    this.displayOrder,
+    this.messages,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'passengerType': passengerType,
+      'ticketType': ticketType,
+      'ticketTime': ticketTime,
+      'cost': cost,
+      'description': description,
+      'mode': mode,
+      'displayOrder': displayOrder,
+      'messages': messages,
+    };
+  }
 
   @override
   String toString() {
@@ -28,6 +52,7 @@ class Ticket {
 
   Ticket.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     passengerType = json['passengerType'];
     ticketType = TicketType.fromJson(json['ticketType']);
     ticketTime = TicketTime.fromJson(json['ticketTime']);
@@ -38,32 +63,19 @@ class Ticket {
     messages = Message.listFromJson(json['messages']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'passengerType': passengerType,
-      'ticketType': ticketType,
-      'ticketTime': ticketTime,
-      'cost': cost,
-      'description': description,
-      'mode': mode,
-      'displayOrder': displayOrder,
-      'messages': messages
-    };
-  }
-
-  static List<Ticket> listFromJson(List<dynamic> json) {
+  static List<Ticket> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Ticket>()
         : json.map((value) => Ticket.fromJson(value)).toList();
   }
 
   static Map<String, Ticket> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Ticket>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Ticket.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Ticket>()
+        : json.map((key, value) => MapEntry(key, Ticket.fromJson(value)));
   }
 }

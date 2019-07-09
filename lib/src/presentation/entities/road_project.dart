@@ -1,4 +1,6 @@
-class RoadProject {
+import '../../internal/serializable.dart';
+
+class RoadProject implements Serializable {
   String projectId;
 
   String schemeName;
@@ -19,7 +21,7 @@ class RoadProject {
 
   DateTime constructionEndDate;
 
-  List<String> boroughsBenefited = [];
+  List<String> boroughsBenefited;
 
   String cycleSuperhighwayId;
 
@@ -34,7 +36,56 @@ class RoadProject {
 
   String projectSummaryPageUrl;
 
-  RoadProject();
+  RoadProject({
+    this.projectId,
+    this.schemeName,
+    this.projectName,
+    this.projectDescription,
+    this.projectPageUrl,
+    this.consultationPageUrl,
+    this.consultationStartDate,
+    this.consultationEndDate,
+    this.constructionStartDate,
+    this.constructionEndDate,
+    this.boroughsBenefited,
+    this.cycleSuperhighwayId,
+    this.phase,
+    this.contactName,
+    this.contactEmail,
+    this.externalPageUrl,
+    this.projectSummaryPageUrl,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'projectId': projectId,
+      'schemeName': schemeName,
+      'projectName': projectName,
+      'projectDescription': projectDescription,
+      'projectPageUrl': projectPageUrl,
+      'consultationPageUrl': consultationPageUrl,
+      'consultationStartDate': consultationStartDate == null
+          ? ''
+          : consultationStartDate.toUtc().toIso8601String(),
+      'consultationEndDate': consultationEndDate == null
+          ? ''
+          : consultationEndDate.toUtc().toIso8601String(),
+      'constructionStartDate': constructionStartDate == null
+          ? ''
+          : constructionStartDate.toUtc().toIso8601String(),
+      'constructionEndDate': constructionEndDate == null
+          ? ''
+          : constructionEndDate.toUtc().toIso8601String(),
+      'boroughsBenefited': boroughsBenefited,
+      'cycleSuperhighwayId': cycleSuperhighwayId,
+      'phase': phase,
+      'contactName': contactName,
+      'contactEmail': contactEmail,
+      'externalPageUrl': externalPageUrl,
+      'projectSummaryPageUrl': projectSummaryPageUrl,
+    };
+  }
 
   @override
   String toString() {
@@ -43,6 +94,7 @@ class RoadProject {
 
   RoadProject.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     projectId = json['projectId'];
     schemeName = json['schemeName'];
     projectName = json['projectName'];
@@ -72,49 +124,19 @@ class RoadProject {
     projectSummaryPageUrl = json['projectSummaryPageUrl'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'projectId': projectId,
-      'schemeName': schemeName,
-      'projectName': projectName,
-      'projectDescription': projectDescription,
-      'projectPageUrl': projectPageUrl,
-      'consultationPageUrl': consultationPageUrl,
-      'consultationStartDate': consultationStartDate == null
-          ? ''
-          : consultationStartDate.toUtc().toIso8601String(),
-      'consultationEndDate': consultationEndDate == null
-          ? ''
-          : consultationEndDate.toUtc().toIso8601String(),
-      'constructionStartDate': constructionStartDate == null
-          ? ''
-          : constructionStartDate.toUtc().toIso8601String(),
-      'constructionEndDate': constructionEndDate == null
-          ? ''
-          : constructionEndDate.toUtc().toIso8601String(),
-      'boroughsBenefited': boroughsBenefited,
-      'cycleSuperhighwayId': cycleSuperhighwayId,
-      'phase': phase,
-      'contactName': contactName,
-      'contactEmail': contactEmail,
-      'externalPageUrl': externalPageUrl,
-      'projectSummaryPageUrl': projectSummaryPageUrl
-    };
-  }
-
-  static List<RoadProject> listFromJson(List<dynamic> json) {
+  static List<RoadProject> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<RoadProject>()
         : json.map((value) => RoadProject.fromJson(value)).toList();
   }
 
   static Map<String, RoadProject> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, RoadProject>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = RoadProject.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, RoadProject>()
+        : json.map((key, value) => MapEntry(key, RoadProject.fromJson(value)));
   }
 }

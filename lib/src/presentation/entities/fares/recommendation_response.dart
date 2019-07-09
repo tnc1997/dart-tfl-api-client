@@ -1,9 +1,19 @@
 import './recommendation.dart';
+import '../../../internal/serializable.dart';
 
-class RecommendationResponse {
+class RecommendationResponse implements Serializable {
   List<Recommendation> recommendations;
 
-  RecommendationResponse();
+  RecommendationResponse({
+    this.recommendations,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'recommendations': recommendations,
+    };
+  }
 
   @override
   String toString() {
@@ -12,26 +22,24 @@ class RecommendationResponse {
 
   RecommendationResponse.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     recommendations = Recommendation.listFromJson(json['recommendations']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {'recommendations': recommendations};
-  }
-
-  static List<RecommendationResponse> listFromJson(List<dynamic> json) {
+  static List<RecommendationResponse> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<RecommendationResponse>()
         : json.map((value) => RecommendationResponse.fromJson(value)).toList();
   }
 
   static Map<String, RecommendationResponse> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, RecommendationResponse>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = RecommendationResponse.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, RecommendationResponse>()
+        : json.map((key, value) =>
+            MapEntry(key, RecommendationResponse.fromJson(value)));
   }
 }

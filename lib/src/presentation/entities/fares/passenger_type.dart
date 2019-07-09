@@ -1,4 +1,6 @@
-class PassengerType {
+import '../../../internal/serializable.dart';
+
+class PassengerType implements Serializable {
   String type;
 
   String description;
@@ -7,7 +9,22 @@ class PassengerType {
 
   int displayOrder;
 
-  PassengerType();
+  PassengerType({
+    this.type,
+    this.description,
+    this.displayName,
+    this.displayOrder,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'type': type,
+      'description': description,
+      'displayName': displayName,
+      'displayOrder': displayOrder,
+    };
+  }
 
   @override
   String toString() {
@@ -16,34 +33,27 @@ class PassengerType {
 
   PassengerType.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     type = json['type'];
     description = json['description'];
     displayName = json['displayName'];
     displayOrder = json['displayOrder'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'type': type,
-      'description': description,
-      'displayName': displayName,
-      'displayOrder': displayOrder
-    };
-  }
-
-  static List<PassengerType> listFromJson(List<dynamic> json) {
+  static List<PassengerType> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<PassengerType>()
         : json.map((value) => PassengerType.fromJson(value)).toList();
   }
 
   static Map<String, PassengerType> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, PassengerType>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = PassengerType.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, PassengerType>()
+        : json
+            .map((key, value) => MapEntry(key, PassengerType.fromJson(value)));
   }
 }

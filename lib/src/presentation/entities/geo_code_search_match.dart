@@ -1,4 +1,6 @@
-class GeoCodeSearchMatch {
+import '../../internal/serializable.dart';
+
+class GeoCodeSearchMatch implements Serializable {
   List<String> types;
 
   String address;
@@ -13,7 +15,28 @@ class GeoCodeSearchMatch {
 
   double lon;
 
-  GeoCodeSearchMatch();
+  GeoCodeSearchMatch({
+    this.types,
+    this.address,
+    this.id,
+    this.url,
+    this.name,
+    this.lat,
+    this.lon,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'types': types,
+      'address': address,
+      'id': id,
+      'url': url,
+      'name': name,
+      'lat': lat,
+      'lon': lon,
+    };
+  }
 
   @override
   String toString() {
@@ -22,6 +45,7 @@ class GeoCodeSearchMatch {
 
   GeoCodeSearchMatch.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     types = (json['types'] as List).map((item) => item as String).toList();
     address = json['address'];
     id = json['id'];
@@ -31,31 +55,20 @@ class GeoCodeSearchMatch {
     lon = json['lon'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'types': types,
-      'address': address,
-      'id': id,
-      'url': url,
-      'name': name,
-      'lat': lat,
-      'lon': lon
-    };
-  }
-
-  static List<GeoCodeSearchMatch> listFromJson(List<dynamic> json) {
+  static List<GeoCodeSearchMatch> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<GeoCodeSearchMatch>()
         : json.map((value) => GeoCodeSearchMatch.fromJson(value)).toList();
   }
 
   static Map<String, GeoCodeSearchMatch> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, GeoCodeSearchMatch>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = GeoCodeSearchMatch.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, GeoCodeSearchMatch>()
+        : json.map(
+            (key, value) => MapEntry(key, GeoCodeSearchMatch.fromJson(value)));
   }
 }

@@ -1,6 +1,7 @@
 import './identifier.dart';
+import '../../internal/serializable.dart';
 
-class MatchedStop {
+class MatchedStop implements Serializable {
   int routeId;
 
   String parentId;
@@ -41,7 +42,54 @@ class MatchedStop {
 
   double lon;
 
-  MatchedStop();
+  MatchedStop({
+    this.routeId,
+    this.parentId,
+    this.stationId,
+    this.icsId,
+    this.topMostParentId,
+    this.direction,
+    this.towards,
+    this.modes,
+    this.stopType,
+    this.stopLetter,
+    this.zone,
+    this.accessibilitySummary,
+    this.hasDisruption,
+    this.lines,
+    this.status,
+    this.id,
+    this.url,
+    this.name,
+    this.lat,
+    this.lon,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'routeId': routeId,
+      'parentId': parentId,
+      'stationId': stationId,
+      'icsId': icsId,
+      'topMostParentId': topMostParentId,
+      'direction': direction,
+      'towards': towards,
+      'modes': modes,
+      'stopType': stopType,
+      'stopLetter': stopLetter,
+      'zone': zone,
+      'accessibilitySummary': accessibilitySummary,
+      'hasDisruption': hasDisruption,
+      'lines': lines,
+      'status': status,
+      'id': id,
+      'url': url,
+      'name': name,
+      'lat': lat,
+      'lon': lon,
+    };
+  }
 
   @override
   String toString() {
@@ -50,6 +98,7 @@ class MatchedStop {
 
   MatchedStop.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     routeId = json['routeId'];
     parentId = json['parentId'];
     stationId = json['stationId'];
@@ -72,44 +121,19 @@ class MatchedStop {
     lon = json['lon'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'routeId': routeId,
-      'parentId': parentId,
-      'stationId': stationId,
-      'icsId': icsId,
-      'topMostParentId': topMostParentId,
-      'direction': direction,
-      'towards': towards,
-      'modes': modes,
-      'stopType': stopType,
-      'stopLetter': stopLetter,
-      'zone': zone,
-      'accessibilitySummary': accessibilitySummary,
-      'hasDisruption': hasDisruption,
-      'lines': lines,
-      'status': status,
-      'id': id,
-      'url': url,
-      'name': name,
-      'lat': lat,
-      'lon': lon
-    };
-  }
-
-  static List<MatchedStop> listFromJson(List<dynamic> json) {
+  static List<MatchedStop> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<MatchedStop>()
         : json.map((value) => MatchedStop.fromJson(value)).toList();
   }
 
   static Map<String, MatchedStop> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, MatchedStop>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = MatchedStop.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, MatchedStop>()
+        : json.map((key, value) => MapEntry(key, MatchedStop.fromJson(value)));
   }
 }

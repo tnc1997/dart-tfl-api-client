@@ -1,7 +1,8 @@
 import './casualty.dart';
 import './vehicle.dart';
+import '../../../internal/serializable.dart';
 
-class AccidentDetail {
+class AccidentDetail implements Serializable {
   int id;
 
   double lat;
@@ -20,26 +21,19 @@ class AccidentDetail {
 
   List<Vehicle> vehicles;
 
-  AccidentDetail();
+  AccidentDetail({
+    this.id,
+    this.lat,
+    this.lon,
+    this.location,
+    this.date,
+    this.severity,
+    this.borough,
+    this.casualties,
+    this.vehicles,
+  });
 
   @override
-  String toString() {
-    return 'AccidentDetail[id=$id, lat=$lat, lon=$lon, location=$location, date=$date, severity=$severity, borough=$borough, casualties=$casualties, vehicles=$vehicles, ]';
-  }
-
-  AccidentDetail.fromJson(Map<String, dynamic> json) {
-    if (json == null) return;
-    id = json['id'];
-    lat = json['lat'];
-    lon = json['lon'];
-    location = json['location'];
-    date = json['date'] == null ? null : DateTime.parse(json['date']);
-    severity = json['severity'];
-    borough = json['borough'];
-    casualties = Casualty.listFromJson(json['casualties']);
-    vehicles = Vehicle.listFromJson(json['vehicles']);
-  }
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -54,19 +48,39 @@ class AccidentDetail {
     };
   }
 
-  static List<AccidentDetail> listFromJson(List<dynamic> json) {
+  @override
+  String toString() {
+    return 'AccidentDetail[id=$id, lat=$lat, lon=$lon, location=$location, date=$date, severity=$severity, borough=$borough, casualties=$casualties, vehicles=$vehicles, ]';
+  }
+
+  AccidentDetail.fromJson(Map<String, dynamic> json) {
+    if (json == null) return;
+
+    id = json['id'];
+    lat = json['lat'];
+    lon = json['lon'];
+    location = json['location'];
+    date = json['date'] == null ? null : DateTime.parse(json['date']);
+    severity = json['severity'];
+    borough = json['borough'];
+    casualties = Casualty.listFromJson(json['casualties']);
+    vehicles = Vehicle.listFromJson(json['vehicles']);
+  }
+
+  static List<AccidentDetail> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<AccidentDetail>()
         : json.map((value) => AccidentDetail.fromJson(value)).toList();
   }
 
   static Map<String, AccidentDetail> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, AccidentDetail>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = AccidentDetail.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, AccidentDetail>()
+        : json
+            .map((key, value) => MapEntry(key, AccidentDetail.fromJson(value)));
   }
 }

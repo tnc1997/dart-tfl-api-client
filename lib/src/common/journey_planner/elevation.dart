@@ -1,4 +1,6 @@
-class Elevation {
+import '../../internal/serializable.dart';
+
+class Elevation implements Serializable {
   int distance;
 
   double startLat;
@@ -13,15 +15,37 @@ class Elevation {
 
   double gradient;
 
-  Elevation();
+  Elevation({
+    this.distance,
+    this.startLat,
+    this.startLon,
+    this.endLat,
+    this.endLon,
+    this.heightFromPreviousPoint,
+    this.gradient,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'distance': distance,
+      'startLat': startLat,
+      'startLon': startLon,
+      'endLat': endLat,
+      'endLon': endLon,
+      'heightFromPreviousPoint': heightFromPreviousPoint,
+      'gradient': gradient,
+    };
+  }
 
   @override
   String toString() {
-    return 'JpElevation[distance=$distance, startLat=$startLat, startLon=$startLon, endLat=$endLat, endLon=$endLon, heightFromPreviousPoint=$heightFromPreviousPoint, gradient=$gradient, ]';
+    return 'Elevation[distance=$distance, startLat=$startLat, startLon=$startLon, endLat=$endLat, endLon=$endLon, heightFromPreviousPoint=$heightFromPreviousPoint, gradient=$gradient, ]';
   }
 
   Elevation.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     distance = json['distance'];
     startLat = json['startLat'];
     startLon = json['startLon'];
@@ -31,31 +55,19 @@ class Elevation {
     gradient = json['gradient'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'distance': distance,
-      'startLat': startLat,
-      'startLon': startLon,
-      'endLat': endLat,
-      'endLon': endLon,
-      'heightFromPreviousPoint': heightFromPreviousPoint,
-      'gradient': gradient
-    };
-  }
-
-  static List<Elevation> listFromJson(List<dynamic> json) {
+  static List<Elevation> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Elevation>()
         : json.map((value) => Elevation.fromJson(value)).toList();
   }
 
   static Map<String, Elevation> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Elevation>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Elevation.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Elevation>()
+        : json.map((key, value) => MapEntry(key, Elevation.fromJson(value)));
   }
 }

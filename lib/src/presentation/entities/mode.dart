@@ -1,4 +1,6 @@
-class Mode {
+import '../../internal/serializable.dart';
+
+class Mode implements Serializable {
   bool isTflService;
 
   bool isFarePaying;
@@ -7,7 +9,22 @@ class Mode {
 
   String modeName;
 
-  Mode();
+  Mode({
+    this.isTflService,
+    this.isFarePaying,
+    this.isScheduledService,
+    this.modeName,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'isTflService': isTflService,
+      'isFarePaying': isFarePaying,
+      'isScheduledService': isScheduledService,
+      'modeName': modeName,
+    };
+  }
 
   @override
   String toString() {
@@ -16,33 +33,26 @@ class Mode {
 
   Mode.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     isTflService = json['isTflService'];
     isFarePaying = json['isFarePaying'];
     isScheduledService = json['isScheduledService'];
     modeName = json['modeName'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'isTflService': isTflService,
-      'isFarePaying': isFarePaying,
-      'isScheduledService': isScheduledService,
-      'modeName': modeName
-    };
-  }
-
-  static List<Mode> listFromJson(List<dynamic> json) {
+  static List<Mode> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Mode>()
         : json.map((value) => Mode.fromJson(value)).toList();
   }
 
-  static Map<String, Mode> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Mode>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Mode.fromJson(value));
-    }
-    return map;
+  static Map<String, Mode> mapFromJson(
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Mode>()
+        : json.map((key, value) => MapEntry(key, Mode.fromJson(value)));
   }
 }

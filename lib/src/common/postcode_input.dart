@@ -1,7 +1,18 @@
-class PostcodeInput {
+import '../internal/serializable.dart';
+
+class PostcodeInput implements Serializable {
   String postcode;
 
-  PostcodeInput();
+  PostcodeInput({
+    this.postcode,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'postcode': postcode,
+    };
+  }
 
   @override
   String toString() {
@@ -10,26 +21,24 @@ class PostcodeInput {
 
   PostcodeInput.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     postcode = json['postcode'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {'postcode': postcode};
-  }
-
-  static List<PostcodeInput> listFromJson(List<dynamic> json) {
+  static List<PostcodeInput> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<PostcodeInput>()
         : json.map((value) => PostcodeInput.fromJson(value)).toList();
   }
 
   static Map<String, PostcodeInput> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, PostcodeInput>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = PostcodeInput.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, PostcodeInput>()
+        : json
+            .map((key, value) => MapEntry(key, PostcodeInput.fromJson(value)));
   }
 }

@@ -1,11 +1,26 @@
-class DbGeographyWellKnownValue {
+import '../../../internal/serializable.dart';
+
+class DbGeographyWellKnownValue implements Serializable {
   int coordinateSystemId;
 
   String wellKnownText;
 
   List<int> wellKnownBinary;
 
-  DbGeographyWellKnownValue();
+  DbGeographyWellKnownValue({
+    this.coordinateSystemId,
+    this.wellKnownText,
+    this.wellKnownBinary,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'coordinateSystemId': coordinateSystemId,
+      'wellKnownText': wellKnownText,
+      'wellKnownBinary': wellKnownBinary,
+    };
+  }
 
   @override
   String toString() {
@@ -14,20 +29,15 @@ class DbGeographyWellKnownValue {
 
   DbGeographyWellKnownValue.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     coordinateSystemId = json['coordinateSystemId'];
     wellKnownText = json['wellKnownText'];
     wellKnownBinary = json['wellKnownBinary'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'coordinateSystemId': coordinateSystemId,
-      'wellKnownText': wellKnownText,
-      'wellKnownBinary': wellKnownBinary
-    };
-  }
-
-  static List<DbGeographyWellKnownValue> listFromJson(List<dynamic> json) {
+  static List<DbGeographyWellKnownValue> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<DbGeographyWellKnownValue>()
         : json
@@ -36,12 +46,11 @@ class DbGeographyWellKnownValue {
   }
 
   static Map<String, DbGeographyWellKnownValue> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, DbGeographyWellKnownValue>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = DbGeographyWellKnownValue.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, DbGeographyWellKnownValue>()
+        : json.map((key, value) =>
+            MapEntry(key, DbGeographyWellKnownValue.fromJson(value)));
   }
 }

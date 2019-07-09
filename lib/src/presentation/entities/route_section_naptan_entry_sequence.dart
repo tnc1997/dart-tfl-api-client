@@ -1,11 +1,23 @@
 import './stop_point.dart';
+import '../../internal/serializable.dart';
 
-class RouteSectionNaptanEntrySequence {
+class RouteSectionNaptanEntrySequence implements Serializable {
   int ordinal;
 
   StopPoint stopPoint;
 
-  RouteSectionNaptanEntrySequence();
+  RouteSectionNaptanEntrySequence({
+    this.ordinal,
+    this.stopPoint,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'ordinal': ordinal,
+      'stopPoint': stopPoint,
+    };
+  }
 
   @override
   String toString() {
@@ -14,16 +26,14 @@ class RouteSectionNaptanEntrySequence {
 
   RouteSectionNaptanEntrySequence.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     ordinal = json['ordinal'];
     stopPoint = StopPoint.fromJson(json['stopPoint']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {'ordinal': ordinal, 'stopPoint': stopPoint};
-  }
-
   static List<RouteSectionNaptanEntrySequence> listFromJson(
-      List<dynamic> json) {
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<RouteSectionNaptanEntrySequence>()
         : json
@@ -32,12 +42,11 @@ class RouteSectionNaptanEntrySequence {
   }
 
   static Map<String, RouteSectionNaptanEntrySequence> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, RouteSectionNaptanEntrySequence>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = RouteSectionNaptanEntrySequence.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, RouteSectionNaptanEntrySequence>()
+        : json.map((key, value) =>
+            MapEntry(key, RouteSectionNaptanEntrySequence.fromJson(value)));
   }
 }

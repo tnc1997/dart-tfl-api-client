@@ -1,6 +1,7 @@
 import '../message.dart';
+import '../../../internal/serializable.dart';
 
-class FareBounds {
+class FareBounds implements Serializable {
   int id;
 
   String from;
@@ -27,7 +28,40 @@ class FareBounds {
 
   List<Message> messages;
 
-  FareBounds();
+  FareBounds({
+    this.id,
+    this.from,
+    this.to,
+    this.via,
+    this.routeCode,
+    this.description,
+    this.displayName,
+    this.operator,
+    this.displayOrder,
+    this.isPopularFare,
+    this.isPopularTravelCard,
+    this.isTour,
+    this.messages,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'from': from,
+      'to': to,
+      'via': via,
+      'routeCode': routeCode,
+      'description': description,
+      'displayName': displayName,
+      'operator': operator,
+      'displayOrder': displayOrder,
+      'isPopularFare': isPopularFare,
+      'isPopularTravelCard': isPopularTravelCard,
+      'isTour': isTour,
+      'messages': messages,
+    };
+  }
 
   @override
   String toString() {
@@ -36,6 +70,7 @@ class FareBounds {
 
   FareBounds.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     from = json['from'];
     to = json['to'];
@@ -51,37 +86,19 @@ class FareBounds {
     messages = Message.listFromJson(json['messages']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'from': from,
-      'to': to,
-      'via': via,
-      'routeCode': routeCode,
-      'description': description,
-      'displayName': displayName,
-      'operator': operator,
-      'displayOrder': displayOrder,
-      'isPopularFare': isPopularFare,
-      'isPopularTravelCard': isPopularTravelCard,
-      'isTour': isTour,
-      'messages': messages
-    };
-  }
-
-  static List<FareBounds> listFromJson(List<dynamic> json) {
+  static List<FareBounds> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<FareBounds>()
         : json.map((value) => FareBounds.fromJson(value)).toList();
   }
 
   static Map<String, FareBounds> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, FareBounds>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = FareBounds.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, FareBounds>()
+        : json.map((key, value) => MapEntry(key, FareBounds.fromJson(value)));
   }
 }

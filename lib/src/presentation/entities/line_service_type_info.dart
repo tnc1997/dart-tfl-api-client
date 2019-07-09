@@ -1,9 +1,22 @@
-class LineServiceTypeInfo {
+import '../../internal/serializable.dart';
+
+class LineServiceTypeInfo implements Serializable {
   String name;
 
   String uri;
 
-  LineServiceTypeInfo();
+  LineServiceTypeInfo({
+    this.name,
+    this.uri,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'uri': uri,
+    };
+  }
 
   @override
   String toString() {
@@ -12,27 +25,25 @@ class LineServiceTypeInfo {
 
   LineServiceTypeInfo.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     name = json['name'];
     uri = json['uri'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {'name': name, 'uri': uri};
-  }
-
-  static List<LineServiceTypeInfo> listFromJson(List<dynamic> json) {
+  static List<LineServiceTypeInfo> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<LineServiceTypeInfo>()
         : json.map((value) => LineServiceTypeInfo.fromJson(value)).toList();
   }
 
   static Map<String, LineServiceTypeInfo> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, LineServiceTypeInfo>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = LineServiceTypeInfo.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, LineServiceTypeInfo>()
+        : json.map(
+            (key, value) => MapEntry(key, LineServiceTypeInfo.fromJson(value)));
   }
 }

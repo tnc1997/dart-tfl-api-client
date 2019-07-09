@@ -1,10 +1,11 @@
-import 'crowding.dart';
+import './crowding.dart';
 import './disruption.dart';
 import './line_service_type_info.dart';
 import './line_status.dart';
 import './matched_route.dart';
+import '../../internal/serializable.dart';
 
-class Line {
+class Line implements Serializable {
   String id;
 
   String name;
@@ -25,7 +26,34 @@ class Line {
 
   Crowding crowding;
 
-  Line();
+  Line({
+    this.id,
+    this.name,
+    this.modeName,
+    this.disruptions,
+    this.created,
+    this.modified,
+    this.lineStatuses,
+    this.routeSections,
+    this.serviceTypes,
+    this.crowding,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'modeName': modeName,
+      'disruptions': disruptions,
+      'created': created == null ? '' : created.toUtc().toIso8601String(),
+      'modified': modified == null ? '' : modified.toUtc().toIso8601String(),
+      'lineStatuses': lineStatuses,
+      'routeSections': routeSections,
+      'serviceTypes': serviceTypes,
+      'crowding': crowding,
+    };
+  }
 
   @override
   String toString() {
@@ -34,6 +62,7 @@ class Line {
 
   Line.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     name = json['name'];
     modeName = json['modeName'];
@@ -47,33 +76,19 @@ class Line {
     crowding = Crowding.fromJson(json['crowding']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'modeName': modeName,
-      'disruptions': disruptions,
-      'created': created == null ? '' : created.toUtc().toIso8601String(),
-      'modified': modified == null ? '' : modified.toUtc().toIso8601String(),
-      'lineStatuses': lineStatuses,
-      'routeSections': routeSections,
-      'serviceTypes': serviceTypes,
-      'crowding': crowding
-    };
-  }
-
-  static List<Line> listFromJson(List<dynamic> json) {
+  static List<Line> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Line>()
         : json.map((value) => Line.fromJson(value)).toList();
   }
 
-  static Map<String, Line> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Line>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Line.fromJson(value));
-    }
-    return map;
+  static Map<String, Line> mapFromJson(
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Line>()
+        : json.map((key, value) => MapEntry(key, Line.fromJson(value)));
   }
 }

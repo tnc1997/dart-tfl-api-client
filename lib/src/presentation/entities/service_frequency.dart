@@ -1,9 +1,22 @@
-class ServiceFrequency {
+import '../../internal/serializable.dart';
+
+class ServiceFrequency implements Serializable {
   double lowestFrequency;
 
   double highestFrequency;
 
-  ServiceFrequency();
+  ServiceFrequency({
+    this.lowestFrequency,
+    this.highestFrequency,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'lowestFrequency': lowestFrequency,
+      'highestFrequency': highestFrequency,
+    };
+  }
 
   @override
   String toString() {
@@ -12,30 +25,25 @@ class ServiceFrequency {
 
   ServiceFrequency.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     lowestFrequency = json['lowestFrequency'];
     highestFrequency = json['highestFrequency'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'lowestFrequency': lowestFrequency,
-      'highestFrequency': highestFrequency
-    };
-  }
-
-  static List<ServiceFrequency> listFromJson(List<dynamic> json) {
+  static List<ServiceFrequency> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<ServiceFrequency>()
         : json.map((value) => ServiceFrequency.fromJson(value)).toList();
   }
 
   static Map<String, ServiceFrequency> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, ServiceFrequency>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = ServiceFrequency.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, ServiceFrequency>()
+        : json.map(
+            (key, value) => MapEntry(key, ServiceFrequency.fromJson(value)));
   }
 }

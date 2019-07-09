@@ -1,4 +1,6 @@
-class RoadCorridor {
+import '../../internal/serializable.dart';
+
+class RoadCorridor implements Serializable {
   String id;
 
   /// The display name of the Corridor e.g. "North Circular (A406)".
@@ -28,7 +30,38 @@ class RoadCorridor {
   /// The URL to retrieve this corridor.
   String url;
 
-  RoadCorridor();
+  RoadCorridor({
+    this.id,
+    this.displayName,
+    this.group,
+    this.statusSeverity,
+    this.statusSeverityDescription,
+    this.bounds,
+    this.envelope,
+    this.statusAggregationStartDate,
+    this.statusAggregationEndDate,
+    this.url,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'displayName': displayName,
+      'group': group,
+      'statusSeverity': statusSeverity,
+      'statusSeverityDescription': statusSeverityDescription,
+      'bounds': bounds,
+      'envelope': envelope,
+      'statusAggregationStartDate': statusAggregationStartDate == null
+          ? ''
+          : statusAggregationStartDate.toUtc().toIso8601String(),
+      'statusAggregationEndDate': statusAggregationEndDate == null
+          ? ''
+          : statusAggregationEndDate.toUtc().toIso8601String(),
+      'url': url,
+    };
+  }
 
   @override
   String toString() {
@@ -37,6 +70,7 @@ class RoadCorridor {
 
   RoadCorridor.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     displayName = json['displayName'];
     group = json['group'];
@@ -53,38 +87,19 @@ class RoadCorridor {
     url = json['url'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'displayName': displayName,
-      'group': group,
-      'statusSeverity': statusSeverity,
-      'statusSeverityDescription': statusSeverityDescription,
-      'bounds': bounds,
-      'envelope': envelope,
-      'statusAggregationStartDate': statusAggregationStartDate == null
-          ? ''
-          : statusAggregationStartDate.toUtc().toIso8601String(),
-      'statusAggregationEndDate': statusAggregationEndDate == null
-          ? ''
-          : statusAggregationEndDate.toUtc().toIso8601String(),
-      'url': url
-    };
-  }
-
-  static List<RoadCorridor> listFromJson(List<dynamic> json) {
+  static List<RoadCorridor> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<RoadCorridor>()
         : json.map((value) => RoadCorridor.fromJson(value)).toList();
   }
 
   static Map<String, RoadCorridor> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, RoadCorridor>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = RoadCorridor.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, RoadCorridor>()
+        : json.map((key, value) => MapEntry(key, RoadCorridor.fromJson(value)));
   }
 }

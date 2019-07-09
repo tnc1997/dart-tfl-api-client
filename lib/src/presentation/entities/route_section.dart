@@ -1,6 +1,7 @@
 import './route_section_naptan_entry_sequence.dart';
+import '../../internal/serializable.dart';
 
-class RouteSection {
+class RouteSection implements Serializable {
   String id;
 
   /// The id of the line.
@@ -32,7 +33,36 @@ class RouteSection {
 
   List<RouteSectionNaptanEntrySequence> routeSectionNaptanEntrySequence;
 
-  RouteSection();
+  RouteSection({
+    this.id,
+    this.lineId,
+    this.routeCode,
+    this.name,
+    this.lineString,
+    this.direction,
+    this.originationName,
+    this.destinationName,
+    this.validTo,
+    this.validFrom,
+    this.routeSectionNaptanEntrySequence,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'lineId': lineId,
+      'routeCode': routeCode,
+      'name': name,
+      'lineString': lineString,
+      'direction': direction,
+      'originationName': originationName,
+      'destinationName': destinationName,
+      'validTo': validTo == null ? '' : validTo.toUtc().toIso8601String(),
+      'validFrom': validFrom == null ? '' : validFrom.toUtc().toIso8601String(),
+      'routeSectionNaptanEntrySequence': routeSectionNaptanEntrySequence,
+    };
+  }
 
   @override
   String toString() {
@@ -41,6 +71,7 @@ class RouteSection {
 
   RouteSection.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     lineId = json['lineId'];
     routeCode = json['routeCode'];
@@ -57,35 +88,19 @@ class RouteSection {
             json['routeSectionNaptanEntrySequence']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'lineId': lineId,
-      'routeCode': routeCode,
-      'name': name,
-      'lineString': lineString,
-      'direction': direction,
-      'originationName': originationName,
-      'destinationName': destinationName,
-      'validTo': validTo == null ? '' : validTo.toUtc().toIso8601String(),
-      'validFrom': validFrom == null ? '' : validFrom.toUtc().toIso8601String(),
-      'routeSectionNaptanEntrySequence': routeSectionNaptanEntrySequence
-    };
-  }
-
-  static List<RouteSection> listFromJson(List<dynamic> json) {
+  static List<RouteSection> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<RouteSection>()
         : json.map((value) => RouteSection.fromJson(value)).toList();
   }
 
   static Map<String, RouteSection> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, RouteSection>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = RouteSection.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, RouteSection>()
+        : json.map((key, value) => MapEntry(key, RouteSection.fromJson(value)));
   }
 }

@@ -1,6 +1,7 @@
 import '../identifier.dart';
+import '../../../internal/serializable.dart';
 
-class RouteOption {
+class RouteOption implements Serializable {
   String id;
 
   String name;
@@ -9,7 +10,22 @@ class RouteOption {
 
   Identifier lineIdentifier;
 
-  RouteOption();
+  RouteOption({
+    this.id,
+    this.name,
+    this.directions,
+    this.lineIdentifier,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'directions': directions,
+      'lineIdentifier': lineIdentifier,
+    };
+  }
 
   @override
   String toString() {
@@ -18,6 +34,7 @@ class RouteOption {
 
   RouteOption.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     name = json['name'];
     directions =
@@ -25,28 +42,19 @@ class RouteOption {
     lineIdentifier = Identifier.fromJson(json['lineIdentifier']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'directions': directions,
-      'lineIdentifier': lineIdentifier
-    };
-  }
-
-  static List<RouteOption> listFromJson(List<dynamic> json) {
+  static List<RouteOption> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<RouteOption>()
         : json.map((value) => RouteOption.fromJson(value)).toList();
   }
 
   static Map<String, RouteOption> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, RouteOption>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = RouteOption.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, RouteOption>()
+        : json.map((key, value) => MapEntry(key, RouteOption.fromJson(value)));
   }
 }

@@ -1,8 +1,9 @@
 import './matched_stop.dart';
 import './timetable.dart';
 import './timetables_disambiguation.dart';
+import '../../internal/serializable.dart';
 
-class TimetableResponse {
+class TimetableResponse implements Serializable {
   String lineId;
 
   String lineName;
@@ -11,9 +12,9 @@ class TimetableResponse {
 
   String pdfUrl;
 
-  List<MatchedStop> stations = [];
+  List<MatchedStop> stations;
 
-  List<MatchedStop> stops = [];
+  List<MatchedStop> stops;
 
   Timetable timetable;
 
@@ -21,7 +22,32 @@ class TimetableResponse {
 
   String statusErrorMessage;
 
-  TimetableResponse();
+  TimetableResponse({
+    this.lineId,
+    this.lineName,
+    this.direction,
+    this.pdfUrl,
+    this.stations,
+    this.stops,
+    this.timetable,
+    this.disambiguation,
+    this.statusErrorMessage,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'lineId': lineId,
+      'lineName': lineName,
+      'direction': direction,
+      'pdfUrl': pdfUrl,
+      'stations': stations,
+      'stops': stops,
+      'timetable': timetable,
+      'disambiguation': disambiguation,
+      'statusErrorMessage': statusErrorMessage,
+    };
+  }
 
   @override
   String toString() {
@@ -30,6 +56,7 @@ class TimetableResponse {
 
   TimetableResponse.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     lineId = json['lineId'];
     lineName = json['lineName'];
     direction = json['direction'];
@@ -41,33 +68,20 @@ class TimetableResponse {
     statusErrorMessage = json['statusErrorMessage'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'lineId': lineId,
-      'lineName': lineName,
-      'direction': direction,
-      'pdfUrl': pdfUrl,
-      'stations': stations,
-      'stops': stops,
-      'timetable': timetable,
-      'disambiguation': disambiguation,
-      'statusErrorMessage': statusErrorMessage
-    };
-  }
-
-  static List<TimetableResponse> listFromJson(List<dynamic> json) {
+  static List<TimetableResponse> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<TimetableResponse>()
         : json.map((value) => TimetableResponse.fromJson(value)).toList();
   }
 
   static Map<String, TimetableResponse> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, TimetableResponse>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = TimetableResponse.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, TimetableResponse>()
+        : json.map(
+            (key, value) => MapEntry(key, TimetableResponse.fromJson(value)));
   }
 }

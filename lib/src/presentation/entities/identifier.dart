@@ -1,6 +1,7 @@
 import './crowding.dart';
+import '../../internal/serializable.dart';
 
-class Identifier {
+class Identifier implements Serializable {
   String id;
 
   String name;
@@ -19,7 +20,30 @@ class Identifier {
   String status;
   // enum statusEnum {  Unknown,  All,  Open,  In Progress,  Planned,  Planned - Subject to feasibility and consultation.,  Not Open,  };
 
-  Identifier();
+  Identifier({
+    this.id,
+    this.name,
+    this.uri,
+    this.fullName,
+    this.type,
+    this.crowding,
+    this.routeType,
+    this.status,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'uri': uri,
+      'fullName': fullName,
+      'type': type,
+      'crowding': crowding,
+      'routeType': routeType,
+      'status': status,
+    };
+  }
 
   @override
   String toString() {
@@ -28,6 +52,7 @@ class Identifier {
 
   Identifier.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     name = json['name'];
     uri = json['uri'];
@@ -38,32 +63,19 @@ class Identifier {
     status = json['status'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-      'uri': uri,
-      'fullName': fullName,
-      'type': type,
-      'crowding': crowding,
-      'routeType': routeType,
-      'status': status
-    };
-  }
-
-  static List<Identifier> listFromJson(List<dynamic> json) {
+  static List<Identifier> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Identifier>()
         : json.map((value) => Identifier.fromJson(value)).toList();
   }
 
   static Map<String, Identifier> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Identifier>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Identifier.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Identifier>()
+        : json.map((key, value) => MapEntry(key, Identifier.fromJson(value)));
   }
 }

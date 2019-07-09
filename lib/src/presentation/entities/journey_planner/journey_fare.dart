@@ -1,14 +1,28 @@
 import './journey_fare_details.dart';
 import './journey_fare_caveat.dart';
+import '../../../internal/serializable.dart';
 
-class JourneyFare {
+class JourneyFare implements Serializable {
   int totalCost;
 
   List<JourneyFareDetails> fares;
 
   List<JourneyFareCaveat> caveats;
 
-  JourneyFare();
+  JourneyFare({
+    this.totalCost,
+    this.fares,
+    this.caveats,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'totalCost': totalCost,
+      'fares': fares,
+      'caveats': caveats,
+    };
+  }
 
   @override
   String toString() {
@@ -17,28 +31,25 @@ class JourneyFare {
 
   JourneyFare.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     totalCost = json['totalCost'];
     fares = JourneyFareDetails.listFromJson(json['fares']);
     caveats = JourneyFareCaveat.listFromJson(json['caveats']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {'totalCost': totalCost, 'fares': fares, 'caveats': caveats};
-  }
-
-  static List<JourneyFare> listFromJson(List<dynamic> json) {
+  static List<JourneyFare> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<JourneyFare>()
         : json.map((value) => JourneyFare.fromJson(value)).toList();
   }
 
   static Map<String, JourneyFare> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, JourneyFare>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = JourneyFare.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, JourneyFare>()
+        : json.map((key, value) => MapEntry(key, JourneyFare.fromJson(value)));
   }
 }

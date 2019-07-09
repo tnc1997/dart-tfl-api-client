@@ -1,4 +1,6 @@
-class JourneyFareTapDetails {
+import '../../../internal/serializable.dart';
+
+class JourneyFareTapDetails implements Serializable {
   String modeType;
 
   String validationType;
@@ -11,7 +13,27 @@ class JourneyFareTapDetails {
 
   DateTime tapTimestamp;
 
-  JourneyFareTapDetails();
+  JourneyFareTapDetails({
+    this.modeType,
+    this.validationType,
+    this.hostDeviceType,
+    this.busRouteId,
+    this.nationalLocationCode,
+    this.tapTimestamp,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'modeType': modeType,
+      'validationType': validationType,
+      'hostDeviceType': hostDeviceType,
+      'busRouteId': busRouteId,
+      'nationalLocationCode': nationalLocationCode,
+      'tapTimestamp':
+          tapTimestamp == null ? '' : tapTimestamp.toUtc().toIso8601String(),
+    };
+  }
 
   @override
   String toString() {
@@ -20,6 +42,7 @@ class JourneyFareTapDetails {
 
   JourneyFareTapDetails.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     modeType = json['modeType'];
     validationType = json['validationType'];
     hostDeviceType = json['hostDeviceType'];
@@ -30,31 +53,20 @@ class JourneyFareTapDetails {
         : DateTime.parse(json['tapTimestamp']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'modeType': modeType,
-      'validationType': validationType,
-      'hostDeviceType': hostDeviceType,
-      'busRouteId': busRouteId,
-      'nationalLocationCode': nationalLocationCode,
-      'tapTimestamp':
-          tapTimestamp == null ? '' : tapTimestamp.toUtc().toIso8601String()
-    };
-  }
-
-  static List<JourneyFareTapDetails> listFromJson(List<dynamic> json) {
+  static List<JourneyFareTapDetails> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<JourneyFareTapDetails>()
         : json.map((value) => JourneyFareTapDetails.fromJson(value)).toList();
   }
 
   static Map<String, JourneyFareTapDetails> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, JourneyFareTapDetails>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = JourneyFareTapDetails.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, JourneyFareTapDetails>()
+        : json.map((key, value) =>
+            MapEntry(key, JourneyFareTapDetails.fromJson(value)));
   }
 }

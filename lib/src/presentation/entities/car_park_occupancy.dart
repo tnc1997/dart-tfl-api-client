@@ -1,6 +1,7 @@
 import './bay.dart';
+import '../../internal/serializable.dart';
 
-class CarParkOccupancy {
+class CarParkOccupancy implements Serializable {
   String id;
 
   List<Bay> bays;
@@ -9,7 +10,22 @@ class CarParkOccupancy {
 
   String carParkDetailsUrl;
 
-  CarParkOccupancy();
+  CarParkOccupancy({
+    this.id,
+    this.bays,
+    this.name,
+    this.carParkDetailsUrl,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'bays': bays,
+      'name': name,
+      'carParkDetailsUrl': carParkDetailsUrl,
+    };
+  }
 
   @override
   String toString() {
@@ -18,34 +34,27 @@ class CarParkOccupancy {
 
   CarParkOccupancy.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     bays = Bay.listFromJson(json['bays']);
     name = json['name'];
     carParkDetailsUrl = json['carParkDetailsUrl'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'bays': bays,
-      'name': name,
-      'carParkDetailsUrl': carParkDetailsUrl
-    };
-  }
-
-  static List<CarParkOccupancy> listFromJson(List<dynamic> json) {
+  static List<CarParkOccupancy> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<CarParkOccupancy>()
         : json.map((value) => CarParkOccupancy.fromJson(value)).toList();
   }
 
   static Map<String, CarParkOccupancy> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, CarParkOccupancy>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = CarParkOccupancy.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, CarParkOccupancy>()
+        : json.map(
+            (key, value) => MapEntry(key, CarParkOccupancy.fromJson(value)));
   }
 }

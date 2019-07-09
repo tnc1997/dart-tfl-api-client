@@ -1,4 +1,6 @@
-class PlannedWork {
+import '../../../internal/serializable.dart';
+
+class PlannedWork implements Serializable {
   String id;
 
   String description;
@@ -7,7 +9,26 @@ class PlannedWork {
 
   DateTime lastUpdateDateTime;
 
-  PlannedWork();
+  PlannedWork({
+    this.id,
+    this.description,
+    this.createdDateTime,
+    this.lastUpdateDateTime,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'description': description,
+      'createdDateTime': createdDateTime == null
+          ? ''
+          : createdDateTime.toUtc().toIso8601String(),
+      'lastUpdateDateTime': lastUpdateDateTime == null
+          ? ''
+          : lastUpdateDateTime.toUtc().toIso8601String(),
+    };
+  }
 
   @override
   String toString() {
@@ -16,6 +37,7 @@ class PlannedWork {
 
   PlannedWork.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     id = json['id'];
     description = json['description'];
     createdDateTime = json['createdDateTime'] == null
@@ -26,32 +48,19 @@ class PlannedWork {
         : DateTime.parse(json['lastUpdateDateTime']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'description': description,
-      'createdDateTime': createdDateTime == null
-          ? ''
-          : createdDateTime.toUtc().toIso8601String(),
-      'lastUpdateDateTime': lastUpdateDateTime == null
-          ? ''
-          : lastUpdateDateTime.toUtc().toIso8601String()
-    };
-  }
-
-  static List<PlannedWork> listFromJson(List<dynamic> json) {
+  static List<PlannedWork> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<PlannedWork>()
         : json.map((value) => PlannedWork.fromJson(value)).toList();
   }
 
   static Map<String, PlannedWork> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, PlannedWork>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = PlannedWork.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, PlannedWork>()
+        : json.map((key, value) => MapEntry(key, PlannedWork.fromJson(value)));
   }
 }

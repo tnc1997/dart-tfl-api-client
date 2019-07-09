@@ -1,4 +1,6 @@
-class NetworkStatus {
+import '../../internal/serializable.dart';
+
+class NetworkStatus implements Serializable {
   String operator;
 
   String status;
@@ -7,7 +9,22 @@ class NetworkStatus {
 
   int statusLevel;
 
-  NetworkStatus();
+  NetworkStatus({
+    this.operator,
+    this.status,
+    this.message,
+    this.statusLevel,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'operator': operator,
+      'status': status,
+      'message': message,
+      'statusLevel': statusLevel,
+    };
+  }
 
   @override
   String toString() {
@@ -16,34 +33,27 @@ class NetworkStatus {
 
   NetworkStatus.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     operator = json['operator'];
     status = json['status'];
     message = json['message'];
     statusLevel = json['statusLevel'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'operator': operator,
-      'status': status,
-      'message': message,
-      'statusLevel': statusLevel
-    };
-  }
-
-  static List<NetworkStatus> listFromJson(List<dynamic> json) {
+  static List<NetworkStatus> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<NetworkStatus>()
         : json.map((value) => NetworkStatus.fromJson(value)).toList();
   }
 
   static Map<String, NetworkStatus> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, NetworkStatus>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = NetworkStatus.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, NetworkStatus>()
+        : json
+            .map((key, value) => MapEntry(key, NetworkStatus.fromJson(value)));
   }
 }

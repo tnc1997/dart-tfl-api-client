@@ -3,8 +3,9 @@ import './journey.dart';
 import './journey_vector.dart';
 import './search_criteria.dart';
 import '../line.dart';
+import '../../../internal/serializable.dart';
 
-class ItineraryResult {
+class ItineraryResult implements Serializable {
   List<Journey> journeys;
 
   List<Line> lines;
@@ -19,7 +20,28 @@ class ItineraryResult {
 
   JourneyVector journeyVector;
 
-  ItineraryResult();
+  ItineraryResult({
+    this.journeys,
+    this.lines,
+    this.cycleHireDockingStationData,
+    this.stopMessages,
+    this.recommendedMaxAgeMinutes,
+    this.searchCriteria,
+    this.journeyVector,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'journeys': journeys,
+      'lines': lines,
+      'cycleHireDockingStationData': cycleHireDockingStationData,
+      'stopMessages': stopMessages,
+      'recommendedMaxAgeMinutes': recommendedMaxAgeMinutes,
+      'searchCriteria': searchCriteria,
+      'journeyVector': journeyVector,
+    };
+  }
 
   @override
   String toString() {
@@ -28,6 +50,7 @@ class ItineraryResult {
 
   ItineraryResult.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     journeys = Journey.listFromJson(json['journeys']);
     lines = Line.listFromJson(json['lines']);
     cycleHireDockingStationData = CycleHireDockingStationData.fromJson(
@@ -39,31 +62,20 @@ class ItineraryResult {
     journeyVector = JourneyVector.fromJson(json['journeyVector']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'journeys': journeys,
-      'lines': lines,
-      'cycleHireDockingStationData': cycleHireDockingStationData,
-      'stopMessages': stopMessages,
-      'recommendedMaxAgeMinutes': recommendedMaxAgeMinutes,
-      'searchCriteria': searchCriteria,
-      'journeyVector': journeyVector
-    };
-  }
-
-  static List<ItineraryResult> listFromJson(List<dynamic> json) {
+  static List<ItineraryResult> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<ItineraryResult>()
         : json.map((value) => ItineraryResult.fromJson(value)).toList();
   }
 
   static Map<String, ItineraryResult> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, ItineraryResult>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = ItineraryResult.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, ItineraryResult>()
+        : json.map(
+            (key, value) => MapEntry(key, ItineraryResult.fromJson(value)));
   }
 }

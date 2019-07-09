@@ -1,6 +1,7 @@
 import './time_adjustments.dart';
+import '../../../internal/serializable.dart';
 
-class SearchCriteria {
+class SearchCriteria implements Serializable {
   DateTime dateTime;
 
   String dateTimeType;
@@ -8,7 +9,20 @@ class SearchCriteria {
 
   TimeAdjustments timeAdjustments;
 
-  SearchCriteria();
+  SearchCriteria({
+    this.dateTime,
+    this.dateTimeType,
+    this.timeAdjustments,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'dateTime': dateTime == null ? '' : dateTime.toUtc().toIso8601String(),
+      'dateTimeType': dateTimeType,
+      'timeAdjustments': timeAdjustments,
+    };
+  }
 
   @override
   String toString() {
@@ -17,33 +31,27 @@ class SearchCriteria {
 
   SearchCriteria.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     dateTime =
         json['dateTime'] == null ? null : DateTime.parse(json['dateTime']);
     dateTimeType = json['dateTimeType'];
     timeAdjustments = TimeAdjustments.fromJson(json['timeAdjustments']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'dateTime': dateTime == null ? '' : dateTime.toUtc().toIso8601String(),
-      'dateTimeType': dateTimeType,
-      'timeAdjustments': timeAdjustments
-    };
-  }
-
-  static List<SearchCriteria> listFromJson(List<dynamic> json) {
+  static List<SearchCriteria> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<SearchCriteria>()
         : json.map((value) => SearchCriteria.fromJson(value)).toList();
   }
 
   static Map<String, SearchCriteria> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, SearchCriteria>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = SearchCriteria.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, SearchCriteria>()
+        : json
+            .map((key, value) => MapEntry(key, SearchCriteria.fromJson(value)));
   }
 }

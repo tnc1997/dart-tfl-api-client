@@ -1,6 +1,7 @@
 import './street_segment.dart';
+import '../../internal/serializable.dart';
 
-class Street {
+class Street implements Serializable {
   /// The street name.
   String name;
 
@@ -10,7 +11,7 @@ class Street {
   /// The direction of the disruption on the street.
   String directions;
 
-  /// Geographic description of the sections of this street that are affected.
+  /// The geographic description of the sections of this street that are affected.
   List<StreetSegment> segments;
 
   /// The id from the source system of the disruption that this street belongs to.
@@ -19,7 +20,26 @@ class Street {
   /// The key of the source system of the disruption that this street belongs to.
   String sourceSystemKey;
 
-  Street();
+  Street({
+    this.name,
+    this.closure,
+    this.directions,
+    this.segments,
+    this.sourceSystemId,
+    this.sourceSystemKey,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'closure': closure,
+      'directions': directions,
+      'segments': segments,
+      'sourceSystemId': sourceSystemId,
+      'sourceSystemKey': sourceSystemKey,
+    };
+  }
 
   @override
   String toString() {
@@ -28,6 +48,7 @@ class Street {
 
   Street.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     name = json['name'];
     closure = json['closure'];
     directions = json['directions'];
@@ -36,30 +57,19 @@ class Street {
     sourceSystemKey = json['sourceSystemKey'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'closure': closure,
-      'directions': directions,
-      'segments': segments,
-      'sourceSystemId': sourceSystemId,
-      'sourceSystemKey': sourceSystemKey
-    };
-  }
-
-  static List<Street> listFromJson(List<dynamic> json) {
+  static List<Street> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Street>()
         : json.map((value) => Street.fromJson(value)).toList();
   }
 
   static Map<String, Street> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Street>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Street.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Street>()
+        : json.map((key, value) => MapEntry(key, Street.fromJson(value)));
   }
 }

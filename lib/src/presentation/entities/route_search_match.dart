@@ -1,19 +1,20 @@
 import './line_route_section.dart';
 import './matched_route_sections.dart';
 import './matched_stop.dart';
+import '../../internal/serializable.dart';
 
-class RouteSearchMatch {
+class RouteSearchMatch implements Serializable {
   String lineId;
 
   String mode;
 
   String lineName;
 
-  List<LineRouteSection> lineRouteSection = [];
+  List<LineRouteSection> lineRouteSection;
 
-  List<MatchedRouteSections> matchedRouteSections = [];
+  List<MatchedRouteSections> matchedRouteSections;
 
-  List<MatchedStop> matchedStops = [];
+  List<MatchedStop> matchedStops;
 
   String id;
 
@@ -25,7 +26,36 @@ class RouteSearchMatch {
 
   double lon;
 
-  RouteSearchMatch();
+  RouteSearchMatch({
+    this.lineId,
+    this.mode,
+    this.lineName,
+    this.lineRouteSection,
+    this.matchedRouteSections,
+    this.matchedStops,
+    this.id,
+    this.url,
+    this.name,
+    this.lat,
+    this.lon,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'lineId': lineId,
+      'mode': mode,
+      'lineName': lineName,
+      'lineRouteSection': lineRouteSection,
+      'matchedRouteSections': matchedRouteSections,
+      'matchedStops': matchedStops,
+      'id': id,
+      'url': url,
+      'name': name,
+      'lat': lat,
+      'lon': lon,
+    };
+  }
 
   @override
   String toString() {
@@ -34,6 +64,7 @@ class RouteSearchMatch {
 
   RouteSearchMatch.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     lineId = json['lineId'];
     mode = json['mode'];
     lineName = json['lineName'];
@@ -48,35 +79,20 @@ class RouteSearchMatch {
     lon = json['lon'];
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'lineId': lineId,
-      'mode': mode,
-      'lineName': lineName,
-      'lineRouteSection': lineRouteSection,
-      'matchedRouteSections': matchedRouteSections,
-      'matchedStops': matchedStops,
-      'id': id,
-      'url': url,
-      'name': name,
-      'lat': lat,
-      'lon': lon
-    };
-  }
-
-  static List<RouteSearchMatch> listFromJson(List<dynamic> json) {
+  static List<RouteSearchMatch> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<RouteSearchMatch>()
         : json.map((value) => RouteSearchMatch.fromJson(value)).toList();
   }
 
   static Map<String, RouteSearchMatch> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, RouteSearchMatch>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = RouteSearchMatch.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, RouteSearchMatch>()
+        : json.map(
+            (key, value) => MapEntry(key, RouteSearchMatch.fromJson(value)));
   }
 }

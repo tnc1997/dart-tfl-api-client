@@ -1,7 +1,8 @@
 import './known_journey.dart';
 import './period.dart';
+import '../../internal/serializable.dart';
 
-class Schedule {
+class Schedule implements Serializable {
   String name;
 
   List<KnownJourney> knownJourneys;
@@ -12,7 +13,24 @@ class Schedule {
 
   List<Period> periods;
 
-  Schedule();
+  Schedule({
+    this.name,
+    this.knownJourneys,
+    this.firstJourney,
+    this.lastJourney,
+    this.periods,
+  });
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'knownJourneys': knownJourneys,
+      'firstJourney': firstJourney,
+      'lastJourney': lastJourney,
+      'periods': periods,
+    };
+  }
 
   @override
   String toString() {
@@ -21,6 +39,7 @@ class Schedule {
 
   Schedule.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+
     name = json['name'];
     knownJourneys = KnownJourney.listFromJson(json['knownJourneys']);
     firstJourney = KnownJourney.fromJson(json['firstJourney']);
@@ -28,29 +47,19 @@ class Schedule {
     periods = Period.listFromJson(json['periods']);
   }
 
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'knownJourneys': knownJourneys,
-      'firstJourney': firstJourney,
-      'lastJourney': lastJourney,
-      'periods': periods
-    };
-  }
-
-  static List<Schedule> listFromJson(List<dynamic> json) {
+  static List<Schedule> listFromJson(
+    List<dynamic> json,
+  ) {
     return json == null
         ? List<Schedule>()
         : json.map((value) => Schedule.fromJson(value)).toList();
   }
 
   static Map<String, Schedule> mapFromJson(
-      Map<String, Map<String, dynamic>> json) {
-    var map = Map<String, Schedule>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = Schedule.fromJson(value));
-    }
-    return map;
+    Map<String, Map<String, dynamic>> json,
+  ) {
+    return json == null || json.isEmpty
+        ? Map<String, Schedule>()
+        : json.map((key, value) => MapEntry(key, Schedule.fromJson(value)));
   }
 }
