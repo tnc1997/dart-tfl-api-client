@@ -22,16 +22,16 @@ class TicketTime {
 
   static List<TicketTime> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<TicketTime>()
-        : json.map((value) => new TicketTime.fromJson(value)).toList();
+        ? List<TicketTime>()
+        : json.map((value) => TicketTime.fromJson(value)).toList();
   }
 
   static Map<String, TicketTime> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, TicketTime>();
+    var map = Map<String, TicketTime>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new TicketTime.fromJson(value));
+          map[key] = TicketTime.fromJson(value));
     }
     return map;
   }

@@ -33,16 +33,16 @@ class NetworkStatus {
 
   static List<NetworkStatus> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<NetworkStatus>()
-        : json.map((value) => new NetworkStatus.fromJson(value)).toList();
+        ? List<NetworkStatus>()
+        : json.map((value) => NetworkStatus.fromJson(value)).toList();
   }
 
   static Map<String, NetworkStatus> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, NetworkStatus>();
+    var map = Map<String, NetworkStatus>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new NetworkStatus.fromJson(value));
+          map[key] = NetworkStatus.fromJson(value));
     }
     return map;
   }

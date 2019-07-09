@@ -24,16 +24,16 @@ class RouteSearchResponse {
 
   static List<RouteSearchResponse> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<RouteSearchResponse>()
-        : json.map((value) => new RouteSearchResponse.fromJson(value)).toList();
+        ? List<RouteSearchResponse>()
+        : json.map((value) => RouteSearchResponse.fromJson(value)).toList();
   }
 
   static Map<String, RouteSearchResponse> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, RouteSearchResponse>();
+    var map = Map<String, RouteSearchResponse>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new RouteSearchResponse.fromJson(value));
+          map[key] = RouteSearchResponse.fromJson(value));
     }
     return map;
   }

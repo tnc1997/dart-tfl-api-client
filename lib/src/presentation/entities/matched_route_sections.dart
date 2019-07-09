@@ -19,18 +19,16 @@ class MatchedRouteSections {
 
   static List<MatchedRouteSections> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<MatchedRouteSections>()
-        : json
-            .map((value) => new MatchedRouteSections.fromJson(value))
-            .toList();
+        ? List<MatchedRouteSections>()
+        : json.map((value) => MatchedRouteSections.fromJson(value)).toList();
   }
 
   static Map<String, MatchedRouteSections> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, MatchedRouteSections>();
+    var map = Map<String, MatchedRouteSections>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new MatchedRouteSections.fromJson(value));
+          map[key] = MatchedRouteSections.fromJson(value));
     }
     return map;
   }

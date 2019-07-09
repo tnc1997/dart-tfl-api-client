@@ -24,16 +24,16 @@ class Timetable {
 
   static List<Timetable> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Timetable>()
-        : json.map((value) => new Timetable.fromJson(value)).toList();
+        ? List<Timetable>()
+        : json.map((value) => Timetable.fromJson(value)).toList();
   }
 
   static Map<String, Timetable> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Timetable>();
+    var map = Map<String, Timetable>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Timetable.fromJson(value));
+          map[key] = Timetable.fromJson(value));
     }
     return map;
   }

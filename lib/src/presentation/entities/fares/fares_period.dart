@@ -41,16 +41,16 @@ class FaresPeriod {
 
   static List<FaresPeriod> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<FaresPeriod>()
-        : json.map((value) => new FaresPeriod.fromJson(value)).toList();
+        ? List<FaresPeriod>()
+        : json.map((value) => FaresPeriod.fromJson(value)).toList();
   }
 
   static Map<String, FaresPeriod> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, FaresPeriod>();
+    var map = Map<String, FaresPeriod>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new FaresPeriod.fromJson(value));
+          map[key] = FaresPeriod.fromJson(value));
     }
     return map;
   }

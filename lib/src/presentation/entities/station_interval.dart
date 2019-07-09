@@ -24,16 +24,16 @@ class StationInterval {
 
   static List<StationInterval> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<StationInterval>()
-        : json.map((value) => new StationInterval.fromJson(value)).toList();
+        ? List<StationInterval>()
+        : json.map((value) => StationInterval.fromJson(value)).toList();
   }
 
   static Map<String, StationInterval> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, StationInterval>();
+    var map = Map<String, StationInterval>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new StationInterval.fromJson(value));
+          map[key] = StationInterval.fromJson(value));
     }
     return map;
   }

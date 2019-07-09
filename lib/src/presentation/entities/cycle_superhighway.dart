@@ -38,7 +38,7 @@ class CycleSuperhighway {
     id = json['id'];
     label = json['label'];
     labelShort = json['labelShort'];
-    geography = new DbGeography.fromJson(json['geography']);
+    geography = DbGeography.fromJson(json['geography']);
     segmented = json['segmented'];
     modified =
         json['modified'] == null ? null : DateTime.parse(json['modified']);
@@ -61,16 +61,16 @@ class CycleSuperhighway {
 
   static List<CycleSuperhighway> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<CycleSuperhighway>()
-        : json.map((value) => new CycleSuperhighway.fromJson(value)).toList();
+        ? List<CycleSuperhighway>()
+        : json.map((value) => CycleSuperhighway.fromJson(value)).toList();
   }
 
   static Map<String, CycleSuperhighway> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, CycleSuperhighway>();
+    var map = Map<String, CycleSuperhighway>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new CycleSuperhighway.fromJson(value));
+          map[key] = CycleSuperhighway.fromJson(value));
     }
     return map;
   }

@@ -12,7 +12,7 @@ class DbGeography {
 
   DbGeography.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    geography = new DbGeographyWellKnownValue.fromJson(json['geography']);
+    geography = DbGeographyWellKnownValue.fromJson(json['geography']);
   }
 
   Map<String, dynamic> toJson() {
@@ -21,16 +21,16 @@ class DbGeography {
 
   static List<DbGeography> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<DbGeography>()
-        : json.map((value) => new DbGeography.fromJson(value)).toList();
+        ? List<DbGeography>()
+        : json.map((value) => DbGeography.fromJson(value)).toList();
   }
 
   static Map<String, DbGeography> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, DbGeography>();
+    var map = Map<String, DbGeography>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new DbGeography.fromJson(value));
+          map[key] = DbGeography.fromJson(value));
     }
     return map;
   }

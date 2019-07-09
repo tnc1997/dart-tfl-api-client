@@ -28,16 +28,16 @@ class JourneyVector {
 
   static List<JourneyVector> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<JourneyVector>()
-        : json.map((value) => new JourneyVector.fromJson(value)).toList();
+        ? List<JourneyVector>()
+        : json.map((value) => JourneyVector.fromJson(value)).toList();
   }
 
   static Map<String, JourneyVector> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, JourneyVector>();
+    var map = Map<String, JourneyVector>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new JourneyVector.fromJson(value));
+          map[key] = JourneyVector.fromJson(value));
     }
     return map;
   }

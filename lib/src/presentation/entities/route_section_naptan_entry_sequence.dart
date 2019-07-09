@@ -15,7 +15,7 @@ class RouteSectionNaptanEntrySequence {
   RouteSectionNaptanEntrySequence.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     ordinal = json['ordinal'];
-    stopPoint = new StopPoint.fromJson(json['stopPoint']);
+    stopPoint = StopPoint.fromJson(json['stopPoint']);
   }
 
   Map<String, dynamic> toJson() {
@@ -25,18 +25,18 @@ class RouteSectionNaptanEntrySequence {
   static List<RouteSectionNaptanEntrySequence> listFromJson(
       List<dynamic> json) {
     return json == null
-        ? new List<RouteSectionNaptanEntrySequence>()
+        ? List<RouteSectionNaptanEntrySequence>()
         : json
-            .map((value) => new RouteSectionNaptanEntrySequence.fromJson(value))
+            .map((value) => RouteSectionNaptanEntrySequence.fromJson(value))
             .toList();
   }
 
   static Map<String, RouteSectionNaptanEntrySequence> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, RouteSectionNaptanEntrySequence>();
+    var map = Map<String, RouteSectionNaptanEntrySequence>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new RouteSectionNaptanEntrySequence.fromJson(value));
+          map[key] = RouteSectionNaptanEntrySequence.fromJson(value));
     }
     return map;
   }

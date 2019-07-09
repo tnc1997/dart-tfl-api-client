@@ -25,16 +25,16 @@ class ServiceFrequency {
 
   static List<ServiceFrequency> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<ServiceFrequency>()
-        : json.map((value) => new ServiceFrequency.fromJson(value)).toList();
+        ? List<ServiceFrequency>()
+        : json.map((value) => ServiceFrequency.fromJson(value)).toList();
   }
 
   static Map<String, ServiceFrequency> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, ServiceFrequency>();
+    var map = Map<String, ServiceFrequency>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new ServiceFrequency.fromJson(value));
+          map[key] = ServiceFrequency.fromJson(value));
     }
     return map;
   }

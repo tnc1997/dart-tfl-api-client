@@ -22,7 +22,7 @@ class RouteOption {
     name = json['name'];
     directions =
         (json['directions'] as List).map((item) => item as String).toList();
-    lineIdentifier = new Identifier.fromJson(json['lineIdentifier']);
+    lineIdentifier = Identifier.fromJson(json['lineIdentifier']);
   }
 
   Map<String, dynamic> toJson() {
@@ -36,16 +36,16 @@ class RouteOption {
 
   static List<RouteOption> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<RouteOption>()
-        : json.map((value) => new RouteOption.fromJson(value)).toList();
+        ? List<RouteOption>()
+        : json.map((value) => RouteOption.fromJson(value)).toList();
   }
 
   static Map<String, RouteOption> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, RouteOption>();
+    var map = Map<String, RouteOption>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new RouteOption.fromJson(value));
+          map[key] = RouteOption.fromJson(value));
     }
     return map;
   }

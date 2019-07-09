@@ -91,16 +91,16 @@ class Recommendation {
 
   static List<Recommendation> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Recommendation>()
-        : json.map((value) => new Recommendation.fromJson(value)).toList();
+        ? List<Recommendation>()
+        : json.map((value) => Recommendation.fromJson(value)).toList();
   }
 
   static Map<String, Recommendation> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Recommendation>();
+    var map = Map<String, Recommendation>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Recommendation.fromJson(value));
+          map[key] = Recommendation.fromJson(value));
     }
     return map;
   }

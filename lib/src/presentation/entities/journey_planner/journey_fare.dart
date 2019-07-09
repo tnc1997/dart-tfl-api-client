@@ -28,16 +28,16 @@ class JourneyFare {
 
   static List<JourneyFare> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<JourneyFare>()
-        : json.map((value) => new JourneyFare.fromJson(value)).toList();
+        ? List<JourneyFare>()
+        : json.map((value) => JourneyFare.fromJson(value)).toList();
   }
 
   static Map<String, JourneyFare> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, JourneyFare>();
+    var map = Map<String, JourneyFare>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new JourneyFare.fromJson(value));
+          map[key] = JourneyFare.fromJson(value));
     }
     return map;
   }

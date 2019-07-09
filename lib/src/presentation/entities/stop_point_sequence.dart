@@ -57,16 +57,16 @@ class StopPointSequence {
 
   static List<StopPointSequence> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<StopPointSequence>()
-        : json.map((value) => new StopPointSequence.fromJson(value)).toList();
+        ? List<StopPointSequence>()
+        : json.map((value) => StopPointSequence.fromJson(value)).toList();
   }
 
   static Map<String, StopPointSequence> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, StopPointSequence>();
+    var map = Map<String, StopPointSequence>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new StopPointSequence.fromJson(value));
+          map[key] = StopPointSequence.fromJson(value));
     }
     return map;
   }

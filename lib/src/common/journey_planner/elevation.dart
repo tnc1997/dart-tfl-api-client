@@ -1,10 +1,16 @@
 class Elevation {
   int distance;
+
   double startLat;
+
   double startLon;
+
   double endLat;
+
   double endLon;
+
   int heightFromPreviousPoint;
+
   double gradient;
 
   Elevation();
@@ -39,18 +45,16 @@ class Elevation {
 
   static List<Elevation> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Elevation>()
-        : json
-            .map((value) => new Elevation.fromJson(value))
-            .toList();
+        ? List<Elevation>()
+        : json.map((value) => Elevation.fromJson(value)).toList();
   }
 
   static Map<String, Elevation> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Elevation>();
+    var map = Map<String, Elevation>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Elevation.fromJson(value));
+          map[key] = Elevation.fromJson(value));
     }
     return map;
   }

@@ -23,16 +23,16 @@ class PlaceCategory {
 
   static List<PlaceCategory> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<PlaceCategory>()
-        : json.map((value) => new PlaceCategory.fromJson(value)).toList();
+        ? List<PlaceCategory>()
+        : json.map((value) => PlaceCategory.fromJson(value)).toList();
   }
 
   static Map<String, PlaceCategory> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, PlaceCategory>();
+    var map = Map<String, PlaceCategory>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new PlaceCategory.fromJson(value));
+          map[key] = PlaceCategory.fromJson(value));
     }
     return map;
   }

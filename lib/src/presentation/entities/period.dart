@@ -21,9 +21,9 @@ class Period {
   Period.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     type = json['type'];
-    fromTime = new TwentyFourHourClockTime.fromJson(json['fromTime']);
-    toTime = new TwentyFourHourClockTime.fromJson(json['toTime']);
-    frequency = new ServiceFrequency.fromJson(json['frequency']);
+    fromTime = TwentyFourHourClockTime.fromJson(json['fromTime']);
+    toTime = TwentyFourHourClockTime.fromJson(json['toTime']);
+    frequency = ServiceFrequency.fromJson(json['frequency']);
   }
 
   Map<String, dynamic> toJson() {
@@ -37,16 +37,16 @@ class Period {
 
   static List<Period> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Period>()
-        : json.map((value) => new Period.fromJson(value)).toList();
+        ? List<Period>()
+        : json.map((value) => Period.fromJson(value)).toList();
   }
 
   static Map<String, Period> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Period>();
+    var map = Map<String, Period>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Period.fromJson(value));
+          map[key] = Period.fromJson(value));
     }
     return map;
   }

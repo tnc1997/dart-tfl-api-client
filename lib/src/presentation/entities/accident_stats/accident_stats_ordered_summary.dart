@@ -25,18 +25,18 @@ class AccidentStatsOrderedSummary {
 
   static List<AccidentStatsOrderedSummary> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<AccidentStatsOrderedSummary>()
+        ? List<AccidentStatsOrderedSummary>()
         : json
-            .map((value) => new AccidentStatsOrderedSummary.fromJson(value))
+            .map((value) => AccidentStatsOrderedSummary.fromJson(value))
             .toList();
   }
 
   static Map<String, AccidentStatsOrderedSummary> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, AccidentStatsOrderedSummary>();
+    var map = Map<String, AccidentStatsOrderedSummary>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new AccidentStatsOrderedSummary.fromJson(value));
+          map[key] = AccidentStatsOrderedSummary.fromJson(value));
     }
     return map;
   }

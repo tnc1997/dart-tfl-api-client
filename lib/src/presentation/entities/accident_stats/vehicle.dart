@@ -19,16 +19,16 @@ class Vehicle {
 
   static List<Vehicle> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Vehicle>()
-        : json.map((value) => new Vehicle.fromJson(value)).toList();
+        ? List<Vehicle>()
+        : json.map((value) => Vehicle.fromJson(value)).toList();
   }
 
   static Map<String, Vehicle> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Vehicle>();
+    var map = Map<String, Vehicle>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Vehicle.fromJson(value));
+          map[key] = Vehicle.fromJson(value));
     }
     return map;
   }

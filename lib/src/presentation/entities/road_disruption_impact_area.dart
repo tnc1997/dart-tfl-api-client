@@ -26,7 +26,7 @@ class RoadDisruptionImpactArea {
     if (json == null) return;
     id = json['id'];
     roadDisruptionId = json['roadDisruptionId'];
-    polygon = new DbGeography.fromJson(json['polygon']);
+    polygon = DbGeography.fromJson(json['polygon']);
     startDate =
         json['startDate'] == null ? null : DateTime.parse(json['startDate']);
     endDate = json['endDate'] == null ? null : DateTime.parse(json['endDate']);
@@ -48,18 +48,18 @@ class RoadDisruptionImpactArea {
 
   static List<RoadDisruptionImpactArea> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<RoadDisruptionImpactArea>()
+        ? List<RoadDisruptionImpactArea>()
         : json
-            .map((value) => new RoadDisruptionImpactArea.fromJson(value))
+            .map((value) => RoadDisruptionImpactArea.fromJson(value))
             .toList();
   }
 
   static Map<String, RoadDisruptionImpactArea> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, RoadDisruptionImpactArea>();
+    var map = Map<String, RoadDisruptionImpactArea>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new RoadDisruptionImpactArea.fromJson(value));
+          map[key] = RoadDisruptionImpactArea.fromJson(value));
     }
     return map;
   }

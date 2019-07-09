@@ -28,16 +28,16 @@ class TimeAdjustment {
 
   static List<TimeAdjustment> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<TimeAdjustment>()
-        : json.map((value) => new TimeAdjustment.fromJson(value)).toList();
+        ? List<TimeAdjustment>()
+        : json.map((value) => TimeAdjustment.fromJson(value)).toList();
   }
 
   static Map<String, TimeAdjustment> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, TimeAdjustment>();
+    var map = Map<String, TimeAdjustment>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new TimeAdjustment.fromJson(value));
+          map[key] = TimeAdjustment.fromJson(value));
     }
     return map;
   }

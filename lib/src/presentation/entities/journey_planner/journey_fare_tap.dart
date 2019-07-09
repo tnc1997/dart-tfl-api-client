@@ -15,7 +15,7 @@ class JourneyFareTap {
   JourneyFareTap.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     atcoCode = json['atcoCode'];
-    tapDetails = new JourneyFareTapDetails.fromJson(json['tapDetails']);
+    tapDetails = JourneyFareTapDetails.fromJson(json['tapDetails']);
   }
 
   Map<String, dynamic> toJson() {
@@ -24,16 +24,16 @@ class JourneyFareTap {
 
   static List<JourneyFareTap> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<JourneyFareTap>()
-        : json.map((value) => new JourneyFareTap.fromJson(value)).toList();
+        ? List<JourneyFareTap>()
+        : json.map((value) => JourneyFareTap.fromJson(value)).toList();
   }
 
   static Map<String, JourneyFareTap> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, JourneyFareTap>();
+    var map = Map<String, JourneyFareTap>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new JourneyFareTap.fromJson(value));
+          map[key] = JourneyFareTap.fromJson(value));
     }
     return map;
   }

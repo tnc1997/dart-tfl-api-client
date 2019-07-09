@@ -33,16 +33,16 @@ class PassengerType {
 
   static List<PassengerType> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<PassengerType>()
-        : json.map((value) => new PassengerType.fromJson(value)).toList();
+        ? List<PassengerType>()
+        : json.map((value) => PassengerType.fromJson(value)).toList();
   }
 
   static Map<String, PassengerType> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, PassengerType>();
+    var map = Map<String, PassengerType>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new PassengerType.fromJson(value));
+          map[key] = PassengerType.fromJson(value));
     }
     return map;
   }

@@ -26,16 +26,16 @@ class OrderedRoute {
 
   static List<OrderedRoute> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<OrderedRoute>()
-        : json.map((value) => new OrderedRoute.fromJson(value)).toList();
+        ? List<OrderedRoute>()
+        : json.map((value) => OrderedRoute.fromJson(value)).toList();
   }
 
   static Map<String, OrderedRoute> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, OrderedRoute>();
+    var map = Map<String, OrderedRoute>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new OrderedRoute.fromJson(value));
+          map[key] = OrderedRoute.fromJson(value));
     }
     return map;
   }

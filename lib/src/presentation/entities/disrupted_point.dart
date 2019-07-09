@@ -58,16 +58,16 @@ class DisruptedPoint {
 
   static List<DisruptedPoint> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<DisruptedPoint>()
-        : json.map((value) => new DisruptedPoint.fromJson(value)).toList();
+        ? List<DisruptedPoint>()
+        : json.map((value) => DisruptedPoint.fromJson(value)).toList();
   }
 
   static Map<String, DisruptedPoint> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, DisruptedPoint>();
+    var map = Map<String, DisruptedPoint>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new DisruptedPoint.fromJson(value));
+          map[key] = DisruptedPoint.fromJson(value));
     }
     return map;
   }

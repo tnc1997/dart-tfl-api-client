@@ -25,16 +25,16 @@ class KnownJourney {
 
   static List<KnownJourney> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<KnownJourney>()
-        : json.map((value) => new KnownJourney.fromJson(value)).toList();
+        ? List<KnownJourney>()
+        : json.map((value) => KnownJourney.fromJson(value)).toList();
   }
 
   static Map<String, KnownJourney> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, KnownJourney>();
+    var map = Map<String, KnownJourney>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new KnownJourney.fromJson(value));
+          map[key] = KnownJourney.fromJson(value));
     }
     return map;
   }

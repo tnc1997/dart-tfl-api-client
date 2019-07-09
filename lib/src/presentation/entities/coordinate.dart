@@ -41,16 +41,16 @@ class Coordinate {
 
   static List<Coordinate> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Coordinate>()
-        : json.map((value) => new Coordinate.fromJson(value)).toList();
+        ? List<Coordinate>()
+        : json.map((value) => Coordinate.fromJson(value)).toList();
   }
 
   static Map<String, Coordinate> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Coordinate>();
+    var map = Map<String, Coordinate>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Coordinate.fromJson(value));
+          map[key] = Coordinate.fromJson(value));
     }
     return map;
   }

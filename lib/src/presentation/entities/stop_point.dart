@@ -142,16 +142,16 @@ class StopPoint {
 
   static List<StopPoint> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<StopPoint>()
-        : json.map((value) => new StopPoint.fromJson(value)).toList();
+        ? List<StopPoint>()
+        : json.map((value) => StopPoint.fromJson(value)).toList();
   }
 
   static Map<String, StopPoint> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, StopPoint>();
+    var map = Map<String, StopPoint>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new StopPoint.fromJson(value));
+          map[key] = StopPoint.fromJson(value));
     }
     return map;
   }

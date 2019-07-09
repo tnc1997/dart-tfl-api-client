@@ -33,16 +33,16 @@ class Obstacle {
 
   static List<Obstacle> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Obstacle>()
-        : json.map((value) => new Obstacle.fromJson(value)).toList();
+        ? List<Obstacle>()
+        : json.map((value) => Obstacle.fromJson(value)).toList();
   }
 
   static Map<String, Obstacle> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Obstacle>();
+    var map = Map<String, Obstacle>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Obstacle.fromJson(value));
+          map[key] = Obstacle.fromJson(value));
     }
     return map;
   }

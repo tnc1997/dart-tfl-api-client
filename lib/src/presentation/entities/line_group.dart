@@ -30,16 +30,16 @@ class LineGroup {
 
   static List<LineGroup> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<LineGroup>()
-        : json.map((value) => new LineGroup.fromJson(value)).toList();
+        ? List<LineGroup>()
+        : json.map((value) => LineGroup.fromJson(value)).toList();
   }
 
   static Map<String, LineGroup> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, LineGroup>();
+    var map = Map<String, LineGroup>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new LineGroup.fromJson(value));
+          map[key] = LineGroup.fromJson(value));
     }
     return map;
   }

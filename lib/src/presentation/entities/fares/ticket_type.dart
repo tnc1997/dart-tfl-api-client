@@ -22,16 +22,16 @@ class TicketType {
 
   static List<TicketType> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<TicketType>()
-        : json.map((value) => new TicketType.fromJson(value)).toList();
+        ? List<TicketType>()
+        : json.map((value) => TicketType.fromJson(value)).toList();
   }
 
   static Map<String, TicketType> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, TicketType>();
+    var map = Map<String, TicketType>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new TicketType.fromJson(value));
+          map[key] = TicketType.fromJson(value));
     }
     return map;
   }

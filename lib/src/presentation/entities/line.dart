@@ -44,7 +44,7 @@ class Line {
     lineStatuses = LineStatus.listFromJson(json['lineStatuses']);
     routeSections = MatchedRoute.listFromJson(json['routeSections']);
     serviceTypes = LineServiceTypeInfo.listFromJson(json['serviceTypes']);
-    crowding = new Crowding.fromJson(json['crowding']);
+    crowding = Crowding.fromJson(json['crowding']);
   }
 
   Map<String, dynamic> toJson() {
@@ -64,15 +64,15 @@ class Line {
 
   static List<Line> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Line>()
-        : json.map((value) => new Line.fromJson(value)).toList();
+        ? List<Line>()
+        : json.map((value) => Line.fromJson(value)).toList();
   }
 
   static Map<String, Line> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Line>();
+    var map = Map<String, Line>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Line.fromJson(value));
+          map[key] = Line.fromJson(value));
     }
     return map;
   }

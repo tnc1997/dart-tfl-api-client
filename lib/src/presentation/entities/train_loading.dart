@@ -52,16 +52,16 @@ class TrainLoading {
 
   static List<TrainLoading> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<TrainLoading>()
-        : json.map((value) => new TrainLoading.fromJson(value)).toList();
+        ? List<TrainLoading>()
+        : json.map((value) => TrainLoading.fromJson(value)).toList();
   }
 
   static Map<String, TrainLoading> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, TrainLoading>();
+    var map = Map<String, TrainLoading>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new TrainLoading.fromJson(value));
+          map[key] = TrainLoading.fromJson(value));
     }
     return map;
   }

@@ -64,15 +64,15 @@ class Fare {
 
   static List<Fare> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Fare>()
-        : json.map((value) => new Fare.fromJson(value)).toList();
+        ? List<Fare>()
+        : json.map((value) => Fare.fromJson(value)).toList();
   }
 
   static Map<String, Fare> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Fare>();
+    var map = Map<String, Fare>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Fare.fromJson(value));
+          map[key] = Fare.fromJson(value));
     }
     return map;
   }

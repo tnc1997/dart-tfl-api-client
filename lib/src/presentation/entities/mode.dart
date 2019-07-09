@@ -33,15 +33,15 @@ class Mode {
 
   static List<Mode> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Mode>()
-        : json.map((value) => new Mode.fromJson(value)).toList();
+        ? List<Mode>()
+        : json.map((value) => Mode.fromJson(value)).toList();
   }
 
   static Map<String, Mode> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Mode>();
+    var map = Map<String, Mode>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Mode.fromJson(value));
+          map[key] = Mode.fromJson(value));
     }
     return map;
   }

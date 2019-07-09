@@ -74,16 +74,16 @@ class RoadCorridor {
 
   static List<RoadCorridor> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<RoadCorridor>()
-        : json.map((value) => new RoadCorridor.fromJson(value)).toList();
+        ? List<RoadCorridor>()
+        : json.map((value) => RoadCorridor.fromJson(value)).toList();
   }
 
   static Map<String, RoadCorridor> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, RoadCorridor>();
+    var map = Map<String, RoadCorridor>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new RoadCorridor.fromJson(value));
+          map[key] = RoadCorridor.fromJson(value));
     }
     return map;
   }

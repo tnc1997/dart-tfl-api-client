@@ -22,18 +22,18 @@ class TimetablesDisambiguationOption {
 
   static List<TimetablesDisambiguationOption> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<TimetablesDisambiguationOption>()
+        ? List<TimetablesDisambiguationOption>()
         : json
-            .map((value) => new TimetablesDisambiguationOption.fromJson(value))
+            .map((value) => TimetablesDisambiguationOption.fromJson(value))
             .toList();
   }
 
   static Map<String, TimetablesDisambiguationOption> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, TimetablesDisambiguationOption>();
+    var map = Map<String, TimetablesDisambiguationOption>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new TimetablesDisambiguationOption.fromJson(value));
+          map[key] = TimetablesDisambiguationOption.fromJson(value));
     }
     return map;
   }

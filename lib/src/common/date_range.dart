@@ -1,5 +1,6 @@
 class DateRange {
   DateTime startDate;
+
   DateTime endDate;
 
   DateRange();
@@ -25,16 +26,16 @@ class DateRange {
 
   static List<DateRange> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<DateRange>()
-        : json.map((value) => new DateRange.fromJson(value)).toList();
+        ? List<DateRange>()
+        : json.map((value) => DateRange.fromJson(value)).toList();
   }
 
   static Map<String, DateRange> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, DateRange>();
+    var map = Map<String, DateRange>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new DateRange.fromJson(value));
+          map[key] = DateRange.fromJson(value));
     }
     return map;
   }

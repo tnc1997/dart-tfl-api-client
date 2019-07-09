@@ -33,15 +33,15 @@ class Bay {
 
   static List<Bay> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Bay>()
-        : json.map((value) => new Bay.fromJson(value)).toList();
+        ? List<Bay>()
+        : json.map((value) => Bay.fromJson(value)).toList();
   }
 
   static Map<String, Bay> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Bay>();
+    var map = Map<String, Bay>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Bay.fromJson(value));
+          map[key] = Bay.fromJson(value));
     }
     return map;
   }

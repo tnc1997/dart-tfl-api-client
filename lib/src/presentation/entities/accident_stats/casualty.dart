@@ -28,16 +28,16 @@ class Casualty {
 
   static List<Casualty> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Casualty>()
-        : json.map((value) => new Casualty.fromJson(value)).toList();
+        ? List<Casualty>()
+        : json.map((value) => Casualty.fromJson(value)).toList();
   }
 
   static Map<String, Casualty> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Casualty>();
+    var map = Map<String, Casualty>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Casualty.fromJson(value));
+          map[key] = Casualty.fromJson(value));
     }
     return map;
   }

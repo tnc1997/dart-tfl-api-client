@@ -23,16 +23,16 @@ class LineModeGroup {
 
   static List<LineModeGroup> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<LineModeGroup>()
-        : json.map((value) => new LineModeGroup.fromJson(value)).toList();
+        ? List<LineModeGroup>()
+        : json.map((value) => LineModeGroup.fromJson(value)).toList();
   }
 
   static Map<String, LineModeGroup> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, LineModeGroup>();
+    var map = Map<String, LineModeGroup>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new LineModeGroup.fromJson(value));
+          map[key] = LineModeGroup.fromJson(value));
     }
     return map;
   }

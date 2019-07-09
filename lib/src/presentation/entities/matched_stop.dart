@@ -99,16 +99,16 @@ class MatchedStop {
 
   static List<MatchedStop> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<MatchedStop>()
-        : json.map((value) => new MatchedStop.fromJson(value)).toList();
+        ? List<MatchedStop>()
+        : json.map((value) => MatchedStop.fromJson(value)).toList();
   }
 
   static Map<String, MatchedStop> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, MatchedStop>();
+    var map = Map<String, MatchedStop>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new MatchedStop.fromJson(value));
+          map[key] = MatchedStop.fromJson(value));
     }
     return map;
   }

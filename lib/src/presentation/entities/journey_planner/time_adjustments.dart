@@ -18,10 +18,10 @@ class TimeAdjustments {
 
   TimeAdjustments.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    earliest = new TimeAdjustment.fromJson(json['earliest']);
-    earlier = new TimeAdjustment.fromJson(json['earlier']);
-    later = new TimeAdjustment.fromJson(json['later']);
-    latest = new TimeAdjustment.fromJson(json['latest']);
+    earliest = TimeAdjustment.fromJson(json['earliest']);
+    earlier = TimeAdjustment.fromJson(json['earlier']);
+    later = TimeAdjustment.fromJson(json['later']);
+    latest = TimeAdjustment.fromJson(json['latest']);
   }
 
   Map<String, dynamic> toJson() {
@@ -35,16 +35,16 @@ class TimeAdjustments {
 
   static List<TimeAdjustments> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<TimeAdjustments>()
-        : json.map((value) => new TimeAdjustments.fromJson(value)).toList();
+        ? List<TimeAdjustments>()
+        : json.map((value) => TimeAdjustments.fromJson(value)).toList();
   }
 
   static Map<String, TimeAdjustments> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, TimeAdjustments>();
+    var map = Map<String, TimeAdjustments>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new TimeAdjustments.fromJson(value));
+          map[key] = TimeAdjustments.fromJson(value));
     }
     return map;
   }

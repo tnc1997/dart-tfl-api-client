@@ -49,16 +49,16 @@ class Street {
 
   static List<Street> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Street>()
-        : json.map((value) => new Street.fromJson(value)).toList();
+        ? List<Street>()
+        : json.map((value) => Street.fromJson(value)).toList();
   }
 
   static Map<String, Street> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Street>();
+    var map = Map<String, Street>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Street.fromJson(value));
+          map[key] = Street.fromJson(value));
     }
     return map;
   }

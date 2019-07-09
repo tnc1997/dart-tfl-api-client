@@ -59,16 +59,16 @@ class RouteSequence {
 
   static List<RouteSequence> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<RouteSequence>()
-        : json.map((value) => new RouteSequence.fromJson(value)).toList();
+        ? List<RouteSequence>()
+        : json.map((value) => RouteSequence.fromJson(value)).toList();
   }
 
   static Map<String, RouteSequence> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, RouteSequence>();
+    var map = Map<String, RouteSequence>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new RouteSequence.fromJson(value));
+          map[key] = RouteSequence.fromJson(value));
     }
     return map;
   }

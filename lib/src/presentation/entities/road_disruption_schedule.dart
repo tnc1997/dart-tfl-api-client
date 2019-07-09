@@ -26,18 +26,16 @@ class RoadDisruptionSchedule {
 
   static List<RoadDisruptionSchedule> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<RoadDisruptionSchedule>()
-        : json
-            .map((value) => new RoadDisruptionSchedule.fromJson(value))
-            .toList();
+        ? List<RoadDisruptionSchedule>()
+        : json.map((value) => RoadDisruptionSchedule.fromJson(value)).toList();
   }
 
   static Map<String, RoadDisruptionSchedule> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, RoadDisruptionSchedule>();
+    var map = Map<String, RoadDisruptionSchedule>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new RoadDisruptionSchedule.fromJson(value));
+          map[key] = RoadDisruptionSchedule.fromJson(value));
     }
     return map;
   }

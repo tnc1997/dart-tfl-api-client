@@ -1,7 +1,10 @@
 class ApiVersionInfo {
   String label;
+
   DateTime timestamp;
+
   String version;
+
   List<String> assemblies;
 
   ApiVersionInfo();
@@ -32,16 +35,16 @@ class ApiVersionInfo {
 
   static List<ApiVersionInfo> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<ApiVersionInfo>()
-        : json.map((value) => new ApiVersionInfo.fromJson(value)).toList();
+        ? List<ApiVersionInfo>()
+        : json.map((value) => ApiVersionInfo.fromJson(value)).toList();
   }
 
   static Map<String, ApiVersionInfo> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, ApiVersionInfo>();
+    var map = Map<String, ApiVersionInfo>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new ApiVersionInfo.fromJson(value));
+          map[key] = ApiVersionInfo.fromJson(value));
     }
     return map;
   }

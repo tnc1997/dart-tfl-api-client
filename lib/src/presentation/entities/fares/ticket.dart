@@ -29,8 +29,8 @@ class Ticket {
   Ticket.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     passengerType = json['passengerType'];
-    ticketType = new TicketType.fromJson(json['ticketType']);
-    ticketTime = new TicketTime.fromJson(json['ticketTime']);
+    ticketType = TicketType.fromJson(json['ticketType']);
+    ticketTime = TicketTime.fromJson(json['ticketTime']);
     cost = json['cost'];
     description = json['description'];
     mode = json['mode'];
@@ -53,16 +53,16 @@ class Ticket {
 
   static List<Ticket> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Ticket>()
-        : json.map((value) => new Ticket.fromJson(value)).toList();
+        ? List<Ticket>()
+        : json.map((value) => Ticket.fromJson(value)).toList();
   }
 
   static Map<String, Ticket> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Ticket>();
+    var map = Map<String, Ticket>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Ticket.fromJson(value));
+          map[key] = Ticket.fromJson(value));
     }
     return map;
   }

@@ -42,16 +42,16 @@ class PredictionTiming {
 
   static List<PredictionTiming> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<PredictionTiming>()
-        : json.map((value) => new PredictionTiming.fromJson(value)).toList();
+        ? List<PredictionTiming>()
+        : json.map((value) => PredictionTiming.fromJson(value)).toList();
   }
 
   static Map<String, PredictionTiming> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, PredictionTiming>();
+    var map = Map<String, PredictionTiming>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new PredictionTiming.fromJson(value));
+          map[key] = PredictionTiming.fromJson(value));
     }
     return map;
   }

@@ -29,7 +29,7 @@ class RoadDisruptionLine {
     id = json['id'];
     roadDisruptionId = json['roadDisruptionId'];
     isDiversion = json['isDiversion'];
-    multiLineString = new DbGeography.fromJson(json['multiLineString']);
+    multiLineString = DbGeography.fromJson(json['multiLineString']);
     startDate =
         json['startDate'] == null ? null : DateTime.parse(json['startDate']);
     endDate = json['endDate'] == null ? null : DateTime.parse(json['endDate']);
@@ -52,16 +52,16 @@ class RoadDisruptionLine {
 
   static List<RoadDisruptionLine> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<RoadDisruptionLine>()
-        : json.map((value) => new RoadDisruptionLine.fromJson(value)).toList();
+        ? List<RoadDisruptionLine>()
+        : json.map((value) => RoadDisruptionLine.fromJson(value)).toList();
   }
 
   static Map<String, RoadDisruptionLine> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, RoadDisruptionLine>();
+    var map = Map<String, RoadDisruptionLine>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new RoadDisruptionLine.fromJson(value));
+          map[key] = RoadDisruptionLine.fromJson(value));
     }
     return map;
   }

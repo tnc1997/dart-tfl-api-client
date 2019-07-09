@@ -41,16 +41,16 @@ class PlannedWork {
 
   static List<PlannedWork> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<PlannedWork>()
-        : json.map((value) => new PlannedWork.fromJson(value)).toList();
+        ? List<PlannedWork>()
+        : json.map((value) => PlannedWork.fromJson(value)).toList();
   }
 
   static Map<String, PlannedWork> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, PlannedWork>();
+    var map = Map<String, PlannedWork>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new PlannedWork.fromJson(value));
+          map[key] = PlannedWork.fromJson(value));
     }
     return map;
   }

@@ -19,16 +19,16 @@ class PostcodeInput {
 
   static List<PostcodeInput> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<PostcodeInput>()
-        : json.map((value) => new PostcodeInput.fromJson(value)).toList();
+        ? List<PostcodeInput>()
+        : json.map((value) => PostcodeInput.fromJson(value)).toList();
   }
 
   static Map<String, PostcodeInput> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, PostcodeInput>();
+    var map = Map<String, PostcodeInput>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new PostcodeInput.fromJson(value));
+          map[key] = PostcodeInput.fromJson(value));
     }
     return map;
   }

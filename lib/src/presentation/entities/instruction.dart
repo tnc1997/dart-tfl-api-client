@@ -27,16 +27,16 @@ class Instruction {
 
   static List<Instruction> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Instruction>()
-        : json.map((value) => new Instruction.fromJson(value)).toList();
+        ? List<Instruction>()
+        : json.map((value) => Instruction.fromJson(value)).toList();
   }
 
   static Map<String, Instruction> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Instruction>();
+    var map = Map<String, Instruction>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Instruction.fromJson(value));
+          map[key] = Instruction.fromJson(value));
     }
     return map;
   }

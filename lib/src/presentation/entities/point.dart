@@ -24,16 +24,16 @@ class Point {
 
   static List<Point> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Point>()
-        : json.map((value) => new Point.fromJson(value)).toList();
+        ? List<Point>()
+        : json.map((value) => Point.fromJson(value)).toList();
   }
 
   static Map<String, Point> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Point>();
+    var map = Map<String, Point>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Point.fromJson(value));
+          map[key] = Point.fromJson(value));
     }
     return map;
   }

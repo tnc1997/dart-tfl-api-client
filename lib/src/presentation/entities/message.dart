@@ -37,16 +37,16 @@ class Message {
 
   static List<Message> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Message>()
-        : json.map((value) => new Message.fromJson(value)).toList();
+        ? List<Message>()
+        : json.map((value) => Message.fromJson(value)).toList();
   }
 
   static Map<String, Message> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Message>();
+    var map = Map<String, Message>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Message.fromJson(value));
+          map[key] = Message.fromJson(value));
     }
     return map;
   }

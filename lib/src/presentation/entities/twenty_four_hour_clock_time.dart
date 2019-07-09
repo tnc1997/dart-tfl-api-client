@@ -22,18 +22,16 @@ class TwentyFourHourClockTime {
 
   static List<TwentyFourHourClockTime> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<TwentyFourHourClockTime>()
-        : json
-            .map((value) => new TwentyFourHourClockTime.fromJson(value))
-            .toList();
+        ? List<TwentyFourHourClockTime>()
+        : json.map((value) => TwentyFourHourClockTime.fromJson(value)).toList();
   }
 
   static Map<String, TwentyFourHourClockTime> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, TwentyFourHourClockTime>();
+    var map = Map<String, TwentyFourHourClockTime>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new TwentyFourHourClockTime.fromJson(value));
+          map[key] = TwentyFourHourClockTime.fromJson(value));
     }
     return map;
   }

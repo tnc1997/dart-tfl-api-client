@@ -68,16 +68,16 @@ class Place {
 
   static List<Place> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Place>()
-        : json.map((value) => new Place.fromJson(value)).toList();
+        ? List<Place>()
+        : json.map((value) => Place.fromJson(value)).toList();
   }
 
   static Map<String, Place> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Place>();
+    var map = Map<String, Place>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Place.fromJson(value));
+          map[key] = Place.fromJson(value));
     }
     return map;
   }

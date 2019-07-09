@@ -92,7 +92,7 @@ class Prediction {
     timeToLive =
         json['timeToLive'] == null ? null : DateTime.parse(json['timeToLive']);
     modeName = json['modeName'];
-    timing = new PredictionTiming.fromJson(json['timing']);
+    timing = PredictionTiming.fromJson(json['timing']);
   }
 
   Map<String, dynamic> toJson() {
@@ -125,16 +125,16 @@ class Prediction {
 
   static List<Prediction> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Prediction>()
-        : json.map((value) => new Prediction.fromJson(value)).toList();
+        ? List<Prediction>()
+        : json.map((value) => Prediction.fromJson(value)).toList();
   }
 
   static Map<String, Prediction> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Prediction>();
+    var map = Map<String, Prediction>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Prediction.fromJson(value));
+          map[key] = Prediction.fromJson(value));
     }
     return map;
   }

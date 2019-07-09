@@ -104,16 +104,16 @@ class RoadProject {
 
   static List<RoadProject> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<RoadProject>()
-        : json.map((value) => new RoadProject.fromJson(value)).toList();
+        ? List<RoadProject>()
+        : json.map((value) => RoadProject.fromJson(value)).toList();
   }
 
   static Map<String, RoadProject> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, RoadProject>();
+    var map = Map<String, RoadProject>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new RoadProject.fromJson(value));
+          map[key] = RoadProject.fromJson(value));
     }
     return map;
   }

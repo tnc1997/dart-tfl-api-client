@@ -41,18 +41,18 @@ class CycleHireDockingStationData {
 
   static List<CycleHireDockingStationData> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<CycleHireDockingStationData>()
+        ? List<CycleHireDockingStationData>()
         : json
-            .map((value) => new CycleHireDockingStationData.fromJson(value))
+            .map((value) => CycleHireDockingStationData.fromJson(value))
             .toList();
   }
 
   static Map<String, CycleHireDockingStationData> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, CycleHireDockingStationData>();
+    var map = Map<String, CycleHireDockingStationData>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new CycleHireDockingStationData.fromJson(value));
+          map[key] = CycleHireDockingStationData.fromJson(value));
     }
     return map;
   }

@@ -51,7 +51,7 @@ class Leg {
     if (json == null) return;
     duration = json['duration'];
     speed = json['speed'];
-    instruction = new Instruction.fromJson(json['instruction']);
+    instruction = Instruction.fromJson(json['instruction']);
     obstacles = Obstacle.listFromJson(json['obstacles']);
     departureTime = json['departureTime'] == null
         ? null
@@ -59,11 +59,11 @@ class Leg {
     arrivalTime = json['arrivalTime'] == null
         ? null
         : DateTime.parse(json['arrivalTime']);
-    departurePoint = new Point.fromJson(json['departurePoint']);
-    arrivalPoint = new Point.fromJson(json['arrivalPoint']);
-    path = new Path.fromJson(json['path']);
+    departurePoint = Point.fromJson(json['departurePoint']);
+    arrivalPoint = Point.fromJson(json['arrivalPoint']);
+    path = Path.fromJson(json['path']);
     routeOptions = RouteOption.listFromJson(json['routeOptions']);
-    mode = new Identifier.fromJson(json['mode']);
+    mode = Identifier.fromJson(json['mode']);
     disruptions = Disruption.listFromJson(json['disruptions']);
     plannedWorks = PlannedWork.listFromJson(json['plannedWorks']);
     distance = json['distance'];
@@ -96,15 +96,15 @@ class Leg {
 
   static List<Leg> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Leg>()
-        : json.map((value) => new Leg.fromJson(value)).toList();
+        ? List<Leg>()
+        : json.map((value) => Leg.fromJson(value)).toList();
   }
 
   static Map<String, Leg> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Leg>();
+    var map = Map<String, Leg>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Leg.fromJson(value));
+          map[key] = Leg.fromJson(value));
     }
     return map;
   }

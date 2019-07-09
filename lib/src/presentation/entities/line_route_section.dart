@@ -45,16 +45,16 @@ class LineRouteSection {
 
   static List<LineRouteSection> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<LineRouteSection>()
-        : json.map((value) => new LineRouteSection.fromJson(value)).toList();
+        ? List<LineRouteSection>()
+        : json.map((value) => LineRouteSection.fromJson(value)).toList();
   }
 
   static Map<String, LineRouteSection> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, LineRouteSection>();
+    var map = Map<String, LineRouteSection>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new LineRouteSection.fromJson(value));
+          map[key] = LineRouteSection.fromJson(value));
     }
     return map;
   }

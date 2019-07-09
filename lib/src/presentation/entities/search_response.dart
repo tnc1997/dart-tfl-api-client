@@ -51,16 +51,16 @@ class SearchResponse {
 
   static List<SearchResponse> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<SearchResponse>()
-        : json.map((value) => new SearchResponse.fromJson(value)).toList();
+        ? List<SearchResponse>()
+        : json.map((value) => SearchResponse.fromJson(value)).toList();
   }
 
   static Map<String, SearchResponse> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, SearchResponse>();
+    var map = Map<String, SearchResponse>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new SearchResponse.fromJson(value));
+          map[key] = SearchResponse.fromJson(value));
     }
     return map;
   }

@@ -22,16 +22,16 @@ class LineServiceTypeInfo {
 
   static List<LineServiceTypeInfo> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<LineServiceTypeInfo>()
-        : json.map((value) => new LineServiceTypeInfo.fromJson(value)).toList();
+        ? List<LineServiceTypeInfo>()
+        : json.map((value) => LineServiceTypeInfo.fromJson(value)).toList();
   }
 
   static Map<String, LineServiceTypeInfo> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, LineServiceTypeInfo>();
+    var map = Map<String, LineServiceTypeInfo>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new LineServiceTypeInfo.fromJson(value));
+          map[key] = LineServiceTypeInfo.fromJson(value));
     }
     return map;
   }

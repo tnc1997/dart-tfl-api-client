@@ -20,7 +20,7 @@ class SearchCriteria {
     dateTime =
         json['dateTime'] == null ? null : DateTime.parse(json['dateTime']);
     dateTimeType = json['dateTimeType'];
-    timeAdjustments = new TimeAdjustments.fromJson(json['timeAdjustments']);
+    timeAdjustments = TimeAdjustments.fromJson(json['timeAdjustments']);
   }
 
   Map<String, dynamic> toJson() {
@@ -33,16 +33,16 @@ class SearchCriteria {
 
   static List<SearchCriteria> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<SearchCriteria>()
-        : json.map((value) => new SearchCriteria.fromJson(value)).toList();
+        ? List<SearchCriteria>()
+        : json.map((value) => SearchCriteria.fromJson(value)).toList();
   }
 
   static Map<String, SearchCriteria> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, SearchCriteria>();
+    var map = Map<String, SearchCriteria>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new SearchCriteria.fromJson(value));
+          map[key] = SearchCriteria.fromJson(value));
     }
     return map;
   }

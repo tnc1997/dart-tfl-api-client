@@ -23,8 +23,8 @@ class Schedule {
     if (json == null) return;
     name = json['name'];
     knownJourneys = KnownJourney.listFromJson(json['knownJourneys']);
-    firstJourney = new KnownJourney.fromJson(json['firstJourney']);
-    lastJourney = new KnownJourney.fromJson(json['lastJourney']);
+    firstJourney = KnownJourney.fromJson(json['firstJourney']);
+    lastJourney = KnownJourney.fromJson(json['lastJourney']);
     periods = Period.listFromJson(json['periods']);
   }
 
@@ -40,16 +40,16 @@ class Schedule {
 
   static List<Schedule> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Schedule>()
-        : json.map((value) => new Schedule.fromJson(value)).toList();
+        ? List<Schedule>()
+        : json.map((value) => Schedule.fromJson(value)).toList();
   }
 
   static Map<String, Schedule> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Schedule>();
+    var map = Map<String, Schedule>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Schedule.fromJson(value));
+          map[key] = Schedule.fromJson(value));
     }
     return map;
   }

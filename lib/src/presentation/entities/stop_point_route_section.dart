@@ -66,18 +66,16 @@ class StopPointRouteSection {
 
   static List<StopPointRouteSection> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<StopPointRouteSection>()
-        : json
-            .map((value) => new StopPointRouteSection.fromJson(value))
-            .toList();
+        ? List<StopPointRouteSection>()
+        : json.map((value) => StopPointRouteSection.fromJson(value)).toList();
   }
 
   static Map<String, StopPointRouteSection> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, StopPointRouteSection>();
+    var map = Map<String, StopPointRouteSection>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new StopPointRouteSection.fromJson(value));
+          map[key] = StopPointRouteSection.fromJson(value));
     }
     return map;
   }

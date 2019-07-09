@@ -38,7 +38,7 @@ class LineStatus {
     modified =
         json['modified'] == null ? null : DateTime.parse(json['modified']);
     validityPeriods = ValidityPeriod.listFromJson(json['validityPeriods']);
-    disruption = new Disruption.fromJson(json['disruption']);
+    disruption = Disruption.fromJson(json['disruption']);
   }
 
   Map<String, dynamic> toJson() {
@@ -57,16 +57,16 @@ class LineStatus {
 
   static List<LineStatus> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<LineStatus>()
-        : json.map((value) => new LineStatus.fromJson(value)).toList();
+        ? List<LineStatus>()
+        : json.map((value) => LineStatus.fromJson(value)).toList();
   }
 
   static Map<String, LineStatus> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, LineStatus>();
+    var map = Map<String, LineStatus>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new LineStatus.fromJson(value));
+          map[key] = LineStatus.fromJson(value));
     }
     return map;
   }

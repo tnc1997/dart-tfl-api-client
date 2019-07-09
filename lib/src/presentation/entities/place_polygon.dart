@@ -24,16 +24,16 @@ class PlacePolygon {
 
   static List<PlacePolygon> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<PlacePolygon>()
-        : json.map((value) => new PlacePolygon.fromJson(value)).toList();
+        ? List<PlacePolygon>()
+        : json.map((value) => PlacePolygon.fromJson(value)).toList();
   }
 
   static Map<String, PlacePolygon> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, PlacePolygon>();
+    var map = Map<String, PlacePolygon>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new PlacePolygon.fromJson(value));
+          map[key] = PlacePolygon.fromJson(value));
     }
     return map;
   }

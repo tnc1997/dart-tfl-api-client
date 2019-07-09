@@ -31,16 +31,16 @@ class SearchMatch {
 
   static List<SearchMatch> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<SearchMatch>()
-        : json.map((value) => new SearchMatch.fromJson(value)).toList();
+        ? List<SearchMatch>()
+        : json.map((value) => SearchMatch.fromJson(value)).toList();
   }
 
   static Map<String, SearchMatch> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, SearchMatch>();
+    var map = Map<String, SearchMatch>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new SearchMatch.fromJson(value));
+          map[key] = SearchMatch.fromJson(value));
     }
     return map;
   }

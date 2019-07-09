@@ -30,16 +30,16 @@ class ValidityPeriod {
 
   static List<ValidityPeriod> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<ValidityPeriod>()
-        : json.map((value) => new ValidityPeriod.fromJson(value)).toList();
+        ? List<ValidityPeriod>()
+        : json.map((value) => ValidityPeriod.fromJson(value)).toList();
   }
 
   static Map<String, ValidityPeriod> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, ValidityPeriod>();
+    var map = Map<String, ValidityPeriod>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new ValidityPeriod.fromJson(value));
+          map[key] = ValidityPeriod.fromJson(value));
     }
     return map;
   }

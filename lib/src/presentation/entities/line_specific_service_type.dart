@@ -14,7 +14,7 @@ class LineSpecificServiceType {
 
   LineSpecificServiceType.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
-    serviceType = new LineServiceTypeInfo.fromJson(json['serviceType']);
+    serviceType = LineServiceTypeInfo.fromJson(json['serviceType']);
     stopServesServiceType = json['stopServesServiceType'];
   }
 
@@ -27,18 +27,16 @@ class LineSpecificServiceType {
 
   static List<LineSpecificServiceType> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<LineSpecificServiceType>()
-        : json
-            .map((value) => new LineSpecificServiceType.fromJson(value))
-            .toList();
+        ? List<LineSpecificServiceType>()
+        : json.map((value) => LineSpecificServiceType.fromJson(value)).toList();
   }
 
   static Map<String, LineSpecificServiceType> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, LineSpecificServiceType>();
+    var map = Map<String, LineSpecificServiceType>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new LineSpecificServiceType.fromJson(value));
+          map[key] = LineSpecificServiceType.fromJson(value));
     }
     return map;
   }

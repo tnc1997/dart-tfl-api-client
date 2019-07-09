@@ -41,16 +41,16 @@ class BikePointOccupancy {
 
   static List<BikePointOccupancy> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<BikePointOccupancy>()
-        : json.map((value) => new BikePointOccupancy.fromJson(value)).toList();
+        ? List<BikePointOccupancy>()
+        : json.map((value) => BikePointOccupancy.fromJson(value)).toList();
   }
 
   static Map<String, BikePointOccupancy> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, BikePointOccupancy>();
+    var map = Map<String, BikePointOccupancy>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new BikePointOccupancy.fromJson(value));
+          map[key] = BikePointOccupancy.fromJson(value));
     }
     return map;
   }

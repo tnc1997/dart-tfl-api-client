@@ -22,16 +22,16 @@ class ActiveServiceType {
 
   static List<ActiveServiceType> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<ActiveServiceType>()
-        : json.map((value) => new ActiveServiceType.fromJson(value)).toList();
+        ? List<ActiveServiceType>()
+        : json.map((value) => ActiveServiceType.fromJson(value)).toList();
   }
 
   static Map<String, ActiveServiceType> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, ActiveServiceType>();
+    var map = Map<String, ActiveServiceType>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new ActiveServiceType.fromJson(value));
+          map[key] = ActiveServiceType.fromJson(value));
     }
     return map;
   }

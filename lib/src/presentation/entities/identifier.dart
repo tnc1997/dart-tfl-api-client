@@ -33,7 +33,7 @@ class Identifier {
     uri = json['uri'];
     fullName = json['fullName'];
     type = json['type'];
-    crowding = new Crowding.fromJson(json['crowding']);
+    crowding = Crowding.fromJson(json['crowding']);
     routeType = json['routeType'];
     status = json['status'];
   }
@@ -53,16 +53,16 @@ class Identifier {
 
   static List<Identifier> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Identifier>()
-        : json.map((value) => new Identifier.fromJson(value)).toList();
+        ? List<Identifier>()
+        : json.map((value) => Identifier.fromJson(value)).toList();
   }
 
   static Map<String, Identifier> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Identifier>();
+    var map = Map<String, Identifier>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Identifier.fromJson(value));
+          map[key] = Identifier.fromJson(value));
     }
     return map;
   }

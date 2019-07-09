@@ -38,18 +38,16 @@ class AdditionalProperties {
 
   static List<AdditionalProperties> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<AdditionalProperties>()
-        : json
-            .map((value) => new AdditionalProperties.fromJson(value))
-            .toList();
+        ? List<AdditionalProperties>()
+        : json.map((value) => AdditionalProperties.fromJson(value)).toList();
   }
 
   static Map<String, AdditionalProperties> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, AdditionalProperties>();
+    var map = Map<String, AdditionalProperties>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new AdditionalProperties.fromJson(value));
+          map[key] = AdditionalProperties.fromJson(value));
     }
     return map;
   }

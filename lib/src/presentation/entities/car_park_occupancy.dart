@@ -35,16 +35,16 @@ class CarParkOccupancy {
 
   static List<CarParkOccupancy> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<CarParkOccupancy>()
-        : json.map((value) => new CarParkOccupancy.fromJson(value)).toList();
+        ? List<CarParkOccupancy>()
+        : json.map((value) => CarParkOccupancy.fromJson(value)).toList();
   }
 
   static Map<String, CarParkOccupancy> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, CarParkOccupancy>();
+    var map = Map<String, CarParkOccupancy>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new CarParkOccupancy.fromJson(value));
+          map[key] = CarParkOccupancy.fromJson(value));
     }
     return map;
   }

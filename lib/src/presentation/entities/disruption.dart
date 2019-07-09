@@ -78,16 +78,16 @@ class Disruption {
 
   static List<Disruption> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Disruption>()
-        : json.map((value) => new Disruption.fromJson(value)).toList();
+        ? List<Disruption>()
+        : json.map((value) => Disruption.fromJson(value)).toList();
   }
 
   static Map<String, Disruption> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Disruption>();
+    var map = Map<String, Disruption>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Disruption.fromJson(value));
+          map[key] = Disruption.fromJson(value));
     }
     return map;
   }

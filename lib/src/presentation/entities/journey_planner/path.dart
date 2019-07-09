@@ -32,15 +32,15 @@ class Path {
 
   static List<Path> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Path>()
-        : json.map((value) => new Path.fromJson(value)).toList();
+        ? List<Path>()
+        : json.map((value) => Path.fromJson(value)).toList();
   }
 
   static Map<String, Path> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Path>();
+    var map = Map<String, Path>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Path.fromJson(value));
+          map[key] = Path.fromJson(value));
     }
     return map;
   }

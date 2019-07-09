@@ -22,16 +22,16 @@ class PathAttribute {
 
   static List<PathAttribute> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<PathAttribute>()
-        : json.map((value) => new PathAttribute.fromJson(value)).toList();
+        ? List<PathAttribute>()
+        : json.map((value) => PathAttribute.fromJson(value)).toList();
   }
 
   static Map<String, PathAttribute> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, PathAttribute>();
+    var map = Map<String, PathAttribute>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new PathAttribute.fromJson(value));
+          map[key] = PathAttribute.fromJson(value));
     }
     return map;
   }

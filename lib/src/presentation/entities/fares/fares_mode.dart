@@ -25,16 +25,16 @@ class FaresMode {
 
   static List<FaresMode> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<FaresMode>()
-        : json.map((value) => new FaresMode.fromJson(value)).toList();
+        ? List<FaresMode>()
+        : json.map((value) => FaresMode.fromJson(value)).toList();
   }
 
   static Map<String, FaresMode> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, FaresMode>();
+    var map = Map<String, FaresMode>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new FaresMode.fromJson(value));
+          map[key] = FaresMode.fromJson(value));
     }
     return map;
   }

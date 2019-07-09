@@ -24,16 +24,16 @@ class PassengerFlow {
 
   static List<PassengerFlow> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<PassengerFlow>()
-        : json.map((value) => new PassengerFlow.fromJson(value)).toList();
+        ? List<PassengerFlow>()
+        : json.map((value) => PassengerFlow.fromJson(value)).toList();
   }
 
   static Map<String, PassengerFlow> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, PassengerFlow>();
+    var map = Map<String, PassengerFlow>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new PassengerFlow.fromJson(value));
+          map[key] = PassengerFlow.fromJson(value));
     }
     return map;
   }

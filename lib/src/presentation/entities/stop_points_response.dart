@@ -45,16 +45,16 @@ class StopPointsResponse {
 
   static List<StopPointsResponse> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<StopPointsResponse>()
-        : json.map((value) => new StopPointsResponse.fromJson(value)).toList();
+        ? List<StopPointsResponse>()
+        : json.map((value) => StopPointsResponse.fromJson(value)).toList();
   }
 
   static Map<String, StopPointsResponse> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, StopPointsResponse>();
+    var map = Map<String, StopPointsResponse>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new StopPointsResponse.fromJson(value));
+          map[key] = StopPointsResponse.fromJson(value));
     }
     return map;
   }

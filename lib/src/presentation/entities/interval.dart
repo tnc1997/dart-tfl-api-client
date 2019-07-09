@@ -22,16 +22,16 @@ class Interval {
 
   static List<Interval> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Interval>()
-        : json.map((value) => new Interval.fromJson(value)).toList();
+        ? List<Interval>()
+        : json.map((value) => Interval.fromJson(value)).toList();
   }
 
   static Map<String, Interval> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Interval>();
+    var map = Map<String, Interval>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Interval.fromJson(value));
+          map[key] = Interval.fromJson(value));
     }
     return map;
   }

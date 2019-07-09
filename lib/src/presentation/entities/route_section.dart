@@ -75,16 +75,16 @@ class RouteSection {
 
   static List<RouteSection> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<RouteSection>()
-        : json.map((value) => new RouteSection.fromJson(value)).toList();
+        ? List<RouteSection>()
+        : json.map((value) => RouteSection.fromJson(value)).toList();
   }
 
   static Map<String, RouteSection> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, RouteSection>();
+    var map = Map<String, RouteSection>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new RouteSection.fromJson(value));
+          map[key] = RouteSection.fromJson(value));
     }
     return map;
   }

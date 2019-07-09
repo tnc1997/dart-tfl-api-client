@@ -22,18 +22,18 @@ class TimetablesDisambiguation {
 
   static List<TimetablesDisambiguation> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<TimetablesDisambiguation>()
+        ? List<TimetablesDisambiguation>()
         : json
-            .map((value) => new TimetablesDisambiguation.fromJson(value))
+            .map((value) => TimetablesDisambiguation.fromJson(value))
             .toList();
   }
 
   static Map<String, TimetablesDisambiguation> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, TimetablesDisambiguation>();
+    var map = Map<String, TimetablesDisambiguation>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new TimetablesDisambiguation.fromJson(value));
+          map[key] = TimetablesDisambiguation.fromJson(value));
     }
     return map;
   }

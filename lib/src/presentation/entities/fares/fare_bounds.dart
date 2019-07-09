@@ -71,16 +71,16 @@ class FareBounds {
 
   static List<FareBounds> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<FareBounds>()
-        : json.map((value) => new FareBounds.fromJson(value)).toList();
+        ? List<FareBounds>()
+        : json.map((value) => FareBounds.fromJson(value)).toList();
   }
 
   static Map<String, FareBounds> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, FareBounds>();
+    var map = Map<String, FareBounds>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new FareBounds.fromJson(value));
+          map[key] = FareBounds.fromJson(value));
     }
     return map;
   }

@@ -29,7 +29,7 @@ class Journey {
         ? null
         : DateTime.parse(json['arrivalDateTime']);
     legs = Leg.listFromJson(json['legs']);
-    fare = new JourneyFare.fromJson(json['fare']);
+    fare = JourneyFare.fromJson(json['fare']);
   }
 
   Map<String, dynamic> toJson() {
@@ -47,16 +47,16 @@ class Journey {
 
   static List<Journey> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Journey>()
-        : json.map((value) => new Journey.fromJson(value)).toList();
+        ? List<Journey>()
+        : json.map((value) => Journey.fromJson(value)).toList();
   }
 
   static Map<String, Journey> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Journey>();
+    var map = Map<String, Journey>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Journey.fromJson(value));
+          map[key] = Journey.fromJson(value));
     }
     return map;
   }

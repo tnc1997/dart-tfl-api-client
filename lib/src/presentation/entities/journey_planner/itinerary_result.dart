@@ -30,13 +30,13 @@ class ItineraryResult {
     if (json == null) return;
     journeys = Journey.listFromJson(json['journeys']);
     lines = Line.listFromJson(json['lines']);
-    cycleHireDockingStationData = new CycleHireDockingStationData.fromJson(
+    cycleHireDockingStationData = CycleHireDockingStationData.fromJson(
         json['cycleHireDockingStationData']);
     stopMessages =
         (json['stopMessages'] as List).map((item) => item as String).toList();
     recommendedMaxAgeMinutes = json['recommendedMaxAgeMinutes'];
-    searchCriteria = new SearchCriteria.fromJson(json['searchCriteria']);
-    journeyVector = new JourneyVector.fromJson(json['journeyVector']);
+    searchCriteria = SearchCriteria.fromJson(json['searchCriteria']);
+    journeyVector = JourneyVector.fromJson(json['journeyVector']);
   }
 
   Map<String, dynamic> toJson() {
@@ -53,16 +53,16 @@ class ItineraryResult {
 
   static List<ItineraryResult> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<ItineraryResult>()
-        : json.map((value) => new ItineraryResult.fromJson(value)).toList();
+        ? List<ItineraryResult>()
+        : json.map((value) => ItineraryResult.fromJson(value)).toList();
   }
 
   static Map<String, ItineraryResult> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, ItineraryResult>();
+    var map = Map<String, ItineraryResult>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new ItineraryResult.fromJson(value));
+          map[key] = ItineraryResult.fromJson(value));
     }
     return map;
   }

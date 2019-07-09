@@ -48,7 +48,7 @@ class InstructionStep {
     cumulativeTravelTime = json['cumulativeTravelTime'];
     latitude = json['latitude'];
     longitude = json['longitude'];
-    pathAttribute = new PathAttribute.fromJson(json['pathAttribute']);
+    pathAttribute = PathAttribute.fromJson(json['pathAttribute']);
     descriptionHeading = json['descriptionHeading'];
     trackType = json['trackType'];
   }
@@ -73,16 +73,16 @@ class InstructionStep {
 
   static List<InstructionStep> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<InstructionStep>()
-        : json.map((value) => new InstructionStep.fromJson(value)).toList();
+        ? List<InstructionStep>()
+        : json.map((value) => InstructionStep.fromJson(value)).toList();
   }
 
   static Map<String, InstructionStep> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, InstructionStep>();
+    var map = Map<String, InstructionStep>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new InstructionStep.fromJson(value));
+          map[key] = InstructionStep.fromJson(value));
     }
     return map;
   }

@@ -29,18 +29,18 @@ class DbGeographyWellKnownValue {
 
   static List<DbGeographyWellKnownValue> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<DbGeographyWellKnownValue>()
+        ? List<DbGeographyWellKnownValue>()
         : json
-            .map((value) => new DbGeographyWellKnownValue.fromJson(value))
+            .map((value) => DbGeographyWellKnownValue.fromJson(value))
             .toList();
   }
 
   static Map<String, DbGeographyWellKnownValue> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, DbGeographyWellKnownValue>();
+    var map = Map<String, DbGeographyWellKnownValue>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new DbGeographyWellKnownValue.fromJson(value));
+          map[key] = DbGeographyWellKnownValue.fromJson(value));
     }
     return map;
   }

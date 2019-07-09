@@ -27,16 +27,16 @@ class Crowding {
 
   static List<Crowding> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Crowding>()
-        : json.map((value) => new Crowding.fromJson(value)).toList();
+        ? List<Crowding>()
+        : json.map((value) => Crowding.fromJson(value)).toList();
   }
 
   static Map<String, Crowding> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Crowding>();
+    var map = Map<String, Crowding>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Crowding.fromJson(value));
+          map[key] = Crowding.fromJson(value));
     }
     return map;
   }

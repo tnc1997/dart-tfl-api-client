@@ -25,16 +25,16 @@ class Redirect {
 
   static List<Redirect> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<Redirect>()
-        : json.map((value) => new Redirect.fromJson(value)).toList();
+        ? List<Redirect>()
+        : json.map((value) => Redirect.fromJson(value)).toList();
   }
 
   static Map<String, Redirect> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, Redirect>();
+    var map = Map<String, Redirect>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new Redirect.fromJson(value));
+          map[key] = Redirect.fromJson(value));
     }
     return map;
   }

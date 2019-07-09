@@ -36,9 +36,8 @@ class TimetableResponse {
     pdfUrl = json['pdfUrl'];
     stations = MatchedStop.listFromJson(json['stations']);
     stops = MatchedStop.listFromJson(json['stops']);
-    timetable = new Timetable.fromJson(json['timetable']);
-    disambiguation =
-        new TimetablesDisambiguation.fromJson(json['disambiguation']);
+    timetable = Timetable.fromJson(json['timetable']);
+    disambiguation = TimetablesDisambiguation.fromJson(json['disambiguation']);
     statusErrorMessage = json['statusErrorMessage'];
   }
 
@@ -58,16 +57,16 @@ class TimetableResponse {
 
   static List<TimetableResponse> listFromJson(List<dynamic> json) {
     return json == null
-        ? new List<TimetableResponse>()
-        : json.map((value) => new TimetableResponse.fromJson(value)).toList();
+        ? List<TimetableResponse>()
+        : json.map((value) => TimetableResponse.fromJson(value)).toList();
   }
 
   static Map<String, TimetableResponse> mapFromJson(
       Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, TimetableResponse>();
+    var map = Map<String, TimetableResponse>();
     if (json != null && json.length > 0) {
       json.forEach((String key, Map<String, dynamic> value) =>
-          map[key] = new TimetableResponse.fromJson(value));
+          map[key] = TimetableResponse.fromJson(value));
     }
     return map;
   }
