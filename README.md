@@ -7,15 +7,7 @@ Created from templates made available by Stagehand under a BSD-style
 
 ## Usage
 
-A simple usage example:
-
-```dart
-import 'package:tfl_api_client/tfl_api_client.dart';
-
-main() {
-  var awesome = new Awesome();
-}
-```
+Coming Soon!
 
 ## Features and bugs
 
