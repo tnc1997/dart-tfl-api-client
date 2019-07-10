@@ -47,7 +47,7 @@ class Identifier implements Serializable {
 
   @override
   String toString() {
-    return 'Identifier[id=$id, name=$name, uri=$uri, fullName=$fullName, type=$type, crowding=$crowding, routeType=$routeType, status=$status, ]';
+    return 'Identifier[id=$id, name=$name, uri=$uri, fullName=$fullName, type=$type, crowding=$crowding, routeType=$routeType, status=$status]';
   }
 
   Identifier.fromJson(Map<String, dynamic> json) {

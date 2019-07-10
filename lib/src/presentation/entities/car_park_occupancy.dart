@@ -29,7 +29,7 @@ class CarParkOccupancy implements Serializable {
 
   @override
   String toString() {
-    return 'CarParkOccupancy[id=$id, bays=$bays, name=$name, carParkDetailsUrl=$carParkDetailsUrl, ]';
+    return 'CarParkOccupancy[id=$id, bays=$bays, name=$name, carParkDetailsUrl=$carParkDetailsUrl]';
   }
 
   CarParkOccupancy.fromJson(Map<String, dynamic> json) {

@@ -134,7 +134,7 @@ class StopPoint implements Serializable {
 
   @override
   String toString() {
-    return 'StopPoint[naptanId=$naptanId, platformName=$platformName, indicator=$indicator, stopLetter=$stopLetter, modes=$modes, icsCode=$icsCode, smsCode=$smsCode, stopType=$stopType, stationNaptan=$stationNaptan, accessibilitySummary=$accessibilitySummary, hubNaptanCode=$hubNaptanCode, lines=$lines, lineGroup=$lineGroup, lineModeGroups=$lineModeGroups, fullName=$fullName, naptanMode=$naptanMode, status=$status, id=$id, url=$url, commonName=$commonName, distance=$distance, placeType=$placeType, additionalProperties=$additionalProperties, children=$children, childrenUrls=$childrenUrls, lat=$lat, lon=$lon, ]';
+    return 'StopPoint[naptanId=$naptanId, platformName=$platformName, indicator=$indicator, stopLetter=$stopLetter, modes=$modes, icsCode=$icsCode, smsCode=$smsCode, stopType=$stopType, stationNaptan=$stationNaptan, accessibilitySummary=$accessibilitySummary, hubNaptanCode=$hubNaptanCode, lines=$lines, lineGroup=$lineGroup, lineModeGroups=$lineModeGroups, fullName=$fullName, naptanMode=$naptanMode, status=$status, id=$id, url=$url, commonName=$commonName, distance=$distance, placeType=$placeType, additionalProperties=$additionalProperties, children=$children, childrenUrls=$childrenUrls, lat=$lat, lon=$lon]';
   }
 
   StopPoint.fromJson(Map<String, dynamic> json) {

@@ -22,7 +22,7 @@ class TimetableRoute implements Serializable {
 
   @override
   String toString() {
-    return 'TimetableRoute[stationIntervals=$stationIntervals, schedules=$schedules, ]';
+    return 'TimetableRoute[stationIntervals=$stationIntervals, schedules=$schedules]';
   }
 
   TimetableRoute.fromJson(Map<String, dynamic> json) {

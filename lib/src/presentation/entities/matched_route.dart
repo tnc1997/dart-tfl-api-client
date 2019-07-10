@@ -62,7 +62,7 @@ class MatchedRoute implements Serializable {
 
   @override
   String toString() {
-    return 'MatchedRoute[routeCode=$routeCode, name=$name, direction=$direction, originationName=$originationName, destinationName=$destinationName, originator=$originator, destination=$destination, serviceType=$serviceType, validTo=$validTo, validFrom=$validFrom, ]';
+    return 'MatchedRoute[routeCode=$routeCode, name=$name, direction=$direction, originationName=$originationName, destinationName=$destinationName, originator=$originator, destination=$destination, serviceType=$serviceType, validTo=$validTo, validFrom=$validFrom]';
   }
 
   MatchedRoute.fromJson(Map<String, dynamic> json) {

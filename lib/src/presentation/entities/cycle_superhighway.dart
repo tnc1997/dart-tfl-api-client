@@ -54,7 +54,7 @@ class CycleSuperhighway implements Serializable {
 
   @override
   String toString() {
-    return 'CycleSuperhighway[id=$id, label=$label, labelShort=$labelShort, geography=$geography, segmented=$segmented, modified=$modified, status=$status, routeType=$routeType, ]';
+    return 'CycleSuperhighway[id=$id, label=$label, labelShort=$labelShort, geography=$geography, segmented=$segmented, modified=$modified, status=$status, routeType=$routeType]';
   }
 
   CycleSuperhighway.fromJson(Map<String, dynamic> json) {

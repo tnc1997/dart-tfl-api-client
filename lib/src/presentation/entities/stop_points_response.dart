@@ -38,7 +38,7 @@ class StopPointsResponse implements Serializable {
 
   @override
   String toString() {
-    return 'StopPointsResponse[centrePoint=$centrePoint, stopPoints=$stopPoints, pageSize=$pageSize, total=$total, page=$page, ]';
+    return 'StopPointsResponse[centrePoint=$centrePoint, stopPoints=$stopPoints, pageSize=$pageSize, total=$total, page=$page]';
   }
 
   StopPointsResponse.fromJson(Map<String, dynamic> json) {

@@ -40,7 +40,7 @@ class Elevation implements Serializable {
 
   @override
   String toString() {
-    return 'Elevation[distance=$distance, startLat=$startLat, startLon=$startLon, endLat=$endLat, endLon=$endLon, heightFromPreviousPoint=$heightFromPreviousPoint, gradient=$gradient, ]';
+    return 'Elevation[distance=$distance, startLat=$startLat, startLon=$startLon, endLat=$endLat, endLon=$endLon, heightFromPreviousPoint=$heightFromPreviousPoint, gradient=$gradient]';
   }
 
   Elevation.fromJson(Map<String, dynamic> json) {

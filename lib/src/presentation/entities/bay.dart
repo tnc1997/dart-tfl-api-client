@@ -28,7 +28,7 @@ class Bay implements Serializable {
 
   @override
   String toString() {
-    return 'Bay[bayType=$bayType, bayCount=$bayCount, free=$free, occupied=$occupied, ]';
+    return 'Bay[bayType=$bayType, bayCount=$bayCount, free=$free, occupied=$occupied]';
   }
 
   Bay.fromJson(Map<String, dynamic> json) {

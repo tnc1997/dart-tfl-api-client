@@ -30,7 +30,7 @@ class FaresSection implements Serializable {
 
   @override
   String toString() {
-    return 'FaresSection[header=$header, index=$index, rows=$rows, messages=$messages, ]';
+    return 'FaresSection[header=$header, index=$index, rows=$rows, messages=$messages]';
   }
 
   FaresSection.fromJson(Map<String, dynamic> json) {

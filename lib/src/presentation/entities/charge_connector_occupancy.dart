@@ -24,7 +24,7 @@ class ChargeConnectorOccupancy implements Serializable {
 
   @override
   String toString() {
-    return 'ChargeConnectorOccupancy[id=$id, sourceSystemPlaceId=$sourceSystemPlaceId, status=$status, ]';
+    return 'ChargeConnectorOccupancy[id=$id, sourceSystemPlaceId=$sourceSystemPlaceId, status=$status]';
   }
 
   ChargeConnectorOccupancy.fromJson(Map<String, dynamic> json) {

@@ -93,7 +93,7 @@ class MatchedStop implements Serializable {
 
   @override
   String toString() {
-    return 'MatchedStop[routeId=$routeId, parentId=$parentId, stationId=$stationId, icsId=$icsId, topMostParentId=$topMostParentId, direction=$direction, towards=$towards, modes=$modes, stopType=$stopType, stopLetter=$stopLetter, zone=$zone, accessibilitySummary=$accessibilitySummary, hasDisruption=$hasDisruption, lines=$lines, status=$status, id=$id, url=$url, name=$name, lat=$lat, lon=$lon, ]';
+    return 'MatchedStop[routeId=$routeId, parentId=$parentId, stationId=$stationId, icsId=$icsId, topMostParentId=$topMostParentId, direction=$direction, towards=$towards, modes=$modes, stopType=$stopType, stopLetter=$stopLetter, zone=$zone, accessibilitySummary=$accessibilitySummary, hasDisruption=$hasDisruption, lines=$lines, status=$status, id=$id, url=$url, name=$name, lat=$lat, lon=$lon]';
   }
 
   MatchedStop.fromJson(Map<String, dynamic> json) {

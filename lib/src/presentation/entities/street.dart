@@ -43,7 +43,7 @@ class Street implements Serializable {
 
   @override
   String toString() {
-    return 'Street[name=$name, closure=$closure, directions=$directions, segments=$segments, sourceSystemId=$sourceSystemId, sourceSystemKey=$sourceSystemKey, ]';
+    return 'Street[name=$name, closure=$closure, directions=$directions, segments=$segments, sourceSystemId=$sourceSystemId, sourceSystemKey=$sourceSystemKey]';
   }
 
   Street.fromJson(Map<String, dynamic> json) {

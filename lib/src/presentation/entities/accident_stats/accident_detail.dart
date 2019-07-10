@@ -50,7 +50,7 @@ class AccidentDetail implements Serializable {
 
   @override
   String toString() {
-    return 'AccidentDetail[id=$id, lat=$lat, lon=$lon, location=$location, date=$date, severity=$severity, borough=$borough, casualties=$casualties, vehicles=$vehicles, ]';
+    return 'AccidentDetail[id=$id, lat=$lat, lon=$lon, location=$location, date=$date, severity=$severity, borough=$borough, casualties=$casualties, vehicles=$vehicles]';
   }
 
   AccidentDetail.fromJson(Map<String, dynamic> json) {

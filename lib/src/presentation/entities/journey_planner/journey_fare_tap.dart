@@ -21,7 +21,7 @@ class JourneyFareTap implements Serializable {
 
   @override
   String toString() {
-    return 'FareTap[atcoCode=$atcoCode, tapDetails=$tapDetails, ]';
+    return 'JourneyFareTap[atcoCode=$atcoCode, tapDetails=$tapDetails]';
   }
 
   JourneyFareTap.fromJson(Map<String, dynamic> json) {

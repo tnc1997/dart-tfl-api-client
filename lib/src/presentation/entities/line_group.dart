@@ -24,7 +24,7 @@ class LineGroup implements Serializable {
 
   @override
   String toString() {
-    return 'LineGroup[naptanIdReference=$naptanIdReference, stationAtcoCode=$stationAtcoCode, lineIdentifier=$lineIdentifier, ]';
+    return 'LineGroup[naptanIdReference=$naptanIdReference, stationAtcoCode=$stationAtcoCode, lineIdentifier=$lineIdentifier]';
   }
 
   LineGroup.fromJson(Map<String, dynamic> json) {

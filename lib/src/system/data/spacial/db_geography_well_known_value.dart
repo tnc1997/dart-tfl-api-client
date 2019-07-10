@@ -24,7 +24,7 @@ class DbGeographyWellKnownValue implements Serializable {
 
   @override
   String toString() {
-    return 'DbGeographyWellKnownValue[coordinateSystemId=$coordinateSystemId, wellKnownText=$wellKnownText, wellKnownBinary=$wellKnownBinary, ]';
+    return 'DbGeographyWellKnownValue[coordinateSystemId=$coordinateSystemId, wellKnownText=$wellKnownText, wellKnownBinary=$wellKnownBinary]';
   }
 
   DbGeographyWellKnownValue.fromJson(Map<String, dynamic> json) {

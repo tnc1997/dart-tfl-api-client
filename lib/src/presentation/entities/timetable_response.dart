@@ -51,7 +51,7 @@ class TimetableResponse implements Serializable {
 
   @override
   String toString() {
-    return 'TimetableResponse[lineId=$lineId, lineName=$lineName, direction=$direction, pdfUrl=$pdfUrl, stations=$stations, stops=$stops, timetable=$timetable, disambiguation=$disambiguation, statusErrorMessage=$statusErrorMessage, ]';
+    return 'TimetableResponse[lineId=$lineId, lineName=$lineName, direction=$direction, pdfUrl=$pdfUrl, stations=$stations, stops=$stops, timetable=$timetable, disambiguation=$disambiguation, statusErrorMessage=$statusErrorMessage]';
   }
 
   TimetableResponse.fromJson(Map<String, dynamic> json) {

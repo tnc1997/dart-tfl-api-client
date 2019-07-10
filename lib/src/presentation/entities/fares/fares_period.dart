@@ -33,7 +33,7 @@ class FaresPeriod implements Serializable {
 
   @override
   String toString() {
-    return 'FaresPeriod[id=$id, startDate=$startDate, viewableDate=$viewableDate, endDate=$endDate, isFuture=$isFuture, ]';
+    return 'FaresPeriod[id=$id, startDate=$startDate, viewableDate=$viewableDate, endDate=$endDate, isFuture=$isFuture]';
   }
 
   FaresPeriod.fromJson(Map<String, dynamic> json) {

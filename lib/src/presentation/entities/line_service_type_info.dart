@@ -20,7 +20,7 @@ class LineServiceTypeInfo implements Serializable {
 
   @override
   String toString() {
-    return 'LineServiceTypeInfo[name=$name, uri=$uri, ]';
+    return 'LineServiceTypeInfo[name=$name, uri=$uri]';
   }
 
   LineServiceTypeInfo.fromJson(Map<String, dynamic> json) {

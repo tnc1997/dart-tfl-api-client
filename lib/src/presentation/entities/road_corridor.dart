@@ -65,7 +65,7 @@ class RoadCorridor implements Serializable {
 
   @override
   String toString() {
-    return 'RoadCorridor[id=$id, displayName=$displayName, group=$group, statusSeverity=$statusSeverity, statusSeverityDescription=$statusSeverityDescription, bounds=$bounds, envelope=$envelope, statusAggregationStartDate=$statusAggregationStartDate, statusAggregationEndDate=$statusAggregationEndDate, url=$url, ]';
+    return 'RoadCorridor[id=$id, displayName=$displayName, group=$group, statusSeverity=$statusSeverity, statusSeverityDescription=$statusSeverityDescription, bounds=$bounds, envelope=$envelope, statusAggregationStartDate=$statusAggregationStartDate, statusAggregationEndDate=$statusAggregationEndDate, url=$url]';
   }
 
   RoadCorridor.fromJson(Map<String, dynamic> json) {

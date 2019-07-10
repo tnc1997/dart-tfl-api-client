@@ -98,7 +98,7 @@ class FareDetails implements Serializable {
 
   @override
   String toString() {
-    return 'FareDetails[boundsId=$boundsId, startDate=$startDate, endDate=$endDate, mode=$mode, passengerType=$passengerType, from=$from, to=$to, fromStation=$fromStation, toStation=$toStation, via=$via, routeCode=$routeCode, displayName=$displayName, displayOrder=$displayOrder, routeDescription=$routeDescription, validatorInformation=$validatorInformation, operator=$operator, specialFare=$specialFare, throughFare=$throughFare, isTour=$isTour, ticketsAvailable=$ticketsAvailable, messages=$messages, ]';
+    return 'FareDetails[boundsId=$boundsId, startDate=$startDate, endDate=$endDate, mode=$mode, passengerType=$passengerType, from=$from, to=$to, fromStation=$fromStation, toStation=$toStation, via=$via, routeCode=$routeCode, displayName=$displayName, displayOrder=$displayOrder, routeDescription=$routeDescription, validatorInformation=$validatorInformation, operator=$operator, specialFare=$specialFare, throughFare=$throughFare, isTour=$isTour, ticketsAvailable=$ticketsAvailable, messages=$messages]';
   }
 
   FareDetails.fromJson(Map<String, dynamic> json) {

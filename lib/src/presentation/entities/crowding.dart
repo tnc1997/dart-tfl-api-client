@@ -24,7 +24,7 @@ class Crowding implements Serializable {
 
   @override
   String toString() {
-    return 'Crowding[passengerFlows=$passengerFlows, trainLoadings=$trainLoadings, ]';
+    return 'Crowding[passengerFlows=$passengerFlows, trainLoadings=$trainLoadings]';
   }
 
   Crowding.fromJson(Map<String, dynamic> json) {

@@ -71,7 +71,7 @@ class Disruption implements Serializable {
 
   @override
   String toString() {
-    return 'Disruption[category=$category, type=$type, categoryDescription=$categoryDescription, description=$description, summary=$summary, additionalInfo=$additionalInfo, created=$created, lastUpdate=$lastUpdate, affectedRoutes=$affectedRoutes, affectedStops=$affectedStops, closureText=$closureText, ]';
+    return 'Disruption[category=$category, type=$type, categoryDescription=$categoryDescription, description=$description, summary=$summary, additionalInfo=$additionalInfo, created=$created, lastUpdate=$lastUpdate, affectedRoutes=$affectedRoutes, affectedStops=$affectedStops, closureText=$closureText]';
   }
 
   Disruption.fromJson(Map<String, dynamic> json) {

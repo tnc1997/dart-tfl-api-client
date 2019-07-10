@@ -51,7 +51,7 @@ class RouteSequence implements Serializable {
 
   @override
   String toString() {
-    return 'RouteSequence[lineId=$lineId, lineName=$lineName, direction=$direction, isOutboundOnly=$isOutboundOnly, mode=$mode, lineStrings=$lineStrings, stations=$stations, stopPointSequences=$stopPointSequences, orderedLineRoutes=$orderedLineRoutes, ]';
+    return 'RouteSequence[lineId=$lineId, lineName=$lineName, direction=$direction, isOutboundOnly=$isOutboundOnly, mode=$mode, lineStrings=$lineStrings, stations=$stations, stopPointSequences=$stopPointSequences, orderedLineRoutes=$orderedLineRoutes]';
   }
 
   RouteSequence.fromJson(Map<String, dynamic> json) {

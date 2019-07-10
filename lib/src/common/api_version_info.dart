@@ -28,7 +28,7 @@ class ApiVersionInfo implements Serializable {
 
   @override
   String toString() {
-    return 'ApiVersionInfo[label=$label, timestamp=$timestamp, version=$version, assemblies=$assemblies, ]';
+    return 'ApiVersionInfo[label=$label, timestamp=$timestamp, version=$version, assemblies=$assemblies]';
   }
 
   ApiVersionInfo.fromJson(Map<String, dynamic> json) {

@@ -24,7 +24,7 @@ class KnownJourney implements Serializable {
 
   @override
   String toString() {
-    return 'KnownJourney[hour=$hour, minute=$minute, intervalId=$intervalId, ]';
+    return 'KnownJourney[hour=$hour, minute=$minute, intervalId=$intervalId]';
   }
 
   KnownJourney.fromJson(Map<String, dynamic> json) {

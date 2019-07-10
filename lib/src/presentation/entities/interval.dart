@@ -20,7 +20,7 @@ class Interval implements Serializable {
 
   @override
   String toString() {
-    return 'Interval[stopId=$stopId, timeToArrival=$timeToArrival, ]';
+    return 'Interval[stopId=$stopId, timeToArrival=$timeToArrival]';
   }
 
   Interval.fromJson(Map<String, dynamic> json) {

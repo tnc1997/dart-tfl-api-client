@@ -29,7 +29,7 @@ class TimeAdjustments implements Serializable {
 
   @override
   String toString() {
-    return 'TimeAdjustments[earliest=$earliest, earlier=$earlier, later=$later, latest=$latest, ]';
+    return 'TimeAdjustments[earliest=$earliest, earlier=$earlier, later=$later, latest=$latest]';
   }
 
   TimeAdjustments.fromJson(Map<String, dynamic> json) {

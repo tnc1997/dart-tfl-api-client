@@ -24,7 +24,7 @@ class OrderedRoute implements Serializable {
 
   @override
   String toString() {
-    return 'OrderedRoute[name=$name, naptanIds=$naptanIds, serviceType=$serviceType, ]';
+    return 'OrderedRoute[name=$name, naptanIds=$naptanIds, serviceType=$serviceType]';
   }
 
   OrderedRoute.fromJson(Map<String, dynamic> json) {

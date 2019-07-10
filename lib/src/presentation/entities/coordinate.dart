@@ -36,7 +36,7 @@ class Coordinate implements Serializable {
 
   @override
   String toString() {
-    return 'Coordinate[longitude=$longitude, latitude=$latitude, easting=$easting, northing=$northing, xCoord=$xCoord, yCoord=$yCoord, ]';
+    return 'Coordinate[longitude=$longitude, latitude=$latitude, easting=$easting, northing=$northing, xCoord=$xCoord, yCoord=$yCoord]';
   }
 
   Coordinate.fromJson(Map<String, dynamic> json) {

@@ -37,7 +37,7 @@ class JourneyFareTapDetails implements Serializable {
 
   @override
   String toString() {
-    return 'FareTapDetails[modeType=$modeType, validationType=$validationType, hostDeviceType=$hostDeviceType, busRouteId=$busRouteId, nationalLocationCode=$nationalLocationCode, tapTimestamp=$tapTimestamp, ]';
+    return 'JourneyFareTapDetails[modeType=$modeType, validationType=$validationType, hostDeviceType=$hostDeviceType, busRouteId=$busRouteId, nationalLocationCode=$nationalLocationCode, tapTimestamp=$tapTimestamp]';
   }
 
   JourneyFareTapDetails.fromJson(Map<String, dynamic> json) {

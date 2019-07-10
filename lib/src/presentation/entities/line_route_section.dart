@@ -40,7 +40,7 @@ class LineRouteSection implements Serializable {
 
   @override
   String toString() {
-    return 'LineRouteSection[routeId=$routeId, direction=$direction, destination=$destination, fromStation=$fromStation, toStation=$toStation, serviceType=$serviceType, vehicleDestinationText=$vehicleDestinationText, ]';
+    return 'LineRouteSection[routeId=$routeId, direction=$direction, destination=$destination, fromStation=$fromStation, toStation=$toStation, serviceType=$serviceType, vehicleDestinationText=$vehicleDestinationText]';
   }
 
   LineRouteSection.fromJson(Map<String, dynamic> json) {

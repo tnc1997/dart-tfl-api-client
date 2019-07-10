@@ -36,7 +36,7 @@ class BikePointOccupancy implements Serializable {
 
   @override
   String toString() {
-    return 'BikePointOccupancy[id=$id, name=$name, bikesCount=$bikesCount, emptyDocks=$emptyDocks, totalDocks=$totalDocks, ]';
+    return 'BikePointOccupancy[id=$id, name=$name, bikesCount=$bikesCount, emptyDocks=$emptyDocks, totalDocks=$totalDocks]';
   }
 
   BikePointOccupancy.fromJson(Map<String, dynamic> json) {

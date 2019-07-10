@@ -60,7 +60,7 @@ class StopPointRouteSection implements Serializable {
 
   @override
   String toString() {
-    return 'StopPointRouteSection[naptanId=$naptanId, lineId=$lineId, mode=$mode, validFrom=$validFrom, validTo=$validTo, direction=$direction, routeSectionName=$routeSectionName, lineString=$lineString, isActive=$isActive, serviceType=$serviceType, vehicleDestinationText=$vehicleDestinationText, destinationName=$destinationName, ]';
+    return 'StopPointRouteSection[naptanId=$naptanId, lineId=$lineId, mode=$mode, validFrom=$validFrom, validTo=$validTo, direction=$direction, routeSectionName=$routeSectionName, lineString=$lineString, isActive=$isActive, serviceType=$serviceType, vehicleDestinationText=$vehicleDestinationText, destinationName=$destinationName]';
   }
 
   StopPointRouteSection.fromJson(Map<String, dynamic> json) {

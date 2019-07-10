@@ -21,7 +21,7 @@ class RouteSectionNaptanEntrySequence implements Serializable {
 
   @override
   String toString() {
-    return 'RouteSectionNaptanEntrySequence[ordinal=$ordinal, stopPoint=$stopPoint, ]';
+    return 'RouteSectionNaptanEntrySequence[ordinal=$ordinal, stopPoint=$stopPoint]';
   }
 
   RouteSectionNaptanEntrySequence.fromJson(Map<String, dynamic> json) {

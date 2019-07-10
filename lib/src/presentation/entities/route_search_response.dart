@@ -21,7 +21,7 @@ class RouteSearchResponse implements Serializable {
 
   @override
   String toString() {
-    return 'RouteSearchResponse[input=$input, searchMatches=$searchMatches, ]';
+    return 'RouteSearchResponse[input=$input, searchMatches=$searchMatches]';
   }
 
   RouteSearchResponse.fromJson(Map<String, dynamic> json) {

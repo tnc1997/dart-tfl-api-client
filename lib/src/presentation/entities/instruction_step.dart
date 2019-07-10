@@ -67,7 +67,7 @@ class InstructionStep implements Serializable {
 
   @override
   String toString() {
-    return 'InstructionStep[description=$description, turnDirection=$turnDirection, streetName=$streetName, distance=$distance, cumulativeDistance=$cumulativeDistance, skyDirection=$skyDirection, skyDirectionDescription=$skyDirectionDescription, cumulativeTravelTime=$cumulativeTravelTime, latitude=$latitude, longitude=$longitude, pathAttribute=$pathAttribute, descriptionHeading=$descriptionHeading, trackType=$trackType, ]';
+    return 'InstructionStep[description=$description, turnDirection=$turnDirection, streetName=$streetName, distance=$distance, cumulativeDistance=$cumulativeDistance, skyDirection=$skyDirection, skyDirectionDescription=$skyDirectionDescription, cumulativeTravelTime=$cumulativeTravelTime, latitude=$latitude, longitude=$longitude, pathAttribute=$pathAttribute, descriptionHeading=$descriptionHeading, trackType=$trackType]';
   }
 
   InstructionStep.fromJson(Map<String, dynamic> json) {

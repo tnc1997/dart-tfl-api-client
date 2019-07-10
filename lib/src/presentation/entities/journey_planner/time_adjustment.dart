@@ -28,7 +28,7 @@ class TimeAdjustment implements Serializable {
 
   @override
   String toString() {
-    return 'TimeAdjustment[date=$date, time=$time, timeIs=$timeIs, uri=$uri, ]';
+    return 'TimeAdjustment[date=$date, time=$time, timeIs=$timeIs, uri=$uri]';
   }
 
   TimeAdjustment.fromJson(Map<String, dynamic> json) {

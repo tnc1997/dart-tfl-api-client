@@ -115,7 +115,7 @@ class Prediction implements Serializable {
 
   @override
   String toString() {
-    return 'Prediction[id=$id, operationType=$operationType, vehicleId=$vehicleId, naptanId=$naptanId, stationName=$stationName, lineId=$lineId, lineName=$lineName, platformName=$platformName, direction=$direction, bearing=$bearing, destinationNaptanId=$destinationNaptanId, destinationName=$destinationName, timestamp=$timestamp, timeToStation=$timeToStation, currentLocation=$currentLocation, towards=$towards, expectedArrival=$expectedArrival, timeToLive=$timeToLive, modeName=$modeName, timing=$timing, ]';
+    return 'Prediction[id=$id, operationType=$operationType, vehicleId=$vehicleId, naptanId=$naptanId, stationName=$stationName, lineId=$lineId, lineName=$lineName, platformName=$platformName, direction=$direction, bearing=$bearing, destinationNaptanId=$destinationNaptanId, destinationName=$destinationName, timestamp=$timestamp, timeToStation=$timeToStation, currentLocation=$currentLocation, towards=$towards, expectedArrival=$expectedArrival, timeToLive=$timeToLive, modeName=$modeName, timing=$timing]';
   }
 
   Prediction.fromJson(Map<String, dynamic> json) {

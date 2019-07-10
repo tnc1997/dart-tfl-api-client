@@ -28,7 +28,7 @@ class Mode implements Serializable {
 
   @override
   String toString() {
-    return 'Mode[isTflService=$isTflService, isFarePaying=$isFarePaying, isScheduledService=$isScheduledService, modeName=$modeName, ]';
+    return 'Mode[isTflService=$isTflService, isFarePaying=$isFarePaying, isScheduledService=$isScheduledService, modeName=$modeName]';
   }
 
   Mode.fromJson(Map<String, dynamic> json) {

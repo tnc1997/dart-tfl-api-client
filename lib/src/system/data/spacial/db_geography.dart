@@ -17,7 +17,7 @@ class DbGeography implements Serializable {
 
   @override
   String toString() {
-    return 'DbGeography[geography=$geography, ]';
+    return 'DbGeography[geography=$geography]';
   }
 
   DbGeography.fromJson(Map<String, dynamic> json) {

@@ -20,7 +20,7 @@ class ServiceFrequency implements Serializable {
 
   @override
   String toString() {
-    return 'ServiceFrequency[lowestFrequency=$lowestFrequency, highestFrequency=$highestFrequency, ]';
+    return 'ServiceFrequency[lowestFrequency=$lowestFrequency, highestFrequency=$highestFrequency]';
   }
 
   ServiceFrequency.fromJson(Map<String, dynamic> json) {

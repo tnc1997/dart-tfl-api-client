@@ -57,7 +57,7 @@ class Line implements Serializable {
 
   @override
   String toString() {
-    return 'Line[id=$id, name=$name, modeName=$modeName, disruptions=$disruptions, created=$created, modified=$modified, lineStatuses=$lineStatuses, routeSections=$routeSections, serviceTypes=$serviceTypes, crowding=$crowding, ]';
+    return 'Line[id=$id, name=$name, modeName=$modeName, disruptions=$disruptions, created=$created, modified=$modified, lineStatuses=$lineStatuses, routeSections=$routeSections, serviceTypes=$serviceTypes, crowding=$crowding]';
   }
 
   Line.fromJson(Map<String, dynamic> json) {

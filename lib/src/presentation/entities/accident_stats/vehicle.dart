@@ -16,7 +16,7 @@ class Vehicle implements Serializable {
 
   @override
   String toString() {
-    return 'Vehicle[type=$type, ]';
+    return 'Vehicle[type=$type]';
   }
 
   Vehicle.fromJson(Map<String, dynamic> json) {

@@ -28,7 +28,7 @@ class Obstacle implements Serializable {
 
   @override
   String toString() {
-    return 'Obstacle[type=$type, incline=$incline, stopId=$stopId, position=$position, ]';
+    return 'Obstacle[type=$type, incline=$incline, stopId=$stopId, position=$position]';
   }
 
   Obstacle.fromJson(Map<String, dynamic> json) {

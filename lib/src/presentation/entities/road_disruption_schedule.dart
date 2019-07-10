@@ -20,7 +20,7 @@ class RoadDisruptionSchedule implements Serializable {
 
   @override
   String toString() {
-    return 'RoadDisruptionSchedule[startTime=$startTime, endTime=$endTime, ]';
+    return 'RoadDisruptionSchedule[startTime=$startTime, endTime=$endTime]';
   }
 
   RoadDisruptionSchedule.fromJson(Map<String, dynamic> json) {

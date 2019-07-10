@@ -40,7 +40,7 @@ class GeoCodeSearchMatch implements Serializable {
 
   @override
   String toString() {
-    return 'GeoCodeSearchMatch[types=$types, address=$address, id=$id, url=$url, name=$name, lat=$lat, lon=$lon, ]';
+    return 'GeoCodeSearchMatch[types=$types, address=$address, id=$id, url=$url, name=$name, lat=$lat, lon=$lon]';
   }
 
   GeoCodeSearchMatch.fromJson(Map<String, dynamic> json) {

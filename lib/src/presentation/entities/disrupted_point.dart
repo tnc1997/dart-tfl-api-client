@@ -52,7 +52,7 @@ class DisruptedPoint implements Serializable {
 
   @override
   String toString() {
-    return 'DisruptedPoint[atcoCode=$atcoCode, fromDate=$fromDate, toDate=$toDate, description=$description, commonName=$commonName, type=$type, mode=$mode, stationAtcoCode=$stationAtcoCode, appearance=$appearance, additionalInformation=$additionalInformation, ]';
+    return 'DisruptedPoint[atcoCode=$atcoCode, fromDate=$fromDate, toDate=$toDate, description=$description, commonName=$commonName, type=$type, mode=$mode, stationAtcoCode=$stationAtcoCode, appearance=$appearance, additionalInformation=$additionalInformation]';
   }
 
   DisruptedPoint.fromJson(Map<String, dynamic> json) {

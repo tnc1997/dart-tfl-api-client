@@ -24,7 +24,7 @@ class AccidentStatsOrderedSummary implements Serializable {
 
   @override
   String toString() {
-    return 'AccidentStatsOrderedSummary[year=$year, borough=$borough, accidents=$accidents, ]';
+    return 'AccidentStatsOrderedSummary[year=$year, borough=$borough, accidents=$accidents]';
   }
 
   AccidentStatsOrderedSummary.fromJson(Map<String, dynamic> json) {

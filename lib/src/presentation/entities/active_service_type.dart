@@ -20,7 +20,7 @@ class ActiveServiceType implements Serializable {
 
   @override
   String toString() {
-    return 'ActiveServiceType[mode=$mode, serviceType=$serviceType, ]';
+    return 'ActiveServiceType[mode=$mode, serviceType=$serviceType]';
   }
 
   ActiveServiceType.fromJson(Map<String, dynamic> json) {

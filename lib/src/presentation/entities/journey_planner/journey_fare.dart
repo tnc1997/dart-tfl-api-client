@@ -26,7 +26,7 @@ class JourneyFare implements Serializable {
 
   @override
   String toString() {
-    return 'JourneyFare[totalCost=$totalCost, fares=$fares, caveats=$caveats, ]';
+    return 'JourneyFare[totalCost=$totalCost, fares=$fares, caveats=$caveats]';
   }
 
   JourneyFare.fromJson(Map<String, dynamic> json) {

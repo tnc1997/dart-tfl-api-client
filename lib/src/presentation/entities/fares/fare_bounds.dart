@@ -65,7 +65,7 @@ class FareBounds implements Serializable {
 
   @override
   String toString() {
-    return 'FareBounds[id=$id, from=$from, to=$to, via=$via, routeCode=$routeCode, description=$description, displayName=$displayName, operator=$operator, displayOrder=$displayOrder, isPopularFare=$isPopularFare, isPopularTravelCard=$isPopularTravelCard, isTour=$isTour, messages=$messages, ]';
+    return 'FareBounds[id=$id, from=$from, to=$to, via=$via, routeCode=$routeCode, description=$description, displayName=$displayName, operator=$operator, displayOrder=$displayOrder, isPopularFare=$isPopularFare, isPopularTravelCard=$isPopularTravelCard, isTour=$isTour, messages=$messages]';
   }
 
   FareBounds.fromJson(Map<String, dynamic> json) {

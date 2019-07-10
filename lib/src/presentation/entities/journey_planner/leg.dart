@@ -86,7 +86,7 @@ class Leg implements Serializable {
 
   @override
   String toString() {
-    return 'Leg[duration=$duration, speed=$speed, instruction=$instruction, obstacles=$obstacles, departureTime=$departureTime, arrivalTime=$arrivalTime, departurePoint=$departurePoint, arrivalPoint=$arrivalPoint, path=$path, routeOptions=$routeOptions, mode=$mode, disruptions=$disruptions, plannedWorks=$plannedWorks, distance=$distance, isDisrupted=$isDisrupted, hasFixedLocations=$hasFixedLocations, ]';
+    return 'Leg[duration=$duration, speed=$speed, instruction=$instruction, obstacles=$obstacles, departureTime=$departureTime, arrivalTime=$arrivalTime, departurePoint=$departurePoint, arrivalPoint=$arrivalPoint, path=$path, routeOptions=$routeOptions, mode=$mode, disruptions=$disruptions, plannedWorks=$plannedWorks, distance=$distance, isDisrupted=$isDisrupted, hasFixedLocations=$hasFixedLocations]';
   }
 
   Leg.fromJson(Map<String, dynamic> json) {

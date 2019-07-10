@@ -37,7 +37,7 @@ class VehicleMatch implements Serializable {
 
   @override
   String toString() {
-    return 'VehicleMatch[vrm=$vrm, type=$type, make=$make, model=$model, colour=$colour, compliance=$compliance, ]';
+    return 'VehicleMatch[vrm=$vrm, type=$type, make=$make, model=$model, colour=$colour, compliance=$compliance]';
   }
 
   VehicleMatch.fromJson(Map<String, dynamic> json) {

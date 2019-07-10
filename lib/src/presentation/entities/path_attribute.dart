@@ -20,7 +20,7 @@ class PathAttribute implements Serializable {
 
   @override
   String toString() {
-    return 'PathAttribute[name=$name, value=$value, ]';
+    return 'PathAttribute[name=$name, value=$value]';
   }
 
   PathAttribute.fromJson(Map<String, dynamic> json) {

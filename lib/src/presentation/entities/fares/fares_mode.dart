@@ -24,7 +24,7 @@ class FaresMode implements Serializable {
 
   @override
   String toString() {
-    return 'FaresMode[id=$id, name=$name, description=$description, ]';
+    return 'FaresMode[id=$id, name=$name, description=$description]';
   }
 
   FaresMode.fromJson(Map<String, dynamic> json) {

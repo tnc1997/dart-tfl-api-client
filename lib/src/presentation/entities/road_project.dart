@@ -89,7 +89,7 @@ class RoadProject implements Serializable {
 
   @override
   String toString() {
-    return 'RoadProject[projectId=$projectId, schemeName=$schemeName, projectName=$projectName, projectDescription=$projectDescription, projectPageUrl=$projectPageUrl, consultationPageUrl=$consultationPageUrl, consultationStartDate=$consultationStartDate, consultationEndDate=$consultationEndDate, constructionStartDate=$constructionStartDate, constructionEndDate=$constructionEndDate, boroughsBenefited=$boroughsBenefited, cycleSuperhighwayId=$cycleSuperhighwayId, phase=$phase, contactName=$contactName, contactEmail=$contactEmail, externalPageUrl=$externalPageUrl, projectSummaryPageUrl=$projectSummaryPageUrl, ]';
+    return 'RoadProject[projectId=$projectId, schemeName=$schemeName, projectName=$projectName, projectDescription=$projectDescription, projectPageUrl=$projectPageUrl, consultationPageUrl=$consultationPageUrl, consultationStartDate=$consultationStartDate, consultationEndDate=$consultationEndDate, constructionStartDate=$constructionStartDate, constructionEndDate=$constructionEndDate, boroughsBenefited=$boroughsBenefited, cycleSuperhighwayId=$cycleSuperhighwayId, phase=$phase, contactName=$contactName, contactEmail=$contactEmail, externalPageUrl=$externalPageUrl, projectSummaryPageUrl=$projectSummaryPageUrl]';
   }
 
   RoadProject.fromJson(Map<String, dynamic> json) {

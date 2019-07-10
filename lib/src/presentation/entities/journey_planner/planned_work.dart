@@ -32,7 +32,7 @@ class PlannedWork implements Serializable {
 
   @override
   String toString() {
-    return 'PlannedWork[id=$id, description=$description, createdDateTime=$createdDateTime, lastUpdateDateTime=$lastUpdateDateTime, ]';
+    return 'PlannedWork[id=$id, description=$description, createdDateTime=$createdDateTime, lastUpdateDateTime=$lastUpdateDateTime]';
   }
 
   PlannedWork.fromJson(Map<String, dynamic> json) {

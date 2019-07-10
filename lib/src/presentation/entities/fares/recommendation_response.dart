@@ -17,7 +17,7 @@ class RecommendationResponse implements Serializable {
 
   @override
   String toString() {
-    return 'RecommendationResponse[recommendations=$recommendations, ]';
+    return 'RecommendationResponse[recommendations=$recommendations]';
   }
 
   RecommendationResponse.fromJson(Map<String, dynamic> json) {

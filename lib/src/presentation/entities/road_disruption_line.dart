@@ -45,7 +45,7 @@ class RoadDisruptionLine implements Serializable {
 
   @override
   String toString() {
-    return 'RoadDisruptionLine[id=$id, roadDisruptionId=$roadDisruptionId, isDiversion=$isDiversion, multiLineString=$multiLineString, startDate=$startDate, endDate=$endDate, startTime=$startTime, endTime=$endTime, ]';
+    return 'RoadDisruptionLine[id=$id, roadDisruptionId=$roadDisruptionId, isDiversion=$isDiversion, multiLineString=$multiLineString, startDate=$startDate, endDate=$endDate, startTime=$startTime, endTime=$endTime]';
   }
 
   RoadDisruptionLine.fromJson(Map<String, dynamic> json) {

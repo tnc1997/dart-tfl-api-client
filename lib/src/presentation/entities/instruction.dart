@@ -25,7 +25,7 @@ class Instruction implements Serializable {
 
   @override
   String toString() {
-    return 'Instruction[summary=$summary, detailed=$detailed, steps=$steps, ]';
+    return 'Instruction[summary=$summary, detailed=$detailed, steps=$steps]';
   }
 
   Instruction.fromJson(Map<String, dynamic> json) {

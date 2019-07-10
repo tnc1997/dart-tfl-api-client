@@ -21,7 +21,7 @@ class StationInterval implements Serializable {
 
   @override
   String toString() {
-    return 'StationInterval[id=$id, intervals=$intervals, ]';
+    return 'StationInterval[id=$id, intervals=$intervals]';
   }
 
   StationInterval.fromJson(Map<String, dynamic> json) {

@@ -32,7 +32,7 @@ class Message implements Serializable {
 
   @override
   String toString() {
-    return 'Message[bulletOrder=$bulletOrder, header=$header, messageText=$messageText, linkText=$linkText, url=$url, ]';
+    return 'Message[bulletOrder=$bulletOrder, header=$header, messageText=$messageText, linkText=$linkText, url=$url]';
   }
 
   Message.fromJson(Map<String, dynamic> json) {

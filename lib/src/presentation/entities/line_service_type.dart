@@ -21,7 +21,7 @@ class LineServiceType implements Serializable {
 
   @override
   String toString() {
-    return 'LineServiceType[lineName=$lineName, lineSpecificServiceTypes=$lineSpecificServiceTypes, ]';
+    return 'LineServiceType[lineName=$lineName, lineSpecificServiceTypes=$lineSpecificServiceTypes]';
   }
 
   LineServiceType.fromJson(Map<String, dynamic> json) {

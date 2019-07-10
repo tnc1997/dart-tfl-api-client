@@ -49,7 +49,7 @@ class StopPointSequence implements Serializable {
 
   @override
   String toString() {
-    return 'StopPointSequence[lineId=$lineId, lineName=$lineName, direction=$direction, branchId=$branchId, nextBranchIds=$nextBranchIds, prevBranchIds=$prevBranchIds, stopPoint=$stopPoint, serviceType=$serviceType, ]';
+    return 'StopPointSequence[lineId=$lineId, lineName=$lineName, direction=$direction, branchId=$branchId, nextBranchIds=$nextBranchIds, prevBranchIds=$prevBranchIds, stopPoint=$stopPoint, serviceType=$serviceType]';
   }
 
   StopPointSequence.fromJson(Map<String, dynamic> json) {

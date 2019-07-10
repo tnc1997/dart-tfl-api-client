@@ -41,7 +41,7 @@ class RoadDisruptionImpactArea implements Serializable {
 
   @override
   String toString() {
-    return 'RoadDisruptionImpactArea[id=$id, roadDisruptionId=$roadDisruptionId, polygon=$polygon, startDate=$startDate, endDate=$endDate, startTime=$startTime, endTime=$endTime, ]';
+    return 'RoadDisruptionImpactArea[id=$id, roadDisruptionId=$roadDisruptionId, polygon=$polygon, startDate=$startDate, endDate=$endDate, startTime=$startTime, endTime=$endTime]';
   }
 
   RoadDisruptionImpactArea.fromJson(Map<String, dynamic> json) {

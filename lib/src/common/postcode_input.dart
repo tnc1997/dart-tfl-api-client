@@ -16,7 +16,7 @@ class PostcodeInput implements Serializable {
 
   @override
   String toString() {
-    return 'PostcodeInput[postcode=$postcode, ]';
+    return 'PostcodeInput[postcode=$postcode]';
   }
 
   PostcodeInput.fromJson(Map<String, dynamic> json) {

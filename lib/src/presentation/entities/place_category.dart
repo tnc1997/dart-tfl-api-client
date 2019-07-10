@@ -20,7 +20,7 @@ class PlaceCategory implements Serializable {
 
   @override
   String toString() {
-    return 'PlaceCategory[category=$category, availableKeys=$availableKeys, ]';
+    return 'PlaceCategory[category=$category, availableKeys=$availableKeys]';
   }
 
   PlaceCategory.fromJson(Map<String, dynamic> json) {

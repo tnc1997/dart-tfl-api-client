@@ -21,7 +21,7 @@ class PlacePolygon implements Serializable {
 
   @override
   String toString() {
-    return 'PlacePolygon[geoPoints=$geoPoints, commonName=$commonName, ]';
+    return 'PlacePolygon[geoPoints=$geoPoints, commonName=$commonName]';
   }
 
   PlacePolygon.fromJson(Map<String, dynamic> json) {

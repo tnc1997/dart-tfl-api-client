@@ -50,7 +50,7 @@ class LineStatus implements Serializable {
 
   @override
   String toString() {
-    return 'LineStatus[id=$id, lineId=$lineId, statusSeverity=$statusSeverity, statusSeverityDescription=$statusSeverityDescription, reason=$reason, created=$created, modified=$modified, validityPeriods=$validityPeriods, disruption=$disruption, ]';
+    return 'LineStatus[id=$id, lineId=$lineId, statusSeverity=$statusSeverity, statusSeverityDescription=$statusSeverityDescription, reason=$reason, created=$created, modified=$modified, validityPeriods=$validityPeriods, disruption=$disruption]';
   }
 
   LineStatus.fromJson(Map<String, dynamic> json) {

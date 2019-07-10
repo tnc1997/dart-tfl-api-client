@@ -29,7 +29,7 @@ class RouteOption implements Serializable {
 
   @override
   String toString() {
-    return 'RouteOption[id=$id, name=$name, directions=$directions, lineIdentifier=$lineIdentifier, ]';
+    return 'RouteOption[id=$id, name=$name, directions=$directions, lineIdentifier=$lineIdentifier]';
   }
 
   RouteOption.fromJson(Map<String, dynamic> json) {

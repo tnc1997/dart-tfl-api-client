@@ -1,6 +1,6 @@
 import './cycle_hire_docking_station_data.dart';
 import './journey.dart';
-import './journey_vector.dart';
+import './vector.dart';
 import './search_criteria.dart';
 import '../line.dart';
 import '../../../internal/serializable.dart';
@@ -18,7 +18,7 @@ class ItineraryResult implements Serializable {
 
   SearchCriteria searchCriteria;
 
-  JourneyVector journeyVector;
+  Vector journeyVector;
 
   ItineraryResult({
     this.journeys,
@@ -45,7 +45,7 @@ class ItineraryResult implements Serializable {
 
   @override
   String toString() {
-    return 'ItineraryResult[journeys=$journeys, lines=$lines, cycleHireDockingStationData=$cycleHireDockingStationData, stopMessages=$stopMessages, recommendedMaxAgeMinutes=$recommendedMaxAgeMinutes, searchCriteria=$searchCriteria, journeyVector=$journeyVector, ]';
+    return 'ItineraryResult[journeys=$journeys, lines=$lines, cycleHireDockingStationData=$cycleHireDockingStationData, stopMessages=$stopMessages, recommendedMaxAgeMinutes=$recommendedMaxAgeMinutes, searchCriteria=$searchCriteria, journeyVector=$journeyVector]';
   }
 
   ItineraryResult.fromJson(Map<String, dynamic> json) {
@@ -59,7 +59,7 @@ class ItineraryResult implements Serializable {
         (json['stopMessages'] as List).map((item) => item as String).toList();
     recommendedMaxAgeMinutes = json['recommendedMaxAgeMinutes'];
     searchCriteria = SearchCriteria.fromJson(json['searchCriteria']);
-    journeyVector = JourneyVector.fromJson(json['journeyVector']);
+    journeyVector = Vector.fromJson(json['journeyVector']);
   }
 
   static List<ItineraryResult> listFromJson(

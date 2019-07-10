@@ -45,7 +45,7 @@ class SearchResponse implements Serializable {
 
   @override
   String toString() {
-    return 'SearchResponse[query=$query, from=$from, page=$page, pageSize=$pageSize, provider=$provider, total=$total, matches=$matches, maxScore=$maxScore, ]';
+    return 'SearchResponse[query=$query, from=$from, page=$page, pageSize=$pageSize, provider=$provider, total=$total, matches=$matches, maxScore=$maxScore]';
   }
 
   SearchResponse.fromJson(Map<String, dynamic> json) {

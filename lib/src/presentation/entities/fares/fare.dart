@@ -57,7 +57,7 @@ class Fare implements Serializable {
 
   @override
   String toString() {
-    return 'Fare[id=$id, passengerType=$passengerType, validFrom=$validFrom, validUntil=$validUntil, ticketTime=$ticketTime, ticketType=$ticketType, cost=$cost, cap=$cap, description=$description, zone=$zone, mode=$mode, ]';
+    return 'Fare[id=$id, passengerType=$passengerType, validFrom=$validFrom, validUntil=$validUntil, ticketTime=$ticketTime, ticketType=$ticketType, cost=$cost, cap=$cap, description=$description, zone=$zone, mode=$mode]';
   }
 
   Fare.fromJson(Map<String, dynamic> json) {

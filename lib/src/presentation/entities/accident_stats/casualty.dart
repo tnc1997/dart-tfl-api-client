@@ -28,7 +28,7 @@ class Casualty implements Serializable {
 
   @override
   String toString() {
-    return 'Casualty[age=$age, severity=$severity, mode=$mode, ageBand=$ageBand, ]';
+    return 'Casualty[age=$age, severity=$severity, mode=$mode, ageBand=$ageBand]';
   }
 
   Casualty.fromJson(Map<String, dynamic> json) {

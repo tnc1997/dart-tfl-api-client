@@ -32,7 +32,7 @@ class StreetSegment implements Serializable {
 
   @override
   String toString() {
-    return 'StreetSegment[toid=$toid, lineString=$lineString, sourceSystemId=$sourceSystemId, sourceSystemKey=$sourceSystemKey, ]';
+    return 'StreetSegment[toid=$toid, lineString=$lineString, sourceSystemId=$sourceSystemId, sourceSystemKey=$sourceSystemKey]';
   }
 
   StreetSegment.fromJson(Map<String, dynamic> json) {

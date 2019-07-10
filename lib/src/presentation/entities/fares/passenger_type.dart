@@ -28,7 +28,7 @@ class PassengerType implements Serializable {
 
   @override
   String toString() {
-    return 'PassengerType[type=$type, description=$description, displayName=$displayName, displayOrder=$displayOrder, ]';
+    return 'PassengerType[type=$type, description=$description, displayName=$displayName, displayOrder=$displayOrder]';
   }
 
   PassengerType.fromJson(Map<String, dynamic> json) {

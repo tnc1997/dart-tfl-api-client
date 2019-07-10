@@ -16,7 +16,7 @@ class MatchedRouteSections implements Serializable {
 
   @override
   String toString() {
-    return 'MatchedRouteSections[id=$id, ]';
+    return 'MatchedRouteSections[id=$id]';
   }
 
   MatchedRouteSections.fromJson(Map<String, dynamic> json) {

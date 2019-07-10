@@ -66,7 +66,7 @@ class RouteSection implements Serializable {
 
   @override
   String toString() {
-    return 'RouteSection[id=$id, lineId=$lineId, routeCode=$routeCode, name=$name, lineString=$lineString, direction=$direction, originationName=$originationName, destinationName=$destinationName, validTo=$validTo, validFrom=$validFrom, routeSectionNaptanEntrySequence=$routeSectionNaptanEntrySequence, ]';
+    return 'RouteSection[id=$id, lineId=$lineId, routeCode=$routeCode, name=$name, lineString=$lineString, direction=$direction, originationName=$originationName, destinationName=$destinationName, validTo=$validTo, validFrom=$validFrom, routeSectionNaptanEntrySequence=$routeSectionNaptanEntrySequence]';
   }
 
   RouteSection.fromJson(Map<String, dynamic> json) {

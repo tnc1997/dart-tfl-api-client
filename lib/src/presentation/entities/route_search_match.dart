@@ -59,7 +59,7 @@ class RouteSearchMatch implements Serializable {
 
   @override
   String toString() {
-    return 'RouteSearchMatch[lineId=$lineId, mode=$mode, lineName=$lineName, lineRouteSection=$lineRouteSection, matchedRouteSections=$matchedRouteSections, matchedStops=$matchedStops, id=$id, url=$url, name=$name, lat=$lat, lon=$lon, ]';
+    return 'RouteSearchMatch[lineId=$lineId, mode=$mode, lineName=$lineName, lineRouteSection=$lineRouteSection, matchedRouteSections=$matchedRouteSections, matchedStops=$matchedStops, id=$id, url=$url, name=$name, lat=$lat, lon=$lon]';
   }
 
   RouteSearchMatch.fromJson(Map<String, dynamic> json) {

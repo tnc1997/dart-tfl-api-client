@@ -26,7 +26,7 @@ class SearchCriteria implements Serializable {
 
   @override
   String toString() {
-    return 'SearchCriteria[dateTime=$dateTime, dateTimeType=$dateTimeType, timeAdjustments=$timeAdjustments, ]';
+    return 'SearchCriteria[dateTime=$dateTime, dateTimeType=$dateTimeType, timeAdjustments=$timeAdjustments]';
   }
 
   SearchCriteria.fromJson(Map<String, dynamic> json) {

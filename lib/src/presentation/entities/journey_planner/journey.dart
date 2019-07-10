@@ -37,7 +37,7 @@ class Journey implements Serializable {
 
   @override
   String toString() {
-    return 'Journey[startDateTime=$startDateTime, duration=$duration, arrivalDateTime=$arrivalDateTime, legs=$legs, fare=$fare, ]';
+    return 'Journey[startDateTime=$startDateTime, duration=$duration, arrivalDateTime=$arrivalDateTime, legs=$legs, fare=$fare]';
   }
 
   Journey.fromJson(Map<String, dynamic> json) {

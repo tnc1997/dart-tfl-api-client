@@ -20,7 +20,7 @@ class JourneyFareCaveat implements Serializable {
 
   @override
   String toString() {
-    return 'FareCaveat[text=$text, type=$type, ]';
+    return 'JourneyFareCaveat[text=$text, type=$type]';
   }
 
   JourneyFareCaveat.fromJson(Map<String, dynamic> json) {

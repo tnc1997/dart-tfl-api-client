@@ -24,7 +24,7 @@ class Redirect implements Serializable {
 
   @override
   String toString() {
-    return 'Redirect[shortUrl=$shortUrl, longUrl=$longUrl, active=$active, ]';
+    return 'Redirect[shortUrl=$shortUrl, longUrl=$longUrl, active=$active]';
   }
 
   Redirect.fromJson(Map<String, dynamic> json) {

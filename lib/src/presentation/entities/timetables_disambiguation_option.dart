@@ -20,7 +20,7 @@ class TimetablesDisambiguationOption implements Serializable {
 
   @override
   String toString() {
-    return 'TimetablesDisambiguationOption[description=$description, uri=$uri, ]';
+    return 'TimetablesDisambiguationOption[description=$description, uri=$uri]';
   }
 
   TimetablesDisambiguationOption.fromJson(Map<String, dynamic> json) {

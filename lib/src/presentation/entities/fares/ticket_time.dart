@@ -20,7 +20,7 @@ class TicketTime implements Serializable {
 
   @override
   String toString() {
-    return 'TicketTime[type=$type, description=$description, ]';
+    return 'TicketTime[type=$type, description=$description]';
   }
 
   TicketTime.fromJson(Map<String, dynamic> json) {

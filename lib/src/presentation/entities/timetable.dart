@@ -21,7 +21,7 @@ class Timetable implements Serializable {
 
   @override
   String toString() {
-    return 'Timetable[departureStopId=$departureStopId, routes=$routes, ]';
+    return 'Timetable[departureStopId=$departureStopId, routes=$routes]';
   }
 
   Timetable.fromJson(Map<String, dynamic> json) {

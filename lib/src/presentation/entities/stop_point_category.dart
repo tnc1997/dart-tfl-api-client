@@ -20,7 +20,7 @@ class StopPointCategory implements Serializable {
 
   @override
   String toString() {
-    return 'StopPointCategory[category=$category, availableKeys=$availableKeys, ]';
+    return 'StopPointCategory[category=$category, availableKeys=$availableKeys]';
   }
 
   StopPointCategory.fromJson(Map<String, dynamic> json) {

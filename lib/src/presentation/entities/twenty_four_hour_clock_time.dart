@@ -20,7 +20,7 @@ class TwentyFourHourClockTime implements Serializable {
 
   @override
   String toString() {
-    return 'TwentyFourHourClockTime[hour=$hour, minute=$minute, ]';
+    return 'TwentyFourHourClockTime[hour=$hour, minute=$minute]';
   }
 
   TwentyFourHourClockTime.fromJson(Map<String, dynamic> json) {

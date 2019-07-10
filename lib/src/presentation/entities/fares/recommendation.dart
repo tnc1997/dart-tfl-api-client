@@ -85,7 +85,7 @@ class Recommendation implements Serializable {
 
   @override
   String toString() {
-    return 'Recommendation[id=$id, rule=$rule, rank=$rank, fareType=$fareType, product=$product, ticketType=$ticketType, ticketTime=$ticketTime, productType=$productType, discountCard=$discountCard, zones=$zones, cost=$cost, priceDescription=$priceDescription, priceComparison=$priceComparison, recommendedTopUp=$recommendedTopUp, notes=$notes, keyFeatures=$keyFeatures, gettingYourTicket=$gettingYourTicket, singleFare=$singleFare, ]';
+    return 'Recommendation[id=$id, rule=$rule, rank=$rank, fareType=$fareType, product=$product, ticketType=$ticketType, ticketTime=$ticketTime, productType=$productType, discountCard=$discountCard, zones=$zones, cost=$cost, priceDescription=$priceDescription, priceComparison=$priceComparison, recommendedTopUp=$recommendedTopUp, notes=$notes, keyFeatures=$keyFeatures, gettingYourTicket=$gettingYourTicket, singleFare=$singleFare]';
   }
 
   Recommendation.fromJson(Map<String, dynamic> json) {

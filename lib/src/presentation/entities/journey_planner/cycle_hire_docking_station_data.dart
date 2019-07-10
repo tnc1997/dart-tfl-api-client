@@ -36,7 +36,7 @@ class CycleHireDockingStationData implements Serializable {
 
   @override
   String toString() {
-    return 'CycleHireDockingStationData[originNumberOfBikes=$originNumberOfBikes, destinationNumberOfBikes=$destinationNumberOfBikes, originNumberOfEmptySlots=$originNumberOfEmptySlots, destinationNumberOfEmptySlots=$destinationNumberOfEmptySlots, originId=$originId, destinationId=$destinationId, ]';
+    return 'CycleHireDockingStationData[originNumberOfBikes=$originNumberOfBikes, destinationNumberOfBikes=$destinationNumberOfBikes, originNumberOfEmptySlots=$originNumberOfEmptySlots, destinationNumberOfEmptySlots=$destinationNumberOfEmptySlots, originId=$originId, destinationId=$destinationId]';
   }
 
   CycleHireDockingStationData.fromJson(Map<String, dynamic> json) {

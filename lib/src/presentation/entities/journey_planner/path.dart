@@ -26,7 +26,7 @@ class Path implements Serializable {
 
   @override
   String toString() {
-    return 'Path[lineString=$lineString, stopPoints=$stopPoints, elevation=$elevation, ]';
+    return 'Path[lineString=$lineString, stopPoints=$stopPoints, elevation=$elevation]';
   }
 
   Path.fromJson(Map<String, dynamic> json) {

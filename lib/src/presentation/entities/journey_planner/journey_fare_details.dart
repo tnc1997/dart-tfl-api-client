@@ -49,7 +49,7 @@ class JourneyFareDetails implements Serializable {
 
   @override
   String toString() {
-    return 'Fare[lowZone=$lowZone, highZone=$highZone, cost=$cost, chargeProfileName=$chargeProfileName, isHopperFare=$isHopperFare, chargeLevel=$chargeLevel, peak=$peak, offPeak=$offPeak, taps=$taps, ]';
+    return 'JourneyFareDetails[lowZone=$lowZone, highZone=$highZone, cost=$cost, chargeProfileName=$chargeProfileName, isHopperFare=$isHopperFare, chargeLevel=$chargeLevel, peak=$peak, offPeak=$offPeak, taps=$taps]';
   }
 
   JourneyFareDetails.fromJson(Map<String, dynamic> json) {

@@ -47,7 +47,7 @@ class TrainLoading implements Serializable {
 
   @override
   String toString() {
-    return 'TrainLoading[line=$line, lineDirection=$lineDirection, platformDirection=$platformDirection, direction=$direction, naptanTo=$naptanTo, timeSlice=$timeSlice, value=$value, ]';
+    return 'TrainLoading[line=$line, lineDirection=$lineDirection, platformDirection=$platformDirection, direction=$direction, naptanTo=$naptanTo, timeSlice=$timeSlice, value=$value]';
   }
 
   TrainLoading.fromJson(Map<String, dynamic> json) {

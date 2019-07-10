@@ -22,7 +22,7 @@ class PassengerFlow implements Serializable {
 
   @override
   String toString() {
-    return 'PassengerFlow[timeSlice=$timeSlice, value=$value, ]';
+    return 'PassengerFlow[timeSlice=$timeSlice, value=$value]';
   }
 
   PassengerFlow.fromJson(Map<String, dynamic> json) {

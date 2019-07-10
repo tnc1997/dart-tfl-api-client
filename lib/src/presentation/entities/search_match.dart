@@ -32,7 +32,7 @@ class SearchMatch implements Serializable {
 
   @override
   String toString() {
-    return 'SearchMatch[id=$id, url=$url, name=$name, lat=$lat, lon=$lon, ]';
+    return 'SearchMatch[id=$id, url=$url, name=$name, lat=$lat, lon=$lon]';
   }
 
   SearchMatch.fromJson(Map<String, dynamic> json) {

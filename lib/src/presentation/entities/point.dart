@@ -22,7 +22,7 @@ class Point implements Serializable {
 
   @override
   String toString() {
-    return 'Point[lat=$lat, lon=$lon, ]';
+    return 'Point[lat=$lat, lon=$lon]';
   }
 
   Point.fromJson(Map<String, dynamic> json) {

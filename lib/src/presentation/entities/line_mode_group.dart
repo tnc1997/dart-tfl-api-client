@@ -20,7 +20,7 @@ class LineModeGroup implements Serializable {
 
   @override
   String toString() {
-    return 'LineModeGroup[modeName=$modeName, lineIdentifier=$lineIdentifier, ]';
+    return 'LineModeGroup[modeName=$modeName, lineIdentifier=$lineIdentifier]';
   }
 
   LineModeGroup.fromJson(Map<String, dynamic> json) {

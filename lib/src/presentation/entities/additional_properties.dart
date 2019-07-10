@@ -32,7 +32,7 @@ class AdditionalProperties implements Serializable {
 
   @override
   String toString() {
-    return 'AdditionalProperties[category=$category, key=$key, sourceSystemKey=$sourceSystemKey, value=$value, modified=$modified, ]';
+    return 'AdditionalProperties[category=$category, key=$key, sourceSystemKey=$sourceSystemKey, value=$value, modified=$modified]';
   }
 
   AdditionalProperties.fromJson(Map<String, dynamic> json) {

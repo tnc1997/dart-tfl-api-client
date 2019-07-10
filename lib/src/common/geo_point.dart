@@ -20,7 +20,7 @@ class GeoPoint implements Serializable {
 
   @override
   String toString() {
-    return 'GeoPoint[lat=$lat, lon=$lon, ]';
+    return 'GeoPoint[lat=$lat, lon=$lon]';
   }
 
   GeoPoint.fromJson(Map<String, dynamic> json) {

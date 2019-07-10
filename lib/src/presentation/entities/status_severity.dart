@@ -24,7 +24,7 @@ class StatusSeverity implements Serializable {
 
   @override
   String toString() {
-    return 'StatusSeverity[modeName=$modeName, severityLevel=$severityLevel, description=$description, ]';
+    return 'StatusSeverity[modeName=$modeName, severityLevel=$severityLevel, description=$description]';
   }
 
   StatusSeverity.fromJson(Map<String, dynamic> json) {

@@ -36,7 +36,7 @@ class PredictionTiming implements Serializable {
 
   @override
   String toString() {
-    return 'PredictionTiming[countdownServerAdjustment=$countdownServerAdjustment, source=$source, insert=$insert, read=$read, sent=$sent, received=$received, ]';
+    return 'PredictionTiming[countdownServerAdjustment=$countdownServerAdjustment, source=$source, insert=$insert, read=$read, sent=$sent, received=$received]';
   }
 
   PredictionTiming.fromJson(Map<String, dynamic> json) {

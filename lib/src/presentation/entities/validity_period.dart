@@ -24,7 +24,7 @@ class ValidityPeriod implements Serializable {
 
   @override
   String toString() {
-    return 'ValidityPeriod[fromDate=$fromDate, toDate=$toDate, isNow=$isNow, ]';
+    return 'ValidityPeriod[fromDate=$fromDate, toDate=$toDate, isNow=$isNow]';
   }
 
   ValidityPeriod.fromJson(Map<String, dynamic> json) {

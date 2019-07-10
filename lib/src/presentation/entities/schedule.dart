@@ -34,7 +34,7 @@ class Schedule implements Serializable {
 
   @override
   String toString() {
-    return 'Schedule[name=$name, knownJourneys=$knownJourneys, firstJourney=$firstJourney, lastJourney=$lastJourney, periods=$periods, ]';
+    return 'Schedule[name=$name, knownJourneys=$knownJourneys, firstJourney=$firstJourney, lastJourney=$lastJourney, periods=$periods]';
   }
 
   Schedule.fromJson(Map<String, dynamic> json) {

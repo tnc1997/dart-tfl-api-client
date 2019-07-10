@@ -28,7 +28,7 @@ class NetworkStatus implements Serializable {
 
   @override
   String toString() {
-    return 'NetworkStatus[operator=$operator, status=$status, message=$message, statusLevel=$statusLevel, ]';
+    return 'NetworkStatus[operator=$operator, status=$status, message=$message, statusLevel=$statusLevel]';
   }
 
   NetworkStatus.fromJson(Map<String, dynamic> json) {

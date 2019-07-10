@@ -31,7 +31,7 @@ class Period implements Serializable {
 
   @override
   String toString() {
-    return 'Period[type=$type, fromTime=$fromTime, toTime=$toTime, frequency=$frequency, ]';
+    return 'Period[type=$type, fromTime=$fromTime, toTime=$toTime, frequency=$frequency]';
   }
 
   Period.fromJson(Map<String, dynamic> json) {

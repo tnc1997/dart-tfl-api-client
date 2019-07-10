@@ -20,7 +20,7 @@ class DateRange implements Serializable {
 
   @override
   String toString() {
-    return 'DateRange[startDate=$startDate, endDate=$endDate, ]';
+    return 'DateRange[startDate=$startDate, endDate=$endDate]';
   }
 
   DateRange.fromJson(Map<String, dynamic> json) {

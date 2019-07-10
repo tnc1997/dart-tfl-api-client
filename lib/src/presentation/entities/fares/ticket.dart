@@ -47,7 +47,7 @@ class Ticket implements Serializable {
 
   @override
   String toString() {
-    return 'Ticket[passengerType=$passengerType, ticketType=$ticketType, ticketTime=$ticketTime, cost=$cost, description=$description, mode=$mode, displayOrder=$displayOrder, messages=$messages, ]';
+    return 'Ticket[passengerType=$passengerType, ticketType=$ticketType, ticketTime=$ticketTime, cost=$cost, description=$description, mode=$mode, displayOrder=$displayOrder, messages=$messages]';
   }
 
   Ticket.fromJson(Map<String, dynamic> json) {
