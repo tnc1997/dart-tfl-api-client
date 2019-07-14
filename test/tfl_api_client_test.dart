@@ -106,8 +106,8 @@ void main() {
     test('get', () async {
       expect(
         await _tflApi.journeys.get(
-          from: 'amersham',
-          to: 'chesham',
+          from: '1000006',
+          to: '1000046',
         ),
         isA<List<Journey>>(),
       );
