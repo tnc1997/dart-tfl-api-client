@@ -6,9 +6,12 @@ part 'vehicle.g.dart';
 
 @JsonSerializable()
 class Vehicle implements Serializable {
+  String id;
+
   String type;
 
   Vehicle({
+    this.id,
     this.type,
   });
 

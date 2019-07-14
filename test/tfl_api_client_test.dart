@@ -35,13 +35,6 @@ void main() {
       );
     });
 
-    test('getBikePointOccupancy', () async {
-      expect(
-        await _tflApi.bikePoints.getBikePointOccupancy('BikePoints_1'),
-        isA<BikePointOccupancy>(),
-      );
-    });
-
     test('getById', () async {
       expect(
         await _tflApi.bikePoints.getById('BikePoints_1'),
@@ -67,10 +60,17 @@ void main() {
   });
 
   group('CarParksApi', () {
-    test('getCarParkOccupancy', () async {
+    test('get', () async {
       expect(
-        await _tflApi.carParks.getCarParkOccupancy('CarParks_800491'),
-        isA<CarParkOccupancy>(),
+        await _tflApi.carParks.get(),
+        isA<List<Place>>(),
+      );
+    });
+
+    test('getBays', () async {
+      expect(
+        await _tflApi.carParks.getBays('CarParks_800491'),
+        isA<List<Bay>>(),
       );
     });
   });
@@ -85,12 +85,10 @@ void main() {
   });
 
   group('ChargeConnectorsApi', () {
-    test('getChargeConnectorOccupancy', () async {
+    test('get', () async {
       expect(
-        await _tflApi.chargeConnectors.getChargeConnectorOccupancy(
-          'ChargePointCM-10109-85029',
-        ),
-        isA<ChargeConnectorOccupancy>(),
+        await _tflApi.chargeConnectors.get(),
+        isA<List<Place>>(),
       );
     });
   });
@@ -108,10 +106,10 @@ void main() {
     test('get', () async {
       expect(
         await _tflApi.journeys.get(
-          'amersham',
-          'chesham',
+          from: 'amersham',
+          to: 'chesham',
         ),
-        isA<ItineraryResult>(),
+        isA<List<Journey>>(),
       );
     });
   });
@@ -153,13 +151,6 @@ void main() {
         isA<List<LineStatus>>(),
       );
     });
-
-    test('getLines', () async {
-      expect(
-        await _tflApi.lineModes.getLines('tube'),
-        isA<List<Line>>(),
-      );
-    });
   });
 
   group('LineRoutesApi', () {
@@ -190,15 +181,22 @@ void main() {
   });
 
   group('LineStatusesApi', () {
-    test('getBySeverity', () async {
+    test('get', () async {
       expect(
-        await _tflApi.lineStatuses.getBySeverity(0),
+        await _tflApi.lineStatuses.get(severity: 0),
         isA<List<LineStatus>>(),
       );
     });
   });
 
   group('LinesApi', () {
+    test('get', () async {
+      expect(
+        await _tflApi.lines.get(mode: 'tube'),
+        isA<List<Line>>(),
+      );
+    });
+
     test('getById', () async {
       expect(
         await _tflApi.lines.getById('victoria'),
@@ -254,13 +252,6 @@ void main() {
         isA<TimetableResponse>(),
       );
     });
-
-    test('search', () async {
-      expect(
-        await _tflApi.lines.search('victoria'),
-        isA<RouteSearchResponse>(),
-      );
-    });
   });
 
   group('ModeActiveServiceTypesApi', () {
@@ -273,24 +264,17 @@ void main() {
   });
 
   group('ModesApi', () {
+    test('get', () async {
+      expect(
+        await _tflApi.modes.get(),
+        isA<List<Mode>>(),
+      );
+    });
+
     test('getPredictions', () async {
       expect(
         await _tflApi.modes.getPredictions('tube'),
         isA<List<Prediction>>(),
-      );
-    });
-
-    test('getStopPointDisruptions', () async {
-      expect(
-        await _tflApi.modes.getStopPointDisruptions('tube'),
-        isA<List<StopPointDisruption>>(),
-      );
-    });
-
-    test('getStopPoints', () async {
-      expect(
-        await _tflApi.modes.getStopPoints('tube'),
-        isA<List<StopPoint>>(),
       );
     });
   });
@@ -361,13 +345,6 @@ void main() {
         isA<List<RoadDisruption>>(),
       );
     });
-
-    /*test('getById', () async {
-      expect(
-        await _tflApi.roadDisruptions.getById(''),
-        isA<RoadDisruption>(),
-      );
-    });*/
   });
 
   group('RoadStatusSeveritiesApi', () {
@@ -425,6 +402,13 @@ void main() {
         isA<List<Mode>>(),
       );
     });
+
+    test('getStopPointDisruptions', () async {
+      expect(
+        await _tflApi.stopPointModes.getStopPointDisruptions('tube'),
+        isA<List<StopPointDisruption>>(),
+      );
+    });
   });
 
   group('StopPointTypesApi', () {
@@ -440,6 +424,11 @@ void main() {
     test('get', () async {
       expect(
         await _tflApi.stopPoints.get(type: 'NaptanMetroStation'),
+        isA<List<StopPoint>>(),
+      );
+
+      expect(
+        await _tflApi.stopPoints.get(mode: 'tube'),
         isA<List<StopPoint>>(),
       );
     });
@@ -516,6 +505,13 @@ void main() {
   });
 
   group('VehiclesApi', () {
+    test('get', () async {
+      expect(
+        await _tflApi.vehicles.get(mode: 'tube'),
+        isA<List<Vehicle>>(),
+      );
+    });
+
     test('getPredictions', () async {
       expect(
         await _tflApi.vehicles.getPredictions('LT61 AHT'),

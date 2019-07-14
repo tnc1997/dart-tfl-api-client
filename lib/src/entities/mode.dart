@@ -26,6 +26,16 @@ class Mode implements Serializable {
   }
 
   @override
+  bool operator ==(other) {
+    return other is Mode && modeName == other.modeName;
+  }
+
+  @override
+  int get hashCode {
+    return modeName.hashCode;
+  }
+
+  @override
   Map<String, dynamic> toJson() {
     return _$ModeToJson(this);
   }

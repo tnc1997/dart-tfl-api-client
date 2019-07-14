@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/apis/place_types_api.dart';
+import 'package:tfl_api_client/src/apis/place_types_resource_api.dart';
 
 import '../interfaces/serializable.dart';
 import 'additional_properties.dart';
@@ -59,7 +59,7 @@ class StopPoint implements Serializable {
   /// The distance of the place from its search point.
   double distance;
 
-  /// The type of this place. See [PlaceTypesApi.get] for possible values.
+  /// The type of this place. See [PlaceTypesResourceApi.get] for possible values.
   String placeType;
 
   /// The bag of additional key/value pairs with extra information about this place.
@@ -107,6 +107,16 @@ class StopPoint implements Serializable {
 
   factory StopPoint.fromJson(Map<String, dynamic> json) {
     return _$StopPointFromJson(json);
+  }
+
+  @override
+  bool operator ==(other) {
+    return other is StopPoint && id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode;
   }
 
   @override

@@ -1,36 +1,36 @@
 import 'package:http/http.dart';
 
-import 'apis/accident_details_api.dart';
-import 'apis/air_quality_forecasts_api.dart';
-import 'apis/bike_points_api.dart';
-import 'apis/car_park_occupancies_api.dart';
-import 'apis/car_parks_api.dart';
-import 'apis/charge_connector_occupancies_api.dart';
-import 'apis/charge_connectors_api.dart';
-import 'apis/journey_modes_api.dart';
-import 'apis/journeys_api.dart';
-import 'apis/line_disruption_categories_api.dart';
-import 'apis/line_modes_api.dart';
-import 'apis/line_routes_api.dart';
-import 'apis/line_service_types_api.dart';
-import 'apis/line_status_severities_api.dart';
-import 'apis/line_statuses_api.dart';
-import 'apis/lines_api.dart';
-import 'apis/mode_active_service_types_api.dart';
-import 'apis/modes_api.dart';
-import 'apis/place_categories_api.dart';
-import 'apis/place_types_api.dart';
-import 'apis/places_api.dart';
-import 'apis/private_hire_operators_api.dart';
-import 'apis/road_categories_api.dart';
-import 'apis/road_disruptions_api.dart';
-import 'apis/road_status_severities_api.dart';
-import 'apis/roads_api.dart';
-import 'apis/stop_point_categories_api.dart';
-import 'apis/stop_point_modes_api.dart';
-import 'apis/stop_point_types_api.dart';
-import 'apis/stop_points_api.dart';
-import 'apis/vehicles_api.dart';
+import 'apis/accident_details_resource_api.dart';
+import 'apis/air_quality_forecasts_resource_api.dart';
+import 'apis/bike_points_resource_api.dart';
+import 'apis/car_park_occupancies_resource_api.dart';
+import 'apis/car_parks_resource_api.dart';
+import 'apis/charge_connector_occupancies_resource_api.dart';
+import 'apis/charge_connectors_resource_api.dart';
+import 'apis/journey_modes_resource_api.dart';
+import 'apis/journeys_resource_api.dart';
+import 'apis/line_disruption_categories_resource_api.dart';
+import 'apis/line_modes_resource_api.dart';
+import 'apis/line_routes_resource_api.dart';
+import 'apis/line_service_types_resource_api.dart';
+import 'apis/line_status_severities_resource_api.dart';
+import 'apis/line_statuses_resource_api.dart';
+import 'apis/lines_resource_api.dart';
+import 'apis/mode_active_service_types_resource_api.dart';
+import 'apis/modes_resource_api.dart';
+import 'apis/place_categories_resource_api.dart';
+import 'apis/place_types_resource_api.dart';
+import 'apis/places_resource_api.dart';
+import 'apis/private_hire_operators_resource_api.dart';
+import 'apis/road_categories_resource_api.dart';
+import 'apis/road_disruptions_resource_api.dart';
+import 'apis/road_status_severities_resource_api.dart';
+import 'apis/roads_resource_api.dart';
+import 'apis/stop_point_categories_resource_api.dart';
+import 'apis/stop_point_modes_resource_api.dart';
+import 'apis/stop_point_types_resource_api.dart';
+import 'apis/stop_points_resource_api.dart';
+import 'apis/vehicles_resource_api.dart';
 import 'requesters/api_requester.dart';
 
 const _rootUrl = 'https://api.tfl.gov.uk/';
@@ -40,74 +40,83 @@ class TflApi {
 
   TflApi(Client client) : _requester = ApiRequester(client, _rootUrl);
 
-  AccidentDetailsApi get accidentDetails => AccidentDetailsApi(_requester);
+  AccidentDetailsResourceApi get accidentDetails =>
+      AccidentDetailsResourceApi(_requester);
 
-  AirQualityForecastsApi get airQualityForecasts =>
-      AirQualityForecastsApi(_requester);
+  AirQualityForecastsResourceApi get airQualityForecasts =>
+      AirQualityForecastsResourceApi(_requester);
 
-  BikePointsApi get bikePoints => BikePointsApi(_requester);
+  BikePointsResourcesApi get bikePoints => BikePointsResourcesApi(_requester);
 
-  CarParkOccupanciesApi get carParkOccupancies =>
-      CarParkOccupanciesApi(_requester);
+  CarParkOccupanciesResourceApi get carParkOccupancies =>
+      CarParkOccupanciesResourceApi(_requester);
 
-  CarParksApi get carParks => CarParksApi(_requester);
+  CarParksResourceApi get carParks => CarParksResourceApi(_requester);
 
-  ChargeConnectorOccupanciesApi get chargeConnectorOccupancies =>
-      ChargeConnectorOccupanciesApi(_requester);
+  ChargeConnectorOccupanciesResourceApi get chargeConnectorOccupancies =>
+      ChargeConnectorOccupanciesResourceApi(_requester);
 
-  ChargeConnectorsApi get chargeConnectors => ChargeConnectorsApi(_requester);
+  ChargeConnectorsResourceApi get chargeConnectors =>
+      ChargeConnectorsResourceApi(_requester);
 
-  JourneyModesApi get journeyModes => JourneyModesApi(_requester);
+  JourneyModesResourceApi get journeyModes =>
+      JourneyModesResourceApi(_requester);
 
-  JourneysApi get journeys => JourneysApi(_requester);
+  JourneysResourceApi get journeys => JourneysResourceApi(_requester);
 
-  LineDisruptionCategoriesApi get lineDisruptionCategories =>
-      LineDisruptionCategoriesApi(_requester);
+  LineDisruptionCategoriesResourceApi get lineDisruptionCategories =>
+      LineDisruptionCategoriesResourceApi(_requester);
 
-  LineModesApi get lineModes => LineModesApi(_requester);
+  LineModesResourceApi get lineModes => LineModesResourceApi(_requester);
 
-  LineRoutesApi get lineRoutes => LineRoutesApi(_requester);
+  LineRoutesResourceApi get lineRoutes => LineRoutesResourceApi(_requester);
 
-  LineServiceTypesApi get lineServiceTypes => LineServiceTypesApi(_requester);
+  LineServiceTypesResourceApi get lineServiceTypes =>
+      LineServiceTypesResourceApi(_requester);
 
-  LineStatusSeveritiesApi get lineStatusSeverities =>
-      LineStatusSeveritiesApi(_requester);
+  LineStatusSeveritiesResourceApi get lineStatusSeverities =>
+      LineStatusSeveritiesResourceApi(_requester);
 
-  LineStatusesApi get lineStatuses => LineStatusesApi(_requester);
+  LineStatusesResourceApi get lineStatuses =>
+      LineStatusesResourceApi(_requester);
 
   LinesApi get lines => LinesApi(_requester);
 
-  ModeActiveServiceTypesApi get modeActiveServiceTypes =>
-      ModeActiveServiceTypesApi(_requester);
+  ModeActiveServiceTypesResourceApi get modeActiveServiceTypes =>
+      ModeActiveServiceTypesResourceApi(_requester);
 
-  ModesApi get modes => ModesApi(_requester);
+  ModesResourceApi get modes => ModesResourceApi(_requester);
 
-  PlaceCategoriesApi get placeCategories => PlaceCategoriesApi(_requester);
+  PlaceCategoriesResourceApi get placeCategories =>
+      PlaceCategoriesResourceApi(_requester);
 
-  PlaceTypesApi get placeTypes => PlaceTypesApi(_requester);
+  PlaceTypesResourceApi get placeTypes => PlaceTypesResourceApi(_requester);
 
-  PlacesApi get places => PlacesApi(_requester);
+  PlacesResourceApi get places => PlacesResourceApi(_requester);
 
-  PrivateHireOperatorsApi get privateHireOperators =>
-      PrivateHireOperatorsApi(_requester);
+  PrivateHireOperatorsResourceApi get privateHireOperators =>
+      PrivateHireOperatorsResourceApi(_requester);
 
   RoadCategoriesApi get roadCategories => RoadCategoriesApi(_requester);
 
-  RoadDisruptionsApi get roadDisruptions => RoadDisruptionsApi(_requester);
+  RoadDisruptionsResourceApi get roadDisruptions =>
+      RoadDisruptionsResourceApi(_requester);
 
-  RoadStatusSeveritiesApi get roadStatusSeverities =>
-      RoadStatusSeveritiesApi(_requester);
+  RoadStatusSeveritiesResourceApi get roadStatusSeverities =>
+      RoadStatusSeveritiesResourceApi(_requester);
 
-  RoadsApi get roads => RoadsApi(_requester);
+  RoadsResourceApi get roads => RoadsResourceApi(_requester);
 
-  StopPointCategoriesApi get stopPointCategories =>
-      StopPointCategoriesApi(_requester);
+  StopPointCategoriesResourceApi get stopPointCategories =>
+      StopPointCategoriesResourceApi(_requester);
 
-  StopPointModesApi get stopPointModes => StopPointModesApi(_requester);
+  StopPointModesResourceApi get stopPointModes =>
+      StopPointModesResourceApi(_requester);
 
-  StopPointTypesApi get stopPointTypes => StopPointTypesApi(_requester);
+  StopPointTypesResourceApi get stopPointTypes =>
+      StopPointTypesResourceApi(_requester);
 
-  StopPointsApi get stopPoints => StopPointsApi(_requester);
+  StopPointsResourceApi get stopPoints => StopPointsResourceApi(_requester);
 
-  VehiclesApi get vehicles => VehiclesApi(_requester);
+  VehiclesResourceApi get vehicles => VehiclesResourceApi(_requester);
 }
