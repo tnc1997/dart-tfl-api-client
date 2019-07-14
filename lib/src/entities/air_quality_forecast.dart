@@ -2,10 +2,10 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../interfaces/serializable.dart';
 
-part 'current_forecast.g.dart';
+part 'air_quality_forecast.g.dart';
 
 @JsonSerializable()
-class CurrentForecast implements Serializable {
+class AirQualityForecast implements Serializable {
   String forecastType;
 
   String forecastId;
@@ -32,7 +32,7 @@ class CurrentForecast implements Serializable {
 
   String forecastText;
 
-  CurrentForecast({
+  AirQualityForecast({
     this.forecastType,
     this.forecastId,
     this.publishedDate,
@@ -48,13 +48,13 @@ class CurrentForecast implements Serializable {
     this.forecastText,
   });
 
-  factory CurrentForecast.fromJson(Map<String, dynamic> json) {
-    return _$CurrentForecastFromJson(json);
+  factory AirQualityForecast.fromJson(Map<String, dynamic> json) {
+    return _$AirQualityForecastFromJson(json);
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$CurrentForecastToJson(this);
+    return _$AirQualityForecastToJson(this);
   }
 
   @override

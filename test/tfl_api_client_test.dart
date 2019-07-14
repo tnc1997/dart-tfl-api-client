@@ -9,20 +9,20 @@ void main() {
 
   TflApi _tflApi;
 
-  group('AccidentStatsApi', () {
-    test('getByYear', () async {
+  group('AccidentDetailsApi', () {
+    test('get', () async {
       expect(
-        await _tflApi.accidentStats.getByYear(2016),
+        await _tflApi.accidentDetails.get(year: 2016),
         isA<List<AccidentDetail>>(),
       );
     });
   });
 
-  group('AirQualitiesApi', () {
+  group('AirQualityForecastsApi', () {
     test('get', () async {
       expect(
-        await _tflApi.airQualities.get(),
-        isA<LondonAirForecast>(),
+        await _tflApi.airQualityForecasts.get(),
+        isA<List<AirQualityForecast>>(),
       );
     });
   });
@@ -355,12 +355,12 @@ void main() {
   });
 
   group('RoadDisruptionsApi', () {
-    /*test('get', () async {
+    test('get', () async {
       expect(
         await _tflApi.roadDisruptions.get(),
         isA<List<RoadDisruption>>(),
       );
-    });*/
+    });
 
     /*test('getById', () async {
       expect(
@@ -427,16 +427,23 @@ void main() {
     });
   });
 
-  group('StopPointStopTypesApi', () {
+  group('StopPointTypesApi', () {
     test('get', () async {
       expect(
-        await _tflApi.stopPointStopTypes.get(),
+        await _tflApi.stopPointTypes.get(),
         isA<List<String>>(),
       );
     });
   });
 
   group('StopPointsApi', () {
+    test('get', () async {
+      expect(
+        await _tflApi.stopPoints.get(type: 'NaptanMetroStation'),
+        isA<List<StopPoint>>(),
+      );
+    });
+
     test('getById', () async {
       expect(
         await _tflApi.stopPoints.getById('940GZZLUVIC'),
@@ -444,28 +451,10 @@ void main() {
       );
     });
 
-    test('getByLatLon', () async {
-      expect(
-        await _tflApi.stopPoints.getByLatLon(
-          51.49454,
-          -0.100601,
-          ['NaptanMetroStation'],
-        ),
-        isA<List<StopPoint>>(),
-      );
-    });
-
     test('getBySmsCode', () async {
       expect(
         await _tflApi.stopPoints.getBySmsCode('47001'),
         isA<StopPoint>(),
-      );
-    });
-
-    test('getByType', () async {
-      expect(
-        await _tflApi.stopPoints.getByType('tube'),
-        isA<List<StopPoint>>(),
       );
     });
 

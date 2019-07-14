@@ -20,14 +20,10 @@ class PlacesApi {
     double lat,
     double lon,
   }) async {
-    String path;
-
     if (type != null) {
-      if (lat != null && lon != null) {
-        path = 'Place/$type/at/$lat/$lon';
-      } else {
-        path = 'Place/Type/$type';
-      }
+      final path = lat != null && lon != null
+          ? 'Place/$type/at/$lat/$lon'
+          : 'Place/Type/$type';
 
       final response = await _requester.request(path, 'GET');
 

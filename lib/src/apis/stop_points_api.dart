@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import '../apis/stop_point_types_api.dart';
 import '../entities/line_service_type.dart';
 import '../entities/place.dart';
 import '../entities/prediction.dart';
 import '../entities/stop_point.dart';
 import '../entities/stop_point_disruption.dart';
 import '../entities/stop_point_route.dart';
-import '../entities/stop_points_response.dart';
 import '../requesters/api_requester.dart';
 
 ///
@@ -16,6 +16,37 @@ class StopPointsApi {
   final ApiRequester _requester;
 
   StopPointsApi(this._requester);
+
+  /// Gets all the stop points.
+  ///
+  /// \[HttpGet\]
+  Future<List<StopPoint>> get({String type}) async {
+    if (type != null) {
+      final path = 'StopPoint/Type/$type';
+
+      final response = await _requester.request(path, 'GET');
+
+      return (response as List)
+          .map((json) => StopPoint.fromJson(json))
+          .toList();
+    } else {
+      final types = await StopPointTypesApi(_requester).get();
+
+      final futures = types.map((type) async {
+        final path = 'StopPoint/Type/$type';
+
+        final response = await _requester.request(path, 'GET');
+
+        return (response as List)
+            .map((json) => StopPoint.fromJson(json))
+            .toList();
+      });
+
+      final stopPoints = await Future.wait(futures);
+
+      return stopPoints.expand((stopPoints) => stopPoints).toList();
+    }
+  }
 
   /// Gets the stop point that matches an [id].
   ///
@@ -45,77 +76,6 @@ class StopPointsApi {
     return StopPoint.fromJson(response);
   }
 
-  /// Gets all the stop points that match a [lat] and a [lon].
-  Future<List<StopPoint>> getByLatLon(
-    double lat,
-    double lon,
-    List<String> stopTypes, {
-    int radius,
-    bool useStopPointHierarchy,
-    List<String> modes,
-    List<String> categories,
-    bool returnLines,
-  }) async {
-    if (lat == null) throw ArgumentError.notNull('locationLat');
-    if (lon == null) throw ArgumentError.notNull('locationLon');
-    if (stopTypes == null) throw ArgumentError.notNull('stopTypes');
-
-    final path = 'StopPoint';
-
-    final queryParams = [
-      ApiRequester.toQueryParam(
-        'lat',
-        lat,
-      ),
-      ApiRequester.toQueryParam(
-        'lon',
-        lon,
-      ),
-      ApiRequester.toQueryParam(
-        'stopTypes',
-        stopTypes,
-      ),
-    ];
-    if (radius != null) {
-      queryParams.add(ApiRequester.toQueryParam(
-        'radius',
-        radius,
-      ));
-    }
-    if (useStopPointHierarchy != null) {
-      queryParams.add(ApiRequester.toQueryParam(
-        'useStopPointHierarchy',
-        useStopPointHierarchy,
-      ));
-    }
-    if (modes != null) {
-      queryParams.add(ApiRequester.toQueryParam(
-        'modes',
-        modes,
-      ));
-    }
-    if (categories != null) {
-      queryParams.add(ApiRequester.toQueryParam(
-        'categories',
-        categories,
-      ));
-    }
-    if (returnLines != null) {
-      queryParams.add(ApiRequester.toQueryParam(
-        'returnLines',
-        returnLines,
-      ));
-    }
-
-    final response = await _requester.request(
-      path,
-      'GET',
-      queryParams: Map.fromEntries(queryParams),
-    );
-
-    return StopPointsResponse.fromJson(response).stopPoints;
-  }
-
   /// Gets the stop point that matches an [smsCode].
   ///
   /// \[HttpGet('{smsCode}')\]
@@ -142,19 +102,6 @@ class StopPointsApi {
     );
 
     return StopPoint.fromJson(response);
-  }
-
-  /// Gets all the stop points that match a [type].
-  ///
-  /// \[HttpGet('{type}')\]
-  Future<List<StopPoint>> getByType(String type) async {
-    if (type == null) throw ArgumentError.notNull('type');
-
-    final path = 'StopPoint/Type/$type';
-
-    final response = await _requester.request(path, 'GET');
-
-    return (response as List).map((json) => StopPoint.fromJson(json)).toList();
   }
 
   /// Gets all the car parks for the stop point that matches an [id].

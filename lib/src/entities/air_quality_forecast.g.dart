@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'current_forecast.dart';
+part of 'air_quality_forecast.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CurrentForecast _$CurrentForecastFromJson(Map<String, dynamic> json) {
-  return CurrentForecast(
+AirQualityForecast _$AirQualityForecastFromJson(Map<String, dynamic> json) {
+  return AirQualityForecast(
       forecastType: json['forecastType'] as String,
       forecastId: json['forecastId'] as String,
       publishedDate: json['publishedDate'] == null
@@ -29,7 +29,7 @@ CurrentForecast _$CurrentForecastFromJson(Map<String, dynamic> json) {
       forecastText: json['forecastText'] as String);
 }
 
-Map<String, dynamic> _$CurrentForecastToJson(CurrentForecast instance) =>
+Map<String, dynamic> _$AirQualityForecastToJson(AirQualityForecast instance) =>
     <String, dynamic>{
       'forecastType': instance.forecastType,
       'forecastId': instance.forecastId,

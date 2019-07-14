@@ -4,13 +4,13 @@ import '../requesters/api_requester.dart';
 
 ///
 ///
-/// \[Route('StopPointStopTypes')\]
-class StopPointStopTypesApi {
+/// \[Route('StopPointTypes')\]
+class StopPointTypesApi {
   final ApiRequester _requester;
 
-  StopPointStopTypesApi(this._requester);
+  StopPointTypesApi(this._requester);
 
-  /// Gets all the stop point stop types.
+  /// Gets all the stop point types.
   ///
   /// \[HttpGet\]
   Future<List<String>> get() async {

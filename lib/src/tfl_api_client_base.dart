@@ -1,7 +1,7 @@
 import 'package:http/http.dart';
 
-import 'apis/accident_stats_api.dart';
-import 'apis/air_qualities_api.dart';
+import 'apis/accident_details_api.dart';
+import 'apis/air_quality_forecasts_api.dart';
 import 'apis/bike_points_api.dart';
 import 'apis/car_park_occupancies_api.dart';
 import 'apis/car_parks_api.dart';
@@ -28,7 +28,7 @@ import 'apis/road_status_severities_api.dart';
 import 'apis/roads_api.dart';
 import 'apis/stop_point_categories_api.dart';
 import 'apis/stop_point_modes_api.dart';
-import 'apis/stop_point_stop_types_api.dart';
+import 'apis/stop_point_types_api.dart';
 import 'apis/stop_points_api.dart';
 import 'apis/vehicles_api.dart';
 import 'requesters/api_requester.dart';
@@ -40,9 +40,10 @@ class TflApi {
 
   TflApi(Client client) : _requester = ApiRequester(client, _rootUrl);
 
-  AccidentStatsApi get accidentStats => AccidentStatsApi(_requester);
+  AccidentDetailsApi get accidentDetails => AccidentDetailsApi(_requester);
 
-  AirQualitiesApi get airQualities => AirQualitiesApi(_requester);
+  AirQualityForecastsApi get airQualityForecasts =>
+      AirQualityForecastsApi(_requester);
 
   BikePointsApi get bikePoints => BikePointsApi(_requester);
 
@@ -104,8 +105,7 @@ class TflApi {
 
   StopPointModesApi get stopPointModes => StopPointModesApi(_requester);
 
-  StopPointStopTypesApi get stopPointStopTypes =>
-      StopPointStopTypesApi(_requester);
+  StopPointTypesApi get stopPointTypes => StopPointTypesApi(_requester);
 
   StopPointsApi get stopPoints => StopPointsApi(_requester);
 
