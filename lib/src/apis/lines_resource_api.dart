@@ -15,10 +15,10 @@ import 'line_modes_resource_api.dart';
 ///
 ///
 /// \[Route('Lines')\]
-class LinesApi implements ResourceApi<Line> {
+class LinesResourceApi implements ResourceApi<Line> {
   final ApiRequester _requester;
 
-  LinesApi(this._requester);
+  LinesResourceApi(this._requester);
 
   /// Gets all the lines.
   ///
