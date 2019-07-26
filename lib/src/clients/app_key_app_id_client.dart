@@ -70,3 +70,14 @@ class AppKeyAppIdClient extends DelegatingClient {
     return await inner.send(modifiedRequest);
   }
 }
+
+/// Obtains an HTTP [Client] which uses an [appKey] and an [appId].
+///
+/// Note that the returned client should *only* be used for making HTTP requests
+/// to the TfL API. The parameters should not be disclosed to third parties.
+///
+/// The user is responsible for closing the returned HTTP [Client].
+/// Closing the returned HTTP [Client] will also close the [inner] client.
+Client clientViaAppKeyAppId(String appKey, String appId, {Client inner}) {
+  return AppKeyAppIdClient(inner ?? Client(), appKey, appId);
+}

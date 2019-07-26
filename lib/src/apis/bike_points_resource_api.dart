@@ -7,10 +7,10 @@ import '../requesters/api_requester.dart';
 ///
 ///
 /// \[Route('BikePoints')\]
-class BikePointsResourcesApi implements ResourceApi<Place> {
+class BikePointsResourceApi implements ResourceApi<Place> {
   final ApiRequester _requester;
 
-  BikePointsResourcesApi(this._requester);
+  BikePointsResourceApi(this._requester);
 
   /// Gets all the bike points.
   ///

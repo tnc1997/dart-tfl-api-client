@@ -46,7 +46,7 @@ class TflApi {
   AirQualityForecastsResourceApi get airQualityForecasts =>
       AirQualityForecastsResourceApi(_requester);
 
-  BikePointsResourcesApi get bikePoints => BikePointsResourcesApi(_requester);
+  BikePointsResourceApi get bikePoints => BikePointsResourceApi(_requester);
 
   CarParkOccupanciesResourceApi get carParkOccupancies =>
       CarParkOccupanciesResourceApi(_requester);
@@ -80,7 +80,7 @@ class TflApi {
   LineStatusesResourceApi get lineStatuses =>
       LineStatusesResourceApi(_requester);
 
-  LinesApi get lines => LinesApi(_requester);
+  LinesResourceApi get lines => LinesResourceApi(_requester);
 
   ModeActiveServiceTypesResourceApi get modeActiveServiceTypes =>
       ModeActiveServiceTypesResourceApi(_requester);
@@ -97,7 +97,8 @@ class TflApi {
   PrivateHireOperatorsResourceApi get privateHireOperators =>
       PrivateHireOperatorsResourceApi(_requester);
 
-  RoadCategoriesApi get roadCategories => RoadCategoriesApi(_requester);
+  RoadCategoriesResourceApi get roadCategories =>
+      RoadCategoriesResourceApi(_requester);
 
   RoadDisruptionsResourceApi get roadDisruptions =>
       RoadDisruptionsResourceApi(_requester);

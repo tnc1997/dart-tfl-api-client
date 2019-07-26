@@ -6,10 +6,10 @@ import '../requesters/api_requester.dart';
 ///
 ///
 /// \[Route('RoadCategories')\]
-class RoadCategoriesApi implements ResourceApi<String> {
+class RoadCategoriesResourceApi implements ResourceApi<String> {
   final ApiRequester _requester;
 
-  RoadCategoriesApi(this._requester);
+  RoadCategoriesResourceApi(this._requester);
 
   /// Gets all the road categories.
   ///
