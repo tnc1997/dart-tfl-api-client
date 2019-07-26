@@ -35,7 +35,7 @@ import '../interfaces/serializable.dart';
 
 const _contentType = 'application/json; charset=utf-8';
 
-const _userAgent = 'DartRuntime/2.0.0';
+const _userAgent = 'dart-api-client tfl/v1';
 
 class ApiRequester {
   final Client _client;
