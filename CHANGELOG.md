@@ -3,8 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.1"></a>
+### [0.3.1](https://github.com/tnc1997/dart-tfl-api-client/compare/v0.3.0...v0.3.1) (2019-07-28)
+
+
+### Bug Fixes
+
+* lines api get api error ([#11](https://github.com/tnc1997/dart-tfl-api-client/issues/11)) ([34c7376](https://github.com/tnc1997/dart-tfl-api-client/commit/34c7376))
+
+
+
 <a name="0.3.0"></a>
-# [0.3.0](https://github.com/tnc1997/dart-tfl-api-client/compare/v0.2.0...v0.3.0) (2019-07-26)
+## [0.3.0](https://github.com/tnc1997/dart-tfl-api-client/compare/v0.2.0...v0.3.0) (2019-07-26)
 
 
 ### Features
@@ -14,7 +24,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 <a name="0.2.0"></a>
-# [0.2.0](https://github.com/tnc1997/dart-tfl-api-client/compare/v0.1.0...v0.2.0) (2019-07-16)
+## [0.2.0](https://github.com/tnc1997/dart-tfl-api-client/compare/v0.1.0...v0.2.0) (2019-07-16)
 
 
 ### Features
@@ -24,7 +34,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 <a name="0.1.0"></a>
-# 0.1.0 (2019-07-10)
+## 0.1.0 (2019-07-10)
 
 
 ### Features
