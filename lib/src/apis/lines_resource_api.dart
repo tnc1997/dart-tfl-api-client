@@ -37,6 +37,7 @@ class LinesResourceApi implements ResourceApi<Line> {
       final modes = await LineModesResourceApi(_requester).get();
 
       final futures = modes
+          .map((mode) => mode.modeName)
           .map((mode) => 'Line/Mode/$mode')
           .map((path) async => await request(path));
 
