@@ -1,8 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'known_journey.dart';
-import 'period.dart';
+import 'package:tfl_api_client/src/entities/known_journey.dart';
+import 'package:tfl_api_client/src/entities/period.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'schedule.g.dart';
 

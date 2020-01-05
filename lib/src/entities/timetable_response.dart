@@ -1,9 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'matched_stop.dart';
-import 'timetable.dart';
-import 'timetables_disambiguation.dart';
+import 'package:tfl_api_client/src/entities/matched_stop.dart';
+import 'package:tfl_api_client/src/entities/timetable.dart';
+import 'package:tfl_api_client/src/entities/timetables_disambiguation.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'timetable_response.g.dart';
 

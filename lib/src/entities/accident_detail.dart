@@ -1,8 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'casualty.dart';
-import 'vehicle.dart';
+import 'package:tfl_api_client/src/entities/casualty.dart';
+import 'package:tfl_api_client/src/entities/vehicle.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'accident_detail.g.dart';
 

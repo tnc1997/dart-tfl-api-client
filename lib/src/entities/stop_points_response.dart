@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'stop_point.dart';
+import 'package:tfl_api_client/src/entities/stop_point.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'stop_points_response.g.dart';
 

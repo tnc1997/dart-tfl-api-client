@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import 'db_geography_well_known_value.dart';
-import '../interfaces/serializable.dart';
+import 'package:tfl_api_client/src/entities/db_geography_well_known_value.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'db_geography.g.dart';
 

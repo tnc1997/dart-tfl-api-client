@@ -1,12 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'db_geography.dart';
-import 'road_disruption_impact_area.dart';
-import 'road_disruption_line.dart';
-import 'road_disruption_schedule.dart';
-import 'road_project.dart';
-import 'street.dart';
+import 'package:tfl_api_client/src/entities/db_geography.dart';
+import 'package:tfl_api_client/src/entities/road_disruption_impact_area.dart';
+import 'package:tfl_api_client/src/entities/road_disruption_line.dart';
+import 'package:tfl_api_client/src/entities/road_disruption_schedule.dart';
+import 'package:tfl_api_client/src/entities/road_project.dart';
+import 'package:tfl_api_client/src/entities/street.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'road_disruption.g.dart';
 

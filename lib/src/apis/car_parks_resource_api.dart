@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import '../entities/bay.dart';
-import '../entities/car_park_occupancy.dart';
-import '../entities/place.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
-import 'car_park_occupancies_resource_api.dart';
+import 'package:tfl_api_client/src/apis/car_park_occupancies_resource_api.dart';
+import 'package:tfl_api_client/src/entities/bay.dart';
+import 'package:tfl_api_client/src/entities/car_park_occupancy.dart';
+import 'package:tfl_api_client/src/entities/place.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///

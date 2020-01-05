@@ -1,16 +1,16 @@
 import 'dart:async';
 
-import '../entities/line_service_type.dart';
-import '../entities/place.dart';
-import '../entities/prediction.dart';
-import '../entities/stop_point.dart';
-import '../entities/stop_point_disruption.dart';
-import '../entities/stop_point_route.dart';
-import '../entities/stop_points_response.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
-import 'stop_point_modes_resource_api.dart';
-import 'stop_point_types_resource_api.dart';
+import 'package:tfl_api_client/src/apis/stop_point_modes_resource_api.dart';
+import 'package:tfl_api_client/src/apis/stop_point_types_resource_api.dart';
+import 'package:tfl_api_client/src/entities/line_service_type.dart';
+import 'package:tfl_api_client/src/entities/place.dart';
+import 'package:tfl_api_client/src/entities/prediction.dart';
+import 'package:tfl_api_client/src/entities/stop_point.dart';
+import 'package:tfl_api_client/src/entities/stop_point_disruption.dart';
+import 'package:tfl_api_client/src/entities/stop_point_route.dart';
+import 'package:tfl_api_client/src/entities/stop_points_response.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///
@@ -83,7 +83,7 @@ class StopPointsResourceApi implements ResourceApi<StopPoint> {
 
     final path = 'StopPoint/$id';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (includeCrowdingData != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'includeCrowdingData',
@@ -111,7 +111,7 @@ class StopPointsResourceApi implements ResourceApi<StopPoint> {
 
     final path = 'StopPoint/Sms/$smsCode';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (output != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'output',
@@ -154,7 +154,7 @@ class StopPointsResourceApi implements ResourceApi<StopPoint> {
 
     final path = 'StopPoint/$fromId/DirectionTo/$toId';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (lineId != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'lineId',
@@ -267,7 +267,7 @@ class StopPointsResourceApi implements ResourceApi<StopPoint> {
 
     final path = 'StopPoint/$id/Disruption';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (getFamily != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'getFamily',
@@ -309,7 +309,7 @@ class StopPointsResourceApi implements ResourceApi<StopPoint> {
 
     final path = 'StopPoint/$id/Route';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (serviceTypes != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'serviceTypes',

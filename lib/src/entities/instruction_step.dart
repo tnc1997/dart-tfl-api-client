@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'path_attribute.dart';
+import 'package:tfl_api_client/src/entities/path_attribute.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'instruction_step.g.dart';
 

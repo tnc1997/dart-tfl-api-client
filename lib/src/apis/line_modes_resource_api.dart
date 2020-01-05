@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import '../entities/line.dart';
-import '../entities/line_disruption.dart';
-import '../entities/line_route.dart';
-import '../entities/line_status.dart';
-import '../entities/mode.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
+import 'package:tfl_api_client/src/entities/line.dart';
+import 'package:tfl_api_client/src/entities/line_disruption.dart';
+import 'package:tfl_api_client/src/entities/line_route.dart';
+import 'package:tfl_api_client/src/entities/line_status.dart';
+import 'package:tfl_api_client/src/entities/mode.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///
@@ -54,7 +54,7 @@ class LineModesResourceApi implements ResourceApi<Mode> {
 
     final path = 'Line/Mode/$mode/Route';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (serviceTypes != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'serviceTypes',

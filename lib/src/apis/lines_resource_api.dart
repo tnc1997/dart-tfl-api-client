@@ -1,16 +1,16 @@
 import 'dart:async';
 
-import '../entities/line.dart';
-import '../entities/line_disruption.dart';
-import '../entities/line_route.dart';
-import '../entities/line_status.dart';
-import '../entities/prediction.dart';
-import '../entities/route_sequence.dart';
-import '../entities/stop_point.dart';
-import '../entities/timetable_response.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
-import 'line_modes_resource_api.dart';
+import 'package:tfl_api_client/src/apis/line_modes_resource_api.dart';
+import 'package:tfl_api_client/src/entities/line.dart';
+import 'package:tfl_api_client/src/entities/line_disruption.dart';
+import 'package:tfl_api_client/src/entities/line_route.dart';
+import 'package:tfl_api_client/src/entities/line_status.dart';
+import 'package:tfl_api_client/src/entities/prediction.dart';
+import 'package:tfl_api_client/src/entities/route_sequence.dart';
+import 'package:tfl_api_client/src/entities/stop_point.dart';
+import 'package:tfl_api_client/src/entities/timetable_response.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///
@@ -86,7 +86,7 @@ class LinesResourceApi implements ResourceApi<Line> {
 
     final path = 'Line/$id/Route';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (serviceTypes != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'serviceTypes',
@@ -139,7 +139,7 @@ class LinesResourceApi implements ResourceApi<Line> {
     var path = 'Line/$id/Arrivals';
     if (stopPointId != null) path += '/$stopPointId';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (direction != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'direction',
@@ -171,7 +171,7 @@ class LinesResourceApi implements ResourceApi<Line> {
   }) async {
     if (id == null) throw ArgumentError.notNull('id');
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (serviceTypes != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'serviceTypes',
@@ -205,7 +205,7 @@ class LinesResourceApi implements ResourceApi<Line> {
 
     final path = 'Line/$id/StopPoints';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (tflOperatedNationalRailStationsOnly != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'tflOperatedNationalRailStationsOnly',

@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'timetables_disambiguation_option.dart';
+import 'package:tfl_api_client/src/entities/timetables_disambiguation_option.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'timetables_disambiguation.g.dart';
 

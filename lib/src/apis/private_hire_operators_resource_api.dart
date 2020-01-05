@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import '../entities/private_hire_operator.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
+import 'package:tfl_api_client/src/entities/private_hire_operator.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///
@@ -28,7 +28,7 @@ class PrivateHireOperatorsResourceApi
   }) async {
     final path = 'Cabwise/Search';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (lat != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'lat',

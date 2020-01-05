@@ -521,7 +521,7 @@ void main() {
     });
 
     setUp(() {
-      _client = clientViaAppKeyAppId(env['APP_KEY'], env['APP_ID']);
+      _client = clientViaAppIdAppKey(env['APP_ID'], env['APP_KEY']);
 
       _tflApi = TflApi(_client);
     });
@@ -536,11 +536,11 @@ void main() {
   });
 
   group('clients', () {
-    group('AppKeyAppIdClient', () {
-      test('clientViaAppKeyAppId', () {
+    group('AppIdAppKeyClient', () {
+      test('clientViaAppIdAppKey', () {
         expect(
-          clientViaAppKeyAppId(env['APP_KEY'], env['APP_ID']),
-          isA<AppKeyAppIdClient>(),
+          clientViaAppIdAppKey(env['APP_ID'], env['APP_KEY']),
+          isA<AppIdAppKeyClient>(),
         );
       });
     });

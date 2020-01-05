@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import '../entities/itinerary_result.dart';
-import '../entities/journey.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
+import 'package:tfl_api_client/src/entities/itinerary_result.dart';
+import 'package:tfl_api_client/src/entities/journey.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///
@@ -16,6 +16,7 @@ class JourneysResourceApi implements ResourceApi<Journey> {
   /// Gets all the journeys.
   ///
   /// \[HttpGet\]
+  @override
   Future<List<Journey>> get({
     String from,
     String to,
@@ -43,11 +44,11 @@ class JourneysResourceApi implements ResourceApi<Journey> {
     bool walkingOptimization,
     bool taxiOnlyTrip,
   }) async {
-    if (from == null || to == null) return List<Journey>();
+    if (from == null || to == null) return <Journey>[];
 
     final path = 'Journey/JourneyResults/$from/to/$to';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (via != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'via',

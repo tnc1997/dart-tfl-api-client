@@ -1,12 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/apis/place_types_resource_api.dart';
-
-import '../interfaces/serializable.dart';
-import 'additional_properties.dart';
-import 'identifier.dart';
-import 'line_group.dart';
-import 'line_mode_group.dart';
-import 'place.dart';
+import 'package:tfl_api_client/src/entities/additional_properties.dart';
+import 'package:tfl_api_client/src/entities/identifier.dart';
+import 'package:tfl_api_client/src/entities/line_group.dart';
+import 'package:tfl_api_client/src/entities/line_mode_group.dart';
+import 'package:tfl_api_client/src/entities/place.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'stop_point.g.dart';
 

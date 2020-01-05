@@ -1,11 +1,10 @@
 import 'dart:async';
 
 import 'package:tfl_api_client/src/apis/modes_resource_api.dart';
-
-import '../entities/prediction.dart';
-import '../entities/vehicle.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
+import 'package:tfl_api_client/src/entities/prediction.dart';
+import 'package:tfl_api_client/src/entities/vehicle.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///

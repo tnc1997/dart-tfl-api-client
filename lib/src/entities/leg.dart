@@ -1,14 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'identifier.dart';
-import 'instruction.dart';
-import 'line_disruption.dart';
-import 'point.dart';
-import 'obstacle.dart';
-import 'path.dart';
-import 'planned_work.dart';
-import 'route_option.dart';
+import 'package:tfl_api_client/src/entities/identifier.dart';
+import 'package:tfl_api_client/src/entities/instruction.dart';
+import 'package:tfl_api_client/src/entities/line_disruption.dart';
+import 'package:tfl_api_client/src/entities/obstacle.dart';
+import 'package:tfl_api_client/src/entities/path.dart';
+import 'package:tfl_api_client/src/entities/planned_work.dart';
+import 'package:tfl_api_client/src/entities/point.dart';
+import 'package:tfl_api_client/src/entities/route_option.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'leg.g.dart';
 

@@ -1,11 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'crowding.dart';
-import 'line_disruption.dart';
-import 'line_service_type_info.dart';
-import 'line_route.dart';
-import 'line_status.dart';
+import 'package:tfl_api_client/src/entities/crowding.dart';
+import 'package:tfl_api_client/src/entities/line_disruption.dart';
+import 'package:tfl_api_client/src/entities/line_route.dart';
+import 'package:tfl_api_client/src/entities/line_service_type_info.dart';
+import 'package:tfl_api_client/src/entities/line_status.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'line.g.dart';
 

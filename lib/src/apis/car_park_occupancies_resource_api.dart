@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import '../entities/car_park_occupancy.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
+import 'package:tfl_api_client/src/entities/car_park_occupancy.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///

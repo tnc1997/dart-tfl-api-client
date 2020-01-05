@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import '../entities/line.dart';
-import '../entities/line_status.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
-import 'line_status_severities_resource_api.dart';
+import 'package:tfl_api_client/src/apis/line_status_severities_resource_api.dart';
+import 'package:tfl_api_client/src/entities/line.dart';
+import 'package:tfl_api_client/src/entities/line_status.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///

@@ -1,8 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import 'elevation.dart';
-import '../interfaces/serializable.dart';
-import 'identifier.dart';
+import 'package:tfl_api_client/src/entities/elevation.dart';
+import 'package:tfl_api_client/src/entities/identifier.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'path.g.dart';
 

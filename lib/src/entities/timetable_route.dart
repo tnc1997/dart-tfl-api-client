@@ -1,8 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'schedule.dart';
-import 'station_interval.dart';
+import 'package:tfl_api_client/src/entities/schedule.dart';
+import 'package:tfl_api_client/src/entities/station_interval.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'timetable_route.g.dart';
 

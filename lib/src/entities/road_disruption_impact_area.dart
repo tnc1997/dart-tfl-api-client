@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'db_geography.dart';
+import 'package:tfl_api_client/src/entities/db_geography.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'road_disruption_impact_area.g.dart';
 

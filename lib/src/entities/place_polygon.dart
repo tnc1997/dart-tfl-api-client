@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import 'geo_point.dart';
-import '../interfaces/serializable.dart';
+import 'package:tfl_api_client/src/entities/geo_point.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'place_polygon.g.dart';
 

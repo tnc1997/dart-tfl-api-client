@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import '../entities/line.dart';
-import '../entities/line_route.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
+import 'package:tfl_api_client/src/entities/line.dart';
+import 'package:tfl_api_client/src/entities/line_route.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///
@@ -20,7 +20,7 @@ class LineRoutesResourceApi implements ResourceApi<LineRoute> {
   Future<List<LineRoute>> get({List<String> serviceTypes}) async {
     final path = 'Line/Route';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (serviceTypes != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'serviceTypes',

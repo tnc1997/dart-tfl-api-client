@@ -27,30 +27,29 @@
 import 'dart:async';
 
 import 'package:http/http.dart';
+import 'package:tfl_api_client/src/clients/delegating_client.dart';
 
-import 'delegating_client.dart';
-
-class AppKeyAppIdClient extends DelegatingClient {
-  final String _appKey;
-
+class AppIdAppKeyClient extends DelegatingClient {
   final String _appId;
 
-  AppKeyAppIdClient(Client client, String appKey, String appId)
-      : _appKey = Uri.encodeQueryComponent(appKey),
-        _appId = Uri.encodeQueryComponent(appId),
+  final String _appKey;
+
+  AppIdAppKeyClient(Client client, String appId, String appKey)
+      : _appId = Uri.encodeQueryComponent(appId),
+        _appKey = Uri.encodeQueryComponent(appKey),
         super(client);
 
   @override
   Future<StreamedResponse> send(BaseRequest request) async {
-    if (request.url.queryParameters.containsKey('app_key')) {
-      throw Exception(
-        'Attempted to make an HTTP request which already has an "app_key" query parameter. Adding the "app_key" would override that existing value.',
-      );
-    }
-
     if (request.url.queryParameters.containsKey('app_id')) {
       throw Exception(
         'Attempted to make an HTTP request which already has an "app_id" query parameter. Adding the "app_id" would override that existing value.',
+      );
+    }
+
+    if (request.url.queryParameters.containsKey('app_key')) {
+      throw Exception(
+        'Attempted to make an HTTP request which already has an "app_key" query parameter. Adding the "app_key" would override that existing value.',
       );
     }
 
@@ -58,7 +57,7 @@ class AppKeyAppIdClient extends DelegatingClient {
       return '${request.url.query.isNotEmpty ? '${request.url.query}&' : ''}';
     }
 
-    final query = '${getCurrentQuery()}app_key=$_appKey&app_id=$_appId';
+    final query = '${getCurrentQuery()}app_id=$_appId&app_key=$_appKey';
 
     final url = request.url.replace(
       query: query,
@@ -71,13 +70,13 @@ class AppKeyAppIdClient extends DelegatingClient {
   }
 }
 
-/// Obtains an HTTP [Client] which uses an [appKey] and an [appId].
+/// Obtains an HTTP [Client] which uses an [appId] and an [appKey].
 ///
 /// Note that the returned client should *only* be used for making HTTP requests
 /// to the TfL API. The parameters should not be disclosed to third parties.
 ///
 /// The user is responsible for closing the returned HTTP [Client].
 /// Closing the returned HTTP [Client] will also close the [inner] client.
-Client clientViaAppKeyAppId(String appKey, String appId, {Client inner}) {
-  return AppKeyAppIdClient(inner ?? Client(), appKey, appId);
+Client clientViaAppIdAppKey(String appId, String appKey, {Client inner}) {
+  return AppIdAppKeyClient(inner ?? Client(), appId, appKey);
 }

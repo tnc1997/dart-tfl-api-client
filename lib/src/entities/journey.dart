@@ -1,8 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'journey_fare.dart';
-import 'leg.dart';
+import 'package:tfl_api_client/src/entities/journey_fare.dart';
+import 'package:tfl_api_client/src/entities/leg.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'journey.g.dart';
 

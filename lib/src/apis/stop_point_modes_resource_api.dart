@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import '../entities/mode.dart';
-import '../entities/stop_point_disruption.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
+import 'package:tfl_api_client/src/entities/mode.dart';
+import 'package:tfl_api_client/src/entities/stop_point_disruption.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///
@@ -36,7 +36,7 @@ class StopPointModesResourceApi implements ResourceApi<Mode> {
 
     final path = 'StopPoint/Mode/$mode/Disruption';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (includeRouteBlockedStops != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'includeRouteBlockedStops',

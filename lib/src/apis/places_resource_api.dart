@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import '../entities/place.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
-import 'place_types_resource_api.dart';
+import 'package:tfl_api_client/src/apis/place_types_resource_api.dart';
+import 'package:tfl_api_client/src/entities/place.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///
@@ -58,7 +58,7 @@ class PlacesResourceApi implements ResourceApi<Place> {
 
     final path = 'Place/$id';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (includeChildren != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'includeChildren',
