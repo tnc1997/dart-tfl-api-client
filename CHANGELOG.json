@@ -1,0 +1,61 @@
+{
+  "name": "tfl-api-client",
+  "entries": [
+    {
+      "date": "Sun, 28 Jul 2019 00:00:00 GMT",
+      "tag": "tfl-api-client_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix get lines API error.",
+            "author": "tnc1997@virginmedia.com",
+            "commit": "2f9e77e7ec90ebb487389ed8b9776a2615d83caa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jul 2019 00:00:00 GMT",
+      "tag": "tfl-api-client_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add client via app id app key function.",
+            "author": "tnc1997@virginmedia.com",
+            "commit": "565fd71467a54e5b97803642d49294138f660243"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jul 2019 00:00:00 GMT",
+      "tag": "tfl-api-client_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add APIs from TfL API to package.",
+            "author": "tnc1997@virginmedia.com",
+            "commit": "7466098f40228523d60bd2dafa4c5fd1ae979bad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jul 2019 00:00:00 GMT",
+      "tag": "tfl-api-client_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add entities from TfL API to package.",
+            "author": "tnc1997@virginmedia.com",
+            "commit": "bd614a6d7eaf698e31f00d10397ef650edf8d670"
+          }
+        ]
+      }
+    }
+  ]
+}

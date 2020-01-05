@@ -1,42 +1,28 @@
-# Change Log
+# Change Log - tfl-api-client
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+This log was last generated on Sun, 05 Jan 2020 00:00:00 GMT and should not be manually modified.
 
-<a name="0.3.1"></a>
-### [0.3.1](https://github.com/tnc1997/dart-tfl-api-client/compare/v0.3.0...v0.3.1) (2019-07-28)
+## 0.3.1
+Sun, 28 Jul 2019 00:00:00 GMT
 
+### Patches
 
-### Bug Fixes
+- Fix lines API get error. (tnc1997@virginmedia.com)
+## 0.3.0
+Fri, 26 Jul 2019 00:00:00 GMT
 
-* lines api get api error ([#11](https://github.com/tnc1997/dart-tfl-api-client/issues/11)) ([34c7376](https://github.com/tnc1997/dart-tfl-api-client/commit/34c7376))
+### Minor changes
 
+- Add client via app id app key function. (tnc1997@virginmedia.com)
+## 0.2.0
+Tue, 16 Jul 2019 00:00:00 GMT
 
+### Minor changes
 
-<a name="0.3.0"></a>
-## [0.3.0](https://github.com/tnc1997/dart-tfl-api-client/compare/v0.2.0...v0.3.0) (2019-07-26)
+- Add APIs from TfL API to package. (tnc1997@virginmedia.com)
+## 0.1.0
+Wed, 10 Jul 2019 00:00:00 GMT
 
+### Minor changes
 
-### Features
-
-* add client via app key app id function ([#8](https://github.com/tnc1997/dart-tfl-api-client/issues/8)) ([402c266](https://github.com/tnc1997/dart-tfl-api-client/commit/402c266))
-
-
-
-<a name="0.2.0"></a>
-## [0.2.0](https://github.com/tnc1997/dart-tfl-api-client/compare/v0.1.0...v0.2.0) (2019-07-16)
-
-
-### Features
-
-* add apis from tfl api to package ([#4](https://github.com/tnc1997/dart-tfl-api-client/issues/4)) ([8e37d84](https://github.com/tnc1997/dart-tfl-api-client/commit/8e37d84))
-
-
-
-<a name="0.1.0"></a>
-## 0.1.0 (2019-07-10)
-
-
-### Features
-
-* add entities from tfl api to package ([#1](https://github.com/tnc1997/dart-tfl-api-client/issues/1)) ([aad7e59](https://github.com/tnc1997/dart-tfl-api-client/commit/aad7e59))
+- Add entities from TfL API to package. (tnc1997@virginmedia.com)
