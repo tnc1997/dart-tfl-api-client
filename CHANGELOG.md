@@ -1,7 +1,13 @@
 # Change Log - tfl-api-client
 
-This log was last generated on Sun, 05 Jan 2020 00:00:00 GMT and should not be manually modified.
+This log was last generated on Sun, 05 Jan 2020 16:52:19 GMT and should not be manually modified.
 
+## 0.4.0
+Sun, 05 Jan 2020 16:52:19 GMT
+
+### Minor changes
+
+- Refactor client via app id app key function. (tnc1997@virginmedia.com)
 ## 0.3.1
 Sun, 28 Jul 2019 00:00:00 GMT
 

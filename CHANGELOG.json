@@ -2,6 +2,20 @@
   "name": "tfl-api-client",
   "entries": [
     {
+      "date": "Sun, 05 Jan 2020 16:52:19 GMT",
+      "tag": "tfl-api-client_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Refactor client via app id app key function.",
+            "author": "tnc1997@virginmedia.com",
+            "commit": "d543f037d6d8e6b233a143520f5927b8b905a6c1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 28 Jul 2019 00:00:00 GMT",
       "tag": "tfl-api-client_v0.3.1",
       "version": "0.3.1",

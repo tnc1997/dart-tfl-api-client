@@ -1,6 +1,6 @@
 name: tfl_api_client
 description: A starting point for Dart libraries or applications.
-version: 0.3.1
+version: 0.4.0
 homepage: https://github.com/tnc1997/dart-tfl-api-client
 author: Thomas Clark
 
