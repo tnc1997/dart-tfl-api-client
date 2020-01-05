@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'time_adjustment.dart';
+import 'package:tfl_api_client/src/entities/time_adjustment.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'time_adjustments.g.dart';
 

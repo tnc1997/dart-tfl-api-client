@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Refactor client via app id app key function.",
+  "packageName": "tfl-api-client",
+  "email": "tnc1997@virginmedia.com",
+  "commit": "d543f037d6d8e6b233a143520f5927b8b905a6c1",
+  "date": "2020-01-05T16:39:52.580Z"
+}

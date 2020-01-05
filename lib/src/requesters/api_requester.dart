@@ -29,9 +29,8 @@ import 'dart:convert';
 import 'dart:core';
 
 import 'package:http/http.dart';
-
-import '../errors/api_error.dart';
-import '../interfaces/serializable.dart';
+import 'package:tfl_api_client/src/errors/api_error.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 const _contentType = 'application/json; charset=utf-8';
 

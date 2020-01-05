@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'additional_properties.dart';
+import 'package:tfl_api_client/src/entities/additional_properties.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'place.g.dart';
 

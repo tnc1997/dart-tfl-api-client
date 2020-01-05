@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'route_section_naptan_entry_sequence.dart';
+import 'package:tfl_api_client/src/entities/route_section_naptan_entry_sequence.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'route_section.g.dart';
 

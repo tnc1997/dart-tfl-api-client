@@ -1,9 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'message.dart';
-import 'ticket_time.dart';
-import 'ticket_type.dart';
+import 'package:tfl_api_client/src/entities/message.dart';
+import 'package:tfl_api_client/src/entities/ticket_time.dart';
+import 'package:tfl_api_client/src/entities/ticket_type.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'ticket.g.dart';
 

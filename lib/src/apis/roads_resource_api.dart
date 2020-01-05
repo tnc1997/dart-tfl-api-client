@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import '../entities/road.dart';
-import '../entities/road_disruption.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
+import 'package:tfl_api_client/src/entities/road.dart';
+import 'package:tfl_api_client/src/entities/road_disruption.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///
@@ -52,7 +52,7 @@ class RoadsResourceApi implements ResourceApi<Road> {
 
     final path = 'Road/$id/Disruption';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (stripContent != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'stripContent',
@@ -101,7 +101,7 @@ class RoadsResourceApi implements ResourceApi<Road> {
 
     final path = 'Road/$id/Status';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (startDate != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'startDate',

@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'twenty_four_hour_clock_time.g.dart';
 

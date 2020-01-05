@@ -1,11 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'line.dart';
-import 'cycle_hire_docking_station_data.dart';
-import 'journey.dart';
-import 'search_criteria.dart';
-import 'vector.dart';
+import 'package:tfl_api_client/src/entities/cycle_hire_docking_station_data.dart';
+import 'package:tfl_api_client/src/entities/journey.dart';
+import 'package:tfl_api_client/src/entities/line.dart';
+import 'package:tfl_api_client/src/entities/search_criteria.dart';
+import 'package:tfl_api_client/src/entities/vector.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'itinerary_result.g.dart';
 

@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import '../entities/additional_properties.dart';
-import '../entities/charge_connector_occupancy.dart';
-import '../entities/place.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
-import 'charge_connector_occupancies_resource_api.dart';
+import 'package:tfl_api_client/src/apis/charge_connector_occupancies_resource_api.dart';
+import 'package:tfl_api_client/src/entities/additional_properties.dart';
+import 'package:tfl_api_client/src/entities/charge_connector_occupancy.dart';
+import 'package:tfl_api_client/src/entities/place.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///

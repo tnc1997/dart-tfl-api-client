@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import '../entities/mode.dart';
-import '../entities/prediction.dart';
-import '../interfaces/resource_api.dart';
-import '../requesters/api_requester.dart';
-import 'line_modes_resource_api.dart';
-import 'stop_point_modes_resource_api.dart';
+import 'package:tfl_api_client/src/apis/line_modes_resource_api.dart';
+import 'package:tfl_api_client/src/apis/stop_point_modes_resource_api.dart';
+import 'package:tfl_api_client/src/entities/mode.dart';
+import 'package:tfl_api_client/src/entities/prediction.dart';
+import 'package:tfl_api_client/src/interfaces/resource_api.dart';
+import 'package:tfl_api_client/src/requesters/api_requester.dart';
 
 ///
 ///
@@ -37,7 +37,7 @@ class ModesResourceApi implements ResourceApi<Mode> {
 
     final path = 'Mode/$mode/Arrivals';
 
-    final queryParams = List<MapEntry<String, String>>();
+    final queryParams = <MapEntry<String, String>>[];
     if (count != null) {
       queryParams.add(ApiRequester.toQueryParam(
         'count',

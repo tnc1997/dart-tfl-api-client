@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'status_severity.g.dart';
 

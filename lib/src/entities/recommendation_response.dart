@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'recommendation.dart';
+import 'package:tfl_api_client/src/entities/recommendation.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'recommendation_response.g.dart';
 

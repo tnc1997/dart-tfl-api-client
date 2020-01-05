@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../interfaces/serializable.dart';
-import 'prediction_timing.dart';
+import 'package:tfl_api_client/src/entities/prediction_timing.dart';
+import 'package:tfl_api_client/src/interfaces/serializable.dart';
 
 part 'prediction.g.dart';
 

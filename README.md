@@ -16,7 +16,7 @@ import 'package:tfl_api_client/tfl_api_client.dart';
 Future main() async {
   load();
 
-  final client = clientViaAppKeyAppId(env['APP_KEY'], env['APP_ID']);
+  final client = clientViaAppIdAppKey(env['APP_ID'], env['APP_KEY']);
 
   final tflApi = TflApi(client);
 
