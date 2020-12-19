@@ -1,18 +1,15 @@
-import 'dart:async';
+import 'dart:io';
 
-import 'package:dotenv/dotenv.dart';
 import 'package:tfl_api_client/tfl_api_client.dart';
 
-Future main() async {
-  load();
+Future<void> main() async {
+  final client = clientViaAppKey(Platform.environment['APP_KEY']!);
 
-  final client = clientViaAppIdAppKey(env['APP_ID'], env['APP_KEY']);
+  final api = TflApiClient(client: client);
 
-  final tflApi = TflApi(client);
-
-  final line = await tflApi.lines.getById('victoria');
-
-  print(line);
+  for (var line in await api.lines.getByPathIds(['victoria'])) {
+    print(line);
+  }
 
   client.close();
 }

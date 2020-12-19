@@ -1,552 +1,1032 @@
-import 'package:dotenv/dotenv.dart';
+import 'dart:io';
+
 import 'package:http/http.dart';
 import 'package:test/test.dart';
 import 'package:tfl_api_client/tfl_api_client.dart';
 
 void main() {
-  group('apis', () {
-    Client _client;
-
-    TflApi _tflApi;
-
-    group('AccidentDetailsApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.accidentDetails.get(year: 2016),
-          isA<List<AccidentDetail>>(),
-        );
-      });
-    });
-
-    group('AirQualityForecastsApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.airQualityForecasts.get(),
-          isA<List<AirQualityForecast>>(),
-        );
-      });
-    });
-
-    group('BikePointsApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.bikePoints.get(),
-          isA<List<Place>>(),
-        );
-      });
-
-      test('getById', () async {
-        expect(
-          await _tflApi.bikePoints.getById('BikePoints_1'),
-          isA<Place>(),
-        );
-      });
-
-      test('search', () async {
-        expect(
-          await _tflApi.bikePoints.search('BikePoints_1'),
-          isA<List<Place>>(),
-        );
-      });
-    });
-
-    group('CarParkOccupanciesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.carParkOccupancies.get(),
-          isA<List<CarParkOccupancy>>(),
-        );
-      });
-    });
-
-    group('CarParksApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.carParks.get(),
-          isA<List<Place>>(),
-        );
-      });
-
-      test('getBays', () async {
-        expect(
-          await _tflApi.carParks.getBays('CarParks_800491'),
-          isA<List<Bay>>(),
-        );
-      });
-    });
-
-    group('ChargeConnectorOccupanciesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.chargeConnectorOccupancies.get(),
-          isA<List<ChargeConnectorOccupancy>>(),
-        );
-      });
-    });
-
-    group('ChargeConnectorsApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.chargeConnectors.get(),
-          isA<List<Place>>(),
-        );
-      });
-    });
-
-    group('JourneyModesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.journeyModes.get(),
-          isA<List<Mode>>(),
-        );
-      });
-    });
-
-    group('JourneysApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.journeys.get(
-            from: '1000006',
-            to: '1000046',
-          ),
-          isA<List<Journey>>(),
-        );
-      });
-    });
-
-    group('LineDisruptionCategoriesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.lineDisruptionCategories.get(),
-          isA<List<String>>(),
-        );
-      });
-    });
-
-    group('LineModesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.lineModes.get(),
-          isA<List<Mode>>(),
-        );
-      });
-
-      test('getLineDisruptions', () async {
-        expect(
-          await _tflApi.lineModes.getLineDisruptions('tube'),
-          isA<List<LineDisruption>>(),
-        );
-      });
-
-      test('getLineRoutes', () async {
-        expect(
-          await _tflApi.lineModes.getLineRoutes('tube'),
-          isA<List<LineRoute>>(),
-        );
-      });
-
-      test('getLineStatuses', () async {
-        expect(
-          await _tflApi.lineModes.getLineStatuses('tube'),
-          isA<List<LineStatus>>(),
-        );
-      });
-    });
-
-    group('LineRoutesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.lineRoutes.get(),
-          isA<List<LineRoute>>(),
-        );
-      });
-    });
-
-    group('LineServiceTypesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.lineServiceTypes.get(),
-          isA<List<String>>(),
-        );
-      });
-    });
-
-    group('LineStatusSeveritiesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.lineStatusSeverities.get(),
-          isA<List<StatusSeverity>>(),
-        );
-      });
-    });
-
-    group('LineStatusesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.lineStatuses.get(severity: 0),
-          isA<List<LineStatus>>(),
-        );
-      });
-    });
-
-    group('LinesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.lines.get(mode: 'tube'),
-          isA<List<Line>>(),
-        );
-      });
-
-      test('getById', () async {
-        expect(
-          await _tflApi.lines.getById('victoria'),
-          isA<Line>(),
-        );
-      });
-
-      test('getLineDisruptions', () async {
-        expect(
-          await _tflApi.lines.getLineDisruptions('victoria'),
-          isA<List<LineDisruption>>(),
-        );
-      });
-
-      test('getLineRoutes', () async {
-        expect(
-          await _tflApi.lines.getLineRoutes('victoria'),
-          isA<List<LineRoute>>(),
-        );
-      });
-
-      test('getLineStatuses', () async {
-        expect(
-          await _tflApi.lines.getLineStatuses('victoria'),
-          isA<List<LineStatus>>(),
-        );
-      });
-
-      test('getPredictions', () async {
-        expect(
-          await _tflApi.lines.getPredictions('victoria'),
-          isA<List<Prediction>>(),
-        );
-      });
-
-      test('getRouteSequences', () async {
-        expect(
-          await _tflApi.lines.getRouteSequences('victoria'),
-          isA<List<RouteSequence>>(),
-        );
-      });
-
-      test('getStopPoints', () async {
-        expect(
-          await _tflApi.lines.getStopPoints('victoria'),
-          isA<List<StopPoint>>(),
-        );
-      });
-
-      test('getTimetables', () async {
-        expect(
-          await _tflApi.lines.getTimetables('victoria', '940GZZLUVIC'),
-          isA<TimetableResponse>(),
-        );
-      });
-    });
-
-    group('ModeActiveServiceTypesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.modeActiveServiceTypes.get(),
-          isA<List<ActiveServiceType>>(),
-        );
-      });
-    });
-
-    group('ModesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.modes.get(),
-          isA<List<Mode>>(),
-        );
-      });
-
-      test('getPredictions', () async {
-        expect(
-          await _tflApi.modes.getPredictions('tube'),
-          isA<List<Prediction>>(),
-        );
-      });
-    });
-
-    group('PlaceCategoriesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.placeCategories.get(),
-          isA<List<PlaceCategory>>(),
-        );
-      });
-    });
-
-    group('PlaceTypesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.placeTypes.get(),
-          isA<List<String>>(),
-        );
-      });
-    });
-
-    group('PlacesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.places.get(type: 'BikePoint'),
-          isA<List<Place>>(),
-        );
-      });
-
-      test('getById', () async {
-        expect(
-          await _tflApi.places.getById('BikePoints_1'),
-          isA<Place>(),
-        );
-      });
-
-      test('search', () async {
-        expect(
-          await _tflApi.places.search('BikePoints_1'),
-          isA<List<Place>>(),
-        );
-      });
-    });
-
-    group('PrivateHireOperatorsApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.privateHireOperators.get(),
-          isA<List<PrivateHireOperator>>(),
-        );
-      });
-    });
-
-    group('RoadCategoriesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.roadCategories.get(),
-          isA<List<String>>(),
-        );
-      });
-    });
-
-    group('RoadDisruptionsApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.roadDisruptions.get(),
-          isA<List<RoadDisruption>>(),
-        );
-      });
-    });
-
-    group('RoadStatusSeveritiesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.roadStatusSeverities.get(),
-          isA<List<StatusSeverity>>(),
-        );
-      });
-    });
-
-    group('RoadsApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.roads.get(),
-          isA<List<Road>>(),
-        );
-      });
-
-      test('getById', () async {
-        expect(
-          await _tflApi.roads.getById('a1'),
-          isA<Road>(),
-        );
-      });
-
-      test('getRoadDisruptions', () async {
-        expect(
-          await _tflApi.roads.getRoadDisruptions('a1'),
-          isA<List<RoadDisruption>>(),
-        );
-      });
-
-      test('getRoadStatuses', () async {
-        expect(
-          await _tflApi.roads.getRoadStatuses('a1'),
-          isA<List<Road>>(),
-        );
-      });
-    });
-
-    group('StopPointCategoriesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.stopPointCategories.get(),
-          isA<List<StopPointCategory>>(),
-        );
-      });
-    });
-
-    group('StopPointModesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.stopPointModes.get(),
-          isA<List<Mode>>(),
-        );
-      });
-
-      test('getStopPointDisruptions', () async {
-        expect(
-          await _tflApi.stopPointModes.getStopPointDisruptions('tube'),
-          isA<List<StopPointDisruption>>(),
-        );
-      });
-    });
-
-    group('StopPointTypesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.stopPointTypes.get(),
-          isA<List<String>>(),
-        );
-      });
-    });
-
-    group('StopPointsApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.stopPoints.get(type: 'NaptanMetroStation'),
-          isA<List<StopPoint>>(),
-        );
-
-        expect(
-          await _tflApi.stopPoints.get(mode: 'tube'),
-          isA<List<StopPoint>>(),
-        );
-      });
-
-      test('getById', () async {
-        expect(
-          await _tflApi.stopPoints.getById('940GZZLUVIC'),
-          isA<StopPoint>(),
-        );
-      });
-
-      test('getBySmsCode', () async {
-        expect(
-          await _tflApi.stopPoints.getBySmsCode('47001'),
-          isA<StopPoint>(),
-        );
-      });
-
-      test('getCarParks', () async {
-        expect(
-          await _tflApi.stopPoints.getCarParks('940GZZLUVIC'),
-          isA<List<Place>>(),
-        );
-      });
-
-      test('getDirection', () async {
-        expect(
-          await _tflApi.stopPoints.getDirection('940GZZLUVIC', '940GZZLUBXN'),
-          isA<String>(),
-        );
-      });
-
-      test('getLineServiceTypes', () async {
-        expect(
-          await _tflApi.stopPoints.getLineServiceTypes('940GZZLUVIC'),
-          isA<List<LineServiceType>>(),
-        );
-      });
-
-      test('getPlaces', () async {
-        expect(
-          await _tflApi.stopPoints.getPlaces('940GZZLUVIC', ['BikePoint']),
-          isA<List<Place>>(),
-        );
-      });
-
-      test('getPredictions', () async {
-        expect(
-          await _tflApi.stopPoints.getPredictions('940GZZLUVIC'),
-          isA<List<Prediction>>(),
-        );
-      });
-
-      test('getStopPointDisruptions', () async {
-        expect(
-          await _tflApi.stopPoints.getStopPointDisruptions('940GZZLUVIC'),
-          isA<List<StopPointDisruption>>(),
-        );
-      });
-
-      test('getStopPointRoutes', () async {
-        expect(
-          await _tflApi.stopPoints.getStopPointRoutes('940GZZLUVIC'),
-          isA<List<StopPointRoute>>(),
-        );
-      });
-
-      test('getTaxiRanks', () async {
-        expect(
-          await _tflApi.stopPoints.getTaxiRanks('940GZZLUVIC'),
-          isA<List<Place>>(),
-        );
-      });
-    });
-
-    group('VehiclesApi', () {
-      test('get', () async {
-        expect(
-          await _tflApi.vehicles.get(mode: 'tube'),
-          isA<List<Vehicle>>(),
-        );
-      });
-
-      test('getPredictions', () async {
-        expect(
-          await _tflApi.vehicles.getPredictions('LT61 AHT'),
-          isA<List<Prediction>>(),
-        );
-      });
-    });
-
-    setUp(() {
-      _client = clientViaAppIdAppKey(env['APP_ID'], env['APP_KEY']);
-
-      _tflApi = TflApi(_client);
-    });
-
-    setUpAll(() {
-      load();
-    });
-
-    tearDown(() {
-      _client.close();
-    });
-  });
-
-  group('clients', () {
-    group('AppIdAppKeyClient', () {
-      test('clientViaAppIdAppKey', () {
-        expect(
-          clientViaAppIdAppKey(env['APP_ID'], env['APP_KEY']),
-          isA<AppIdAppKeyClient>(),
-        );
-      });
-    });
-
-    setUpAll(() {
-      load();
-    });
-  });
+  group(
+    'extensions',
+    () {
+      group(
+        'ResponseExtensions',
+        () {
+          test(
+            'isSuccessStatusCode',
+            () {
+              expect(Response('', 200).isSuccessStatusCode, isTrue);
+              expect(Response('', 204).isSuccessStatusCode, isTrue);
+              expect(Response('', 404).isSuccessStatusCode, isFalse);
+              expect(Response('', 500).isSuccessStatusCode, isFalse);
+            },
+          );
+        },
+      );
+    },
+  );
+
+  group(
+    'services',
+    () {
+      const accidentStatYear = 2010;
+      const bikePointId = 'BikePoints_1';
+      const bikePointQuery = 'River Street';
+      const journeyFrom = '940GZZLUHAW';
+      const journeyTo = '940GZZLUEAC';
+      const lineDirection = 'outbound';
+      const lineFromStopPointId = '940GZZLUHAW';
+      const lineId = 'bakerloo';
+      const lineIds = ['bakerloo'];
+      const lineModes = ['tube'];
+      const lineQuery = 'bakerloo';
+      const lineSeverity = 0;
+      const lineStopPointId = '940GZZLUHAW';
+      const lineToStopPointId = '940GZZLUEAC';
+      const modeMode = 'tube';
+      const occupancyBikePointIds = [
+        'BikePoints_1',
+      ];
+      const occupancyCarParkId = 'CarParks_800491';
+      const occupancyChargeConnectorIds = [
+        'ChargePointESB-UT076S (Taxi-Only)-1',
+      ];
+      const placeId = 'BikePoints_1';
+      const placeLat = 51.529163;
+      const placeLon = -0.10997;
+      const placeName = 'River Street';
+      const placeRadius = 100.0;
+      const placeType = 'BikePoint';
+      const placeTypes = [
+        'BikePoint',
+      ];
+      const roadDisruptionIds = ['TIMS-250022'];
+      const roadIds = ['A1'];
+      const searchBusSchedulesQuery = '1';
+      const searchSiteQuery = 'River Street';
+      const stopPointDirection = 'outbound';
+      const stopPointId = '940GZZLUHAW';
+      const stopPointIds = ['940GZZLUHAW'];
+      const stopPointLat = 51.592268;
+      const stopPointLon = -0.335217;
+      const stopPointLineId = 'bakerloo';
+      const stopPointModes = ['tube'];
+      const stopPointPage = 1;
+      const stopPointQuery = 'Harrow & Wealdstone Underground Station';
+      const stopPointRadius = 100;
+      const stopPointSmsCode = '58824';
+      const stopPointTypes = ['NaptanMetroStation'];
+      const stopPointToStopPointId = '940GZZLUEAC';
+      const vehicleIds = ['LTZ1150'];
+      const vehicleVrm = 'LTZ1150';
+
+      late TflApiClient api;
+      late Client client;
+
+      group(
+        'AccidentStatService',
+        () {
+          test(
+            'get',
+            () async {
+              await expectLater(
+                api.accidentStats.get(accidentStatYear),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'AirQualityService',
+        () {
+          test(
+            'get',
+            () async {
+              await expectLater(
+                api.airQualities.get(),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'BikePointService',
+        () {
+          test(
+            'getAll',
+            () async {
+              await expectLater(
+                api.bikePoints.getAll(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'get',
+            () async {
+              await expectLater(
+                api.bikePoints.get(bikePointId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'search',
+            () async {
+              await expectLater(
+                api.bikePoints.search(bikePointQuery),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'JourneyService',
+        () {
+          test(
+            'meta',
+            () async {
+              await expectLater(
+                api.journeys.meta(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'journeyResultsByPathFromPathToQueryViaQueryNationalSearchQueryDateQu',
+            () async {
+              await expectLater(
+                api.journeys
+                    .journeyResultsByPathFromPathToQueryViaQueryNationalSearchQueryDateQu(
+                        journeyFrom, journeyTo),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'LineService',
+        () {
+          test(
+            'metaModes',
+            () async {
+              await expectLater(
+                api.lines.metaModes(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaSeverity',
+            () async {
+              await expectLater(
+                api.lines.metaSeverity(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaDisruptionCategories',
+            () async {
+              await expectLater(
+                api.lines.metaDisruptionCategories(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaServiceTypes',
+            () async {
+              await expectLater(
+                api.lines.metaServiceTypes(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByPathIds',
+            () async {
+              await expectLater(
+                api.lines.getByPathIds(lineIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByModeByPathModes',
+            () async {
+              await expectLater(
+                api.lines.getByModeByPathModes(lineModes),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'routeByQueryServiceTypes',
+            () async {
+              await expectLater(
+                api.lines.routeByQueryServiceTypes(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'lineRoutesByIdsByPathIdsQueryServiceTypes',
+            () async {
+              await expectLater(
+                api.lines.lineRoutesByIdsByPathIdsQueryServiceTypes(lineIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'routeByModeByPathModesQueryServiceTypes',
+            () async {
+              await expectLater(
+                api.lines.routeByModeByPathModesQueryServiceTypes(lineModes),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'routeSequenceByPathIdPathDirectionQueryServiceTypesQueryExcludeCrowding',
+            () async {
+              await expectLater(
+                api.lines
+                    .routeSequenceByPathIdPathDirectionQueryServiceTypesQueryExcludeCrowding(
+                        lineId, lineDirection),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'statusByPathIdsPathStartDatePathEndDateQueryDetail',
+            () async {
+              await expectLater(
+                api.lines.statusByPathIdsPathStartDatePathEndDateQueryDetail(
+                    lineIds,
+                    DateTime.now(),
+                    DateTime.now().add(Duration(days: 1))),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'statusByIdsByPathIdsQueryDetail',
+            () async {
+              await expectLater(
+                api.lines.statusByIdsByPathIdsQueryDetail(lineIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'searchByPathQueryQueryModesQueryServiceTypes',
+            () async {
+              await expectLater(
+                api.lines
+                    .searchByPathQueryQueryModesQueryServiceTypes(lineQuery),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'statusBySeverityByPathSeverity',
+            () async {
+              await expectLater(
+                api.lines.statusBySeverityByPathSeverity(lineSeverity),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'statusByModeByPathModesQueryDetailQuerySeverityLevel',
+            () async {
+              await expectLater(
+                api.lines.statusByModeByPathModesQueryDetailQuerySeverityLevel(
+                    lineModes),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'stopPointsByPathIdQueryTflOperatedNationalRailStationsOnly',
+            () async {
+              await expectLater(
+                api.lines
+                    .stopPointsByPathIdQueryTflOperatedNationalRailStationsOnly(
+                        lineId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'timetableByPathFromStopPointIdPathId',
+            () async {
+              await expectLater(
+                api.lines.timetableByPathFromStopPointIdPathId(
+                    lineFromStopPointId, lineId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'timetableToByPathFromStopPointIdPathIdPathToStopPointId',
+            () async {
+              await expectLater(
+                api.lines
+                    .timetableToByPathFromStopPointIdPathIdPathToStopPointId(
+                        lineFromStopPointId, lineId, lineToStopPointId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'disruptionByPathIds',
+            () async {
+              await expectLater(
+                api.lines.disruptionByPathIds(lineIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'disruptionByModeByPathModes',
+            () async {
+              await expectLater(
+                api.lines.disruptionByModeByPathModes(lineModes),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'arrivalsWithStopPointByPathIdsPathStopPointIdQueryDirectionQueryDestina',
+            () async {
+              await expectLater(
+                api.lines
+                    .arrivalsWithStopPointByPathIdsPathStopPointIdQueryDirectionQueryDestina(
+                        lineIds, lineStopPointId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'arrivalsByPathIds',
+            () async {
+              await expectLater(
+                api.lines.arrivalsByPathIds(lineIds),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'ModeService',
+        () {
+          test(
+            'getActiveServiceTypes',
+            () async {
+              await expectLater(
+                api.modes.getActiveServiceTypes(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'arrivals',
+            () async {
+              await expectLater(
+                api.modes.arrivals(modeMode),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'OccupancyService',
+        () {
+          test(
+            'get',
+            () async {
+              await expectLater(
+                api.occupancies.get(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getAllChargeConnectorStatus',
+            () async {
+              await expectLater(
+                api.occupancies.getAllChargeConnectorStatus(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByPathId',
+            () async {
+              await expectLater(
+                api.occupancies.getByPathId(occupancyCarParkId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getChargeConnectorStatusByPathIds',
+            () async {
+              await expectLater(
+                api.occupancies.getChargeConnectorStatusByPathIds(
+                    occupancyChargeConnectorIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getBikePointsOccupanciesByPathIds',
+            () async {
+              await expectLater(
+                api.occupancies
+                    .getBikePointsOccupanciesByPathIds(occupancyBikePointIds),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'PlaceService',
+        () {
+          test(
+            'metaCategories',
+            () async {
+              await expectLater(
+                api.places.metaCategories(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaPlaceTypes',
+            () async {
+              await expectLater(
+                api.places.metaPlaceTypes(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByTypeByPathTypesQueryActiveOnly',
+            () async {
+              await expectLater(
+                api.places.getByTypeByPathTypesQueryActiveOnly(placeTypes),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByPathIdQueryIncludeChildren',
+            () async {
+              await expectLater(
+                api.places.getByPathIdQueryIncludeChildren(placeId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByGeoPointByQueryLatQueryLonQueryRadiusQueryCategoriesQueryIncludeC',
+            () async {
+              await expectLater(
+                api.places
+                    .getByGeoPointByQueryLatQueryLonQueryRadiusQueryCategoriesQueryIncludeC(
+                        placeLat, placeLon, placeRadius),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getAtByPathTypePathLatPathLon',
+            () async {
+              await expectLater(
+                api.places.getAtByPathTypePathLatPathLon(
+                    placeType, placeLat, placeLon),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'searchByQueryNameQueryTypes',
+            () async {
+              await expectLater(
+                api.places.searchByQueryNameQueryTypes(placeName),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'RoadService',
+        () {
+          test(
+            'get',
+            () async {
+              await expectLater(
+                api.roads.get(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByPathIds',
+            () async {
+              await expectLater(
+                api.roads.getByPathIds(roadIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'statusByPathIdsQueryStartDateQueryEndDate',
+            () async {
+              await expectLater(
+                api.roads.statusByPathIdsQueryStartDateQueryEndDate(roadIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'disruptionByPathIdsQueryStripContentQuerySeveritiesQueryCategoriesQuery',
+            () async {
+              await expectLater(
+                api.roads
+                    .disruptionByPathIdsQueryStripContentQuerySeveritiesQueryCategoriesQuery(
+                        roadIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'disruptedStreetsByQueryStartDateQueryEndDate',
+            () async {
+              await expectLater(
+                api.roads.disruptedStreetsByQueryStartDateQueryEndDate(
+                    DateTime.now(), DateTime.now().add(Duration(days: 1))),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'disruptionByIdByPathDisruptionIdsQueryStripContent',
+            () async {
+              await expectLater(
+                api.roads.disruptionByIdByPathDisruptionIdsQueryStripContent(
+                    roadDisruptionIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaCategories',
+            () async {
+              await expectLater(
+                api.roads.metaCategories(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaSeverities',
+            () async {
+              await expectLater(
+                api.roads.metaSeverities(),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'SearchService',
+        () {
+          test(
+            'getByQueryQuery',
+            () async {
+              await expectLater(
+                api.searches.getByQueryQuery(searchSiteQuery),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'busSchedulesByQueryQuery',
+            () async {
+              await expectLater(
+                api.searches.busSchedulesByQueryQuery(searchBusSchedulesQuery),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaSearchProviders',
+            () async {
+              await expectLater(
+                api.searches.metaSearchProviders(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaCategories',
+            () async {
+              await expectLater(
+                api.searches.metaCategories(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaSorts',
+            () async {
+              await expectLater(
+                api.searches.metaSorts(),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'StopPointService',
+        () {
+          test(
+            'metaCategories',
+            () async {
+              await expectLater(
+                api.stopPoints.metaCategories(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaStopTypes',
+            () async {
+              await expectLater(
+                api.stopPoints.metaStopTypes(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'metaModes',
+            () async {
+              await expectLater(
+                api.stopPoints.metaModes(),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByPathIdsQueryIncludeCrowdingData',
+            () async {
+              await expectLater(
+                api.stopPoints
+                    .getByPathIdsQueryIncludeCrowdingData(stopPointIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByPathIdQueryPlaceTypes',
+            () async {
+              await expectLater(
+                api.stopPoints
+                    .getByPathIdQueryPlaceTypes(stopPointId, stopPointTypes),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'crowdingByPathIdPathLineQueryDirection',
+            () async {
+              await expectLater(
+                api.stopPoints.crowdingByPathIdPathLineQueryDirection(
+                    stopPointId, stopPointLineId, stopPointDirection),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByTypeByPathTypes',
+            () async {
+              await expectLater(
+                api.stopPoints.getByTypeByPathTypes(stopPointTypes),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByTypeWithPaginationByPathTypesPathPage',
+            () async {
+              await expectLater(
+                api.stopPoints.getByTypeWithPaginationByPathTypesPathPage(
+                    stopPointTypes, stopPointPage),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getServiceTypesByQueryIdQueryLineIdsQueryModes',
+            () async {
+              await expectLater(
+                api.stopPoints.getServiceTypesByQueryIdQueryLineIdsQueryModes(
+                    stopPointId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'arrivalsByPathId',
+            () async {
+              await expectLater(
+                api.stopPoints.arrivalsByPathId(stopPointId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'arrivalDeparturesByPathIdQueryLineIds',
+            () async {
+              await expectLater(
+                api.stopPoints.arrivalDeparturesByPathIdQueryLineIds(
+                    '910GHROW', ['london-overground']),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'reachableFromByPathIdPathLineIdQueryServiceTypes',
+            () async {
+              await expectLater(
+                api.stopPoints.reachableFromByPathIdPathLineIdQueryServiceTypes(
+                    stopPointId, stopPointLineId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'routeByPathIdQueryServiceTypes',
+            () async {
+              await expectLater(
+                api.stopPoints.routeByPathIdQueryServiceTypes(stopPointId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'disruptionByModeByPathModesQueryIncludeRouteBlockedStops',
+            () async {
+              await expectLater(
+                api.stopPoints
+                    .disruptionByModeByPathModesQueryIncludeRouteBlockedStops(
+                        stopPointModes),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'disruptionByPathIdsQueryGetFamilyQueryIncludeRouteBlockedStopsQuer',
+            () async {
+              await expectLater(
+                api.stopPoints
+                    .disruptionByPathIdsQueryGetFamilyQueryIncludeRouteBlockedStopsQuer(
+                        stopPointIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'directionByPathIdPathToStopPointIdQueryLineId',
+            () async {
+              await expectLater(
+                api.stopPoints.directionByPathIdPathToStopPointIdQueryLineId(
+                    stopPointId, stopPointToStopPointId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByGeoPointByQueryLatQueryLonQueryStopTypesQueryRadiusQueryUseSt',
+            () async {
+              await expectLater(
+                api.stopPoints
+                    .getByGeoPointByQueryLatQueryLonQueryStopTypesQueryRadiusQueryUseSt(
+                        stopPointTypes,
+                        stopPointLat,
+                        stopPointLon,
+                        stopPointRadius),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getByModeByPathModesQueryPage',
+            () async {
+              await expectLater(
+                api.stopPoints.getByModeByPathModesQueryPage(stopPointModes),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'searchByPathQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLines',
+            () async {
+              await expectLater(
+                api.stopPoints
+                    .searchByPathQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLines(
+                        stopPointQuery),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'searchByQueryQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLine',
+            () async {
+              await expectLater(
+                api.stopPoints
+                    .searchByQueryQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLine(
+                        stopPointQuery),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getBySmsByPathIdQueryOutput',
+            () async {
+              await expectLater(
+                api.stopPoints.getBySmsByPathIdQueryOutput(stopPointSmsCode),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getTaxiRanksByIdsByPathStopPointId',
+            () async {
+              await expectLater(
+                api.stopPoints.getTaxiRanksByIdsByPathStopPointId(stopPointId),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getCarParksByIdByPathStopPointId',
+            () async {
+              await expectLater(
+                api.stopPoints.getCarParksByIdByPathStopPointId(stopPointId),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      group(
+        'VehicleService',
+        () {
+          test(
+            'getByPathIds',
+            () async {
+              await expectLater(
+                api.vehicles.getByPathIds(vehicleIds),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getEmissionsSurchargeComplianceByQueryVrm',
+            () async {
+              await expectLater(
+                api.vehicles
+                    .getEmissionsSurchargeComplianceByQueryVrm(vehicleVrm),
+                completes,
+              );
+            },
+          );
+
+          test(
+            'getUlezComplianceByQueryVrm',
+            () async {
+              await expectLater(
+                api.vehicles.getUlezComplianceByQueryVrm(vehicleVrm),
+                completes,
+              );
+            },
+          );
+        },
+      );
+
+      setUp(
+        () {
+          client = clientViaAppKey(Platform.environment['APP_KEY']!);
+
+          api = TflApiClient(client: client);
+        },
+      );
+
+      tearDown(
+        () {
+          client.close();
+        },
+      );
+    },
+    timeout: Timeout(
+      Duration(
+        minutes: 1,
+      ),
+    ),
+  );
 }

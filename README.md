@@ -1,28 +1,26 @@
 # TfL API Client
 
-A library for Dart developers.
+A client for accessing the TfL API.
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+Please note that the TfL API Client is unofficial and not endorsed by TfL.
 
 ## Usage
 
-```dart
-import 'dart:async';
+A simple usage example:
 
-import 'package:dotenv/dotenv.dart';
+```dart
+import 'dart:io';
+
 import 'package:tfl_api_client/tfl_api_client.dart';
 
-Future main() async {
-  load();
+Future<void> main() async {
+  final client = clientViaAppKey(Platform.environment['APP_KEY']!);
 
-  final client = clientViaAppIdAppKey(env['APP_ID'], env['APP_KEY']);
+  final api = TflApiClient(client: client);
 
-  final tflApi = TflApi(client);
-
-  final line = await tflApi.lines.getById('victoria');
-
-  print(line);
+  for (var line in await api.lines.getByPathIds(['victoria'])) {
+    print(line);
+  }
 
   client.close();
 }
