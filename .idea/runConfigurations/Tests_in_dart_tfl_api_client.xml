@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Tests in dart-tfl-api-client" type="DartTestRunConfigurationType" factoryName="Dart Test" nameIsGenerated="true">
+    <option name="envs">
+      <entry key="APP_KEY" value="" />
+    </option>
+    <option name="filePath" value="$PROJECT_DIR$" />
+    <option name="scope" value="FOLDER" />
+    <method v="2" />
+  </configuration>
+</component>
