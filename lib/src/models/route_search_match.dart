@@ -59,5 +59,6 @@ class RouteSearchMatch extends SearchMatch {
         ),
       );
 
+  @override
   Map<String, dynamic> toJson() => _$RouteSearchMatchToJson(this);
 }

@@ -64,5 +64,6 @@ class AddressMatch extends SearchMatch {
         ),
       );
 
+  @override
   Map<String, dynamic> toJson() => _$AddressMatchToJson(this);
 }
