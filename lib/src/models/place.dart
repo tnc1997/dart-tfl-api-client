@@ -55,5 +55,6 @@ class Place extends Point2 {
         ),
       );
 
+  @override
   Map<String, dynamic> toJson() => _$PlaceToJson(this);
 }

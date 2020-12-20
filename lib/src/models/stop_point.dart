@@ -92,5 +92,6 @@ class StopPoint extends Place {
         ),
       );
 
+  @override
   Map<String, dynamic> toJson() => _$StopPointToJson(this);
 }

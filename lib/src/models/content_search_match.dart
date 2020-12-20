@@ -54,5 +54,6 @@ class ContentSearchMatch extends SearchMatch {
         ),
       );
 
+  @override
   Map<String, dynamic> toJson() => _$ContentSearchMatchToJson(this);
 }

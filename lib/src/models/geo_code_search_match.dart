@@ -48,5 +48,6 @@ class GeoCodeSearchMatch extends SearchMatch {
         ),
       );
 
+  @override
   Map<String, dynamic> toJson() => _$GeoCodeSearchMatchToJson(this);
 }

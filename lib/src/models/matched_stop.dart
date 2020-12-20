@@ -75,5 +75,6 @@ class MatchedStop extends SearchMatch {
         ),
       );
 
+  @override
   Map<String, dynamic> toJson() => _$MatchedStopToJson(this);
 }

@@ -52,5 +52,6 @@ class PlaceSearchMatch extends SearchMatch {
         ),
       );
 
+  @override
   Map<String, dynamic> toJson() => _$PlaceSearchMatchToJson(this);
 }
