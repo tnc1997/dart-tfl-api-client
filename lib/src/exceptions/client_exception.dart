@@ -16,7 +16,7 @@ class ClientException implements Exception {
 
   ClientException.fromResponse(Response response)
       : message = response.body,
-        uri = response.request.url,
+        uri = response.request?.url,
         statusCode = response.statusCode,
         reasonPhrase = response.reasonPhrase;
 
