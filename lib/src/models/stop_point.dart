@@ -15,7 +15,7 @@ class StopPoint extends Place {
   String? stopLetter;
   List<String>? modes;
   String? icsCode;
-  String? sMSCode;
+  String? smsCode;
   String? stopType;
   String? stationNaptan;
   String? accessibilitySummary;
@@ -44,7 +44,7 @@ class StopPoint extends Place {
     this.stopLetter,
     this.modes,
     this.icsCode,
-    this.sMSCode,
+    this.smsCode,
     this.stopType,
     this.stationNaptan,
     this.accessibilitySummary,
