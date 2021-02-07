@@ -17,7 +17,7 @@ class Prediction {
   String? bearing;
   String? visitNumber;
   String? tripId;
-  String? vehicleCDId;
+  String? vehicleCdId;
   String? destinationNaptanId;
   String? destinationName;
   DateTime? timestamp;
@@ -43,7 +43,7 @@ class Prediction {
     this.bearing,
     this.visitNumber,
     this.tripId,
-    this.vehicleCDId,
+    this.vehicleCdId,
     this.destinationNaptanId,
     this.destinationName,
     this.timestamp,

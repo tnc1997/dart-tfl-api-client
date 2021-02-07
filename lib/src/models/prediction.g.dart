@@ -20,7 +20,7 @@ Prediction _$PredictionFromJson(Map<String, dynamic> json) {
     bearing: json['bearing'] as String?,
     visitNumber: json['visitNumber'] as String?,
     tripId: json['tripId'] as String?,
-    vehicleCDId: json['vehicleCDId'] as String?,
+    vehicleCdId: json['vehicleCdId'] as String?,
     destinationNaptanId: json['destinationNaptanId'] as String?,
     destinationName: json['destinationName'] as String?,
     timestamp: json['timestamp'] == null
@@ -59,7 +59,7 @@ Map<String, dynamic> _$PredictionToJson(Prediction instance) =>
       'bearing': instance.bearing,
       'visitNumber': instance.visitNumber,
       'tripId': instance.tripId,
-      'vehicleCDId': instance.vehicleCDId,
+      'vehicleCdId': instance.vehicleCdId,
       'destinationNaptanId': instance.destinationNaptanId,
       'destinationName': instance.destinationName,
       'timestamp': instance.timestamp?.toIso8601String(),
