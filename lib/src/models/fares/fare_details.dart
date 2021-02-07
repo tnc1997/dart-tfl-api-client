@@ -11,7 +11,7 @@ class FareDetails {
   DateTime? endDate;
   String? mode;
   String? passengerType;
-  bool? contactlessPAYGOnlyFare;
+  bool? contactlessPaygOnlyFare;
   String? from;
   String? to;
   String? fromStation;
@@ -35,7 +35,7 @@ class FareDetails {
     this.endDate,
     this.mode,
     this.passengerType,
-    this.contactlessPAYGOnlyFare,
+    this.contactlessPaygOnlyFare,
     this.from,
     this.to,
     this.fromStation,
