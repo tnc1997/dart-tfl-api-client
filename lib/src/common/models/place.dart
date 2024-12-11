@@ -1,12 +1,11 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
 
 import 'additional_properties.dart';
-import 'point.dart';
 
 part 'place.g.dart';
 
 @JsonSerializable()
-class Place extends Point2 {
+class Place {
   String? id;
   String? url;
   String? commonName;
@@ -15,10 +14,10 @@ class Place extends Point2 {
   List<AdditionalProperties>? additionalProperties;
   List<Place>? children;
   List<String>? childrenUrls;
+  double? lat;
+  double? lon;
 
   Place({
-    double? lat,
-    double? lon,
     this.id,
     this.url,
     this.commonName,
@@ -27,10 +26,9 @@ class Place extends Point2 {
     this.additionalProperties,
     this.children,
     this.childrenUrls,
-  }) : super(
-          lat: lat,
-          lon: lon,
-        );
+    this.lat,
+    this.lon,
+  });
 
   factory Place.fromJson(
     Map<String, dynamic> json,
@@ -56,6 +54,5 @@ class Place extends Point2 {
         ),
       );
 
-  @override
   Map<String, dynamic> toJson() => _$PlaceToJson(this);
 }

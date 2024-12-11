@@ -8,8 +8,6 @@ part of 'place.dart';
 
 Place _$PlaceFromJson(Map<String, dynamic> json) {
   return Place(
-    lat: (json['lat'] as num?)?.toDouble(),
-    lon: (json['lon'] as num?)?.toDouble(),
     id: json['id'] as String?,
     url: json['url'] as String?,
     commonName: json['commonName'] as String?,
@@ -24,12 +22,12 @@ Place _$PlaceFromJson(Map<String, dynamic> json) {
     childrenUrls: (json['childrenUrls'] as List<dynamic>?)
         ?.map((e) => e as String)
         .toList(),
+    lat: (json['lat'] as num?)?.toDouble(),
+    lon: (json['lon'] as num?)?.toDouble(),
   );
 }
 
 Map<String, dynamic> _$PlaceToJson(Place instance) => <String, dynamic>{
-      'lat': instance.lat,
-      'lon': instance.lon,
       'id': instance.id,
       'url': instance.url,
       'commonName': instance.commonName,
@@ -38,4 +36,6 @@ Map<String, dynamic> _$PlaceToJson(Place instance) => <String, dynamic>{
       'additionalProperties': instance.additionalProperties,
       'children': instance.children,
       'childrenUrls': instance.childrenUrls,
+      'lat': instance.lat,
+      'lon': instance.lon,
     };
