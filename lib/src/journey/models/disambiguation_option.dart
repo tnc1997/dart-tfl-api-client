@@ -1,6 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
 
-import '../place.dart';
+import '../../common/models/place.dart';
 
 part 'disambiguation_option.g.dart';
 

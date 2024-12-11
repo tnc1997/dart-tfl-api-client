@@ -1,6 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
 
-import '../identifier.dart';
+import '../../common/models/identifier.dart';
 
 part 'route_option.g.dart';
 

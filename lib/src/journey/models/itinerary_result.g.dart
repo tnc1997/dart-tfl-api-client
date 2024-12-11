@@ -8,14 +8,6 @@ part of 'itinerary_result.dart';
 
 ItineraryResult _$ItineraryResultFromJson(Map<String, dynamic> json) {
   return ItineraryResult(
-    recommendedMaxAgeMinutes: json['recommendedMaxAgeMinutes'] as int?,
-    searchCriteria: json['searchCriteria'] == null
-        ? null
-        : SearchCriteria.fromJson(
-            json['searchCriteria'] as Map<String, dynamic>),
-    journeyVector: json['journeyVector'] == null
-        ? null
-        : JourneyVector.fromJson(json['journeyVector'] as Map<String, dynamic>),
     journeys: (json['journeys'] as List<dynamic>?)
         ?.map((e) => Journey2.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -29,16 +21,24 @@ ItineraryResult _$ItineraryResultFromJson(Map<String, dynamic> json) {
     stopMessages: (json['stopMessages'] as List<dynamic>?)
         ?.map((e) => e as String)
         .toList(),
+    recommendedMaxAgeMinutes: json['recommendedMaxAgeMinutes'] as int?,
+    searchCriteria: json['searchCriteria'] == null
+        ? null
+        : SearchCriteria.fromJson(
+            json['searchCriteria'] as Map<String, dynamic>),
+    journeyVector: json['journeyVector'] == null
+        ? null
+        : JourneyVector.fromJson(json['journeyVector'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$ItineraryResultToJson(ItineraryResult instance) =>
     <String, dynamic>{
-      'recommendedMaxAgeMinutes': instance.recommendedMaxAgeMinutes,
-      'searchCriteria': instance.searchCriteria,
-      'journeyVector': instance.journeyVector,
       'journeys': instance.journeys,
       'lines': instance.lines,
       'cycleHireDockingStationData': instance.cycleHireDockingStationData,
       'stopMessages': instance.stopMessages,
+      'recommendedMaxAgeMinutes': instance.recommendedMaxAgeMinutes,
+      'searchCriteria': instance.searchCriteria,
+      'journeyVector': instance.journeyVector,
     };

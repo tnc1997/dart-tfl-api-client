@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'accident_stats/services/accident_stats_service.dart';
 import 'air_quality/services/air_quality_service.dart';
 import 'bike_point/services/bike_point_service.dart';
-import 'common/services/journey_service.dart';
 import 'common/services/line_service.dart';
 import 'common/services/mode_service.dart';
 import 'common/services/occupancy_service.dart';
@@ -12,6 +11,7 @@ import 'common/services/road_service.dart';
 import 'common/services/search_service.dart';
 import 'common/services/stop_point_service.dart';
 import 'common/services/vehicle_service.dart';
+import 'journey/services/journey_service.dart';
 
 class TflApiClient {
   final http.Client _client;

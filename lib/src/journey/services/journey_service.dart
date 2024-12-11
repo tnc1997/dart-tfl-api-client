@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../constants/uri_constants.dart';
-import '../exceptions/client_exception.dart';
-import '../models/journey_planner/itinerary_result.dart';
-import '../models/mode.dart';
+import '../../common/constants/uri_constants.dart';
+import '../../common/exceptions/client_exception.dart';
+import '../../common/models/mode.dart';
+import '../models/itinerary_result.dart';
 
 class JourneyService {
   final http.Client _client;

@@ -1,6 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
 
-import '../disruption.dart';
+import '../../common/models/disruption.dart';
 import 'foot_path_element.dart';
 import 'planned_work.dart';
 import 'point.dart';

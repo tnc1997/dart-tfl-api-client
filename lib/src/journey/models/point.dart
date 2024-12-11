@@ -1,6 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
 
-import '../mode.dart';
+import '../../common/models/mode.dart';
 import 'map_item.dart';
 
 part 'point.g.dart';

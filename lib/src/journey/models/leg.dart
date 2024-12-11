@@ -1,9 +1,9 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
 
-import '../disruption.dart';
-import '../identifier.dart';
-import '../instruction.dart';
-import '../stop_point.dart';
+import '../../common/models/disruption.dart';
+import '../../common/models/identifier.dart';
+import '../../common/models/stop_point.dart';
+import 'instruction.dart';
 import 'obstacle.dart';
 import 'path.dart';
 import 'planned_work.dart';
