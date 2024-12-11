@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../constants/uri_constants.dart';
-import '../exceptions/client_exception.dart';
-import '../models/search_response.dart';
+import '../../common/constants/uri_constants.dart';
+import '../../common/exceptions/client_exception.dart';
+import '../../common/models/search_response.dart';
 
 class SearchService {
   final http.Client _client;
