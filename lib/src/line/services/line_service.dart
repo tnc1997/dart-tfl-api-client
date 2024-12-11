@@ -2,16 +2,16 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../constants/uri_constants.dart';
-import '../exceptions/client_exception.dart';
-import '../models/disruption.dart';
-import '../models/line.dart';
-import '../models/mode.dart';
-import '../models/prediction.dart';
+import '../../common/constants/uri_constants.dart';
+import '../../common/exceptions/client_exception.dart';
+import '../../common/models/disruption.dart';
+import '../../common/models/line.dart';
+import '../../common/models/mode.dart';
+import '../../common/models/prediction.dart';
+import '../../common/models/status_severity.dart';
+import '../../common/models/stop_point.dart';
 import '../models/route_search_response.dart';
 import '../models/route_sequence.dart';
-import '../models/status_severity.dart';
-import '../models/stop_point.dart';
 import '../models/timetable_response.dart';
 
 class LineService {

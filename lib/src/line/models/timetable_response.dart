@@ -1,8 +1,8 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
 
+import 'disambiguation.dart';
 import 'matched_stop.dart';
 import 'timetable.dart';
-import 'timetables/disambiguation.dart';
 
 part 'timetable_response.g.dart';
 

@@ -1,12 +1,11 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
 
-import 'identifier.dart';
-import 'search_match.dart';
+import '../../common/models/identifier.dart';
 
 part 'matched_stop.g.dart';
 
 @JsonSerializable()
-class MatchedStop extends SearchMatch {
+class MatchedStop {
   int? routeId;
   String? parentId;
   String? stationId;
@@ -22,13 +21,13 @@ class MatchedStop extends SearchMatch {
   bool? hasDisruption;
   List<Identifier>? lines;
   bool? status;
+  String? id;
+  String? url;
+  String? name;
+  double? lat;
+  double? lon;
 
   MatchedStop({
-    String? id,
-    String? url,
-    String? name,
-    double? lat,
-    double? lon,
     this.routeId,
     this.parentId,
     this.stationId,
@@ -44,13 +43,12 @@ class MatchedStop extends SearchMatch {
     this.hasDisruption,
     this.lines,
     this.status,
-  }) : super(
-          id: id,
-          url: url,
-          name: name,
-          lat: lat,
-          lon: lon,
-        );
+    this.id,
+    this.url,
+    this.name,
+    this.lat,
+    this.lon,
+  });
 
   factory MatchedStop.fromJson(
     Map<String, dynamic> json,
@@ -76,6 +74,5 @@ class MatchedStop extends SearchMatch {
         ),
       );
 
-  @override
   Map<String, dynamic> toJson() => _$MatchedStopToJson(this);
 }

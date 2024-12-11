@@ -3,38 +3,36 @@
 import 'line_route_section.dart';
 import 'matched_route_sections.dart';
 import 'matched_stop.dart';
-import 'search_match.dart';
 
 part 'route_search_match.g.dart';
 
 @JsonSerializable()
-class RouteSearchMatch extends SearchMatch {
+class RouteSearchMatch {
   String? lineId;
   String? mode;
   String? lineName;
   List<LineRouteSection>? lineRouteSection;
   List<MatchedRouteSections>? matchedRouteSections;
   List<MatchedStop>? matchedStops;
+  String? id;
+  String? url;
+  String? name;
+  double? lat;
+  double? lon;
 
   RouteSearchMatch({
-    String? id,
-    String? url,
-    String? name,
-    double? lat,
-    double? lon,
     this.lineId,
     this.mode,
     this.lineName,
     this.lineRouteSection,
     this.matchedRouteSections,
     this.matchedStops,
-  }) : super(
-          id: id,
-          url: url,
-          name: name,
-          lat: lat,
-          lon: lon,
-        );
+    this.id,
+    this.url,
+    this.name,
+    this.lat,
+    this.lon,
+  });
 
   factory RouteSearchMatch.fromJson(
     Map<String, dynamic> json,
@@ -60,6 +58,5 @@ class RouteSearchMatch extends SearchMatch {
         ),
       );
 
-  @override
   Map<String, dynamic> toJson() => _$RouteSearchMatchToJson(this);
 }

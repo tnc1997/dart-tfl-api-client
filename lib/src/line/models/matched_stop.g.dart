@@ -8,11 +8,6 @@ part of 'matched_stop.dart';
 
 MatchedStop _$MatchedStopFromJson(Map<String, dynamic> json) {
   return MatchedStop(
-    id: json['id'] as String?,
-    url: json['url'] as String?,
-    name: json['name'] as String?,
-    lat: (json['lat'] as num?)?.toDouble(),
-    lon: (json['lon'] as num?)?.toDouble(),
     routeId: json['routeId'] as int?,
     parentId: json['parentId'] as String?,
     stationId: json['stationId'] as String?,
@@ -30,16 +25,16 @@ MatchedStop _$MatchedStopFromJson(Map<String, dynamic> json) {
         ?.map((e) => Identifier.fromJson(e as Map<String, dynamic>))
         .toList(),
     status: json['status'] as bool?,
+    id: json['id'] as String?,
+    url: json['url'] as String?,
+    name: json['name'] as String?,
+    lat: (json['lat'] as num?)?.toDouble(),
+    lon: (json['lon'] as num?)?.toDouble(),
   );
 }
 
 Map<String, dynamic> _$MatchedStopToJson(MatchedStop instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'url': instance.url,
-      'name': instance.name,
-      'lat': instance.lat,
-      'lon': instance.lon,
       'routeId': instance.routeId,
       'parentId': instance.parentId,
       'stationId': instance.stationId,
@@ -55,4 +50,9 @@ Map<String, dynamic> _$MatchedStopToJson(MatchedStop instance) =>
       'hasDisruption': instance.hasDisruption,
       'lines': instance.lines,
       'status': instance.status,
+      'id': instance.id,
+      'url': instance.url,
+      'name': instance.name,
+      'lat': instance.lat,
+      'lon': instance.lon,
     };
