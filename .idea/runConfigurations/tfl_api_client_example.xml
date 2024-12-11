@@ -1,6 +1,5 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="tfl_api_client_example" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-    <option name="VMOptions" value="--no-sound-null-safety" />
     <option name="envs">
       <entry key="APP_KEY" value="" />
     </option>
