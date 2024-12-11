@@ -196,7 +196,7 @@ export 'src/models/web_cat/travel_time_band.dart';
 export 'src/models/web_cat/travel_time_statistic.dart';
 export 'src/models/web_cat/web_cat_location_information.dart';
 export 'src/models/web_cat/zone_statistic.dart';
-export 'src/services/accident_stat_service.dart';
+export 'src/services/accident_stats_service.dart';
 export 'src/services/air_quality_service.dart';
 export 'src/services/bike_point_service.dart';
 export 'src/services/journey_service.dart';

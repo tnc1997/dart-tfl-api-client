@@ -6,10 +6,10 @@ import '../constants/uri_constants.dart';
 import '../exceptions/client_exception.dart';
 import '../models/accident_stats/accident_detail.dart';
 
-class AccidentStatService {
+class AccidentStatsService {
   final http.Client _client;
 
-  const AccidentStatService({
+  const AccidentStatsService({
     required http.Client client,
   }) : _client = client;
 
