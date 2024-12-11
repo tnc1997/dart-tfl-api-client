@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../constants/uri_constants.dart';
-import '../exceptions/client_exception.dart';
+import '../../common/constants/uri_constants.dart';
+import '../../common/exceptions/client_exception.dart';
 import '../models/bike_point_occupancy.dart';
 import '../models/car_park_occupancy.dart';
 import '../models/charge_connector_occupancy.dart';
