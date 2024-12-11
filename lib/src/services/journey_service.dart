@@ -1,21 +1,22 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 import '../constants/uri_constants.dart';
 import '../exceptions/client_exception.dart';
 import '../models/journey_planner/itinerary_result.dart';
 import '../models/mode.dart';
-import '../tfl_api_client_base.dart';
 
 class JourneyService {
-  final TflApiClientContext _context;
+  final http.Client _client;
 
   const JourneyService({
-    required TflApiClientContext context,
-  }) : _context = context;
+    required http.Client client,
+  }) : _client = client;
 
   /// Gets a list of all of the available journey planner modes
   Future<List<Mode>> meta() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/journey/meta/modes',
@@ -58,7 +59,7 @@ class JourneyService {
     bool? routeBetweenEntrances,
     bool? useRealTimeLiveArrivals,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/journey/journeyresults/$from/to/$to',

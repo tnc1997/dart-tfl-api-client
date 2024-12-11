@@ -1,21 +1,22 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 import '../constants/uri_constants.dart';
 import '../exceptions/client_exception.dart';
 import '../models/active_service_type.dart';
 import '../models/prediction.dart';
-import '../tfl_api_client_base.dart';
 
 class ModeService {
-  final TflApiClientContext _context;
+  final http.Client _client;
 
   const ModeService({
-    required TflApiClientContext context,
-  }) : _context = context;
+    required http.Client client,
+  }) : _client = client;
 
   /// Returns the service type active for a mode. Currently only supports tube
   Future<List<ActiveServiceType>> getActiveServiceTypes() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/mode/activeservicetypes',
@@ -32,7 +33,7 @@ class ModeService {
     String mode, [
     int? count,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/mode/$mode/arrivals',

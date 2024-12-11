@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 import '../constants/uri_constants.dart';
 import '../exceptions/client_exception.dart';
 import '../models/arrival_departure.dart';
@@ -13,18 +15,17 @@ import '../models/stop_point.dart';
 import '../models/stop_point_category.dart';
 import '../models/stop_point_route_section.dart';
 import '../models/stop_points_response.dart';
-import '../tfl_api_client_base.dart';
 
 class StopPointService {
-  final TflApiClientContext _context;
+  final http.Client _client;
 
   const StopPointService({
-    required TflApiClientContext context,
-  }) : _context = context;
+    required http.Client client,
+  }) : _client = client;
 
   /// Gets the list of available StopPoint additional information categories
   Future<List<StopPointCategory>> metaCategories() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/meta/categories',
@@ -38,7 +39,7 @@ class StopPointService {
 
   /// Gets the list of available StopPoint types
   Future<List<String>> metaStopTypes() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/meta/stoptypes',
@@ -54,7 +55,7 @@ class StopPointService {
 
   /// Gets the list of available StopPoint modes
   Future<List<Mode>> metaModes() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/meta/modes',
@@ -71,7 +72,7 @@ class StopPointService {
     List<String> ids, [
     bool? includeCrowdingData,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/${ids.join(',')}',
@@ -94,7 +95,7 @@ class StopPointService {
     String id,
     List<String> placeTypes,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/$id/placetypes',
@@ -115,7 +116,7 @@ class StopPointService {
     String line,
     String direction,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/$id/crowding/$line',
@@ -134,7 +135,7 @@ class StopPointService {
   Future<List<StopPoint>> getByTypeByPathTypes(
     List<String> types,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/type/${types.join(',')}',
@@ -151,7 +152,7 @@ class StopPointService {
     List<String> types,
     int page,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/type/${types.join(',')}/page/$page',
@@ -169,7 +170,7 @@ class StopPointService {
     List<String>? lineIds,
     List<String>? modes,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/servicetypes',
@@ -190,7 +191,7 @@ class StopPointService {
   Future<List<Prediction>> arrivalsByPathId(
     String id,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/$id/arrivals',
@@ -207,7 +208,7 @@ class StopPointService {
     String id,
     List<String> lineIds,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/$id/arrivaldepartures',
@@ -228,7 +229,7 @@ class StopPointService {
     String lineId, [
     List<String>? serviceTypes,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/$id/canreachonline/$lineId',
@@ -248,7 +249,7 @@ class StopPointService {
     String id, [
     List<String>? serviceTypes,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/$id/route',
@@ -269,7 +270,7 @@ class StopPointService {
     List<String> modes, [
     bool? includeRouteBlockedStops,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/mode/${modes.join(',')}/disruption',
@@ -293,7 +294,7 @@ class StopPointService {
     bool? includeRouteBlockedStops,
     bool? flattenResponse,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/${ids.join(',')}/disruption',
@@ -318,7 +319,7 @@ class StopPointService {
     String toStopPointId, [
     String? lineId,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/$id/directionto/$toStopPointId',
@@ -345,7 +346,7 @@ class StopPointService {
     List<String>? categories,
     bool? returnLines,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint',
@@ -373,7 +374,7 @@ class StopPointService {
     List<String> modes, [
     int? page,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/mode/${modes.join(',')}',
@@ -399,7 +400,7 @@ class StopPointService {
     bool? includeHubs,
     bool? tflOperatedNationalRailStationsOnly,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/search/$query',
@@ -432,7 +433,7 @@ class StopPointService {
     bool? includeHubs,
     bool? tflOperatedNationalRailStationsOnly,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/search',
@@ -460,7 +461,7 @@ class StopPointService {
     String id, [
     String? output,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(authority, '/stoppoint/sms/$id', {
         if (output != null) 'output': output,
       }),
@@ -475,7 +476,7 @@ class StopPointService {
   Future<List<Place>> getTaxiRanksByIdsByPathStopPointId(
     String stopPointId,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/$stopPointId/taxiranks',
@@ -491,7 +492,7 @@ class StopPointService {
   Future<List<Place>> getCarParksByIdByPathStopPointId(
     String stopPointId,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/stoppoint/$stopPointId/carparks',

@@ -1,22 +1,23 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 import '../constants/uri_constants.dart';
 import '../exceptions/client_exception.dart';
 import '../models/accident_stats/accident_detail.dart';
-import '../tfl_api_client_base.dart';
 
 class AccidentStatService {
-  final TflApiClientContext _context;
+  final http.Client _client;
 
   const AccidentStatService({
-    required TflApiClientContext context,
-  }) : _context = context;
+    required http.Client client,
+  }) : _client = client;
 
   /// Gets all accident details for accidents occuring in the specified year
   Future<List<AccidentDetail>> get(
     int year,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/accidentstats/$year',

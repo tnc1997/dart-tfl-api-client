@@ -1,22 +1,23 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 import '../constants/uri_constants.dart';
 import '../exceptions/client_exception.dart';
 import '../models/place.dart';
 import '../models/place_category.dart';
 import '../models/places_response.dart';
-import '../tfl_api_client_base.dart';
 
 class PlaceService {
-  final TflApiClientContext _context;
+  final http.Client _client;
 
   const PlaceService({
-    required TflApiClientContext context,
-  }) : _context = context;
+    required http.Client client,
+  }) : _client = client;
 
   /// Gets a list of all of the available place property categories and keys.
   Future<List<PlaceCategory>> metaCategories() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/place/meta/categories',
@@ -30,7 +31,7 @@ class PlaceService {
 
   /// Gets a list of the available types of Place.
   Future<List<String>> metaPlaceTypes() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/place/meta/placetypes',
@@ -49,7 +50,7 @@ class PlaceService {
     List<String> types, [
     bool? activeOnly,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/place/type/${types.join(',')}',
@@ -69,7 +70,7 @@ class PlaceService {
     String id, [
     bool? includeChildren,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/place/$id',
@@ -97,7 +98,7 @@ class PlaceService {
     bool? activeOnly,
     int? numberOfPlacesToReturn,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/place',
@@ -127,7 +128,7 @@ class PlaceService {
     double lat,
     double lon,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/place/${type}/at/$lat/$lon',
@@ -144,7 +145,7 @@ class PlaceService {
     String name, [
     List<String>? types,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/place/search',

@@ -1,23 +1,24 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 import '../constants/uri_constants.dart';
 import '../exceptions/client_exception.dart';
 import '../models/disrupted_street_segment.dart';
 import '../models/road_corridor.dart';
 import '../models/road_disruption.dart';
 import '../models/status_severity.dart';
-import '../tfl_api_client_base.dart';
 
 class RoadService {
-  final TflApiClientContext _context;
+  final http.Client _client;
 
   const RoadService({
-    required TflApiClientContext context,
-  }) : _context = context;
+    required http.Client client,
+  }) : _client = client;
 
   /// Gets all roads managed by TfL
   Future<List<RoadCorridor>> get() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/road',
@@ -33,7 +34,7 @@ class RoadService {
   Future<List<RoadCorridor>> getByPathIds(
     List<String> ids,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/road/${ids.join(',')}',
@@ -51,7 +52,7 @@ class RoadService {
     DateTime? startDate,
     DateTime? endDate,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/road/${ids.join(',')}/status',
@@ -76,7 +77,7 @@ class RoadService {
     List<String>? categories,
     bool? closures,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/road/${ids.join(',')}/disruption',
@@ -100,7 +101,7 @@ class RoadService {
     DateTime? startDate,
     DateTime? endDate,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/road/all/street/disruption',
@@ -122,7 +123,7 @@ class RoadService {
     List<String> disruptionIds, [
     bool? stripContent,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/road/all/disruption/${disruptionIds.join(',')}',
@@ -139,7 +140,7 @@ class RoadService {
 
   /// Gets a list of valid RoadDisruption categories
   Future<List<String>> metaCategories() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/road/meta/categories',
@@ -155,7 +156,7 @@ class RoadService {
 
   /// Gets a list of valid RoadDisruption severity codes
   Future<List<StatusSeverity>> metaSeverities() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/road/meta/severities',

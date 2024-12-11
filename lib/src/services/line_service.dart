@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 import '../constants/uri_constants.dart';
 import '../exceptions/client_exception.dart';
 import '../models/disruption.dart';
@@ -11,18 +13,17 @@ import '../models/route_sequence.dart';
 import '../models/status_severity.dart';
 import '../models/stop_point.dart';
 import '../models/timetable_response.dart';
-import '../tfl_api_client_base.dart';
 
 class LineService {
-  final TflApiClientContext _context;
+  final http.Client _client;
 
   const LineService({
-    required TflApiClientContext context,
-  }) : _context = context;
+    required http.Client client,
+  }) : _client = client;
 
   /// Gets a list of valid modes
   Future<List<Mode>> metaModes() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/meta/modes',
@@ -36,7 +37,7 @@ class LineService {
 
   /// Gets a list of valid severity codes
   Future<List<StatusSeverity>> metaSeverity() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/meta/severity',
@@ -50,7 +51,7 @@ class LineService {
 
   /// Gets a list of valid disruption categories
   Future<List<String>> metaDisruptionCategories() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/meta/disruptioncategories',
@@ -66,7 +67,7 @@ class LineService {
 
   /// Gets a list of valid ServiceTypes to filter on
   Future<List<String>> metaServiceTypes() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/meta/servicetypes',
@@ -84,7 +85,7 @@ class LineService {
   Future<List<Line>> getByPathIds(
     List<String> ids,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/${ids.join(',')}',
@@ -100,7 +101,7 @@ class LineService {
   Future<List<Line>> getByModeByPathModes(
     List<String> modes,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/mode/${modes.join(',')}',
@@ -116,7 +117,7 @@ class LineService {
   Future<List<Line>> routeByQueryServiceTypes([
     List<String>? serviceTypes,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/route',
@@ -136,7 +137,7 @@ class LineService {
     List<String> ids, [
     List<String>? serviceTypes,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/${ids.join(',')}/route',
@@ -158,7 +159,7 @@ class LineService {
     List<String> modes, [
     List<String>? serviceTypes,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/mode/${modes.join(',')}/route',
@@ -181,7 +182,7 @@ class LineService {
     List<String>? serviceTypes,
     bool? excludeCrowding,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/$id/route/sequence/$direction',
@@ -205,7 +206,7 @@ class LineService {
     DateTime endDate, [
     bool? detail,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/${ids.join(',')}/status/${startDate.year}-${startDate.month}-${startDate.day}/to/${endDate.year}-${endDate.month}-${endDate.day}',
@@ -225,7 +226,7 @@ class LineService {
     List<String> ids, [
     bool? detail,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/${ids.join(',')}/status',
@@ -246,7 +247,7 @@ class LineService {
     List<String>? modes,
     List<String>? serviceTypes,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/search/$query',
@@ -266,7 +267,7 @@ class LineService {
   Future<List<Line>> statusBySeverityByPathSeverity(
     int severity,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/status/$severity',
@@ -284,7 +285,7 @@ class LineService {
     bool? detail,
     String? severityLevel,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/mode/${modes.join(',')}/status',
@@ -306,7 +307,7 @@ class LineService {
     String id, [
     bool? tflOperatedNationalRailStationsOnly,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/$id/stoppoints',
@@ -328,7 +329,7 @@ class LineService {
     String fromStopPointId,
     String id,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/$id/timetable/$fromStopPointId',
@@ -347,7 +348,7 @@ class LineService {
     String id,
     String toStopPointId,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/$id/timetable/$fromStopPointId/to/$toStopPointId',
@@ -363,7 +364,7 @@ class LineService {
   Future<List<Disruption>> disruptionByPathIds(
     List<String> ids,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/${ids.join(',')}/disruption',
@@ -379,7 +380,7 @@ class LineService {
   Future<List<Disruption>> disruptionByModeByPathModes(
     List<String> modes,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/mode/${modes.join(',')}/disruption',
@@ -399,7 +400,7 @@ class LineService {
     String? direction,
     String? destinationStationId,
   ]) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/${ids.join(',')}/arrivals/$stopPointId',
@@ -420,7 +421,7 @@ class LineService {
   Future<List<Prediction>> arrivalsByPathIds(
     List<String> ids,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/line/${ids.join(',')}/arrivals',

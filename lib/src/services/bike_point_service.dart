@@ -1,20 +1,21 @@
 import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
 import '../constants/uri_constants.dart';
 import '../exceptions/client_exception.dart';
 import '../models/place.dart';
-import '../tfl_api_client_base.dart';
 
 class BikePointService {
-  final TflApiClientContext _context;
+  final http.Client _client;
 
   const BikePointService({
-    required TflApiClientContext context,
-  }) : _context = context;
+    required http.Client client,
+  }) : _client = client;
 
   /// Gets all bike point locations. The Place object has an addtionalProperties array which contains the nbBikes, nbDocks and nbSpaces numbers which give the status of the BikePoint. A mismatch in these numbers i.e. nbDocks - (nbBikes + nbSpaces) != 0 indicates broken docks.
   Future<List<Place>> getAll() async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/bikepoint',
@@ -30,7 +31,7 @@ class BikePointService {
   Future<Place> get(
     String id,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/bikepoint/$id',
@@ -46,7 +47,7 @@ class BikePointService {
   Future<List<Place>> search(
     String query,
   ) async {
-    final response = await _context.client.get(
+    final response = await _client.get(
       Uri.https(
         authority,
         '/bikepoint/search',
