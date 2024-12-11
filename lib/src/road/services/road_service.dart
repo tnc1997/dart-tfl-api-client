@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../constants/uri_constants.dart';
-import '../exceptions/client_exception.dart';
+import '../../common/constants/uri_constants.dart';
+import '../../common/exceptions/client_exception.dart';
+import '../../common/models/status_severity.dart';
 import '../models/disrupted_street_segment.dart';
 import '../models/road_corridor.dart';
 import '../models/road_disruption.dart';
-import '../models/status_severity.dart';
 
 class RoadService {
   final http.Client _client;
