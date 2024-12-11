@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 
 import 'accident_stats/services/accident_stats_service.dart';
-import 'common/services/air_quality_service.dart';
+import 'air_quality/services/air_quality_service.dart';
 import 'common/services/bike_point_service.dart';
 import 'common/services/journey_service.dart';
 import 'common/services/line_service.dart';
