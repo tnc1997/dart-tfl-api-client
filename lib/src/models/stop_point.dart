@@ -1,9 +1,10 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/additional_properties.dart';
-import 'package:tfl_api_client/src/models/identifier.dart';
-import 'package:tfl_api_client/src/models/line_group.dart';
-import 'package:tfl_api_client/src/models/line_mode_group.dart';
-import 'package:tfl_api_client/src/models/place.dart';
+
+import 'additional_properties.dart';
+import 'identifier.dart';
+import 'line_group.dart';
+import 'line_mode_group.dart';
+import 'place.dart';
 
 part 'stop_point.g.dart';
 

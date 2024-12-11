@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/route_section_naptan_entry_sequence.dart';
+
+import 'route_section_naptan_entry_sequence.dart';
 
 part 'route_section.g.dart';
 

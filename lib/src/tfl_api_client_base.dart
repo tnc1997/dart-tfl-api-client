@@ -1,16 +1,17 @@
 import 'package:http/http.dart';
-import 'package:tfl_api_client/src/services/accident_stat_service.dart';
-import 'package:tfl_api_client/src/services/air_quality_service.dart';
-import 'package:tfl_api_client/src/services/bike_point_service.dart';
-import 'package:tfl_api_client/src/services/journey_service.dart';
-import 'package:tfl_api_client/src/services/line_service.dart';
-import 'package:tfl_api_client/src/services/mode_service.dart';
-import 'package:tfl_api_client/src/services/occupancy_service.dart';
-import 'package:tfl_api_client/src/services/place_service.dart';
-import 'package:tfl_api_client/src/services/road_service.dart';
-import 'package:tfl_api_client/src/services/search_service.dart';
-import 'package:tfl_api_client/src/services/stop_point_service.dart';
-import 'package:tfl_api_client/src/services/vehicle_service.dart';
+
+import 'services/accident_stat_service.dart';
+import 'services/air_quality_service.dart';
+import 'services/bike_point_service.dart';
+import 'services/journey_service.dart';
+import 'services/line_service.dart';
+import 'services/mode_service.dart';
+import 'services/occupancy_service.dart';
+import 'services/place_service.dart';
+import 'services/road_service.dart';
+import 'services/search_service.dart';
+import 'services/stop_point_service.dart';
+import 'services/vehicle_service.dart';
 
 class TflApiClient {
   final TflApiClientContext _context;

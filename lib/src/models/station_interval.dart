@@ -1,5 +1,5 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/interval.dart';
+import 'interval.dart';
 
 part 'station_interval.g.dart';
 

@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/passenger_flow.dart';
-import 'package:tfl_api_client/src/models/train_loading.dart';
+
+import 'passenger_flow.dart';
+import 'train_loading.dart';
 
 part 'crowding.g.dart';
 

@@ -1,13 +1,14 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/disruption.dart';
-import 'package:tfl_api_client/src/models/identifier.dart';
-import 'package:tfl_api_client/src/models/instruction.dart';
-import 'package:tfl_api_client/src/models/journey_planner/obstacle.dart';
-import 'package:tfl_api_client/src/models/journey_planner/path.dart';
-import 'package:tfl_api_client/src/models/journey_planner/planned_work.dart';
-import 'package:tfl_api_client/src/models/journey_planner/point.dart';
-import 'package:tfl_api_client/src/models/journey_planner/route_option.dart';
-import 'package:tfl_api_client/src/models/stop_point.dart';
+
+import '../disruption.dart';
+import '../identifier.dart';
+import '../instruction.dart';
+import '../stop_point.dart';
+import 'obstacle.dart';
+import 'path.dart';
+import 'planned_work.dart';
+import 'point.dart';
+import 'route_option.dart';
 
 part 'leg.g.dart';
 

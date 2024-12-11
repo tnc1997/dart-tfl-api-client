@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/line_specific_service_type.dart';
+
+import 'line_specific_service_type.dart';
 
 part 'line_service_type.g.dart';
 

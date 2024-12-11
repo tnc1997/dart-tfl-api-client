@@ -1,5 +1,5 @@
-﻿import 'package:tfl_api_client/src/models/journey_planner/journey_vector.dart';
-import 'package:tfl_api_client/src/models/journey_planner/search_criteria.dart';
+﻿import 'journey_vector.dart';
+import 'search_criteria.dart';
 
 abstract class JourneyResult {
   int? recommendedMaxAgeMinutes;

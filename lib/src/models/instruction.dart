@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/instruction_step.dart';
+
+import 'instruction_step.dart';
 
 part 'instruction.g.dart';
 

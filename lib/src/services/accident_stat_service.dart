@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:tfl_api_client/src/constants/uri_constants.dart';
-import 'package:tfl_api_client/src/exceptions/client_exception.dart';
-import 'package:tfl_api_client/src/models/accident_stats/accident_detail.dart';
-import 'package:tfl_api_client/src/tfl_api_client_base.dart';
+import '../constants/uri_constants.dart';
+import '../exceptions/client_exception.dart';
+import '../models/accident_stats/accident_detail.dart';
+import '../tfl_api_client_base.dart';
 
 class AccidentStatService {
   final TflApiClientContext _context;

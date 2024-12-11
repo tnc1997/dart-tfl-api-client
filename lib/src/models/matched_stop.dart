@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/identifier.dart';
-import 'package:tfl_api_client/src/models/search_match.dart';
+
+import 'identifier.dart';
+import 'search_match.dart';
 
 part 'matched_stop.g.dart';
 

@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/route_section.dart';
-import 'package:tfl_api_client/src/models/stop_point.dart';
+
+import 'route_section.dart';
+import 'stop_point.dart';
 
 part 'disruption.g.dart';
 

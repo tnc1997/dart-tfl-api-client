@@ -1,8 +1,9 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/disruption.dart';
-import 'package:tfl_api_client/src/models/journey_planner/foot_path_element.dart';
-import 'package:tfl_api_client/src/models/journey_planner/planned_work.dart';
-import 'package:tfl_api_client/src/models/journey_planner/point.dart';
+
+import '../disruption.dart';
+import 'foot_path_element.dart';
+import 'planned_work.dart';
+import 'point.dart';
 
 part 'partial_route.g.dart';
 

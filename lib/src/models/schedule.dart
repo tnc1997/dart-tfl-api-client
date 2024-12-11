@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/known_journey.dart';
-import 'package:tfl_api_client/src/models/period.dart';
+
+import 'known_journey.dart';
+import 'period.dart';
 
 part 'schedule.g.dart';
 

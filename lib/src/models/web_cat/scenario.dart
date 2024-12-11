@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/web_cat/scenario_mode.dart';
-import 'package:tfl_api_client/src/models/web_cat/scenario_time_of_day.dart';
+
+import 'scenario_mode.dart';
+import 'scenario_time_of_day.dart';
 
 part 'scenario.g.dart';
 

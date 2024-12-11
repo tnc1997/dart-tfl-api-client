@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:tfl_api_client/src/constants/uri_constants.dart';
-import 'package:tfl_api_client/src/exceptions/client_exception.dart';
-import 'package:tfl_api_client/src/models/disrupted_street_segment.dart';
-import 'package:tfl_api_client/src/models/road_corridor.dart';
-import 'package:tfl_api_client/src/models/road_disruption.dart';
-import 'package:tfl_api_client/src/models/status_severity.dart';
-import 'package:tfl_api_client/src/tfl_api_client_base.dart';
+import '../constants/uri_constants.dart';
+import '../exceptions/client_exception.dart';
+import '../models/disrupted_street_segment.dart';
+import '../models/road_corridor.dart';
+import '../models/road_disruption.dart';
+import '../models/status_severity.dart';
+import '../tfl_api_client_base.dart';
 
 class RoadService {
   final TflApiClientContext _context;

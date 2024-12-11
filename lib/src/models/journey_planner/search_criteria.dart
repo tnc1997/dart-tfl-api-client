@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/journey_planner/time_adjustments.dart';
+
+import 'time_adjustments.dart';
 
 part 'search_criteria.g.dart';
 

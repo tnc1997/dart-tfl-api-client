@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/web_cat/zone_statistic.dart';
+
+import 'zone_statistic.dart';
 
 part 'travel_time_statistic.g.dart';
 

@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/journey_planner/fare.dart';
-import 'package:tfl_api_client/src/models/journey_planner/fare_caveat.dart';
+
+import 'fare.dart';
+import 'fare_caveat.dart';
 
 part 'journey_fare.g.dart';
 

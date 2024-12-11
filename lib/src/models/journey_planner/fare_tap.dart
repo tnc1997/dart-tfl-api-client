@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/journey_planner/fare_tap_details.dart';
+
+import 'fare_tap_details.dart';
 
 part 'fare_tap.g.dart';
 

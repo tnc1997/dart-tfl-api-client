@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/place.dart';
+
+import 'place.dart';
 
 part 'places_response.g.dart';
 

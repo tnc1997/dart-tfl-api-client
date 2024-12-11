@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/matched_stop.dart';
+
+import 'matched_stop.dart';
 
 part 'stop_point_sequence.g.dart';
 

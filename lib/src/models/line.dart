@@ -1,9 +1,10 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/crowding.dart';
-import 'package:tfl_api_client/src/models/disruption.dart';
-import 'package:tfl_api_client/src/models/line_service_type_info.dart';
-import 'package:tfl_api_client/src/models/line_status.dart';
-import 'package:tfl_api_client/src/models/matched_route.dart';
+
+import 'crowding.dart';
+import 'disruption.dart';
+import 'line_service_type_info.dart';
+import 'line_status.dart';
+import 'matched_route.dart';
 
 part 'line.g.dart';
 

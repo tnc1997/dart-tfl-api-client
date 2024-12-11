@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/fares/fare_bounds.dart';
+
+import 'fare_bounds.dart';
 
 part 'river_route.g.dart';
 

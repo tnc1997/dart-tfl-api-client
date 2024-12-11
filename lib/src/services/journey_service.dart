@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:tfl_api_client/src/constants/uri_constants.dart';
-import 'package:tfl_api_client/src/exceptions/client_exception.dart';
-import 'package:tfl_api_client/src/models/journey_planner/itinerary_result.dart';
-import 'package:tfl_api_client/src/models/mode.dart';
-import 'package:tfl_api_client/src/tfl_api_client_base.dart';
+import '../constants/uri_constants.dart';
+import '../exceptions/client_exception.dart';
+import '../models/journey_planner/itinerary_result.dart';
+import '../models/mode.dart';
+import '../tfl_api_client_base.dart';
 
 class JourneyService {
   final TflApiClientContext _context;

@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/timetable_route.dart';
+
+import 'timetable_route.dart';
 
 part 'timetable.g.dart';
 

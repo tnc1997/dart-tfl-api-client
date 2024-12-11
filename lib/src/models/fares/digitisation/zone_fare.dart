@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/fares/digitisation/zone_scope.dart';
+
+import 'zone_scope.dart';
 
 part 'zone_fare.g.dart';
 

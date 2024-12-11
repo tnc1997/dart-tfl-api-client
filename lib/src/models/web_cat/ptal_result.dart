@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/web_cat/ptal_scenario.dart';
+
+import 'ptal_scenario.dart';
 
 part 'ptal_result.g.dart';
 

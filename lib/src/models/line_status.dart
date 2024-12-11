@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/disruption.dart';
-import 'package:tfl_api_client/src/models/validity_period.dart';
+
+import 'disruption.dart';
+import 'validity_period.dart';
 
 part 'line_status.g.dart';
 

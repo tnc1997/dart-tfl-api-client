@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/fares/digitisation/zone_fare.dart';
-import 'package:tfl_api_client/src/models/fares/digitisation/zone_scope.dart';
+
+import 'zone_fare.dart';
+import 'zone_scope.dart';
 
 part 'annual_travel_card_fare.g.dart';
 

@@ -1,8 +1,9 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/journey_planner/disambiguation.dart';
-import 'package:tfl_api_client/src/models/journey_planner/journey_result.dart';
-import 'package:tfl_api_client/src/models/journey_planner/journey_vector.dart';
-import 'package:tfl_api_client/src/models/journey_planner/search_criteria.dart';
+
+import 'disambiguation.dart';
+import 'journey_result.dart';
+import 'journey_vector.dart';
+import 'search_criteria.dart';
 
 part 'disambiguation_result.g.dart';
 

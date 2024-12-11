@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/cabwise/header.dart';
-import 'package:tfl_api_client/src/models/cabwise/operators.dart';
+
+import 'header.dart';
+import 'operators.dart';
 
 part 'wrapper.g.dart';
 

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:tfl_api_client/src/constants/uri_constants.dart';
-import 'package:tfl_api_client/src/exceptions/client_exception.dart';
-import 'package:tfl_api_client/src/models/london_air_forecast.dart';
-import 'package:tfl_api_client/src/tfl_api_client_base.dart';
+import '../constants/uri_constants.dart';
+import '../exceptions/client_exception.dart';
+import '../models/london_air_forecast.dart';
+import '../tfl_api_client_base.dart';
 
 class AirQualityService {
   final TflApiClientContext _context;

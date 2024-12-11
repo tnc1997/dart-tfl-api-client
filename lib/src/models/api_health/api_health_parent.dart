@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/api_health/api_health.dart';
-import 'package:tfl_api_client/src/models/api_health/planned_outage.dart';
+
+import 'api_health.dart';
+import 'planned_outage.dart';
 
 part 'api_health_parent.g.dart';
 

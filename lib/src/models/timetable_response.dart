@@ -1,7 +1,8 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/matched_stop.dart';
-import 'package:tfl_api_client/src/models/timetable.dart';
-import 'package:tfl_api_client/src/models/timetables/disambiguation.dart';
+
+import 'matched_stop.dart';
+import 'timetable.dart';
+import 'timetables/disambiguation.dart';
 
 part 'timetable_response.g.dart';
 

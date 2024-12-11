@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/bay.dart';
+
+import 'bay.dart';
 
 part 'car_park_occupancy.g.dart';
 

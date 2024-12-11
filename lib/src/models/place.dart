@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/additional_properties.dart';
-import 'package:tfl_api_client/src/models/point.dart';
+
+import 'additional_properties.dart';
+import 'point.dart';
 
 part 'place.g.dart';
 

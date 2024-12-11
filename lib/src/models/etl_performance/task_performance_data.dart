@@ -1,7 +1,8 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/etl_performance/failed_task.dart';
-import 'package:tfl_api_client/src/models/etl_performance/task_performance.dart';
-import 'package:tfl_api_client/src/models/etl_performance/task_performance_history.dart';
+
+import 'failed_task.dart';
+import 'task_performance.dart';
+import 'task_performance_history.dart';
 
 part 'task_performance_data.g.dart';
 

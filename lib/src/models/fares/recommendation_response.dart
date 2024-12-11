@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/fares/recommendation.dart';
+
+import 'recommendation.dart';
 
 part 'recommendation_response.g.dart';
 

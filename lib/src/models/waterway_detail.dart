@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/place.dart';
-import 'package:tfl_api_client/src/models/waterway_line_string.dart';
+
+import 'place.dart';
+import 'waterway_line_string.dart';
 
 part 'waterway_detail.g.dart';
 

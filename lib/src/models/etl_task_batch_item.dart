@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/etl_task.dart';
+
+import 'etl_task.dart';
 
 part 'etl_task_batch_item.g.dart';
 

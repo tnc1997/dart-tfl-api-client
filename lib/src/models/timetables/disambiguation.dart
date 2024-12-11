@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/timetables/disambiguation_option.dart';
+
+import 'disambiguation_option.dart';
 
 part 'disambiguation.g.dart';
 

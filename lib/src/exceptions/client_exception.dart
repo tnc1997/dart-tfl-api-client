@@ -1,5 +1,6 @@
-import 'package:tfl_api_client/src/extensions/response_extensions.dart';
 import 'package:http/http.dart';
+
+import '../extensions/response_extensions.dart';
 
 class ClientException implements Exception {
   /// The message of the exception.

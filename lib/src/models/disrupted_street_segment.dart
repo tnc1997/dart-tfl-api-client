@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/road_disruption_schedule.dart';
+
+import 'road_disruption_schedule.dart';
 
 part 'disrupted_street_segment.g.dart';
 

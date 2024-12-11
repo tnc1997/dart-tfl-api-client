@@ -1,10 +1,11 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/journey_planner/journey.dart';
-import 'package:tfl_api_client/src/models/journey_planner/journey_planner_cycle_hire_docking_station_data.dart';
-import 'package:tfl_api_client/src/models/journey_planner/journey_result.dart';
-import 'package:tfl_api_client/src/models/journey_planner/journey_vector.dart';
-import 'package:tfl_api_client/src/models/journey_planner/search_criteria.dart';
-import 'package:tfl_api_client/src/models/line.dart';
+
+import '../line.dart';
+import 'journey.dart';
+import 'journey_planner_cycle_hire_docking_station_data.dart';
+import 'journey_result.dart';
+import 'journey_vector.dart';
+import 'search_criteria.dart';
 
 part 'itinerary_result.g.dart';
 

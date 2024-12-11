@@ -1,17 +1,17 @@
 import 'dart:convert';
 
-import 'package:tfl_api_client/src/constants/uri_constants.dart';
-import 'package:tfl_api_client/src/exceptions/client_exception.dart';
-import 'package:tfl_api_client/src/models/disruption.dart';
-import 'package:tfl_api_client/src/models/line.dart';
-import 'package:tfl_api_client/src/models/mode.dart';
-import 'package:tfl_api_client/src/models/prediction.dart';
-import 'package:tfl_api_client/src/models/route_search_response.dart';
-import 'package:tfl_api_client/src/models/route_sequence.dart';
-import 'package:tfl_api_client/src/models/status_severity.dart';
-import 'package:tfl_api_client/src/models/stop_point.dart';
-import 'package:tfl_api_client/src/models/timetable_response.dart';
-import 'package:tfl_api_client/src/tfl_api_client_base.dart';
+import '../constants/uri_constants.dart';
+import '../exceptions/client_exception.dart';
+import '../models/disruption.dart';
+import '../models/line.dart';
+import '../models/mode.dart';
+import '../models/prediction.dart';
+import '../models/route_search_response.dart';
+import '../models/route_sequence.dart';
+import '../models/status_severity.dart';
+import '../models/stop_point.dart';
+import '../models/timetable_response.dart';
+import '../tfl_api_client_base.dart';
 
 class LineService {
   final TflApiClientContext _context;

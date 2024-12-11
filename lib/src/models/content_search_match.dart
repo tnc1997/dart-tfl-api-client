@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/search_match.dart';
+
+import 'search_match.dart';
 
 part 'content_search_match.g.dart';
 

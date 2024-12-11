@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/disrupted_point.dart';
+
+import 'disrupted_point.dart';
 
 part 'disrupted_point_family.g.dart';
 

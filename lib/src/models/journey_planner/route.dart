@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/journey_planner/map_item.dart';
-import 'package:tfl_api_client/src/models/journey_planner/partial_route.dart';
+
+import 'map_item.dart';
+import 'partial_route.dart';
 
 part 'route.g.dart';
 

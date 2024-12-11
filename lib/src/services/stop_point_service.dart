@@ -1,19 +1,19 @@
 import 'dart:convert';
 
-import 'package:tfl_api_client/src/constants/uri_constants.dart';
-import 'package:tfl_api_client/src/exceptions/client_exception.dart';
-import 'package:tfl_api_client/src/models/arrival_departure.dart';
-import 'package:tfl_api_client/src/models/disrupted_point.dart';
-import 'package:tfl_api_client/src/models/line_service_type.dart';
-import 'package:tfl_api_client/src/models/mode.dart';
-import 'package:tfl_api_client/src/models/place.dart';
-import 'package:tfl_api_client/src/models/prediction.dart';
-import 'package:tfl_api_client/src/models/search_response.dart';
-import 'package:tfl_api_client/src/models/stop_point.dart';
-import 'package:tfl_api_client/src/models/stop_point_category.dart';
-import 'package:tfl_api_client/src/models/stop_point_route_section.dart';
-import 'package:tfl_api_client/src/models/stop_points_response.dart';
-import 'package:tfl_api_client/src/tfl_api_client_base.dart';
+import '../constants/uri_constants.dart';
+import '../exceptions/client_exception.dart';
+import '../models/arrival_departure.dart';
+import '../models/disrupted_point.dart';
+import '../models/line_service_type.dart';
+import '../models/mode.dart';
+import '../models/place.dart';
+import '../models/prediction.dart';
+import '../models/search_response.dart';
+import '../models/stop_point.dart';
+import '../models/stop_point_category.dart';
+import '../models/stop_point_route_section.dart';
+import '../models/stop_points_response.dart';
+import '../tfl_api_client_base.dart';
 
 class StopPointService {
   final TflApiClientContext _context;

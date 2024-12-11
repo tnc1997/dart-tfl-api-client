@@ -1,7 +1,8 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/fares/fare_details.dart';
-import 'package:tfl_api_client/src/models/fares/journey.dart';
-import 'package:tfl_api_client/src/models/message.dart';
+
+import '../message.dart';
+import 'fare_details.dart';
+import 'journey.dart';
 
 part 'fares_section.g.dart';
 

@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/prediction_timing.dart';
+
+import 'prediction_timing.dart';
 
 part 'prediction.g.dart';
 

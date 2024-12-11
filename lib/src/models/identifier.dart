@@ -1,7 +1,6 @@
-﻿// using Tfl.Api.Common.Enums;
+﻿import 'package:json_annotation/json_annotation.dart';
 
-import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/crowding.dart';
+import 'crowding.dart';
 
 part 'identifier.g.dart';
 

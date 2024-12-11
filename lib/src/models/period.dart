@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/service_frequency.dart';
-import 'package:tfl_api_client/src/models/twenty_four_hour_clock_time.dart';
+
+import 'service_frequency.dart';
+import 'twenty_four_hour_clock_time.dart';
 
 part 'period.g.dart';
 

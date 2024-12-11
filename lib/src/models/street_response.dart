@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/street_match.dart';
+
+import 'street_match.dart';
 
 part 'street_response.g.dart';
 

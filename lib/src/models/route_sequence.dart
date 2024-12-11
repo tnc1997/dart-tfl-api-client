@@ -1,7 +1,8 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/matched_stop.dart';
-import 'package:tfl_api_client/src/models/ordered_route.dart';
-import 'package:tfl_api_client/src/models/stop_point_sequence.dart';
+
+import 'matched_stop.dart';
+import 'ordered_route.dart';
+import 'stop_point_sequence.dart';
 
 part 'route_sequence.g.dart';
 

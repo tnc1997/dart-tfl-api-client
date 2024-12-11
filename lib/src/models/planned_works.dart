@@ -1,7 +1,8 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/identifier.dart';
-import 'package:tfl_api_client/src/models/stop_point.dart';
-import 'package:tfl_api_client/src/models/validity_period.dart';
+
+import 'identifier.dart';
+import 'stop_point.dart';
+import 'validity_period.dart';
 
 part 'planned_works.g.dart';
 

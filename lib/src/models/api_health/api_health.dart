@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/api_health/service_status.dart';
+
+import 'service_status.dart';
 
 part 'api_health.g.dart';
 

@@ -1,9 +1,10 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/road_disruption_impact_area.dart';
-import 'package:tfl_api_client/src/models/road_disruption_line.dart';
-import 'package:tfl_api_client/src/models/road_disruption_schedule.dart';
-import 'package:tfl_api_client/src/models/road_project.dart';
-import 'package:tfl_api_client/src/models/street.dart';
+
+import 'road_disruption_impact_area.dart';
+import 'road_disruption_line.dart';
+import 'road_disruption_schedule.dart';
+import 'road_project.dart';
+import 'street.dart';
 
 part 'road_disruption.g.dart';
 

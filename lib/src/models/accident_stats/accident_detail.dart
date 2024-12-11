@@ -1,6 +1,7 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/accident_stats/casualty.dart';
-import 'package:tfl_api_client/src/models/accident_stats/vehicle.dart';
+
+import 'casualty.dart';
+import 'vehicle.dart';
 
 part 'accident_detail.g.dart';
 

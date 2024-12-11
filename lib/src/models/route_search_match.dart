@@ -1,8 +1,9 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/line_route_section.dart';
-import 'package:tfl_api_client/src/models/matched_route_sections.dart';
-import 'package:tfl_api_client/src/models/matched_stop.dart';
-import 'package:tfl_api_client/src/models/search_match.dart';
+
+import 'line_route_section.dart';
+import 'matched_route_sections.dart';
+import 'matched_stop.dart';
+import 'search_match.dart';
 
 part 'route_search_match.g.dart';
 

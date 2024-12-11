@@ -1,5 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
-import 'package:tfl_api_client/src/models/identifier.dart';
+
+import '../identifier.dart';
 
 part 'path.g.dart';
 
