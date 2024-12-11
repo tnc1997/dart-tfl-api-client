@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../constants/uri_constants.dart';
-import '../exceptions/client_exception.dart';
-import '../models/accident_stats/accident_detail.dart';
+import '../../common/constants/uri_constants.dart';
+import '../../common/exceptions/client_exception.dart';
+import '../models/accident_detail.dart';
 
 class AccidentStatsService {
   final http.Client _client;

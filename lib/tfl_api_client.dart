@@ -1,13 +1,14 @@
 library tfl_api_client;
 
+export 'src/accident_stats/models/accident_detail.dart';
+export 'src/accident_stats/models/casualty.dart';
+export 'src/accident_stats/models/vehicle.dart';
+export 'src/accident_stats/services/accident_stats_service.dart';
 export 'src/common/clients/app_key_client.dart';
 export 'src/common/constants/uri_constants.dart';
 export 'src/common/exceptions/client_exception.dart';
 export 'src/common/extensions/response_extensions.dart';
-export 'src/common/models/accident_stats/accident_detail.dart';
 export 'src/common/models/accident_stats/accident_stats_ordered_summary.dart';
-export 'src/common/models/accident_stats/casualty.dart';
-export 'src/common/models/accident_stats/vehicle.dart';
 export 'src/common/models/active_service_type.dart';
 export 'src/common/models/additional_properties.dart';
 export 'src/common/models/address_match.dart';
@@ -196,7 +197,6 @@ export 'src/common/models/web_cat/travel_time_band.dart';
 export 'src/common/models/web_cat/travel_time_statistic.dart';
 export 'src/common/models/web_cat/web_cat_location_information.dart';
 export 'src/common/models/web_cat/zone_statistic.dart';
-export 'src/common/services/accident_stats_service.dart';
 export 'src/common/services/air_quality_service.dart';
 export 'src/common/services/bike_point_service.dart';
 export 'src/common/services/journey_service.dart';

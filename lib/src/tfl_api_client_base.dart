@@ -1,17 +1,17 @@
 import 'package:http/http.dart' as http;
 
-import 'services/accident_stats_service.dart';
-import 'services/air_quality_service.dart';
-import 'services/bike_point_service.dart';
-import 'services/journey_service.dart';
-import 'services/line_service.dart';
-import 'services/mode_service.dart';
-import 'services/occupancy_service.dart';
-import 'services/place_service.dart';
-import 'services/road_service.dart';
-import 'services/search_service.dart';
-import 'services/stop_point_service.dart';
-import 'services/vehicle_service.dart';
+import 'accident_stats/services/accident_stats_service.dart';
+import 'common/services/air_quality_service.dart';
+import 'common/services/bike_point_service.dart';
+import 'common/services/journey_service.dart';
+import 'common/services/line_service.dart';
+import 'common/services/mode_service.dart';
+import 'common/services/occupancy_service.dart';
+import 'common/services/place_service.dart';
+import 'common/services/road_service.dart';
+import 'common/services/search_service.dart';
+import 'common/services/stop_point_service.dart';
+import 'common/services/vehicle_service.dart';
 
 class TflApiClient {
   final http.Client _client;
