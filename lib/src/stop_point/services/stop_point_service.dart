@@ -2,16 +2,16 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../constants/uri_constants.dart';
-import '../exceptions/client_exception.dart';
+import '../../common/constants/uri_constants.dart';
+import '../../common/exceptions/client_exception.dart';
+import '../../common/models/mode.dart';
+import '../../common/models/place.dart';
+import '../../common/models/prediction.dart';
+import '../../common/models/search_response.dart';
+import '../../common/models/stop_point.dart';
 import '../models/arrival_departure.dart';
 import '../models/disrupted_point.dart';
 import '../models/line_service_type.dart';
-import '../models/mode.dart';
-import '../models/place.dart';
-import '../models/prediction.dart';
-import '../models/search_response.dart';
-import '../models/stop_point.dart';
 import '../models/stop_point_category.dart';
 import '../models/stop_point_route_section.dart';
 import '../models/stop_points_response.dart';

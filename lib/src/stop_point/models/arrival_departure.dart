@@ -1,6 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
 
-import 'prediction_timing.dart';
+import '../../common/models/prediction_timing.dart';
 
 part 'arrival_departure.g.dart';
 

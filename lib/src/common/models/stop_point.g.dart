@@ -8,22 +8,6 @@ part of 'stop_point.dart';
 
 StopPoint _$StopPointFromJson(Map<String, dynamic> json) {
   return StopPoint(
-    lat: (json['lat'] as num?)?.toDouble(),
-    lon: (json['lon'] as num?)?.toDouble(),
-    id: json['id'] as String?,
-    url: json['url'] as String?,
-    commonName: json['commonName'] as String?,
-    distance: (json['distance'] as num?)?.toDouble(),
-    placeType: json['placeType'] as String?,
-    additionalProperties: (json['additionalProperties'] as List<dynamic>?)
-        ?.map((e) => AdditionalProperties.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    children: (json['children'] as List<dynamic>?)
-        ?.map((e) => Place.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    childrenUrls: (json['childrenUrls'] as List<dynamic>?)
-        ?.map((e) => e as String)
-        .toList(),
     naptanId: json['naptanId'] as String?,
     platformName: json['platformName'] as String?,
     indicator: json['indicator'] as String?,
@@ -47,20 +31,26 @@ StopPoint _$StopPointFromJson(Map<String, dynamic> json) {
     fullName: json['fullName'] as String?,
     naptanMode: json['naptanMode'] as String?,
     status: json['status'],
+    id: json['id'] as String?,
+    url: json['url'] as String?,
+    commonName: json['commonName'] as String?,
+    distance: (json['distance'] as num?)?.toDouble(),
+    placeType: json['placeType'] as String?,
+    additionalProperties: (json['additionalProperties'] as List<dynamic>?)
+        ?.map((e) => AdditionalProperties.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    children: (json['children'] as List<dynamic>?)
+        ?.map((e) => Place.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    childrenUrls: (json['childrenUrls'] as List<dynamic>?)
+        ?.map((e) => e as String)
+        .toList(),
+    lat: (json['lat'] as num?)?.toDouble(),
+    lon: (json['lon'] as num?)?.toDouble(),
   );
 }
 
 Map<String, dynamic> _$StopPointToJson(StopPoint instance) => <String, dynamic>{
-      'lat': instance.lat,
-      'lon': instance.lon,
-      'id': instance.id,
-      'url': instance.url,
-      'commonName': instance.commonName,
-      'distance': instance.distance,
-      'placeType': instance.placeType,
-      'additionalProperties': instance.additionalProperties,
-      'children': instance.children,
-      'childrenUrls': instance.childrenUrls,
       'naptanId': instance.naptanId,
       'platformName': instance.platformName,
       'indicator': instance.indicator,
@@ -78,4 +68,14 @@ Map<String, dynamic> _$StopPointToJson(StopPoint instance) => <String, dynamic>{
       'fullName': instance.fullName,
       'naptanMode': instance.naptanMode,
       'status': instance.status,
+      'id': instance.id,
+      'url': instance.url,
+      'commonName': instance.commonName,
+      'distance': instance.distance,
+      'placeType': instance.placeType,
+      'additionalProperties': instance.additionalProperties,
+      'children': instance.children,
+      'childrenUrls': instance.childrenUrls,
+      'lat': instance.lat,
+      'lon': instance.lon,
     };

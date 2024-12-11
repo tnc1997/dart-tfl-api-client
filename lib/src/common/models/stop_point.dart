@@ -9,7 +9,7 @@ import 'place.dart';
 part 'stop_point.g.dart';
 
 @JsonSerializable()
-class StopPoint extends Place {
+class StopPoint {
   String? naptanId;
   String? platformName;
   String? indicator;
@@ -27,18 +27,18 @@ class StopPoint extends Place {
   String? fullName;
   String? naptanMode;
   Object? status;
+  String? id;
+  String? url;
+  String? commonName;
+  double? distance;
+  String? placeType;
+  List<AdditionalProperties>? additionalProperties;
+  List<Place>? children;
+  List<String>? childrenUrls;
+  double? lat;
+  double? lon;
 
   StopPoint({
-    double? lat,
-    double? lon,
-    String? id,
-    String? url,
-    String? commonName,
-    double? distance,
-    String? placeType,
-    List<AdditionalProperties>? additionalProperties,
-    List<Place>? children,
-    List<String>? childrenUrls,
     this.naptanId,
     this.platformName,
     this.indicator,
@@ -56,18 +56,17 @@ class StopPoint extends Place {
     this.fullName,
     this.naptanMode,
     this.status,
-  }) : super(
-          lat: lat,
-          lon: lon,
-          id: id,
-          url: url,
-          commonName: commonName,
-          distance: distance,
-          placeType: placeType,
-          additionalProperties: additionalProperties,
-          children: children,
-          childrenUrls: childrenUrls,
-        );
+    this.id,
+    this.url,
+    this.commonName,
+    this.distance,
+    this.placeType,
+    this.additionalProperties,
+    this.children,
+    this.childrenUrls,
+    this.lat,
+    this.lon,
+  });
 
   factory StopPoint.fromJson(
     Map<String, dynamic> json,
@@ -93,6 +92,5 @@ class StopPoint extends Place {
         ),
       );
 
-  @override
   Map<String, dynamic> toJson() => _$StopPointToJson(this);
 }

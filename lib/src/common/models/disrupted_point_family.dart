@@ -1,6 +1,6 @@
 ﻿import 'package:json_annotation/json_annotation.dart';
 
-import 'disrupted_point.dart';
+import '../../stop_point/models/disrupted_point.dart';
 
 part 'disrupted_point_family.g.dart';
 
