@@ -1,11 +1,4 @@
-﻿// using Tfl.Api.Common;
-
-import 'package:json_annotation/json_annotation.dart';
-
-part 'road_disruption_line.g.dart';
-
-@JsonSerializable()
-class RoadDisruptionLine {
+﻿class RoadDisruptionLine {
   int? id;
   String? roadDisruptionId;
   bool? isDiversion;
@@ -26,8 +19,21 @@ class RoadDisruptionLine {
 
   factory RoadDisruptionLine.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$RoadDisruptionLineFromJson(json);
+  ) {
+    return RoadDisruptionLine(
+      id: (json['id'] as num?)?.toInt(),
+      roadDisruptionId: json['roadDisruptionId'] as String?,
+      isDiversion: json['isDiversion'] as bool?,
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      startTime: json['startTime'] as String?,
+      endTime: json['endTime'] as String?,
+    );
+  }
 
   static List<RoadDisruptionLine> listFromJson(
     List<dynamic> json,
@@ -48,5 +54,15 @@ class RoadDisruptionLine {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$RoadDisruptionLineToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'roadDisruptionId': roadDisruptionId,
+      'isDiversion': isDiversion,
+      'startDate': startDate?.toIso8601String(),
+      'endDate': endDate?.toIso8601String(),
+      'startTime': startTime,
+      'endTime': endTime,
+    };
+  }
 }

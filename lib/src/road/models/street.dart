@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'street_segment.dart';
 
-import 'street_segment.dart';
-
-part 'street.g.dart';
-
-@JsonSerializable()
 class Street {
   String? name;
   String? closure;
@@ -24,8 +19,18 @@ class Street {
 
   factory Street.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$StreetFromJson(json);
+  ) {
+    return Street(
+      name: json['name'] as String?,
+      closure: json['closure'] as String?,
+      directions: json['directions'] as String?,
+      segments: (json['segments'] as List<dynamic>?)
+          ?.map((e) => StreetSegment.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      sourceSystemId: (json['sourceSystemId'] as num?)?.toInt(),
+      sourceSystemKey: json['sourceSystemKey'] as String?,
+    );
+  }
 
   static List<Street> listFromJson(
     List<dynamic> json,
@@ -46,5 +51,14 @@ class Street {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$StreetToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'closure': closure,
+      'directions': directions,
+      'segments': segments,
+      'sourceSystemId': sourceSystemId,
+      'sourceSystemKey': sourceSystemKey,
+    };
+  }
 }

@@ -1,11 +1,4 @@
-﻿// using Tfl.Api.Common;
-
-import 'package:json_annotation/json_annotation.dart';
-
-part 'road_disruption_impact_area.g.dart';
-
-@JsonSerializable()
-class RoadDisruptionImpactArea {
+﻿class RoadDisruptionImpactArea {
   int? id;
   String? roadDisruptionId;
   DateTime? startDate;
@@ -24,8 +17,20 @@ class RoadDisruptionImpactArea {
 
   factory RoadDisruptionImpactArea.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$RoadDisruptionImpactAreaFromJson(json);
+  ) {
+    return RoadDisruptionImpactArea(
+      id: (json['id'] as num?)?.toInt(),
+      roadDisruptionId: json['roadDisruptionId'] as String?,
+      startDate: json['startDate'] == null
+          ? null
+          : DateTime.parse(json['startDate'] as String),
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      startTime: json['startTime'] as String?,
+      endTime: json['endTime'] as String?,
+    );
+  }
 
   static List<RoadDisruptionImpactArea> listFromJson(
     List<dynamic> json,
@@ -46,5 +51,14 @@ class RoadDisruptionImpactArea {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$RoadDisruptionImpactAreaToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'roadDisruptionId': roadDisruptionId,
+      'startDate': startDate?.toIso8601String(),
+      'endDate': endDate?.toIso8601String(),
+      'startTime': startTime,
+      'endTime': endTime,
+    };
+  }
 }

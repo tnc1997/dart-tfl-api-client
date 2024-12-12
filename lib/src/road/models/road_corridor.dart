@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'road_corridor.g.dart';
-
-@JsonSerializable()
-class RoadCorridor {
+﻿class RoadCorridor {
   String? id;
   String? displayName;
   String? group;
@@ -30,8 +25,24 @@ class RoadCorridor {
 
   factory RoadCorridor.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$RoadCorridorFromJson(json);
+  ) {
+    return RoadCorridor(
+      id: json['id'] as String?,
+      displayName: json['displayName'] as String?,
+      group: json['group'] as String?,
+      statusSeverity: json['statusSeverity'] as String?,
+      statusSeverityDescription: json['statusSeverityDescription'] as String?,
+      bounds: json['bounds'] as String?,
+      envelope: json['envelope'] as String?,
+      statusAggregationStartDate: json['statusAggregationStartDate'] == null
+          ? null
+          : DateTime.parse(json['statusAggregationStartDate'] as String),
+      statusAggregationEndDate: json['statusAggregationEndDate'] == null
+          ? null
+          : DateTime.parse(json['statusAggregationEndDate'] as String),
+      url: json['url'] as String?,
+    );
+  }
 
   static List<RoadCorridor> listFromJson(
     List<dynamic> json,
@@ -52,5 +63,19 @@ class RoadCorridor {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$RoadCorridorToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'displayName': displayName,
+      'group': group,
+      'statusSeverity': statusSeverity,
+      'statusSeverityDescription': statusSeverityDescription,
+      'bounds': bounds,
+      'envelope': envelope,
+      'statusAggregationStartDate':
+          statusAggregationStartDate?.toIso8601String(),
+      'statusAggregationEndDate': statusAggregationEndDate?.toIso8601String(),
+      'url': url,
+    };
+  }
 }

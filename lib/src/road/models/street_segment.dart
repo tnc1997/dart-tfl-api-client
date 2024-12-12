@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'street_segment.g.dart';
-
-@JsonSerializable()
-class StreetSegment {
+﻿class StreetSegment {
   String? toid;
   String? lineString;
   int? sourceSystemId;
@@ -18,8 +13,14 @@ class StreetSegment {
 
   factory StreetSegment.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$StreetSegmentFromJson(json);
+  ) {
+    return StreetSegment(
+      toid: json['toid'] as String?,
+      lineString: json['lineString'] as String?,
+      sourceSystemId: (json['sourceSystemId'] as num?)?.toInt(),
+      sourceSystemKey: json['sourceSystemKey'] as String?,
+    );
+  }
 
   static List<StreetSegment> listFromJson(
     List<dynamic> json,
@@ -40,5 +41,12 @@ class StreetSegment {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$StreetSegmentToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'toid': toid,
+      'lineString': lineString,
+      'sourceSystemId': sourceSystemId,
+      'sourceSystemKey': sourceSystemKey,
+    };
+  }
 }

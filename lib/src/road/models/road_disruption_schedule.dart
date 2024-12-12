@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'road_disruption_schedule.g.dart';
-
-@JsonSerializable()
-class RoadDisruptionSchedule {
+﻿class RoadDisruptionSchedule {
   DateTime? startTime;
   DateTime? endTime;
 
@@ -14,8 +9,16 @@ class RoadDisruptionSchedule {
 
   factory RoadDisruptionSchedule.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$RoadDisruptionScheduleFromJson(json);
+  ) {
+    return RoadDisruptionSchedule(
+      startTime: json['startTime'] == null
+          ? null
+          : DateTime.parse(json['startTime'] as String),
+      endTime: json['endTime'] == null
+          ? null
+          : DateTime.parse(json['endTime'] as String),
+    );
+  }
 
   static List<RoadDisruptionSchedule> listFromJson(
     List<dynamic> json,
@@ -36,5 +39,10 @@ class RoadDisruptionSchedule {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$RoadDisruptionScheduleToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'startTime': startTime?.toIso8601String(),
+      'endTime': endTime?.toIso8601String(),
+    };
+  }
 }
