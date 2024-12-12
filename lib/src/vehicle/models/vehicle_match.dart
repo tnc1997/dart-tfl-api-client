@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'vehicle_match.g.dart';
-
-@JsonSerializable()
-class VehicleMatch {
+﻿class VehicleMatch {
   String? vrm;
   String? type;
   String? make;
@@ -22,8 +17,16 @@ class VehicleMatch {
 
   factory VehicleMatch.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$VehicleMatchFromJson(json);
+  ) {
+    return VehicleMatch(
+      vrm: json['vrm'] as String?,
+      type: json['type'] as String?,
+      make: json['make'] as String?,
+      model: json['model'] as String?,
+      colour: json['colour'] as String?,
+      compliance: json['compliance'] as String?,
+    );
+  }
 
   static List<VehicleMatch> listFromJson(
     List<dynamic> json,
@@ -44,5 +47,14 @@ class VehicleMatch {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$VehicleMatchToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'vrm': vrm,
+      'type': type,
+      'make': make,
+      'model': model,
+      'colour': colour,
+      'compliance': compliance,
+    };
+  }
 }
