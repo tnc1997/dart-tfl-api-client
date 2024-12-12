@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'bay.dart';
 
-import 'bay.dart';
-
-part 'car_park_occupancy.g.dart';
-
-@JsonSerializable()
 class CarParkOccupancy {
   String? id;
   List<Bay>? bays;
@@ -20,8 +15,16 @@ class CarParkOccupancy {
 
   factory CarParkOccupancy.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$CarParkOccupancyFromJson(json);
+  ) {
+    return CarParkOccupancy(
+      id: json['id'] as String?,
+      bays: (json['bays'] as List<dynamic>?)
+          ?.map((e) => Bay.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      name: json['name'] as String?,
+      carParkDetailsUrl: json['carParkDetailsUrl'] as String?,
+    );
+  }
 
   static List<CarParkOccupancy> listFromJson(
     List<dynamic> json,
@@ -42,5 +45,12 @@ class CarParkOccupancy {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$CarParkOccupancyToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'bays': bays,
+      'name': name,
+      'carParkDetailsUrl': carParkDetailsUrl,
+    };
+  }
 }

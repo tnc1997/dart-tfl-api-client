@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'bike_point_occupancy.g.dart';
-
-@JsonSerializable()
-class BikePointOccupancy {
+﻿class BikePointOccupancy {
   String? id;
   String? name;
   int? bikesCount;
@@ -20,8 +15,15 @@ class BikePointOccupancy {
 
   factory BikePointOccupancy.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$BikePointOccupancyFromJson(json);
+  ) {
+    return BikePointOccupancy(
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      bikesCount: (json['bikesCount'] as num?)?.toInt(),
+      emptyDocks: (json['emptyDocks'] as num?)?.toInt(),
+      totalDocks: (json['totalDocks'] as num?)?.toInt(),
+    );
+  }
 
   static List<BikePointOccupancy> listFromJson(
     List<dynamic> json,
@@ -42,5 +44,13 @@ class BikePointOccupancy {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$BikePointOccupancyToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'bikesCount': bikesCount,
+      'emptyDocks': emptyDocks,
+      'totalDocks': totalDocks,
+    };
+  }
 }

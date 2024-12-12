@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'charge_connector_occupancy.g.dart';
-
-@JsonSerializable()
-class ChargeConnectorOccupancy {
+﻿class ChargeConnectorOccupancy {
   int? id;
   String? sourceSystemPlaceId;
   String? status;
@@ -16,8 +11,13 @@ class ChargeConnectorOccupancy {
 
   factory ChargeConnectorOccupancy.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ChargeConnectorOccupancyFromJson(json);
+  ) {
+    return ChargeConnectorOccupancy(
+      id: (json['id'] as num?)?.toInt(),
+      sourceSystemPlaceId: json['sourceSystemPlaceId'] as String?,
+      status: json['status'] as String?,
+    );
+  }
 
   static List<ChargeConnectorOccupancy> listFromJson(
     List<dynamic> json,
@@ -38,5 +38,11 @@ class ChargeConnectorOccupancy {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$ChargeConnectorOccupancyToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'sourceSystemPlaceId': sourceSystemPlaceId,
+      'status': status,
+    };
+  }
 }

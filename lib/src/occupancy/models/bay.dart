@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'bay.g.dart';
-
-@JsonSerializable()
-class Bay {
+﻿class Bay {
   String? bayType;
   int? bayCount;
   int? free;
@@ -18,8 +13,14 @@ class Bay {
 
   factory Bay.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$BayFromJson(json);
+  ) {
+    return Bay(
+      bayType: json['bayType'] as String?,
+      bayCount: (json['bayCount'] as num?)?.toInt(),
+      free: (json['free'] as num?)?.toInt(),
+      occupied: (json['occupied'] as num?)?.toInt(),
+    );
+  }
 
   static List<Bay> listFromJson(
     List<dynamic> json,
@@ -40,5 +41,12 @@ class Bay {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$BayToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'bayType': bayType,
+      'bayCount': bayCount,
+      'free': free,
+      'occupied': occupied,
+    };
+  }
 }
