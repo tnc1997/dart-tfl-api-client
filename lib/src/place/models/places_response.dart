@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import '../../common/models/place.dart';
 
-import '../../common/models/place.dart';
-
-part 'places_response.g.dart';
-
-@JsonSerializable()
 class PlacesResponse {
   List<double>? centrePoint;
   List<Place>? places;
@@ -16,8 +11,16 @@ class PlacesResponse {
 
   factory PlacesResponse.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$PlacesResponseFromJson(json);
+  ) {
+    return PlacesResponse(
+      centrePoint: (json['centrePoint'] as List<dynamic>?)
+          ?.map((e) => (e as num).toDouble())
+          .toList(),
+      places: (json['places'] as List<dynamic>?)
+          ?.map((e) => Place.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<PlacesResponse> listFromJson(
     List<dynamic> json,
@@ -38,5 +41,10 @@ class PlacesResponse {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$PlacesResponseToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'centrePoint': centrePoint,
+      'places': places,
+    };
+  }
 }

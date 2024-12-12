@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'place_category.g.dart';
-
-@JsonSerializable()
-class PlaceCategory {
+﻿class PlaceCategory {
   String? category;
   List<String>? availableKeys;
 
@@ -14,8 +9,14 @@ class PlaceCategory {
 
   factory PlaceCategory.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$PlaceCategoryFromJson(json);
+  ) {
+    return PlaceCategory(
+      category: json['category'] as String?,
+      availableKeys: (json['availableKeys'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+    );
+  }
 
   static List<PlaceCategory> listFromJson(
     List<dynamic> json,
@@ -36,5 +37,10 @@ class PlaceCategory {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$PlaceCategoryToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'category': category,
+      'availableKeys': availableKeys,
+    };
+  }
 }
