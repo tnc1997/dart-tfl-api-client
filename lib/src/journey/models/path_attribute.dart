@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'path_attribute.g.dart';
-
-@JsonSerializable()
-class PathAttribute {
+﻿class PathAttribute {
   String? name;
   String? value;
 
@@ -14,8 +9,12 @@ class PathAttribute {
 
   factory PathAttribute.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$PathAttributeFromJson(json);
+  ) {
+    return PathAttribute(
+      name: json['name'] as String?,
+      value: json['value'] as String?,
+    );
+  }
 
   static List<PathAttribute> listFromJson(
     List<dynamic> json,
@@ -36,5 +35,10 @@ class PathAttribute {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$PathAttributeToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'value': value,
+    };
+  }
 }

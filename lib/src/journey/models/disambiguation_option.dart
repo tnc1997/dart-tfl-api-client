@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import '../../common/models/place.dart';
 
-import '../../common/models/place.dart';
-
-part 'disambiguation_option.g.dart';
-
-@JsonSerializable()
 class DisambiguationOption1 {
   String? parameterValue;
   String? uri;
@@ -20,8 +15,16 @@ class DisambiguationOption1 {
 
   factory DisambiguationOption1.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$DisambiguationOption1FromJson(json);
+  ) {
+    return DisambiguationOption1(
+      parameterValue: json['parameterValue'] as String?,
+      uri: json['uri'] as String?,
+      place: json['place'] == null
+          ? null
+          : Place.fromJson(json['place'] as Map<String, dynamic>),
+      matchQuality: (json['matchQuality'] as num?)?.toInt(),
+    );
+  }
 
   static List<DisambiguationOption1> listFromJson(
     List<dynamic> json,
@@ -42,5 +45,12 @@ class DisambiguationOption1 {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$DisambiguationOption1ToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'parameterValue': parameterValue,
+      'uri': uri,
+      'place': place,
+      'matchQuality': matchQuality,
+    };
+  }
 }

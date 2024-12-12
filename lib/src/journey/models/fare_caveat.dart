@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'fare_caveat.g.dart';
-
-@JsonSerializable()
-class FareCaveat {
+﻿class FareCaveat {
   String? text;
   String? type;
 
@@ -14,8 +9,12 @@ class FareCaveat {
 
   factory FareCaveat.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$FareCaveatFromJson(json);
+  ) {
+    return FareCaveat(
+      text: json['text'] as String?,
+      type: json['type'] as String?,
+    );
+  }
 
   static List<FareCaveat> listFromJson(
     List<dynamic> json,
@@ -36,5 +35,10 @@ class FareCaveat {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$FareCaveatToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'text': text,
+      'type': type,
+    };
+  }
 }

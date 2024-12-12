@@ -1,6 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-import '../../common/models/disruption.dart';
+﻿import '../../common/models/disruption.dart';
 import '../../common/models/identifier.dart';
 import '../../common/models/stop_point.dart';
 import 'instruction.dart';
@@ -10,9 +8,6 @@ import 'planned_work.dart';
 import 'point.dart';
 import 'route_option.dart';
 
-part 'leg.g.dart';
-
-@JsonSerializable()
 class Leg {
   int? duration;
   String? speed;
@@ -53,8 +48,46 @@ class Leg {
 
   factory Leg.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$LegFromJson(json);
+  ) {
+    return Leg(
+      duration: (json['duration'] as num?)?.toInt(),
+      speed: json['speed'] as String?,
+      instruction: json['instruction'] == null
+          ? null
+          : Instruction.fromJson(json['instruction'] as Map<String, dynamic>),
+      obstacles: (json['obstacles'] as List<dynamic>?)
+          ?.map((e) => Obstacle.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      departureTime: json['departureTime'] == null
+          ? null
+          : DateTime.parse(json['departureTime'] as String),
+      arrivalTime: json['arrivalTime'] == null
+          ? null
+          : DateTime.parse(json['arrivalTime'] as String),
+      departurePoint: json['departurePoint'] == null
+          ? null
+          : Point1.fromJson(json['departurePoint'] as Map<String, dynamic>),
+      arrivalPoint: json['arrivalPoint'] == null
+          ? null
+          : Point1.fromJson(json['arrivalPoint'] as Map<String, dynamic>),
+      path: json['path'] == null
+          ? null
+          : Path.fromJson(json['path'] as Map<String, dynamic>),
+      routeOptions: (json['routeOptions'] as List<dynamic>?)
+          ?.map((e) => RouteOption.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      mode: json['mode'] == null
+          ? null
+          : Identifier.fromJson(json['mode'] as Map<String, dynamic>),
+      disruptions: (json['disruptions'] as List<dynamic>?)
+          ?.map((e) => Disruption.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      plannedWorks: (json['plannedWorks'] as List<dynamic>?)
+          ?.map((e) => PlannedWork.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      distance: (json['distance'] as num?)?.toDouble(),
+    );
+  }
 
   static List<Leg> listFromJson(
     List<dynamic> json,
@@ -75,5 +108,22 @@ class Leg {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$LegToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'duration': duration,
+      'speed': speed,
+      'instruction': instruction,
+      'obstacles': obstacles,
+      'departureTime': departureTime?.toIso8601String(),
+      'arrivalTime': arrivalTime?.toIso8601String(),
+      'departurePoint': departurePoint,
+      'arrivalPoint': arrivalPoint,
+      'path': path,
+      'routeOptions': routeOptions,
+      'mode': mode,
+      'disruptions': disruptions,
+      'plannedWorks': plannedWorks,
+      'distance': distance,
+    };
+  }
 }

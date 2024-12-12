@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'fare_tap_details.dart';
 
-import 'fare_tap_details.dart';
-
-part 'fare_tap.g.dart';
-
-@JsonSerializable()
 class FareTap {
   String? atcoCode;
   FareTapDetails? tapDetails;
@@ -16,8 +11,14 @@ class FareTap {
 
   factory FareTap.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$FareTapFromJson(json);
+  ) {
+    return FareTap(
+      atcoCode: json['atcoCode'] as String?,
+      tapDetails: json['tapDetails'] == null
+          ? null
+          : FareTapDetails.fromJson(json['tapDetails'] as Map<String, dynamic>),
+    );
+  }
 
   static List<FareTap> listFromJson(
     List<dynamic> json,
@@ -38,5 +39,10 @@ class FareTap {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$FareTapToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'atcoCode': atcoCode,
+      'tapDetails': tapDetails,
+    };
+  }
 }

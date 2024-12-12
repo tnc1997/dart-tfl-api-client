@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'time_adjustment.dart';
 
-import 'time_adjustment.dart';
-
-part 'time_adjustments.g.dart';
-
-@JsonSerializable()
 class TimeAdjustments {
   TimeAdjustment? earliest;
   TimeAdjustment? earlier;
@@ -20,8 +15,22 @@ class TimeAdjustments {
 
   factory TimeAdjustments.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$TimeAdjustmentsFromJson(json);
+  ) {
+    return TimeAdjustments(
+      earliest: json['earliest'] == null
+          ? null
+          : TimeAdjustment.fromJson(json['earliest'] as Map<String, dynamic>),
+      earlier: json['earlier'] == null
+          ? null
+          : TimeAdjustment.fromJson(json['earlier'] as Map<String, dynamic>),
+      later: json['later'] == null
+          ? null
+          : TimeAdjustment.fromJson(json['later'] as Map<String, dynamic>),
+      latest: json['latest'] == null
+          ? null
+          : TimeAdjustment.fromJson(json['latest'] as Map<String, dynamic>),
+    );
+  }
 
   static List<TimeAdjustments> listFromJson(
     List<dynamic> json,
@@ -42,5 +51,12 @@ class TimeAdjustments {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$TimeAdjustmentsToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'earliest': earliest,
+      'earlier': earlier,
+      'later': later,
+      'latest': latest,
+    };
+  }
 }

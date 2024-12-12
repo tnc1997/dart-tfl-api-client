@@ -1,11 +1,6 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-import 'fare.dart';
+﻿import 'fare.dart';
 import 'fare_caveat.dart';
 
-part 'journey_fare.g.dart';
-
-@JsonSerializable()
 class JourneyFare {
   int? totalCost;
   List<Fare2>? fares;
@@ -19,8 +14,17 @@ class JourneyFare {
 
   factory JourneyFare.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$JourneyFareFromJson(json);
+  ) {
+    return JourneyFare(
+      totalCost: (json['totalCost'] as num?)?.toInt(),
+      fares: (json['fares'] as List<dynamic>?)
+          ?.map((e) => Fare2.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      caveats: (json['caveats'] as List<dynamic>?)
+          ?.map((e) => FareCaveat.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<JourneyFare> listFromJson(
     List<dynamic> json,
@@ -41,5 +45,11 @@ class JourneyFare {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$JourneyFareToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'totalCost': totalCost,
+      'fares': fares,
+      'caveats': caveats,
+    };
+  }
 }

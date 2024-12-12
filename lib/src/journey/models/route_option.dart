@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import '../../common/models/identifier.dart';
 
-import '../../common/models/identifier.dart';
-
-part 'route_option.g.dart';
-
-@JsonSerializable()
 class RouteOption {
   String? id;
   String? name;
@@ -20,8 +15,18 @@ class RouteOption {
 
   factory RouteOption.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$RouteOptionFromJson(json);
+  ) {
+    return RouteOption(
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      directions: (json['directions'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      lineIdentifier: json['lineIdentifier'] == null
+          ? null
+          : Identifier.fromJson(json['lineIdentifier'] as Map<String, dynamic>),
+    );
+  }
 
   static List<RouteOption> listFromJson(
     List<dynamic> json,
@@ -42,5 +47,12 @@ class RouteOption {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$RouteOptionToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'directions': directions,
+      'lineIdentifier': lineIdentifier,
+    };
+  }
 }

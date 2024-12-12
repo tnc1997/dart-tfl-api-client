@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'time_adjustments.dart';
 
-import 'time_adjustments.dart';
-
-part 'search_criteria.g.dart';
-
-@JsonSerializable()
 class SearchCriteria {
   DateTime? dateTime;
   String? dateTimeType;
@@ -18,8 +13,18 @@ class SearchCriteria {
 
   factory SearchCriteria.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$SearchCriteriaFromJson(json);
+  ) {
+    return SearchCriteria(
+      dateTime: json['dateTime'] == null
+          ? null
+          : DateTime.parse(json['dateTime'] as String),
+      dateTimeType: json['dateTimeType'] as String?,
+      timeAdjustments: json['timeAdjustments'] == null
+          ? null
+          : TimeAdjustments.fromJson(
+              json['timeAdjustments'] as Map<String, dynamic>),
+    );
+  }
 
   static List<SearchCriteria> listFromJson(
     List<dynamic> json,
@@ -40,5 +45,11 @@ class SearchCriteria {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$SearchCriteriaToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'dateTime': dateTime?.toIso8601String(),
+      'dateTimeType': dateTimeType,
+      'timeAdjustments': timeAdjustments,
+    };
+  }
 }

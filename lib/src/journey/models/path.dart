@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import '../../common/models/identifier.dart';
 
-import '../../common/models/identifier.dart';
-
-part 'path.g.dart';
-
-@JsonSerializable()
 class Path {
   String? lineString;
   List<Identifier>? stopPoints;
@@ -18,8 +13,17 @@ class Path {
 
   factory Path.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$PathFromJson(json);
+  ) {
+    return Path(
+      lineString: json['lineString'] as String?,
+      stopPoints: (json['stopPoints'] as List<dynamic>?)
+          ?.map((e) => Identifier.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      elevation: (json['elevation'] as List<dynamic>?)
+          ?.map((e) => e as Object)
+          .toList(),
+    );
+  }
 
   static List<Path> listFromJson(
     List<dynamic> json,
@@ -40,5 +44,11 @@ class Path {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$PathToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'lineString': lineString,
+      'stopPoints': stopPoints,
+      'elevation': elevation,
+    };
+  }
 }

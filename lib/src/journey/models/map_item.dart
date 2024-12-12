@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'map_item.g.dart';
-
-@JsonSerializable()
-class MapItem {
+﻿class MapItem {
   String? uri;
   String? type;
   int? size;
@@ -16,8 +11,13 @@ class MapItem {
 
   factory MapItem.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$MapItemFromJson(json);
+  ) {
+    return MapItem(
+      uri: json['uri'] as String?,
+      type: json['type'] as String?,
+      size: (json['size'] as num?)?.toInt(),
+    );
+  }
 
   static List<MapItem> listFromJson(
     List<dynamic> json,
@@ -38,5 +38,11 @@ class MapItem {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$MapItemToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'uri': uri,
+      'type': type,
+      'size': size,
+    };
+  }
 }

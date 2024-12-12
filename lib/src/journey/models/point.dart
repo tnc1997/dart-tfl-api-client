@@ -1,11 +1,6 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-import '../../common/models/mode.dart';
+﻿import '../../common/models/mode.dart';
 import 'map_item.dart';
 
-part 'point.g.dart';
-
-@JsonSerializable()
 class Point1 {
   String? name;
   String? shortName;
@@ -41,8 +36,30 @@ class Point1 {
 
   factory Point1.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$Point1FromJson(json);
+  ) {
+    return Point1(
+      name: json['name'] as String?,
+      shortName: json['shortName'] as String?,
+      stopId: json['stopId'] as String?,
+      type: json['type'] as String?,
+      usage: json['usage'] as String?,
+      associatedTime: json['associatedTime'] == null
+          ? null
+          : DateTime.parse(json['associatedTime'] as String),
+      hasStaticInfo: json['hasStaticInfo'] as bool?,
+      maps: (json['maps'] as List<dynamic>?)
+          ?.map((e) => MapItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      modes: (json['modes'] as List<dynamic>?)
+          ?.map((e) => Mode.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      area: json['area'] as String?,
+      matchQuality: (json['matchQuality'] as num?)?.toInt(),
+      fullName: json['fullName'] as String?,
+    );
+  }
 
   static List<Point1> listFromJson(
     List<dynamic> json,
@@ -63,5 +80,22 @@ class Point1 {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$Point1ToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'shortName': shortName,
+      'stopId': stopId,
+      'type': type,
+      'usage': usage,
+      'associatedTime': associatedTime?.toIso8601String(),
+      'hasStaticInfo': hasStaticInfo,
+      'maps': maps,
+      'modes': modes,
+      'latitude': latitude,
+      'longitude': longitude,
+      'area': area,
+      'matchQuality': matchQuality,
+      'fullName': fullName,
+    };
+  }
 }

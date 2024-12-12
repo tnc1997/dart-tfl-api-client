@@ -1,11 +1,6 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-import 'journey_fare.dart';
+﻿import 'journey_fare.dart';
 import 'leg.dart';
 
-part 'journey.g.dart';
-
-@JsonSerializable()
 class Journey2 {
   DateTime? startDateTime;
   int? duration;
@@ -23,8 +18,23 @@ class Journey2 {
 
   factory Journey2.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$Journey2FromJson(json);
+  ) {
+    return Journey2(
+      startDateTime: json['startDateTime'] == null
+          ? null
+          : DateTime.parse(json['startDateTime'] as String),
+      duration: (json['duration'] as num?)?.toInt(),
+      arrivalDateTime: json['arrivalDateTime'] == null
+          ? null
+          : DateTime.parse(json['arrivalDateTime'] as String),
+      legs: (json['legs'] as List<dynamic>?)
+          ?.map((e) => Leg.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      fare: json['fare'] == null
+          ? null
+          : JourneyFare.fromJson(json['fare'] as Map<String, dynamic>),
+    );
+  }
 
   static List<Journey2> listFromJson(
     List<dynamic> json,
@@ -45,5 +55,13 @@ class Journey2 {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$Journey2ToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'startDateTime': startDateTime?.toIso8601String(),
+      'duration': duration,
+      'arrivalDateTime': arrivalDateTime?.toIso8601String(),
+      'legs': legs,
+      'fare': fare,
+    };
+  }
 }

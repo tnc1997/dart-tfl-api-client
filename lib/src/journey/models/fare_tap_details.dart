@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'fare_tap_details.g.dart';
-
-@JsonSerializable()
-class FareTapDetails {
+﻿class FareTapDetails {
   String? modeType;
   String? validationType;
   String? hostDeviceType;
@@ -22,8 +17,18 @@ class FareTapDetails {
 
   factory FareTapDetails.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$FareTapDetailsFromJson(json);
+  ) {
+    return FareTapDetails(
+      modeType: json['modeType'] as String?,
+      validationType: json['validationType'] as String?,
+      hostDeviceType: json['hostDeviceType'] as String?,
+      busRouteId: json['busRouteId'] as String?,
+      nationalLocationCode: (json['nationalLocationCode'] as num?)?.toInt(),
+      tapTimestamp: json['tapTimestamp'] == null
+          ? null
+          : DateTime.parse(json['tapTimestamp'] as String),
+    );
+  }
 
   static List<FareTapDetails> listFromJson(
     List<dynamic> json,
@@ -44,5 +49,14 @@ class FareTapDetails {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$FareTapDetailsToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'modeType': modeType,
+      'validationType': validationType,
+      'hostDeviceType': hostDeviceType,
+      'busRouteId': busRouteId,
+      'nationalLocationCode': nationalLocationCode,
+      'tapTimestamp': tapTimestamp?.toIso8601String(),
+    };
+  }
 }

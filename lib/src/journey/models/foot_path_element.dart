@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'foot_path_element.g.dart';
-
-@JsonSerializable()
-class FootPathElement {
+﻿class FootPathElement {
   String? type;
   String? level;
 
@@ -14,8 +9,12 @@ class FootPathElement {
 
   factory FootPathElement.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$FootPathElementFromJson(json);
+  ) {
+    return FootPathElement(
+      type: json['type'] as String?,
+      level: json['level'] as String?,
+    );
+  }
 
   static List<FootPathElement> listFromJson(
     List<dynamic> json,
@@ -36,5 +35,10 @@ class FootPathElement {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$FootPathElementToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'type': type,
+      'level': level,
+    };
+  }
 }

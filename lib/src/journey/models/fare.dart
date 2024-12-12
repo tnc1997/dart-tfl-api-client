@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'fare_tap.dart';
 
-import 'fare_tap.dart';
-
-part 'fare.g.dart';
-
-@JsonSerializable()
 class Fare2 {
   int? lowZone;
   int? highZone;
@@ -30,8 +25,21 @@ class Fare2 {
 
   factory Fare2.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$Fare2FromJson(json);
+  ) {
+    return Fare2(
+      lowZone: (json['lowZone'] as num?)?.toInt(),
+      highZone: (json['highZone'] as num?)?.toInt(),
+      cost: (json['cost'] as num?)?.toInt(),
+      chargeProfileName: json['chargeProfileName'] as String?,
+      isHopperFare: json['isHopperFare'] as bool?,
+      chargeLevel: json['chargeLevel'] as String?,
+      peak: (json['peak'] as num?)?.toInt(),
+      offPeak: (json['offPeak'] as num?)?.toInt(),
+      taps: (json['taps'] as List<dynamic>?)
+          ?.map((e) => FareTap.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<Fare2> listFromJson(
     List<dynamic> json,
@@ -52,5 +60,17 @@ class Fare2 {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$Fare2ToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'lowZone': lowZone,
+      'highZone': highZone,
+      'cost': cost,
+      'chargeProfileName': chargeProfileName,
+      'isHopperFare': isHopperFare,
+      'chargeLevel': chargeLevel,
+      'peak': peak,
+      'offPeak': offPeak,
+      'taps': taps,
+    };
+  }
 }

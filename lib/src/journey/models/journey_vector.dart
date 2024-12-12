@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'journey_vector.g.dart';
-
-@JsonSerializable()
-class JourneyVector {
+﻿class JourneyVector {
   String? from;
   String? to;
   String? via;
@@ -18,8 +13,14 @@ class JourneyVector {
 
   factory JourneyVector.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$JourneyVectorFromJson(json);
+  ) {
+    return JourneyVector(
+      from: json['from'] as String?,
+      to: json['to'] as String?,
+      via: json['via'] as String?,
+      uri: json['uri'] as String?,
+    );
+  }
 
   static List<JourneyVector> listFromJson(
     List<dynamic> json,
@@ -40,5 +41,12 @@ class JourneyVector {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$JourneyVectorToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'from': from,
+      'to': to,
+      'via': via,
+      'uri': uri,
+    };
+  }
 }

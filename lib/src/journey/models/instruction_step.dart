@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'path_attribute.dart';
 
-import 'path_attribute.dart';
-
-part 'instruction_step.g.dart';
-
-@JsonSerializable()
 class InstructionStep {
   String? description;
   String? turnDirection;
@@ -38,8 +33,26 @@ class InstructionStep {
 
   factory InstructionStep.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$InstructionStepFromJson(json);
+  ) {
+    return InstructionStep(
+      description: json['description'] as String?,
+      turnDirection: json['turnDirection'] as String?,
+      streetName: json['streetName'] as String?,
+      distance: (json['distance'] as num?)?.toInt(),
+      cumulativeDistance: (json['cumulativeDistance'] as num?)?.toInt(),
+      skyDirection: (json['skyDirection'] as num?)?.toInt(),
+      skyDirectionDescription: json['skyDirectionDescription'] as String?,
+      cumulativeTravelTime: (json['cumulativeTravelTime'] as num?)?.toInt(),
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+      pathAttribute: json['pathAttribute'] == null
+          ? null
+          : PathAttribute.fromJson(
+              json['pathAttribute'] as Map<String, dynamic>),
+      descriptionHeading: json['descriptionHeading'] as String?,
+      trackType: json['trackType'] as String?,
+    );
+  }
 
   static List<InstructionStep> listFromJson(
     List<dynamic> json,
@@ -60,5 +73,21 @@ class InstructionStep {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$InstructionStepToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'description': description,
+      'turnDirection': turnDirection,
+      'streetName': streetName,
+      'distance': distance,
+      'cumulativeDistance': cumulativeDistance,
+      'skyDirection': skyDirection,
+      'skyDirectionDescription': skyDirectionDescription,
+      'cumulativeTravelTime': cumulativeTravelTime,
+      'latitude': latitude,
+      'longitude': longitude,
+      'pathAttribute': pathAttribute,
+      'descriptionHeading': descriptionHeading,
+      'trackType': trackType,
+    };
+  }
 }

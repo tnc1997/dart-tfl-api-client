@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'location.g.dart';
-
-@JsonSerializable()
-class Location {
+﻿class Location {
   String? name;
   String? region;
   bool? deleteAssignedStops;
@@ -18,8 +13,14 @@ class Location {
 
   factory Location.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$LocationFromJson(json);
+  ) {
+    return Location(
+      name: json['name'] as String?,
+      region: json['region'] as String?,
+      deleteAssignedStops: json['deleteAssignedStops'] as bool?,
+      placeDefaultText: json['placeDefaultText'] as String?,
+    );
+  }
 
   static List<Location> listFromJson(
     List<dynamic> json,
@@ -40,5 +41,12 @@ class Location {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$LocationToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'region': region,
+      'deleteAssignedStops': deleteAssignedStops,
+      'placeDefaultText': placeDefaultText,
+    };
+  }
 }

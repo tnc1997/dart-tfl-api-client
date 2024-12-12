@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'instruction_step.dart';
 
-import 'instruction_step.dart';
-
-part 'instruction.g.dart';
-
-@JsonSerializable()
 class Instruction {
   String? summary;
   String? detailed;
@@ -18,8 +13,15 @@ class Instruction {
 
   factory Instruction.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$InstructionFromJson(json);
+  ) {
+    return Instruction(
+      summary: json['summary'] as String?,
+      detailed: json['detailed'] as String?,
+      steps: (json['steps'] as List<dynamic>?)
+          ?.map((e) => InstructionStep.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<Instruction> listFromJson(
     List<dynamic> json,
@@ -40,5 +42,11 @@ class Instruction {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$InstructionToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'summary': summary,
+      'detailed': detailed,
+      'steps': steps,
+    };
+  }
 }

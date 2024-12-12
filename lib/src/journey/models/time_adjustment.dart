@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'time_adjustment.g.dart';
-
-@JsonSerializable()
-class TimeAdjustment {
+﻿class TimeAdjustment {
   String? date;
   String? time;
   String? timeIs;
@@ -18,8 +13,14 @@ class TimeAdjustment {
 
   factory TimeAdjustment.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$TimeAdjustmentFromJson(json);
+  ) {
+    return TimeAdjustment(
+      date: json['date'] as String?,
+      time: json['time'] as String?,
+      timeIs: json['timeIs'] as String?,
+      uri: json['uri'] as String?,
+    );
+  }
 
   static List<TimeAdjustment> listFromJson(
     List<dynamic> json,
@@ -40,5 +41,12 @@ class TimeAdjustment {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$TimeAdjustmentToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'date': date,
+      'time': time,
+      'timeIs': timeIs,
+      'uri': uri,
+    };
+  }
 }

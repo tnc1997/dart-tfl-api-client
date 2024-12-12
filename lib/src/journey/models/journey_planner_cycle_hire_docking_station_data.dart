@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'journey_planner_cycle_hire_docking_station_data.g.dart';
-
-@JsonSerializable()
-class JourneyPlannerCycleHireDockingStationData {
+﻿class JourneyPlannerCycleHireDockingStationData {
   int? originNumberOfBikes;
   int? destinationNumberOfBikes;
   int? originNumberOfEmptySlots;
@@ -22,8 +17,19 @@ class JourneyPlannerCycleHireDockingStationData {
 
   factory JourneyPlannerCycleHireDockingStationData.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$JourneyPlannerCycleHireDockingStationDataFromJson(json);
+  ) {
+    return JourneyPlannerCycleHireDockingStationData(
+      originNumberOfBikes: (json['originNumberOfBikes'] as num?)?.toInt(),
+      destinationNumberOfBikes:
+          (json['destinationNumberOfBikes'] as num?)?.toInt(),
+      originNumberOfEmptySlots:
+          (json['originNumberOfEmptySlots'] as num?)?.toInt(),
+      destinationNumberOfEmptySlots:
+          (json['destinationNumberOfEmptySlots'] as num?)?.toInt(),
+      originId: json['originId'] as String?,
+      destinationId: json['destinationId'] as String?,
+    );
+  }
 
   static List<JourneyPlannerCycleHireDockingStationData> listFromJson(
     List<dynamic> json,
@@ -45,6 +51,14 @@ class JourneyPlannerCycleHireDockingStationData {
         ),
       );
 
-  Map<String, dynamic> toJson() =>
-      _$JourneyPlannerCycleHireDockingStationDataToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'originNumberOfBikes': originNumberOfBikes,
+      'destinationNumberOfBikes': destinationNumberOfBikes,
+      'originNumberOfEmptySlots': originNumberOfEmptySlots,
+      'destinationNumberOfEmptySlots': destinationNumberOfEmptySlots,
+      'originId': originId,
+      'destinationId': destinationId,
+    };
+  }
 }

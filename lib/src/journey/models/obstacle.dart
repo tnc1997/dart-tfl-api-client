@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'obstacle.g.dart';
-
-@JsonSerializable()
-class Obstacle {
+﻿class Obstacle {
   String? type;
   String? incline;
   int? stopId;
@@ -18,8 +13,14 @@ class Obstacle {
 
   factory Obstacle.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ObstacleFromJson(json);
+  ) {
+    return Obstacle(
+      type: json['type'] as String?,
+      incline: json['incline'] as String?,
+      stopId: (json['stopId'] as num?)?.toInt(),
+      position: json['position'] as String?,
+    );
+  }
 
   static List<Obstacle> listFromJson(
     List<dynamic> json,
@@ -40,5 +41,12 @@ class Obstacle {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$ObstacleToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'type': type,
+      'incline': incline,
+      'stopId': stopId,
+      'position': position,
+    };
+  }
 }

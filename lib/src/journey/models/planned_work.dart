@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'planned_work.g.dart';
-
-@JsonSerializable()
-class PlannedWork {
+﻿class PlannedWork {
   String? id;
   String? description;
   DateTime? createdDateTime;
@@ -18,8 +13,18 @@ class PlannedWork {
 
   factory PlannedWork.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$PlannedWorkFromJson(json);
+  ) {
+    return PlannedWork(
+      id: json['id'] as String?,
+      description: json['description'] as String?,
+      createdDateTime: json['createdDateTime'] == null
+          ? null
+          : DateTime.parse(json['createdDateTime'] as String),
+      lastUpdateDateTime: json['lastUpdateDateTime'] == null
+          ? null
+          : DateTime.parse(json['lastUpdateDateTime'] as String),
+    );
+  }
 
   static List<PlannedWork> listFromJson(
     List<dynamic> json,
@@ -40,5 +45,12 @@ class PlannedWork {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$PlannedWorkToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'description': description,
+      'createdDateTime': createdDateTime?.toIso8601String(),
+      'lastUpdateDateTime': lastUpdateDateTime?.toIso8601String(),
+    };
+  }
 }
