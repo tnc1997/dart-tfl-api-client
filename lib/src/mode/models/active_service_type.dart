@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'active_service_type.g.dart';
-
-@JsonSerializable()
-class ActiveServiceType {
+﻿class ActiveServiceType {
   String? mode;
   String? serviceType;
 
@@ -14,8 +9,12 @@ class ActiveServiceType {
 
   factory ActiveServiceType.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ActiveServiceTypeFromJson(json);
+  ) {
+    return ActiveServiceType(
+      mode: json['mode'] as String?,
+      serviceType: json['serviceType'] as String?,
+    );
+  }
 
   static List<ActiveServiceType> listFromJson(
     List<dynamic> json,
@@ -36,5 +35,10 @@ class ActiveServiceType {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$ActiveServiceTypeToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'mode': mode,
+      'serviceType': serviceType,
+    };
+  }
 }
