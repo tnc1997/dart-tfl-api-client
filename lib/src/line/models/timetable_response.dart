@@ -1,12 +1,7 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-import 'disambiguation.dart';
+﻿import 'disambiguation.dart';
 import 'matched_stop.dart';
 import 'timetable.dart';
 
-part 'timetable_response.g.dart';
-
-@JsonSerializable()
 class TimetableResponse {
   String? lineId;
   String? lineName;
@@ -32,8 +27,28 @@ class TimetableResponse {
 
   factory TimetableResponse.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$TimetableResponseFromJson(json);
+  ) {
+    return TimetableResponse(
+      lineId: json['lineId'] as String?,
+      lineName: json['lineName'] as String?,
+      direction: json['direction'] as String?,
+      pdfUrl: json['pdfUrl'] as String?,
+      stations: (json['stations'] as List<dynamic>?)
+          ?.map((e) => MatchedStop.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      stops: (json['stops'] as List<dynamic>?)
+          ?.map((e) => MatchedStop.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      timetable: json['timetable'] == null
+          ? null
+          : Timetable.fromJson(json['timetable'] as Map<String, dynamic>),
+      disambiguation: json['disambiguation'] == null
+          ? null
+          : Disambiguation2.fromJson(
+              json['disambiguation'] as Map<String, dynamic>),
+      statusErrorMessage: json['statusErrorMessage'] as String?,
+    );
+  }
 
   static List<TimetableResponse> listFromJson(
     List<dynamic> json,
@@ -54,5 +69,17 @@ class TimetableResponse {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$TimetableResponseToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'lineId': lineId,
+      'lineName': lineName,
+      'direction': direction,
+      'pdfUrl': pdfUrl,
+      'stations': stations,
+      'stops': stops,
+      'timetable': timetable,
+      'disambiguation': disambiguation,
+      'statusErrorMessage': statusErrorMessage,
+    };
+  }
 }

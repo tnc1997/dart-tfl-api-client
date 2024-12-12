@@ -1,11 +1,6 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-import 'schedule.dart';
+﻿import 'schedule.dart';
 import 'station_interval.dart';
 
-part 'timetable_route.g.dart';
-
-@JsonSerializable()
 class TimetableRoute {
   List<StationInterval>? stationIntervals;
   List<Schedule>? schedules;
@@ -17,8 +12,16 @@ class TimetableRoute {
 
   factory TimetableRoute.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$TimetableRouteFromJson(json);
+  ) {
+    return TimetableRoute(
+      stationIntervals: (json['stationIntervals'] as List<dynamic>?)
+          ?.map((e) => StationInterval.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      schedules: (json['schedules'] as List<dynamic>?)
+          ?.map((e) => Schedule.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<TimetableRoute> listFromJson(
     List<dynamic> json,
@@ -39,5 +42,10 @@ class TimetableRoute {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$TimetableRouteToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'stationIntervals': stationIntervals,
+      'schedules': schedules,
+    };
+  }
 }

@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'service_frequency.g.dart';
-
-@JsonSerializable()
-class ServiceFrequency {
+﻿class ServiceFrequency {
   double? lowestFrequency;
   double? highestFrequency;
 
@@ -14,8 +9,12 @@ class ServiceFrequency {
 
   factory ServiceFrequency.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ServiceFrequencyFromJson(json);
+  ) {
+    return ServiceFrequency(
+      lowestFrequency: (json['lowestFrequency'] as num?)?.toDouble(),
+      highestFrequency: (json['highestFrequency'] as num?)?.toDouble(),
+    );
+  }
 
   static List<ServiceFrequency> listFromJson(
     List<dynamic> json,
@@ -36,5 +35,10 @@ class ServiceFrequency {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$ServiceFrequencyToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'lowestFrequency': lowestFrequency,
+      'highestFrequency': highestFrequency,
+    };
+  }
 }

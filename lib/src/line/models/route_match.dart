@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'route_sequence.dart';
 
-import 'route_sequence.dart';
-
-part 'route_match.g.dart';
-
-@JsonSerializable()
 class RouteMatch {
   List<RouteSequence>? routeSequence;
 
@@ -14,8 +9,13 @@ class RouteMatch {
 
   factory RouteMatch.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$RouteMatchFromJson(json);
+  ) {
+    return RouteMatch(
+      routeSequence: (json['routeSequence'] as List<dynamic>?)
+          ?.map((e) => RouteSequence.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<RouteMatch> listFromJson(
     List<dynamic> json,
@@ -36,5 +36,9 @@ class RouteMatch {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$RouteMatchToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'routeSequence': routeSequence,
+    };
+  }
 }

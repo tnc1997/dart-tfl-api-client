@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import '../../common/models/identifier.dart';
 
-import '../../common/models/identifier.dart';
-
-part 'matched_stop.g.dart';
-
-@JsonSerializable()
 class MatchedStop {
   int? routeId;
   String? parentId;
@@ -52,8 +47,33 @@ class MatchedStop {
 
   factory MatchedStop.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$MatchedStopFromJson(json);
+  ) {
+    return MatchedStop(
+      routeId: (json['routeId'] as num?)?.toInt(),
+      parentId: json['parentId'] as String?,
+      stationId: json['stationId'] as String?,
+      icsId: json['icsId'] as String?,
+      topMostParentId: json['topMostParentId'] as String?,
+      direction: json['direction'] as String?,
+      towards: json['towards'] as String?,
+      modes:
+          (json['modes'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      stopType: json['stopType'] as String?,
+      stopLetter: json['stopLetter'] as String?,
+      zone: json['zone'] as String?,
+      accessibilitySummary: json['accessibilitySummary'] as String?,
+      hasDisruption: json['hasDisruption'] as bool?,
+      lines: (json['lines'] as List<dynamic>?)
+          ?.map((e) => Identifier.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      status: json['status'] as bool?,
+      id: json['id'] as String?,
+      url: json['url'] as String?,
+      name: json['name'] as String?,
+      lat: (json['lat'] as num?)?.toDouble(),
+      lon: (json['lon'] as num?)?.toDouble(),
+    );
+  }
 
   static List<MatchedStop> listFromJson(
     List<dynamic> json,
@@ -74,5 +94,28 @@ class MatchedStop {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$MatchedStopToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'routeId': routeId,
+      'parentId': parentId,
+      'stationId': stationId,
+      'icsId': icsId,
+      'topMostParentId': topMostParentId,
+      'direction': direction,
+      'towards': towards,
+      'modes': modes,
+      'stopType': stopType,
+      'stopLetter': stopLetter,
+      'zone': zone,
+      'accessibilitySummary': accessibilitySummary,
+      'hasDisruption': hasDisruption,
+      'lines': lines,
+      'status': status,
+      'id': id,
+      'url': url,
+      'name': name,
+      'lat': lat,
+      'lon': lon,
+    };
+  }
 }

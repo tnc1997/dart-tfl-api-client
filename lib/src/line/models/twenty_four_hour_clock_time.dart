@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'twenty_four_hour_clock_time.g.dart';
-
-@JsonSerializable()
-class TwentyFourHourClockTime {
+﻿class TwentyFourHourClockTime {
   String? hour;
   String? minute;
 
@@ -14,8 +9,12 @@ class TwentyFourHourClockTime {
 
   factory TwentyFourHourClockTime.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$TwentyFourHourClockTimeFromJson(json);
+  ) {
+    return TwentyFourHourClockTime(
+      hour: json['hour'] as String?,
+      minute: json['minute'] as String?,
+    );
+  }
 
   static List<TwentyFourHourClockTime> listFromJson(
     List<dynamic> json,
@@ -36,5 +35,10 @@ class TwentyFourHourClockTime {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$TwentyFourHourClockTimeToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'hour': hour,
+      'minute': minute,
+    };
+  }
 }

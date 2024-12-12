@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'timetable_route.dart';
 
-import 'timetable_route.dart';
-
-part 'timetable.g.dart';
-
-@JsonSerializable()
 class Timetable {
   String? departureStopId;
   List<TimetableRoute>? routes;
@@ -16,8 +11,14 @@ class Timetable {
 
   factory Timetable.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$TimetableFromJson(json);
+  ) {
+    return Timetable(
+      departureStopId: json['departureStopId'] as String?,
+      routes: (json['routes'] as List<dynamic>?)
+          ?.map((e) => TimetableRoute.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<Timetable> listFromJson(
     List<dynamic> json,
@@ -38,5 +39,10 @@ class Timetable {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$TimetableToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'departureStopId': departureStopId,
+      'routes': routes,
+    };
+  }
 }

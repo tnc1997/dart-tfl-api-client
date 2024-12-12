@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'matched_stop.dart';
 
-import 'matched_stop.dart';
-
-part 'stop_point_sequence.g.dart';
-
-@JsonSerializable()
 class StopPointSequence {
   String? lineId;
   String? lineName;
@@ -28,8 +23,24 @@ class StopPointSequence {
 
   factory StopPointSequence.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$StopPointSequenceFromJson(json);
+  ) {
+    return StopPointSequence(
+      lineId: json['lineId'] as String?,
+      lineName: json['lineName'] as String?,
+      direction: json['direction'] as String?,
+      branchId: (json['branchId'] as num?)?.toInt(),
+      nextBranchIds: (json['nextBranchIds'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
+      prevBranchIds: (json['prevBranchIds'] as List<dynamic>?)
+          ?.map((e) => (e as num).toInt())
+          .toList(),
+      stopPoint: (json['stopPoint'] as List<dynamic>?)
+          ?.map((e) => MatchedStop.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      serviceType: json['serviceType'] as String?,
+    );
+  }
 
   static List<StopPointSequence> listFromJson(
     List<dynamic> json,
@@ -50,5 +61,16 @@ class StopPointSequence {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$StopPointSequenceToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'lineId': lineId,
+      'lineName': lineName,
+      'direction': direction,
+      'branchId': branchId,
+      'nextBranchIds': nextBranchIds,
+      'prevBranchIds': prevBranchIds,
+      'stopPoint': stopPoint,
+      'serviceType': serviceType,
+    };
+  }
 }

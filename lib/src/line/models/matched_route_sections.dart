@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'matched_route_sections.g.dart';
-
-@JsonSerializable()
-class MatchedRouteSections {
+﻿class MatchedRouteSections {
   int? id;
 
   MatchedRouteSections({
@@ -12,8 +7,11 @@ class MatchedRouteSections {
 
   factory MatchedRouteSections.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$MatchedRouteSectionsFromJson(json);
+  ) {
+    return MatchedRouteSections(
+      id: (json['id'] as num?)?.toInt(),
+    );
+  }
 
   static List<MatchedRouteSections> listFromJson(
     List<dynamic> json,
@@ -34,5 +32,9 @@ class MatchedRouteSections {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$MatchedRouteSectionsToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+    };
+  }
 }

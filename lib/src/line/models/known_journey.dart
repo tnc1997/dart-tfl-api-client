@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'known_journey.g.dart';
-
-@JsonSerializable()
-class KnownJourney {
+﻿class KnownJourney {
   String? hour;
   String? minute;
   int? intervalId;
@@ -16,8 +11,13 @@ class KnownJourney {
 
   factory KnownJourney.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$KnownJourneyFromJson(json);
+  ) {
+    return KnownJourney(
+      hour: json['hour'] as String?,
+      minute: json['minute'] as String?,
+      intervalId: (json['intervalId'] as num?)?.toInt(),
+    );
+  }
 
   static List<KnownJourney> listFromJson(
     List<dynamic> json,
@@ -38,5 +38,11 @@ class KnownJourney {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$KnownJourneyToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'hour': hour,
+      'minute': minute,
+      'intervalId': intervalId,
+    };
+  }
 }

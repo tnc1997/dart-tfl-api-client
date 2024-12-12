@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'interval.g.dart';
-
-@JsonSerializable()
-class Interval {
+﻿class Interval {
   String? stopId;
   double? timeToArrival;
 
@@ -14,8 +9,12 @@ class Interval {
 
   factory Interval.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$IntervalFromJson(json);
+  ) {
+    return Interval(
+      stopId: json['stopId'] as String?,
+      timeToArrival: (json['timeToArrival'] as num?)?.toDouble(),
+    );
+  }
 
   static List<Interval> listFromJson(
     List<dynamic> json,
@@ -36,5 +35,10 @@ class Interval {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$IntervalToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'stopId': stopId,
+      'timeToArrival': timeToArrival,
+    };
+  }
 }

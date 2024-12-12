@@ -1,11 +1,6 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-import 'known_journey.dart';
+﻿import 'known_journey.dart';
 import 'period.dart';
 
-part 'schedule.g.dart';
-
-@JsonSerializable()
 class Schedule {
   String? name;
   List<KnownJourney>? knownJourneys;
@@ -23,8 +18,23 @@ class Schedule {
 
   factory Schedule.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ScheduleFromJson(json);
+  ) {
+    return Schedule(
+      name: json['name'] as String?,
+      knownJourneys: (json['knownJourneys'] as List<dynamic>?)
+          ?.map((e) => KnownJourney.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      firstJourney: json['firstJourney'] == null
+          ? null
+          : KnownJourney.fromJson(json['firstJourney'] as Map<String, dynamic>),
+      lastJourney: json['lastJourney'] == null
+          ? null
+          : KnownJourney.fromJson(json['lastJourney'] as Map<String, dynamic>),
+      periods: (json['periods'] as List<dynamic>?)
+          ?.map((e) => Period.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<Schedule> listFromJson(
     List<dynamic> json,
@@ -45,5 +55,13 @@ class Schedule {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$ScheduleToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'knownJourneys': knownJourneys,
+      'firstJourney': firstJourney,
+      'lastJourney': lastJourney,
+      'periods': periods,
+    };
+  }
 }

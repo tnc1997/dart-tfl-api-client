@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'ordered_route.g.dart';
-
-@JsonSerializable()
-class OrderedRoute {
+﻿class OrderedRoute {
   String? name;
   List<String>? naptanIds;
   String? serviceType;
@@ -16,8 +11,15 @@ class OrderedRoute {
 
   factory OrderedRoute.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$OrderedRouteFromJson(json);
+  ) {
+    return OrderedRoute(
+      name: json['name'] as String?,
+      naptanIds: (json['naptanIds'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      serviceType: json['serviceType'] as String?,
+    );
+  }
 
   static List<OrderedRoute> listFromJson(
     List<dynamic> json,
@@ -38,5 +40,11 @@ class OrderedRoute {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$OrderedRouteToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'naptanIds': naptanIds,
+      'serviceType': serviceType,
+    };
+  }
 }

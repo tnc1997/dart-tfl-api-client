@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'route_search_match.dart';
 
-import 'route_search_match.dart';
-
-part 'route_search_response.g.dart';
-
-@JsonSerializable()
 class RouteSearchResponse {
   String? input;
   List<RouteSearchMatch>? searchMatches;
@@ -16,8 +11,14 @@ class RouteSearchResponse {
 
   factory RouteSearchResponse.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$RouteSearchResponseFromJson(json);
+  ) {
+    return RouteSearchResponse(
+      input: json['input'] as String?,
+      searchMatches: (json['searchMatches'] as List<dynamic>?)
+          ?.map((e) => RouteSearchMatch.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<RouteSearchResponse> listFromJson(
     List<dynamic> json,
@@ -38,5 +39,10 @@ class RouteSearchResponse {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$RouteSearchResponseToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'input': input,
+      'searchMatches': searchMatches,
+    };
+  }
 }

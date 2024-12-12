@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'disambiguation_option.g.dart';
-
-@JsonSerializable()
-class DisambiguationOption2 {
+﻿class DisambiguationOption2 {
   String? description;
   String? uri;
 
@@ -14,8 +9,12 @@ class DisambiguationOption2 {
 
   factory DisambiguationOption2.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$DisambiguationOption2FromJson(json);
+  ) {
+    return DisambiguationOption2(
+      description: json['description'] as String?,
+      uri: json['uri'] as String?,
+    );
+  }
 
   static List<DisambiguationOption2> listFromJson(
     List<dynamic> json,
@@ -36,5 +35,10 @@ class DisambiguationOption2 {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$DisambiguationOption2ToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'description': description,
+      'uri': uri,
+    };
+  }
 }

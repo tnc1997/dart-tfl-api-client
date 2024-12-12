@@ -1,11 +1,6 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-import 'service_frequency.dart';
+﻿import 'service_frequency.dart';
 import 'twenty_four_hour_clock_time.dart';
 
-part 'period.g.dart';
-
-@JsonSerializable()
 class Period {
   String? type;
   TwentyFourHourClockTime? fromTime;
@@ -21,8 +16,23 @@ class Period {
 
   factory Period.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$PeriodFromJson(json);
+  ) {
+    return Period(
+      type: json['type'] as String?,
+      fromTime: json['fromTime'] == null
+          ? null
+          : TwentyFourHourClockTime.fromJson(
+              json['fromTime'] as Map<String, dynamic>),
+      toTime: json['toTime'] == null
+          ? null
+          : TwentyFourHourClockTime.fromJson(
+              json['toTime'] as Map<String, dynamic>),
+      frequency: json['frequency'] == null
+          ? null
+          : ServiceFrequency.fromJson(
+              json['frequency'] as Map<String, dynamic>),
+    );
+  }
 
   static List<Period> listFromJson(
     List<dynamic> json,
@@ -43,5 +53,12 @@ class Period {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$PeriodToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'type': type,
+      'fromTime': fromTime,
+      'toTime': toTime,
+      'frequency': frequency,
+    };
+  }
 }

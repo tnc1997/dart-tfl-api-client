@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'disambiguation_option.dart';
 
-import 'disambiguation_option.dart';
-
-part 'disambiguation.g.dart';
-
-@JsonSerializable()
 class Disambiguation2 {
   List<DisambiguationOption2>? disambiguationOptions;
 
@@ -14,8 +9,14 @@ class Disambiguation2 {
 
   factory Disambiguation2.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$Disambiguation2FromJson(json);
+  ) {
+    return Disambiguation2(
+      disambiguationOptions: (json['disambiguationOptions'] as List<dynamic>?)
+          ?.map(
+              (e) => DisambiguationOption2.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<Disambiguation2> listFromJson(
     List<dynamic> json,
@@ -36,5 +37,9 @@ class Disambiguation2 {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$Disambiguation2ToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'disambiguationOptions': disambiguationOptions,
+    };
+  }
 }
