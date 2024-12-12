@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'stop_point_category.g.dart';
-
-@JsonSerializable()
-class StopPointCategory {
+﻿class StopPointCategory {
   String? category;
   List<String>? availableKeys;
 
@@ -14,8 +9,14 @@ class StopPointCategory {
 
   factory StopPointCategory.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$StopPointCategoryFromJson(json);
+  ) {
+    return StopPointCategory(
+      category: json['category'] as String?,
+      availableKeys: (json['availableKeys'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+    );
+  }
 
   static List<StopPointCategory> listFromJson(
     List<dynamic> json,
@@ -36,5 +37,10 @@ class StopPointCategory {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$StopPointCategoryToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'category': category,
+      'availableKeys': availableKeys,
+    };
+  }
 }

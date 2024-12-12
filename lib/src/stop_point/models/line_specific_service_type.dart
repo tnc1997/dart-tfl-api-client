@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import '../../common/models/line_service_type_info.dart';
 
-import '../../common/models/line_service_type_info.dart';
-
-part 'line_specific_service_type.g.dart';
-
-@JsonSerializable()
 class LineSpecificServiceType {
   LineServiceTypeInfo? serviceType;
   bool? stopServesServiceType;
@@ -16,8 +11,15 @@ class LineSpecificServiceType {
 
   factory LineSpecificServiceType.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$LineSpecificServiceTypeFromJson(json);
+  ) {
+    return LineSpecificServiceType(
+      serviceType: json['serviceType'] == null
+          ? null
+          : LineServiceTypeInfo.fromJson(
+              json['serviceType'] as Map<String, dynamic>),
+      stopServesServiceType: json['stopServesServiceType'] as bool?,
+    );
+  }
 
   static List<LineSpecificServiceType> listFromJson(
     List<dynamic> json,
@@ -38,5 +40,10 @@ class LineSpecificServiceType {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$LineSpecificServiceTypeToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'serviceType': serviceType,
+      'stopServesServiceType': stopServesServiceType,
+    };
+  }
 }

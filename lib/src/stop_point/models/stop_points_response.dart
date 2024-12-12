@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import '../../common/models/stop_point.dart';
 
-import '../../common/models/stop_point.dart';
-
-part 'stop_points_response.g.dart';
-
-@JsonSerializable()
 class StopPointsResponse {
   List<double>? centrePoint;
   List<StopPoint>? stopPoints;
@@ -22,8 +17,19 @@ class StopPointsResponse {
 
   factory StopPointsResponse.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$StopPointsResponseFromJson(json);
+  ) {
+    return StopPointsResponse(
+      centrePoint: (json['centrePoint'] as List<dynamic>?)
+          ?.map((e) => (e as num).toDouble())
+          .toList(),
+      stopPoints: (json['stopPoints'] as List<dynamic>?)
+          ?.map((e) => StopPoint.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      pageSize: (json['pageSize'] as num?)?.toInt(),
+      total: (json['total'] as num?)?.toInt(),
+      page: (json['page'] as num?)?.toInt(),
+    );
+  }
 
   static List<StopPointsResponse> listFromJson(
     List<dynamic> json,
@@ -44,5 +50,13 @@ class StopPointsResponse {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$StopPointsResponseToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'centrePoint': centrePoint,
+      'stopPoints': stopPoints,
+      'pageSize': pageSize,
+      'total': total,
+      'page': page,
+    };
+  }
 }

@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'line_specific_service_type.dart';
 
-import 'line_specific_service_type.dart';
-
-part 'line_service_type.g.dart';
-
-@JsonSerializable()
 class LineServiceType {
   String? lineName;
   List<LineSpecificServiceType>? lineSpecificServiceTypes;
@@ -16,8 +11,16 @@ class LineServiceType {
 
   factory LineServiceType.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$LineServiceTypeFromJson(json);
+  ) {
+    return LineServiceType(
+      lineName: json['lineName'] as String?,
+      lineSpecificServiceTypes:
+          (json['lineSpecificServiceTypes'] as List<dynamic>?)
+              ?.map((e) =>
+                  LineSpecificServiceType.fromJson(e as Map<String, dynamic>))
+              .toList(),
+    );
+  }
 
   static List<LineServiceType> listFromJson(
     List<dynamic> json,
@@ -38,5 +41,10 @@ class LineServiceType {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$LineServiceTypeToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'lineName': lineName,
+      'lineSpecificServiceTypes': lineSpecificServiceTypes,
+    };
+  }
 }
