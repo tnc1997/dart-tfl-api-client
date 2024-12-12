@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'current_forecast.g.dart';
-
-@JsonSerializable()
-class CurrentForecast {
+﻿class CurrentForecast {
   String? forecastText;
   String? forecastType;
   String? forecastID;
@@ -36,8 +31,29 @@ class CurrentForecast {
 
   factory CurrentForecast.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$CurrentForecastFromJson(json);
+  ) {
+    return CurrentForecast(
+      forecastText: json['forecastText'] as String?,
+      forecastType: json['forecastType'] as String?,
+      forecastID: json['forecastID'] as String?,
+      publishedDate: json['publishedDate'] == null
+          ? null
+          : DateTime.parse(json['publishedDate'] as String),
+      fromDate: json['fromDate'] == null
+          ? null
+          : DateTime.parse(json['fromDate'] as String),
+      toDate: json['toDate'] == null
+          ? null
+          : DateTime.parse(json['toDate'] as String),
+      forecastBand: json['forecastBand'] as String?,
+      forecastSummary: json['forecastSummary'] as String?,
+      nO2Band: json['nO2Band'] as String?,
+      o3Band: json['o3Band'] as String?,
+      pM10Band: json['pM10Band'] as String?,
+      pM25Band: json['pM25Band'] as String?,
+      sO2Band: json['sO2Band'] as String?,
+    );
+  }
 
   static List<CurrentForecast> listFromJson(
     List<dynamic> json,
@@ -58,5 +74,21 @@ class CurrentForecast {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$CurrentForecastToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'forecastText': forecastText,
+      'forecastType': forecastType,
+      'forecastID': forecastID,
+      'publishedDate': publishedDate?.toIso8601String(),
+      'fromDate': fromDate?.toIso8601String(),
+      'toDate': toDate?.toIso8601String(),
+      'forecastBand': forecastBand,
+      'forecastSummary': forecastSummary,
+      'nO2Band': nO2Band,
+      'o3Band': o3Band,
+      'pM10Band': pM10Band,
+      'pM25Band': pM25Band,
+      'sO2Band': sO2Band,
+    };
+  }
 }

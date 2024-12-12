@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'current_forecast.dart';
 
-import 'current_forecast.dart';
-
-part 'london_air_forecast.g.dart';
-
-@JsonSerializable()
 class LondonAirForecast {
   String? updatePeriod;
   String? updateFrequency;
@@ -22,8 +17,17 @@ class LondonAirForecast {
 
   factory LondonAirForecast.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$LondonAirForecastFromJson(json);
+  ) {
+    return LondonAirForecast(
+      updatePeriod: json['updatePeriod'] as String?,
+      updateFrequency: json['updateFrequency'] as String?,
+      forecastURL: json['forecastURL'] as String?,
+      disclaimerText: json['disclaimerText'] as String?,
+      currentForecast: (json['currentForecast'] as List<dynamic>?)
+          ?.map((e) => CurrentForecast.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<LondonAirForecast> listFromJson(
     List<dynamic> json,
@@ -44,5 +48,13 @@ class LondonAirForecast {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$LondonAirForecastToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'updatePeriod': updatePeriod,
+      'updateFrequency': updateFrequency,
+      'forecastURL': forecastURL,
+      'disclaimerText': disclaimerText,
+      'currentForecast': currentForecast,
+    };
+  }
 }
