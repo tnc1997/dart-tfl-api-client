@@ -1,11 +1,6 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-import 'casualty.dart';
+﻿import 'casualty.dart';
 import 'vehicle.dart';
 
-part 'accident_detail.g.dart';
-
-@JsonSerializable()
 class AccidentDetail {
   int? id;
   double? lat;
@@ -31,8 +26,24 @@ class AccidentDetail {
 
   factory AccidentDetail.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AccidentDetailFromJson(json);
+  ) {
+    return AccidentDetail(
+      id: json['id'] as int?,
+      lat: (json['lat'] as num?)?.toDouble(),
+      lon: (json['lon'] as num?)?.toDouble(),
+      location: json['location'] as String?,
+      date:
+          json['date'] == null ? null : DateTime.parse(json['date'] as String),
+      severity: json['severity'] as String?,
+      borough: json['borough'] as String?,
+      casualties: (json['casualties'] as List<dynamic>?)
+          ?.map((e) => Casualty.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      vehicles: (json['vehicles'] as List<dynamic>?)
+          ?.map((e) => Vehicle.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
   static List<AccidentDetail> listFromJson(
     List<dynamic> json,
@@ -53,5 +64,17 @@ class AccidentDetail {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$AccidentDetailToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'lat': lat,
+      'lon': lon,
+      'location': location,
+      'date': date?.toIso8601String(),
+      'severity': severity,
+      'borough': borough,
+      'casualties': casualties,
+      'vehicles': vehicles,
+    };
+  }
 }

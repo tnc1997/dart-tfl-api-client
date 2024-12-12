@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'vehicle.g.dart';
-
-@JsonSerializable()
-class Vehicle {
+﻿class Vehicle {
   String? type;
 
   Vehicle({
@@ -12,8 +7,11 @@ class Vehicle {
 
   factory Vehicle.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$VehicleFromJson(json);
+  ) {
+    return Vehicle(
+      type: json['type'] as String?,
+    );
+  }
 
   static List<Vehicle> listFromJson(
     List<dynamic> json,
@@ -34,5 +32,9 @@ class Vehicle {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$VehicleToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'type': type,
+    };
+  }
 }

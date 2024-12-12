@@ -1,11 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'casualty.g.dart';
-
-@JsonSerializable()
-class Casualty {
+﻿class Casualty {
   int? age;
-  @JsonKey(name: 'class')
   String? class_;
   String? severity;
   String? mode;
@@ -21,8 +15,15 @@ class Casualty {
 
   factory Casualty.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$CasualtyFromJson(json);
+  ) {
+    return Casualty(
+      age: json['age'] as int?,
+      class_: json['class'] as String?,
+      severity: json['severity'] as String?,
+      mode: json['mode'] as String?,
+      ageBand: json['ageBand'] as String?,
+    );
+  }
 
   static List<Casualty> listFromJson(
     List<dynamic> json,
@@ -43,5 +44,13 @@ class Casualty {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$CasualtyToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'age': age,
+      'class': class_,
+      'severity': severity,
+      'mode': mode,
+      'ageBand': ageBand,
+    };
+  }
 }
