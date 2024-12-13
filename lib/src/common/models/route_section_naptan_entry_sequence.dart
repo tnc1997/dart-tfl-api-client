@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'stop_point.dart';
 
-import 'stop_point.dart';
-
-part 'route_section_naptan_entry_sequence.g.dart';
-
-@JsonSerializable()
 class RouteSectionNaptanEntrySequence {
   int? ordinal;
   StopPoint? stopPoint;
@@ -16,8 +11,14 @@ class RouteSectionNaptanEntrySequence {
 
   factory RouteSectionNaptanEntrySequence.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$RouteSectionNaptanEntrySequenceFromJson(json);
+  ) {
+    return RouteSectionNaptanEntrySequence(
+      ordinal: (json['ordinal'] as num?)?.toInt(),
+      stopPoint: json['stopPoint'] == null
+          ? null
+          : StopPoint.fromJson(json['stopPoint'] as Map<String, dynamic>),
+    );
+  }
 
   static List<RouteSectionNaptanEntrySequence> listFromJson(
     List<dynamic> json,
@@ -38,6 +39,10 @@ class RouteSectionNaptanEntrySequence {
         ),
       );
 
-  Map<String, dynamic> toJson() =>
-      _$RouteSectionNaptanEntrySequenceToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'ordinal': ordinal,
+      'stopPoint': stopPoint,
+    };
+  }
 }

@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'route_section_naptan_entry_sequence.dart';
 
-import 'route_section_naptan_entry_sequence.dart';
-
-part 'route_section.g.dart';
-
-@JsonSerializable()
 class RouteSection {
   String? id;
   String? lineId;
@@ -34,8 +29,29 @@ class RouteSection {
 
   factory RouteSection.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$RouteSectionFromJson(json);
+  ) {
+    return RouteSection(
+      id: json['id'] as String?,
+      lineId: json['lineId'] as String?,
+      routeCode: json['routeCode'] as String?,
+      name: json['name'] as String?,
+      lineString: json['lineString'] as String?,
+      direction: json['direction'] as String?,
+      originationName: json['originationName'] as String?,
+      destinationName: json['destinationName'] as String?,
+      validTo: json['validTo'] == null
+          ? null
+          : DateTime.parse(json['validTo'] as String),
+      validFrom: json['validFrom'] == null
+          ? null
+          : DateTime.parse(json['validFrom'] as String),
+      routeSectionNaptanEntrySequence:
+          (json['routeSectionNaptanEntrySequence'] as List<dynamic>?)
+              ?.map((e) => RouteSectionNaptanEntrySequence.fromJson(
+                  e as Map<String, dynamic>))
+              .toList(),
+    );
+  }
 
   static List<RouteSection> listFromJson(
     List<dynamic> json,
@@ -56,5 +72,19 @@ class RouteSection {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$RouteSectionToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'lineId': lineId,
+      'routeCode': routeCode,
+      'name': name,
+      'lineString': lineString,
+      'direction': direction,
+      'originationName': originationName,
+      'destinationName': destinationName,
+      'validTo': validTo?.toIso8601String(),
+      'validFrom': validFrom?.toIso8601String(),
+      'routeSectionNaptanEntrySequence': routeSectionNaptanEntrySequence,
+    };
+  }
 }

@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'search_match.g.dart';
-
-@JsonSerializable()
-class SearchMatch {
+﻿class SearchMatch {
   String? id;
   String? url;
   String? name;
@@ -20,8 +15,15 @@ class SearchMatch {
 
   factory SearchMatch.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$SearchMatchFromJson(json);
+  ) {
+    return SearchMatch(
+      id: json['id'] as String?,
+      url: json['url'] as String?,
+      name: json['name'] as String?,
+      lat: (json['lat'] as num?)?.toDouble(),
+      lon: (json['lon'] as num?)?.toDouble(),
+    );
+  }
 
   static List<SearchMatch> listFromJson(
     List<dynamic> json,
@@ -42,5 +44,13 @@ class SearchMatch {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$SearchMatchToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'url': url,
+      'name': name,
+      'lat': lat,
+      'lon': lon,
+    };
+  }
 }

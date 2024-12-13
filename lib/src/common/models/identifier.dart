@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'crowding.dart';
 
-import 'crowding.dart';
-
-part 'identifier.g.dart';
-
-@JsonSerializable()
 class Identifier {
   String? id;
   String? name;
@@ -28,8 +23,20 @@ class Identifier {
 
   factory Identifier.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$IdentifierFromJson(json);
+  ) {
+    return Identifier(
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      uri: json['uri'] as String?,
+      fullName: json['fullName'] as String?,
+      type: json['type'] as String?,
+      crowding: json['crowding'] == null
+          ? null
+          : Crowding.fromJson(json['crowding'] as Map<String, dynamic>),
+      routeType: json['routeType'] as String?,
+      status: json['status'] as String?,
+    );
+  }
 
   static List<Identifier> listFromJson(
     List<dynamic> json,
@@ -50,5 +57,16 @@ class Identifier {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$IdentifierToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'uri': uri,
+      'fullName': fullName,
+      'type': type,
+      'crowding': crowding,
+      'routeType': routeType,
+      'status': status,
+    };
+  }
 }

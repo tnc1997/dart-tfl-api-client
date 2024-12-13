@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'line_group.g.dart';
-
-@JsonSerializable()
-class LineGroup {
+﻿class LineGroup {
   String? naptanIdReference;
   String? stationAtcoCode;
   List<String>? lineIdentifier;
@@ -16,8 +11,15 @@ class LineGroup {
 
   factory LineGroup.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$LineGroupFromJson(json);
+  ) {
+    return LineGroup(
+      naptanIdReference: json['naptanIdReference'] as String?,
+      stationAtcoCode: json['stationAtcoCode'] as String?,
+      lineIdentifier: (json['lineIdentifier'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+    );
+  }
 
   static List<LineGroup> listFromJson(
     List<dynamic> json,
@@ -38,5 +40,11 @@ class LineGroup {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$LineGroupToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'naptanIdReference': naptanIdReference,
+      'stationAtcoCode': stationAtcoCode,
+      'lineIdentifier': lineIdentifier,
+    };
+  }
 }

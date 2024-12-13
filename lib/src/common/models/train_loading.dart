@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'train_loading.g.dart';
-
-@JsonSerializable()
-class TrainLoading {
+﻿class TrainLoading {
   String? line;
   String? lineDirection;
   String? platformDirection;
@@ -24,8 +19,17 @@ class TrainLoading {
 
   factory TrainLoading.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$TrainLoadingFromJson(json);
+  ) {
+    return TrainLoading(
+      line: json['line'] as String?,
+      lineDirection: json['lineDirection'] as String?,
+      platformDirection: json['platformDirection'] as String?,
+      direction: json['direction'] as String?,
+      naptanTo: json['naptanTo'] as String?,
+      timeSlice: json['timeSlice'] as String?,
+      value: (json['value'] as num?)?.toInt(),
+    );
+  }
 
   static List<TrainLoading> listFromJson(
     List<dynamic> json,
@@ -46,5 +50,15 @@ class TrainLoading {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$TrainLoadingToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'line': line,
+      'lineDirection': lineDirection,
+      'platformDirection': platformDirection,
+      'direction': direction,
+      'naptanTo': naptanTo,
+      'timeSlice': timeSlice,
+      'value': value,
+    };
+  }
 }

@@ -1,11 +1,6 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-import 'route_section.dart';
+﻿import 'route_section.dart';
 import 'stop_point.dart';
 
-part 'disruption.g.dart';
-
-@JsonSerializable()
 class Disruption {
   String? id;
   String? category;
@@ -41,8 +36,32 @@ class Disruption {
 
   factory Disruption.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$DisruptionFromJson(json);
+  ) {
+    return Disruption(
+      id: json['id'] as String?,
+      category: json['category'] as String?,
+      type: json['type'] as String?,
+      categoryDescription: json['categoryDescription'] as String?,
+      description: json['description'] as String?,
+      summary: json['summary'] as String?,
+      additionalInfo: json['additionalInfo'] as String?,
+      created: json['created'] == null
+          ? null
+          : DateTime.parse(json['created'] as String),
+      lastUpdate: json['lastUpdate'] == null
+          ? null
+          : DateTime.parse(json['lastUpdate'] as String),
+      affectedRoutes: (json['affectedRoutes'] as List<dynamic>?)
+          ?.map((e) => RouteSection.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      affectedStops: (json['affectedStops'] as List<dynamic>?)
+          ?.map((e) => StopPoint.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      isBlocking: json['isBlocking'] as bool?,
+      isWholeLine: json['isWholeLine'] as bool?,
+      closureText: json['closureText'] as String?,
+    );
+  }
 
   static List<Disruption> listFromJson(
     List<dynamic> json,
@@ -63,5 +82,22 @@ class Disruption {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$DisruptionToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'category': category,
+      'type': type,
+      'categoryDescription': categoryDescription,
+      'description': description,
+      'summary': summary,
+      'additionalInfo': additionalInfo,
+      'created': created?.toIso8601String(),
+      'lastUpdate': lastUpdate?.toIso8601String(),
+      'affectedRoutes': affectedRoutes,
+      'affectedStops': affectedStops,
+      'isBlocking': isBlocking,
+      'isWholeLine': isWholeLine,
+      'closureText': closureText,
+    };
+  }
 }

@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'matched_route.g.dart';
-
-@JsonSerializable()
-class MatchedRoute {
+﻿class MatchedRoute {
   String? id;
   String? lineId;
   String? routeCode;
@@ -34,8 +29,26 @@ class MatchedRoute {
 
   factory MatchedRoute.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$MatchedRouteFromJson(json);
+  ) {
+    return MatchedRoute(
+      id: json['id'] as String?,
+      lineId: json['lineId'] as String?,
+      routeCode: json['routeCode'] as String?,
+      name: json['name'] as String?,
+      direction: json['direction'] as String?,
+      originationName: json['originationName'] as String?,
+      destinationName: json['destinationName'] as String?,
+      originator: json['originator'] as String?,
+      destination: json['destination'] as String?,
+      serviceType: json['serviceType'] as String?,
+      validTo: json['validTo'] == null
+          ? null
+          : DateTime.parse(json['validTo'] as String),
+      validFrom: json['validFrom'] == null
+          ? null
+          : DateTime.parse(json['validFrom'] as String),
+    );
+  }
 
   static List<MatchedRoute> listFromJson(
     List<dynamic> json,
@@ -56,5 +69,20 @@ class MatchedRoute {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$MatchedRouteToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'lineId': lineId,
+      'routeCode': routeCode,
+      'name': name,
+      'direction': direction,
+      'originationName': originationName,
+      'destinationName': destinationName,
+      'originator': originator,
+      'destination': destination,
+      'serviceType': serviceType,
+      'validTo': validTo?.toIso8601String(),
+      'validFrom': validFrom?.toIso8601String(),
+    };
+  }
 }

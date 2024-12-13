@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'passenger_flow.g.dart';
-
-@JsonSerializable()
-class PassengerFlow {
+﻿class PassengerFlow {
   String? timeSlice;
   int? value;
 
@@ -14,8 +9,12 @@ class PassengerFlow {
 
   factory PassengerFlow.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$PassengerFlowFromJson(json);
+  ) {
+    return PassengerFlow(
+      timeSlice: json['timeSlice'] as String?,
+      value: (json['value'] as num?)?.toInt(),
+    );
+  }
 
   static List<PassengerFlow> listFromJson(
     List<dynamic> json,
@@ -36,5 +35,10 @@ class PassengerFlow {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$PassengerFlowToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'timeSlice': timeSlice,
+      'value': value,
+    };
+  }
 }

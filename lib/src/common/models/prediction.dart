@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'prediction_timing.dart';
 
-import 'prediction_timing.dart';
-
-part 'prediction.g.dart';
-
-@JsonSerializable()
 class Prediction {
   String? id;
   int? operationType;
@@ -60,8 +55,44 @@ class Prediction {
 
   factory Prediction.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$PredictionFromJson(json);
+  ) {
+    return Prediction(
+      id: json['id'] as String?,
+      operationType: (json['operationType'] as num?)?.toInt(),
+      vehicleId: json['vehicleId'] as String?,
+      naptanId: json['naptanId'] as String?,
+      stationName: json['stationName'] as String?,
+      lineId: json['lineId'] as String?,
+      lineName: json['lineName'] as String?,
+      platformName: json['platformName'] as String?,
+      direction: json['direction'] as String?,
+      bearing: json['bearing'] as String?,
+      visitNumber: json['visitNumber'] as String?,
+      tripId: json['tripId'] as String?,
+      vehicleCdId: json['vehicleCdId'] as String?,
+      destinationNaptanId: json['destinationNaptanId'] as String?,
+      destinationName: json['destinationName'] as String?,
+      timestamp: json['timestamp'] == null
+          ? null
+          : DateTime.parse(json['timestamp'] as String),
+      timeToStation: (json['timeToStation'] as num?)?.toInt(),
+      currentLocation: json['currentLocation'] as String?,
+      towards: json['towards'] as String?,
+      expectedArrival: json['expectedArrival'] == null
+          ? null
+          : DateTime.parse(json['expectedArrival'] as String),
+      timeToLive: json['timeToLive'] == null
+          ? null
+          : DateTime.parse(json['timeToLive'] as String),
+      modeName: json['modeName'] as String?,
+      serverTimestamp: json['serverTimestamp'] == null
+          ? null
+          : DateTime.parse(json['serverTimestamp'] as String),
+      timing: json['timing'] == null
+          ? null
+          : PredictionTiming.fromJson(json['timing'] as Map<String, dynamic>),
+    );
+  }
 
   static List<Prediction> listFromJson(
     List<dynamic> json,
@@ -82,5 +113,32 @@ class Prediction {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$PredictionToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'operationType': operationType,
+      'vehicleId': vehicleId,
+      'naptanId': naptanId,
+      'stationName': stationName,
+      'lineId': lineId,
+      'lineName': lineName,
+      'platformName': platformName,
+      'direction': direction,
+      'bearing': bearing,
+      'visitNumber': visitNumber,
+      'tripId': tripId,
+      'vehicleCdId': vehicleCdId,
+      'destinationNaptanId': destinationNaptanId,
+      'destinationName': destinationName,
+      'timestamp': timestamp?.toIso8601String(),
+      'timeToStation': timeToStation,
+      'currentLocation': currentLocation,
+      'towards': towards,
+      'expectedArrival': expectedArrival?.toIso8601String(),
+      'timeToLive': timeToLive?.toIso8601String(),
+      'modeName': modeName,
+      'serverTimestamp': serverTimestamp?.toIso8601String(),
+      'timing': timing,
+    };
+  }
 }

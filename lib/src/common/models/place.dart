@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'additional_properties.dart';
 
-import 'additional_properties.dart';
-
-part 'place.g.dart';
-
-@JsonSerializable()
 class Place {
   String? id;
   String? url;
@@ -32,8 +27,26 @@ class Place {
 
   factory Place.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$PlaceFromJson(json);
+  ) {
+    return Place(
+      id: json['id'] as String?,
+      url: json['url'] as String?,
+      commonName: json['commonName'] as String?,
+      distance: (json['distance'] as num?)?.toDouble(),
+      placeType: json['placeType'] as String?,
+      additionalProperties: (json['additionalProperties'] as List<dynamic>?)
+          ?.map((e) => AdditionalProperties.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => Place.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      childrenUrls: (json['childrenUrls'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      lat: (json['lat'] as num?)?.toDouble(),
+      lon: (json['lon'] as num?)?.toDouble(),
+    );
+  }
 
   static List<Place> listFromJson(
     List<dynamic> json,
@@ -54,5 +67,18 @@ class Place {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$PlaceToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'url': url,
+      'commonName': commonName,
+      'distance': distance,
+      'placeType': placeType,
+      'additionalProperties': additionalProperties,
+      'children': children,
+      'childrenUrls': childrenUrls,
+      'lat': lat,
+      'lon': lon,
+    };
+  }
 }

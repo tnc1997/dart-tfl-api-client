@@ -1,10 +1,5 @@
-﻿import 'package:json_annotation/json_annotation.dart';
+﻿import 'search_match.dart';
 
-import 'search_match.dart';
-
-part 'search_response.g.dart';
-
-@JsonSerializable()
 class SearchResponse {
   String? query;
   int? from;
@@ -28,8 +23,20 @@ class SearchResponse {
 
   factory SearchResponse.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$SearchResponseFromJson(json);
+  ) {
+    return SearchResponse(
+      query: json['query'] as String?,
+      from: (json['from'] as num?)?.toInt(),
+      page: (json['page'] as num?)?.toInt(),
+      pageSize: (json['pageSize'] as num?)?.toInt(),
+      provider: json['provider'] as String?,
+      total: (json['total'] as num?)?.toInt(),
+      matches: (json['matches'] as List<dynamic>?)
+          ?.map((e) => SearchMatch.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      maxScore: (json['maxScore'] as num?)?.toDouble(),
+    );
+  }
 
   static List<SearchResponse> listFromJson(
     List<dynamic> json,
@@ -50,5 +57,16 @@ class SearchResponse {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$SearchResponseToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'query': query,
+      'from': from,
+      'page': page,
+      'pageSize': pageSize,
+      'provider': provider,
+      'total': total,
+      'matches': matches,
+      'maxScore': maxScore,
+    };
+  }
 }

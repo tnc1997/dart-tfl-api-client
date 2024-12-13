@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'mode.g.dart';
-
-@JsonSerializable()
-class Mode {
+﻿class Mode {
   bool? isTflService;
   bool? isFarePaying;
   bool? isScheduledService;
@@ -18,8 +13,14 @@ class Mode {
 
   factory Mode.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ModeFromJson(json);
+  ) {
+    return Mode(
+      isTflService: json['isTflService'] as bool?,
+      isFarePaying: json['isFarePaying'] as bool?,
+      isScheduledService: json['isScheduledService'] as bool?,
+      modeName: json['modeName'] as String?,
+    );
+  }
 
   static List<Mode> listFromJson(
     List<dynamic> json,
@@ -40,5 +41,12 @@ class Mode {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$ModeToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'isTflService': isTflService,
+      'isFarePaying': isFarePaying,
+      'isScheduledService': isScheduledService,
+      'modeName': modeName,
+    };
+  }
 }

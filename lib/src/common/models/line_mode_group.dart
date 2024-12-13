@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'line_mode_group.g.dart';
-
-@JsonSerializable()
-class LineModeGroup {
+﻿class LineModeGroup {
   String? modeName;
   List<String>? lineIdentifier;
 
@@ -14,8 +9,14 @@ class LineModeGroup {
 
   factory LineModeGroup.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$LineModeGroupFromJson(json);
+  ) {
+    return LineModeGroup(
+      modeName: json['modeName'] as String?,
+      lineIdentifier: (json['lineIdentifier'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+    );
+  }
 
   static List<LineModeGroup> listFromJson(
     List<dynamic> json,
@@ -36,5 +37,10 @@ class LineModeGroup {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$LineModeGroupToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'modeName': modeName,
+      'lineIdentifier': lineIdentifier,
+    };
+  }
 }

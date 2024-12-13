@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'validity_period.g.dart';
-
-@JsonSerializable()
-class ValidityPeriod {
+﻿class ValidityPeriod {
   DateTime? fromDate;
   DateTime? toDate;
   bool? isNow;
@@ -16,8 +11,17 @@ class ValidityPeriod {
 
   factory ValidityPeriod.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$ValidityPeriodFromJson(json);
+  ) {
+    return ValidityPeriod(
+      fromDate: json['fromDate'] == null
+          ? null
+          : DateTime.parse(json['fromDate'] as String),
+      toDate: json['toDate'] == null
+          ? null
+          : DateTime.parse(json['toDate'] as String),
+      isNow: json['isNow'] as bool?,
+    );
+  }
 
   static List<ValidityPeriod> listFromJson(
     List<dynamic> json,
@@ -38,5 +42,11 @@ class ValidityPeriod {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$ValidityPeriodToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'fromDate': fromDate?.toIso8601String(),
+      'toDate': toDate?.toIso8601String(),
+      'isNow': isNow,
+    };
+  }
 }

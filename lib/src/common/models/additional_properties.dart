@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'additional_properties.g.dart';
-
-@JsonSerializable()
-class AdditionalProperties {
+﻿class AdditionalProperties {
   String? category;
   String? key;
   String? sourceSystemKey;
@@ -20,8 +15,17 @@ class AdditionalProperties {
 
   factory AdditionalProperties.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$AdditionalPropertiesFromJson(json);
+  ) {
+    return AdditionalProperties(
+      category: json['category'] as String?,
+      key: json['key'] as String?,
+      sourceSystemKey: json['sourceSystemKey'] as String?,
+      value: json['value'] as String?,
+      modified: json['modified'] == null
+          ? null
+          : DateTime.parse(json['modified'] as String),
+    );
+  }
 
   static List<AdditionalProperties> listFromJson(
     List<dynamic> json,
@@ -42,5 +46,13 @@ class AdditionalProperties {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$AdditionalPropertiesToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'category': category,
+      'key': key,
+      'sourceSystemKey': sourceSystemKey,
+      'value': value,
+      'modified': modified?.toIso8601String(),
+    };
+  }
 }

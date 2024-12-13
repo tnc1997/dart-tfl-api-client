@@ -1,9 +1,4 @@
-﻿import 'package:json_annotation/json_annotation.dart';
-
-part 'status_severity.g.dart';
-
-@JsonSerializable()
-class StatusSeverity {
+﻿class StatusSeverity {
   String? modeName;
   int? severityLevel;
   String? description;
@@ -16,8 +11,13 @@ class StatusSeverity {
 
   factory StatusSeverity.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      _$StatusSeverityFromJson(json);
+  ) {
+    return StatusSeverity(
+      modeName: json['modeName'] as String?,
+      severityLevel: (json['severityLevel'] as num?)?.toInt(),
+      description: json['description'] as String?,
+    );
+  }
 
   static List<StatusSeverity> listFromJson(
     List<dynamic> json,
@@ -38,5 +38,11 @@ class StatusSeverity {
         ),
       );
 
-  Map<String, dynamic> toJson() => _$StatusSeverityToJson(this);
+  Map<String, dynamic> toJson() {
+    return {
+      'modeName': modeName,
+      'severityLevel': severityLevel,
+      'description': description,
+    };
+  }
 }
