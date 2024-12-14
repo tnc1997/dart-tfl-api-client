@@ -22,25 +22,6 @@
     );
   }
 
-  static List<Obstacle> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Obstacle.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Obstacle> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Obstacle.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'type': type,

@@ -26,25 +26,6 @@ class DisambiguationOption1 {
     );
   }
 
-  static List<DisambiguationOption1> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => DisambiguationOption1.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, DisambiguationOption1> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          DisambiguationOption1.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'parameterValue': parameterValue,

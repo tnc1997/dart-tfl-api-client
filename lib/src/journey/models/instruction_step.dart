@@ -54,25 +54,6 @@ class InstructionStep {
     );
   }
 
-  static List<InstructionStep> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => InstructionStep.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, InstructionStep> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          InstructionStep.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'description': description,

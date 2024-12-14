@@ -25,25 +25,6 @@ class Path {
     );
   }
 
-  static List<Path> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Path.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Path> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Path.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'lineString': lineString,

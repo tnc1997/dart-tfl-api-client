@@ -22,25 +22,6 @@
     );
   }
 
-  static List<TimeAdjustment> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => TimeAdjustment.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, TimeAdjustment> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          TimeAdjustment.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'date': date,

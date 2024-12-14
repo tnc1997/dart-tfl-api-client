@@ -36,25 +36,6 @@ class Journey2 {
     );
   }
 
-  static List<Journey2> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Journey2.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Journey2> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Journey2.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'startDateTime': startDateTime?.toIso8601String(),

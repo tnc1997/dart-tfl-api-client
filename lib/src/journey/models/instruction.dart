@@ -23,25 +23,6 @@ class Instruction {
     );
   }
 
-  static List<Instruction> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Instruction.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Instruction> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Instruction.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'summary': summary,

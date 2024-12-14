@@ -61,25 +61,6 @@ class Point1 {
     );
   }
 
-  static List<Point1> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Point1.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Point1> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Point1.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'name': name,

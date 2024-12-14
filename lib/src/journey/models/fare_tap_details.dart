@@ -30,25 +30,6 @@
     );
   }
 
-  static List<FareTapDetails> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => FareTapDetails.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, FareTapDetails> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          FareTapDetails.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'modeType': modeType,

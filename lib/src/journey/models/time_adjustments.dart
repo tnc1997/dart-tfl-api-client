@@ -32,25 +32,6 @@ class TimeAdjustments {
     );
   }
 
-  static List<TimeAdjustments> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => TimeAdjustments.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, TimeAdjustments> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          TimeAdjustments.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'earliest': earliest,

@@ -26,25 +26,6 @@ class JourneyFare {
     );
   }
 
-  static List<JourneyFare> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => JourneyFare.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, JourneyFare> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          JourneyFare.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'totalCost': totalCost,

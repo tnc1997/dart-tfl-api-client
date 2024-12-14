@@ -57,25 +57,6 @@ class PartialRoute {
     );
   }
 
-  static List<PartialRoute> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => PartialRoute.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, PartialRoute> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          PartialRoute.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'origin': origin,

@@ -22,25 +22,6 @@
     );
   }
 
-  static List<JourneyVector> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => JourneyVector.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, JourneyVector> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          JourneyVector.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'from': from,

@@ -19,25 +19,6 @@
     );
   }
 
-  static List<MapItem> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => MapItem.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, MapItem> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          MapItem.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'uri': uri,

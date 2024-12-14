@@ -41,25 +41,6 @@ class Fare2 {
     );
   }
 
-  static List<Fare2> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Fare2.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Fare2> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Fare2.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'lowZone': lowZone,

@@ -89,25 +89,6 @@ class Leg {
     );
   }
 
-  static List<Leg> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Leg.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Leg> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Leg.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'duration': duration,

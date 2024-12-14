@@ -53,25 +53,6 @@ class ItineraryResult {
     );
   }
 
-  static List<ItineraryResult> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => ItineraryResult.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, ItineraryResult> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          ItineraryResult.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'journeys': journeys,

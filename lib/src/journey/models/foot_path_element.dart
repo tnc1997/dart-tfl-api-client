@@ -16,25 +16,6 @@
     );
   }
 
-  static List<FootPathElement> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => FootPathElement.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, FootPathElement> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          FootPathElement.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'type': type,
