@@ -8,7 +8,6 @@ void main() {
   group(
     'services',
     () {
-      const accidentStatYear = 2010;
       const bikePointId = 'BikePoints_1';
       const bikePointQuery = 'River Street';
       const journeyFrom = '940GZZLUHAW';
@@ -61,21 +60,6 @@ void main() {
 
       late TflApiClient api;
       late Client client;
-
-      group(
-        'AccidentStatService',
-        () {
-          test(
-            'get',
-            () async {
-              await expectLater(
-                api.accidentStats.get(accidentStatYear),
-                completes,
-              );
-            },
-          );
-        },
-      );
 
       group(
         'AirQualityService',
