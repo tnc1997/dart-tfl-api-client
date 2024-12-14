@@ -20,25 +20,6 @@
     );
   }
 
-  static List<RoadDisruptionSchedule> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RoadDisruptionSchedule.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RoadDisruptionSchedule> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RoadDisruptionSchedule.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'startTime': startTime?.toIso8601String(),

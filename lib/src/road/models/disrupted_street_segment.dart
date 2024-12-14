@@ -76,25 +76,6 @@ class DisruptedStreetSegment {
     );
   }
 
-  static List<DisruptedStreetSegment> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => DisruptedStreetSegment.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, DisruptedStreetSegment> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          DisruptedStreetSegment.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'streetName': streetName,

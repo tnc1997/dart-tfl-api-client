@@ -22,25 +22,6 @@
     );
   }
 
-  static List<StreetSegment> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => StreetSegment.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, StreetSegment> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          StreetSegment.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'toid': toid,

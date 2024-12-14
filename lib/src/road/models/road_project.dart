@@ -71,25 +71,6 @@
     );
   }
 
-  static List<RoadProject> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RoadProject.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RoadProject> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RoadProject.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'projectId': projectId,

@@ -32,25 +32,6 @@ class Street {
     );
   }
 
-  static List<Street> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Street.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Street> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Street.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'name': name,

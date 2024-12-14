@@ -44,25 +44,6 @@
     );
   }
 
-  static List<RoadCorridor> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RoadCorridor.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RoadCorridor> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RoadCorridor.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

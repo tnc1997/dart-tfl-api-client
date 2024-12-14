@@ -27,7 +27,9 @@ class RoadService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return RoadCorridor.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => RoadCorridor.fromJson(e))
+        .toList();
   }
 
   /// Gets the road with the specified id (e.g. A1)
@@ -43,7 +45,9 @@ class RoadService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return RoadCorridor.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => RoadCorridor.fromJson(e))
+        .toList();
   }
 
   /// Gets the specified roads with the status aggregated over the date range specified, or now until the end of today if no dates are passed.
@@ -65,7 +69,9 @@ class RoadService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return RoadCorridor.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => RoadCorridor.fromJson(e))
+        .toList();
   }
 
   /// Get active disruptions, filtered by road ids
@@ -92,7 +98,9 @@ class RoadService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return RoadDisruption.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => RoadDisruption.fromJson(e))
+        .toList();
   }
 
   /// Gets a list of disrupted streets. If no date filters are provided, current disruptions are returned.
@@ -114,7 +122,9 @@ class RoadService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return DisruptedStreetSegment.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => DisruptedStreetSegment.fromJson(e))
+        .toList();
   }
 
   /// Gets a list of active disruptions filtered by disruption Ids.
@@ -135,7 +145,9 @@ class RoadService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return RoadDisruption.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => RoadDisruption.fromJson(e))
+        .toList();
   }
 
   /// Gets a list of valid RoadDisruption categories

@@ -32,25 +32,6 @@
     );
   }
 
-  static List<RoadDisruptionImpactArea> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RoadDisruptionImpactArea.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RoadDisruptionImpactArea> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RoadDisruptionImpactArea.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

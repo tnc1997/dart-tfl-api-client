@@ -130,25 +130,6 @@ class RoadDisruption {
     );
   }
 
-  static List<RoadDisruption> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RoadDisruption.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RoadDisruption> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RoadDisruption.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,
