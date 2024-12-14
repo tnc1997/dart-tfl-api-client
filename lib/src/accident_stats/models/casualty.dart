@@ -25,25 +25,6 @@
     );
   }
 
-  static List<Casualty> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Casualty.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Casualty> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Casualty.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'age': age,

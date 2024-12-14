@@ -45,25 +45,6 @@ class AccidentDetail {
     );
   }
 
-  static List<AccidentDetail> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => AccidentDetail.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, AccidentDetail> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          AccidentDetail.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

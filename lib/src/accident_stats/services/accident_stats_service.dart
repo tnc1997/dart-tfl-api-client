@@ -26,6 +26,8 @@ class AccidentStatsService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return AccidentDetail.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => AccidentDetail.fromJson(e))
+        .toList();
   }
 }
