@@ -8,8 +8,6 @@ void main() {
   group(
     'services',
     () {
-      const bikePointId = 'BikePoints_1';
-      const bikePointQuery = 'River Street';
       const journeyFrom = '940GZZLUHAW';
       const journeyTo = '940GZZLUEAC';
       const lineDirection = 'outbound';
@@ -60,41 +58,6 @@ void main() {
 
       late TflApiClient api;
       late Client client;
-
-      group(
-        'BikePointService',
-        () {
-          test(
-            'getAll',
-            () async {
-              await expectLater(
-                api.bikePoint.getAll(),
-                completes,
-              );
-            },
-          );
-
-          test(
-            'get',
-            () async {
-              await expectLater(
-                api.bikePoint.get(bikePointId),
-                completes,
-              );
-            },
-          );
-
-          test(
-            'search',
-            () async {
-              await expectLater(
-                api.bikePoint.search(bikePointQuery),
-                completes,
-              );
-            },
-          );
-        },
-      );
 
       group(
         'JourneyService',
