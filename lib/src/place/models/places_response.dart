@@ -22,25 +22,6 @@ class PlacesResponse {
     );
   }
 
-  static List<PlacesResponse> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => PlacesResponse.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, PlacesResponse> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          PlacesResponse.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'centrePoint': centrePoint,

@@ -18,25 +18,6 @@
     );
   }
 
-  static List<PlaceCategory> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => PlaceCategory.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, PlaceCategory> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          PlaceCategory.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'category': category,

@@ -26,7 +26,9 @@ class PlaceService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return PlaceCategory.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => PlaceCategory.fromJson(e))
+        .toList();
   }
 
   /// Gets a list of the available types of Place.
