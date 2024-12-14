@@ -65,25 +65,6 @@ class ArrivalDeparture {
     );
   }
 
-  static List<ArrivalDeparture> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => ArrivalDeparture.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, ArrivalDeparture> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          ArrivalDeparture.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'platformName': platformName,

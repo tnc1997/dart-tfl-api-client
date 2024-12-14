@@ -44,25 +44,6 @@
     );
   }
 
-  static List<DisruptedPoint> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => DisruptedPoint.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, DisruptedPoint> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          DisruptedPoint.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'atcoCode': atcoCode,

@@ -34,7 +34,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return StopPointCategory.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => StopPointCategory.fromJson(e))
+        .toList();
   }
 
   /// Gets the list of available StopPoint types
@@ -184,7 +186,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return LineServiceType.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => LineServiceType.fromJson(e))
+        .toList();
   }
 
   /// Gets the list of arrival predictions for the given stop point id
@@ -220,7 +224,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return ArrivalDeparture.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => ArrivalDeparture.fromJson(e))
+        .toList();
   }
 
   /// Gets Stopoints that are reachable from a station/line combination.
@@ -261,7 +267,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return StopPointRouteSection.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => StopPointRouteSection.fromJson(e))
+        .toList();
   }
 
   /// Gets a distinct list of disrupted stop points for the given modes
@@ -283,7 +291,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return DisruptedPoint.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => DisruptedPoint.fromJson(e))
+        .toList();
   }
 
   /// Gets all disruptions for the specified StopPointId, plus disruptions for any child Naptan records it may have.
@@ -310,7 +320,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return DisruptedPoint.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => DisruptedPoint.fromJson(e))
+        .toList();
   }
 
   /// Returns the canonical direction, "inbound" or "outbound", for a given pair of stop point Ids in the direction from -> to.

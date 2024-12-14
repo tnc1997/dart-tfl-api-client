@@ -50,25 +50,6 @@
     );
   }
 
-  static List<StopPointRouteSection> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => StopPointRouteSection.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, StopPointRouteSection> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          StopPointRouteSection.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'naptanId': naptanId,

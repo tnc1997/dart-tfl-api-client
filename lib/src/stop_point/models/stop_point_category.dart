@@ -18,25 +18,6 @@
     );
   }
 
-  static List<StopPointCategory> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => StopPointCategory.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, StopPointCategory> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          StopPointCategory.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'category': category,

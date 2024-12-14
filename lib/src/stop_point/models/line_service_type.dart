@@ -22,25 +22,6 @@ class LineServiceType {
     );
   }
 
-  static List<LineServiceType> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => LineServiceType.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, LineServiceType> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          LineServiceType.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'lineName': lineName,

@@ -31,25 +31,6 @@ class StopPointsResponse {
     );
   }
 
-  static List<StopPointsResponse> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => StopPointsResponse.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, StopPointsResponse> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          StopPointsResponse.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'centrePoint': centrePoint,
