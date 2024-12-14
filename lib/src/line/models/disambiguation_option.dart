@@ -1,16 +1,16 @@
-﻿class DisambiguationOption2 {
+﻿class DisambiguationOption {
   String? description;
   String? uri;
 
-  DisambiguationOption2({
+  DisambiguationOption({
     this.description,
     this.uri,
   });
 
-  factory DisambiguationOption2.fromJson(
+  factory DisambiguationOption.fromJson(
     Map<String, dynamic> json,
   ) {
-    return DisambiguationOption2(
+    return DisambiguationOption(
       description: json['description'] as String?,
       uri: json['uri'] as String?,
     );

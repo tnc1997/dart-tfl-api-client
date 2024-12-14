@@ -1,7 +1,7 @@
 ﻿import '../../common/models/mode.dart';
 import 'map_item.dart';
 
-class Point1 {
+class Point {
   String? name;
   String? shortName;
   String? stopId;
@@ -17,7 +17,7 @@ class Point1 {
   int? matchQuality;
   String? fullName;
 
-  Point1({
+  Point({
     this.name,
     this.shortName,
     this.stopId,
@@ -34,10 +34,10 @@ class Point1 {
     this.fullName,
   });
 
-  factory Point1.fromJson(
+  factory Point.fromJson(
     Map<String, dynamic> json,
   ) {
-    return Point1(
+    return Point(
       name: json['name'] as String?,
       shortName: json['shortName'] as String?,
       stopId: json['stopId'] as String?,

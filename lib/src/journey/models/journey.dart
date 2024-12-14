@@ -1,14 +1,14 @@
 ﻿import 'journey_fare.dart';
 import 'leg.dart';
 
-class Journey2 {
+class Journey {
   DateTime? startDateTime;
   int? duration;
   DateTime? arrivalDateTime;
   List<Leg>? legs;
   JourneyFare? fare;
 
-  Journey2({
+  Journey({
     this.startDateTime,
     this.duration,
     this.arrivalDateTime,
@@ -16,10 +16,10 @@ class Journey2 {
     this.fare,
   });
 
-  factory Journey2.fromJson(
+  factory Journey.fromJson(
     Map<String, dynamic> json,
   ) {
-    return Journey2(
+    return Journey(
       startDateTime: json['startDateTime'] == null
           ? null
           : DateTime.parse(json['startDateTime'] as String),

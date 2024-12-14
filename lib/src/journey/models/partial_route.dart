@@ -4,12 +4,12 @@ import 'planned_work.dart';
 import 'point.dart';
 
 class PartialRoute {
-  Point1? origin;
-  Point1? destination;
+  Point? origin;
+  Point? destination;
   String? meansOfTransport;
   List<Disruption>? disruptions;
   List<PlannedWork>? plannedWorks;
-  List<Point1>? stopSequence;
+  List<Point>? stopSequence;
   String? type;
   List<FootPathElement>? footPathElement;
   List<String>? meansOfTransportOptions;
@@ -32,10 +32,10 @@ class PartialRoute {
     return PartialRoute(
       origin: json['origin'] == null
           ? null
-          : Point1.fromJson(json['origin'] as Map<String, dynamic>),
+          : Point.fromJson(json['origin'] as Map<String, dynamic>),
       destination: json['destination'] == null
           ? null
-          : Point1.fromJson(json['destination'] as Map<String, dynamic>),
+          : Point.fromJson(json['destination'] as Map<String, dynamic>),
       meansOfTransport: json['meansOfTransport'] as String?,
       disruptions: (json['disruptions'] as List<dynamic>?)
           ?.map((e) => Disruption.fromJson(e as Map<String, dynamic>))
@@ -44,7 +44,7 @@ class PartialRoute {
           ?.map((e) => PlannedWork.fromJson(e as Map<String, dynamic>))
           .toList(),
       stopSequence: (json['stopSequence'] as List<dynamic>?)
-          ?.map((e) => Point1.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Point.fromJson(e as Map<String, dynamic>))
           .toList(),
       type: json['type'] as String?,
       footPathElement: (json['footPathElement'] as List<dynamic>?)

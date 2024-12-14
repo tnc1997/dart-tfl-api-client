@@ -35,8 +35,6 @@ export 'src/common/models/status_severity.dart';
 export 'src/common/models/stop_point.dart';
 export 'src/common/models/train_loading.dart';
 export 'src/common/models/validity_period.dart';
-export 'src/journey/models/disambiguation.dart';
-export 'src/journey/models/disambiguation_option.dart';
 export 'src/journey/models/fare.dart';
 export 'src/journey/models/fare_caveat.dart';
 export 'src/journey/models/fare_tap.dart';

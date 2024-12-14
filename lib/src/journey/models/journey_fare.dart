@@ -3,7 +3,7 @@ import 'fare_caveat.dart';
 
 class JourneyFare {
   int? totalCost;
-  List<Fare2>? fares;
+  List<Fare>? fares;
   List<FareCaveat>? caveats;
 
   JourneyFare({
@@ -18,7 +18,7 @@ class JourneyFare {
     return JourneyFare(
       totalCost: (json['totalCost'] as num?)?.toInt(),
       fares: (json['fares'] as List<dynamic>?)
-          ?.map((e) => Fare2.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Fare.fromJson(e as Map<String, dynamic>))
           .toList(),
       caveats: (json['caveats'] as List<dynamic>?)
           ?.map((e) => FareCaveat.fromJson(e as Map<String, dynamic>))

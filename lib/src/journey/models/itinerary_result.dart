@@ -5,7 +5,7 @@ import 'journey_vector.dart';
 import 'search_criteria.dart';
 
 class ItineraryResult {
-  List<Journey2>? journeys;
+  List<Journey>? journeys;
   List<Line>? lines;
   JourneyPlannerCycleHireDockingStationData? cycleHireDockingStationData;
   List<String>? stopMessages;
@@ -28,7 +28,7 @@ class ItineraryResult {
   ) {
     return ItineraryResult(
       journeys: (json['journeys'] as List<dynamic>?)
-          ?.map((e) => Journey2.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Journey.fromJson(e as Map<String, dynamic>))
           .toList(),
       lines: (json['lines'] as List<dynamic>?)
           ?.map((e) => Line.fromJson(e as Map<String, dynamic>))

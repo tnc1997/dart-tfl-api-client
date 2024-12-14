@@ -1,19 +1,18 @@
 ﻿import 'disambiguation_option.dart';
 
-class Disambiguation2 {
-  List<DisambiguationOption2>? disambiguationOptions;
+class Disambiguation {
+  List<DisambiguationOption>? disambiguationOptions;
 
-  Disambiguation2({
+  Disambiguation({
     this.disambiguationOptions,
   });
 
-  factory Disambiguation2.fromJson(
+  factory Disambiguation.fromJson(
     Map<String, dynamic> json,
   ) {
-    return Disambiguation2(
+    return Disambiguation(
       disambiguationOptions: (json['disambiguationOptions'] as List<dynamic>?)
-          ?.map(
-              (e) => DisambiguationOption2.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => DisambiguationOption.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }

@@ -10,7 +10,7 @@ class TimetableResponse {
   List<MatchedStop>? stations;
   List<MatchedStop>? stops;
   Timetable? timetable;
-  Disambiguation2? disambiguation;
+  Disambiguation? disambiguation;
   String? statusErrorMessage;
 
   TimetableResponse({
@@ -44,7 +44,7 @@ class TimetableResponse {
           : Timetable.fromJson(json['timetable'] as Map<String, dynamic>),
       disambiguation: json['disambiguation'] == null
           ? null
-          : Disambiguation2.fromJson(
+          : Disambiguation.fromJson(
               json['disambiguation'] as Map<String, dynamic>),
       statusErrorMessage: json['statusErrorMessage'] as String?,
     );
