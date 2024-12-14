@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../common/constants/uri_constants.dart';
-import '../../common/exceptions/client_exception.dart';
+import '../../common/exceptions/tfl_api_client_exception.dart';
 import '../../common/models/disruption.dart';
 import '../../common/models/line.dart';
 import '../../common/models/mode.dart';
@@ -30,7 +30,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Mode.fromJson(e))
@@ -46,7 +46,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => StatusSeverity.fromJson(e))
@@ -62,7 +62,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List)
         .map((e) => e as String)
@@ -78,7 +78,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List)
         .map((e) => e as String)
@@ -96,7 +96,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Line.fromJson(e))
@@ -114,7 +114,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Line.fromJson(e))
@@ -135,7 +135,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Line.fromJson(e))
@@ -157,7 +157,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return ids.length == 1
         ? [Line.fromJson(json.decode(response.body))]
@@ -181,7 +181,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Line.fromJson(e))
@@ -208,7 +208,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return RouteSequence.fromJson(json.decode(response.body));
   }
@@ -230,7 +230,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Line.fromJson(e))
@@ -252,7 +252,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Line.fromJson(e))
@@ -276,7 +276,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return RouteSearchResponse.fromJson(json.decode(response.body));
   }
@@ -292,7 +292,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Line.fromJson(e))
@@ -316,7 +316,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Line.fromJson(e))
@@ -341,7 +341,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => StopPoint.fromJson(e))
@@ -360,7 +360,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return TimetableResponse.fromJson(json.decode(response.body));
   }
@@ -379,7 +379,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return TimetableResponse.fromJson(json.decode(response.body));
   }
@@ -395,7 +395,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Disruption.fromJson(e))
@@ -413,7 +413,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Disruption.fromJson(e))
@@ -440,7 +440,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Prediction.fromJson(e))
@@ -458,7 +458,7 @@ class LineService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Prediction.fromJson(e))

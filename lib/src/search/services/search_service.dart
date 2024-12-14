@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../common/constants/uri_constants.dart';
-import '../../common/exceptions/client_exception.dart';
+import '../../common/exceptions/tfl_api_client_exception.dart';
 import '../../common/models/search_response.dart';
 
 class SearchService {
@@ -27,7 +27,7 @@ class SearchService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return SearchResponse.fromJson(json.decode(response.body));
   }
@@ -46,7 +46,7 @@ class SearchService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return SearchResponse.fromJson(json.decode(response.body));
   }
@@ -60,7 +60,7 @@ class SearchService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List)
         .map((e) => e as String)
@@ -76,7 +76,7 @@ class SearchService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List)
         .map((e) => e as String)
@@ -92,7 +92,7 @@ class SearchService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List)
         .map((e) => e as String)

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../common/constants/uri_constants.dart';
-import '../../common/exceptions/client_exception.dart';
+import '../../common/exceptions/tfl_api_client_exception.dart';
 import '../../common/models/status_severity.dart';
 import '../models/disrupted_street_segment.dart';
 import '../models/road_corridor.dart';
@@ -25,7 +25,7 @@ class RoadService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => RoadCorridor.fromJson(e))
@@ -43,7 +43,7 @@ class RoadService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => RoadCorridor.fromJson(e))
@@ -67,7 +67,7 @@ class RoadService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => RoadCorridor.fromJson(e))
@@ -96,7 +96,7 @@ class RoadService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => RoadDisruption.fromJson(e))
@@ -120,7 +120,7 @@ class RoadService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => DisruptedStreetSegment.fromJson(e))
@@ -143,7 +143,7 @@ class RoadService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => RoadDisruption.fromJson(e))
@@ -159,7 +159,7 @@ class RoadService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List)
         .map((e) => e as String)
@@ -175,7 +175,7 @@ class RoadService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => StatusSeverity.fromJson(e))

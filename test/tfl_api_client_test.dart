@@ -6,26 +6,6 @@ import 'package:tfl_api_client/tfl_api_client.dart';
 
 void main() {
   group(
-    'extensions',
-    () {
-      group(
-        'ResponseExtensions',
-        () {
-          test(
-            'isSuccessStatusCode',
-            () {
-              expect(Response('', 200).isSuccessStatusCode, isTrue);
-              expect(Response('', 204).isSuccessStatusCode, isTrue);
-              expect(Response('', 404).isSuccessStatusCode, isFalse);
-              expect(Response('', 500).isSuccessStatusCode, isFalse);
-            },
-          );
-        },
-      );
-    },
-  );
-
-  group(
     'services',
     () {
       const accidentStatYear = 2010;

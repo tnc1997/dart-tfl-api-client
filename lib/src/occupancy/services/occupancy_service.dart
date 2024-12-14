@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../common/constants/uri_constants.dart';
-import '../../common/exceptions/client_exception.dart';
+import '../../common/exceptions/tfl_api_client_exception.dart';
 import '../models/bike_point_occupancy.dart';
 import '../models/car_park_occupancy.dart';
 import '../models/charge_connector_occupancy.dart';
@@ -24,7 +24,7 @@ class OccupancyService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => CarParkOccupancy.fromJson(e))
@@ -40,7 +40,7 @@ class OccupancyService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => ChargeConnectorOccupancy.fromJson(e))
@@ -58,7 +58,7 @@ class OccupancyService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return CarParkOccupancy.fromJson(json.decode(response.body));
   }
@@ -74,7 +74,7 @@ class OccupancyService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => ChargeConnectorOccupancy.fromJson(e))
@@ -92,7 +92,7 @@ class OccupancyService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => BikePointOccupancy.fromJson(e))

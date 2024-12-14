@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../common/constants/uri_constants.dart';
-import '../../common/exceptions/client_exception.dart';
+import '../../common/exceptions/tfl_api_client_exception.dart';
 import '../../common/models/place.dart';
 import '../models/place_category.dart';
 import '../models/places_response.dart';
@@ -24,7 +24,7 @@ class PlaceService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => PlaceCategory.fromJson(e))
@@ -40,7 +40,7 @@ class PlaceService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List)
         .map((e) => e as String)
@@ -62,7 +62,7 @@ class PlaceService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Place.fromJson(e))
@@ -85,7 +85,7 @@ class PlaceService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return Place.fromJson(json.decode(response.body));
   }
@@ -121,7 +121,7 @@ class PlaceService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return PlacesResponse.fromJson(json.decode(response.body));
   }
@@ -139,7 +139,7 @@ class PlaceService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Place.fromJson(e))
@@ -162,7 +162,7 @@ class PlaceService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Place.fromJson(e))

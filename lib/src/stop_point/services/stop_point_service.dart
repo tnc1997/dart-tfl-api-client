@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../common/constants/uri_constants.dart';
-import '../../common/exceptions/client_exception.dart';
+import '../../common/exceptions/tfl_api_client_exception.dart';
 import '../../common/models/mode.dart';
 import '../../common/models/place.dart';
 import '../../common/models/prediction.dart';
@@ -32,7 +32,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => StopPointCategory.fromJson(e))
@@ -48,7 +48,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List)
         .map((e) => e as String)
@@ -64,7 +64,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Mode.fromJson(e))
@@ -87,7 +87,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return ids.length == 1
         ? [StopPoint.fromJson(json.decode(response.body))]
@@ -111,7 +111,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Place.fromJson(e))
@@ -134,7 +134,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return StopPoint.fromJson(json.decode(response.body));
   }
@@ -150,7 +150,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => StopPoint.fromJson(e))
@@ -169,7 +169,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => StopPoint.fromJson(e))
@@ -194,7 +194,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => LineServiceType.fromJson(e))
@@ -212,7 +212,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Prediction.fromJson(e))
@@ -234,7 +234,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => ArrivalDeparture.fromJson(e))
@@ -257,7 +257,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => StopPoint.fromJson(e))
@@ -279,7 +279,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => StopPointRouteSection.fromJson(e))
@@ -303,7 +303,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => DisruptedPoint.fromJson(e))
@@ -332,7 +332,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => DisruptedPoint.fromJson(e))
@@ -355,7 +355,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return json.decode(response.body) as String;
   }
@@ -390,7 +390,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return StopPointsResponse.fromJson(json.decode(response.body));
   }
@@ -410,7 +410,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return StopPointsResponse.fromJson(json.decode(response.body));
   }
@@ -443,7 +443,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return SearchResponse.fromJson(json.decode(response.body));
   }
@@ -477,7 +477,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return SearchResponse.fromJson(json.decode(response.body));
   }
@@ -493,7 +493,7 @@ class StopPointService {
       }),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return StopPoint.fromJson(json.decode(response.body));
   }
@@ -509,7 +509,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Place.fromJson(e))
@@ -527,7 +527,7 @@ class StopPointService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Place.fromJson(e))

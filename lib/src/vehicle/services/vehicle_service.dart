@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../common/constants/uri_constants.dart';
-import '../../common/exceptions/client_exception.dart';
+import '../../common/exceptions/tfl_api_client_exception.dart';
 import '../../common/models/prediction.dart';
 import '../models/vehicle_match.dart';
 
@@ -25,7 +25,7 @@ class VehicleService {
       ),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
         .map((e) => Prediction.fromJson(e))
@@ -42,7 +42,7 @@ class VehicleService {
       }),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return VehicleMatch.fromJson(json.decode(response.body));
   }
@@ -57,7 +57,7 @@ class VehicleService {
       }),
     );
 
-    ClientException.checkIsSuccessStatusCode(response);
+    TflApiClientException.checkIsSuccessStatusCode(response);
 
     return VehicleMatch.fromJson(json.decode(response.body));
   }
