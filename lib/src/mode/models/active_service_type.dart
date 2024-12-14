@@ -16,25 +16,6 @@
     );
   }
 
-  static List<ActiveServiceType> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => ActiveServiceType.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, ActiveServiceType> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          ActiveServiceType.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'mode': mode,

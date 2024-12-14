@@ -25,7 +25,9 @@ class ModeService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return ActiveServiceType.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => ActiveServiceType.fromJson(e))
+        .toList();
   }
 
   /// Gets the next arrival predictions for all stops of a given mode
