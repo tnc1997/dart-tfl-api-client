@@ -38,25 +38,6 @@ class Identifier {
     );
   }
 
-  static List<Identifier> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Identifier.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Identifier> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Identifier.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

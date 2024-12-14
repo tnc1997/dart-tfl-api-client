@@ -22,25 +22,6 @@
     );
   }
 
-  static List<Mode> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Mode.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Mode> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Mode.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'isTflService': isTflService,

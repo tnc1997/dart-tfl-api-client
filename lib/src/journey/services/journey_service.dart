@@ -25,7 +25,9 @@ class JourneyService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Mode.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Mode.fromJson(e))
+        .toList();
   }
 
   /// Perform a Journey Planner search from the parameters specified in simple types

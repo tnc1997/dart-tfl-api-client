@@ -53,25 +53,6 @@ class RouteSection {
     );
   }
 
-  static List<RouteSection> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RouteSection.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RouteSection> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RouteSection.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

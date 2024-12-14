@@ -60,25 +60,6 @@ class Line {
     );
   }
 
-  static List<Line> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Line.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Line> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Line.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

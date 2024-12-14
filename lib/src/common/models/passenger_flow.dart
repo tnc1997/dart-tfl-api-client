@@ -16,25 +16,6 @@
     );
   }
 
-  static List<PassengerFlow> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => PassengerFlow.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, PassengerFlow> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          PassengerFlow.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'timeSlice': timeSlice,

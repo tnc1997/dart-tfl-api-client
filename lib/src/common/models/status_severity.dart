@@ -19,25 +19,6 @@
     );
   }
 
-  static List<StatusSeverity> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => StatusSeverity.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, StatusSeverity> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          StatusSeverity.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'modeName': modeName,

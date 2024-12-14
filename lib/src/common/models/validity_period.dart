@@ -23,25 +23,6 @@
     );
   }
 
-  static List<ValidityPeriod> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => ValidityPeriod.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, ValidityPeriod> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          ValidityPeriod.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'fromDate': fromDate?.toIso8601String(),

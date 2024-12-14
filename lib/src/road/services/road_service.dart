@@ -177,6 +177,8 @@ class RoadService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return StatusSeverity.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => StatusSeverity.fromJson(e))
+        .toList();
   }
 }

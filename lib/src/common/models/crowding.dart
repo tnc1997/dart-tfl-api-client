@@ -23,25 +23,6 @@ class Crowding {
     );
   }
 
-  static List<Crowding> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Crowding.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Crowding> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Crowding.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'passengerFlows': passengerFlows,

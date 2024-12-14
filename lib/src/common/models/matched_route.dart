@@ -50,25 +50,6 @@
     );
   }
 
-  static List<MatchedRoute> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => MatchedRoute.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, MatchedRoute> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          MatchedRoute.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

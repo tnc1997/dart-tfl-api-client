@@ -38,25 +38,6 @@ class SearchResponse {
     );
   }
 
-  static List<SearchResponse> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => SearchResponse.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, SearchResponse> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          SearchResponse.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'query': query,

@@ -27,25 +27,6 @@
     );
   }
 
-  static List<AdditionalProperties> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => AdditionalProperties.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, AdditionalProperties> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          AdditionalProperties.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'category': category,

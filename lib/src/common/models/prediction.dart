@@ -94,25 +94,6 @@ class Prediction {
     );
   }
 
-  static List<Prediction> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Prediction.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Prediction> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Prediction.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

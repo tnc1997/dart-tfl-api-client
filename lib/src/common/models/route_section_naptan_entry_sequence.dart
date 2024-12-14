@@ -20,25 +20,6 @@ class RouteSectionNaptanEntrySequence {
     );
   }
 
-  static List<RouteSectionNaptanEntrySequence> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RouteSectionNaptanEntrySequence.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RouteSectionNaptanEntrySequence> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RouteSectionNaptanEntrySequence.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'ordinal': ordinal,

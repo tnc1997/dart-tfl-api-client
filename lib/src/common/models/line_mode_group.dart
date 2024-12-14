@@ -18,25 +18,6 @@
     );
   }
 
-  static List<LineModeGroup> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => LineModeGroup.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, LineModeGroup> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          LineModeGroup.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'modeName': modeName,

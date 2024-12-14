@@ -36,25 +36,6 @@
     );
   }
 
-  static List<PredictionTiming> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => PredictionTiming.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, PredictionTiming> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          PredictionTiming.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'countdownServerAdjustment': countdownServerAdjustment,

@@ -110,25 +110,6 @@ class StopPoint {
     );
   }
 
-  static List<StopPoint> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => StopPoint.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, StopPoint> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          StopPoint.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'naptanId': naptanId,

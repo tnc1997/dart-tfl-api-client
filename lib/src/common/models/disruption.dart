@@ -63,25 +63,6 @@ class Disruption {
     );
   }
 
-  static List<Disruption> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Disruption.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Disruption> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Disruption.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

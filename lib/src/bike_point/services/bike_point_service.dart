@@ -24,7 +24,9 @@ class BikePointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Place.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Place.fromJson(e))
+        .toList();
   }
 
   /// Gets the bike point with the given id.
@@ -59,6 +61,8 @@ class BikePointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Place.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Place.fromJson(e))
+        .toList();
   }
 }

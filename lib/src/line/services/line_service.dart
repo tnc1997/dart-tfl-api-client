@@ -32,7 +32,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Mode.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Mode.fromJson(e))
+        .toList();
   }
 
   /// Gets a list of valid severity codes
@@ -46,7 +48,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return StatusSeverity.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => StatusSeverity.fromJson(e))
+        .toList();
   }
 
   /// Gets a list of valid disruption categories
@@ -94,7 +98,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Line.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Line.fromJson(e))
+        .toList();
   }
 
   /// Gets lines that serve the given modes.
@@ -110,7 +116,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Line.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Line.fromJson(e))
+        .toList();
   }
 
   /// Get all valid routes for all lines, including the name and id of the originating and terminating stops for each route.
@@ -129,7 +137,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Line.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Line.fromJson(e))
+        .toList();
   }
 
   /// Get all valid routes for given line ids, including the name and id of the originating and terminating stops for each route.
@@ -151,7 +161,9 @@ class LineService {
 
     return ids.length == 1
         ? [Line.fromJson(json.decode(response.body))]
-        : Line.listFromJson(json.decode(response.body));
+        : (json.decode(response.body) as List<dynamic>)
+            .map((e) => Line.fromJson(e))
+            .toList();
   }
 
   /// Gets all lines and their valid routes for given modes, including the name and id of the originating and terminating stops for each route
@@ -171,7 +183,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Line.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Line.fromJson(e))
+        .toList();
   }
 
   /// Gets all valid routes for given line id, including the sequence of stops on each route.
@@ -218,7 +232,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Line.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Line.fromJson(e))
+        .toList();
   }
 
   /// Gets the line status of for given line ids e.g Minor Delays
@@ -238,7 +254,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Line.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Line.fromJson(e))
+        .toList();
   }
 
   /// Search for lines or routes matching the query string
@@ -276,7 +294,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Line.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Line.fromJson(e))
+        .toList();
   }
 
   /// Gets the line status of for all lines for the given modes
@@ -298,7 +318,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Line.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Line.fromJson(e))
+        .toList();
   }
 
   /// Gets a list of the stations that serve the given line id
@@ -321,7 +343,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return StopPoint.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => StopPoint.fromJson(e))
+        .toList();
   }
 
   /// Gets the timetable for a specified station on the give line
@@ -373,7 +397,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Disruption.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Disruption.fromJson(e))
+        .toList();
   }
 
   /// Get disruptions for all lines of the given modes.
@@ -389,7 +415,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Disruption.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Disruption.fromJson(e))
+        .toList();
   }
 
   /// Get the list of arrival predictions for given line ids based at the given stop
@@ -414,7 +442,9 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Prediction.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Prediction.fromJson(e))
+        .toList();
   }
 
   /// Get the list of arrival predictions for given line ids based at the given stop
@@ -430,6 +460,8 @@ class LineService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Prediction.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Prediction.fromJson(e))
+        .toList();
   }
 }

@@ -21,25 +21,6 @@
     );
   }
 
-  static List<LineGroup> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => LineGroup.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, LineGroup> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          LineGroup.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'naptanIdReference': naptanIdReference,

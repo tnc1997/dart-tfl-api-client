@@ -64,7 +64,9 @@ class PlaceService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Place.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Place.fromJson(e))
+        .toList();
   }
 
   /// Gets the place with the given id.
@@ -139,7 +141,9 @@ class PlaceService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Place.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Place.fromJson(e))
+        .toList();
   }
 
   /// Gets all places that matches the given query
@@ -160,6 +164,8 @@ class PlaceService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Place.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Place.fromJson(e))
+        .toList();
   }
 }

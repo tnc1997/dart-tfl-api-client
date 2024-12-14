@@ -66,7 +66,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Mode.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Mode.fromJson(e))
+        .toList();
   }
 
   /// Gets a list of StopPoints corresponding to the given list of stop ids.
@@ -89,7 +91,9 @@ class StopPointService {
 
     return ids.length == 1
         ? [StopPoint.fromJson(json.decode(response.body))]
-        : StopPoint.listFromJson(json.decode(response.body));
+        : (json.decode(response.body) as List<dynamic>)
+            .map((e) => StopPoint.fromJson(e))
+            .toList();
   }
 
   /// Get a list of places corresponding to a given id and place types.
@@ -109,7 +113,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Place.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Place.fromJson(e))
+        .toList();
   }
 
   /// Gets all the Crowding data (static) for the StopPointId, plus crowding data for a given line and optionally a particular direction.
@@ -146,7 +152,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return StopPoint.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => StopPoint.fromJson(e))
+        .toList();
   }
 
   /// Gets all the stop points of given type(s) with a page number
@@ -163,7 +171,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return StopPoint.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => StopPoint.fromJson(e))
+        .toList();
   }
 
   /// Gets the service types for a given stoppoint
@@ -204,7 +214,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Prediction.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Prediction.fromJson(e))
+        .toList();
   }
 
   /// Gets the list of arrival and departure predictions for the given stop point id (overground and tfl rail only)
@@ -247,7 +259,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return StopPoint.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => StopPoint.fromJson(e))
+        .toList();
   }
 
   /// Returns the route sections for all the lines that service the given stop point ids
@@ -497,7 +511,9 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Place.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Place.fromJson(e))
+        .toList();
   }
 
   /// Get car parks corresponding to the given stop point id.
@@ -513,6 +529,8 @@ class StopPointService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Place.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Place.fromJson(e))
+        .toList();
   }
 }

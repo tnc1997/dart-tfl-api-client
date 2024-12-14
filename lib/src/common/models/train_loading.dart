@@ -31,25 +31,6 @@
     );
   }
 
-  static List<TrainLoading> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => TrainLoading.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, TrainLoading> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          TrainLoading.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'line': line,

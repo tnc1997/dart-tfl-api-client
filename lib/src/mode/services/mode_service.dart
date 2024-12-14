@@ -47,6 +47,8 @@ class ModeService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return Prediction.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => Prediction.fromJson(e))
+        .toList();
   }
 }

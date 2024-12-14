@@ -48,25 +48,6 @@ class LineStatus {
     );
   }
 
-  static List<LineStatus> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => LineStatus.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, LineStatus> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          LineStatus.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,
