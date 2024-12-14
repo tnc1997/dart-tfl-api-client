@@ -49,25 +49,6 @@ class RouteSequence {
     );
   }
 
-  static List<RouteSequence> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RouteSequence.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RouteSequence> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RouteSequence.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'lineId': lineId,

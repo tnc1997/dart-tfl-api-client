@@ -20,25 +20,6 @@ class StationInterval {
     );
   }
 
-  static List<StationInterval> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => StationInterval.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, StationInterval> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          StationInterval.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

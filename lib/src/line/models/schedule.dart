@@ -36,25 +36,6 @@ class Schedule {
     );
   }
 
-  static List<Schedule> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Schedule.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Schedule> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Schedule.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'name': name,

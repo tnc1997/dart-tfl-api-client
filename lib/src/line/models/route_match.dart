@@ -17,25 +17,6 @@ class RouteMatch {
     );
   }
 
-  static List<RouteMatch> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RouteMatch.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RouteMatch> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RouteMatch.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'routeSequence': routeSequence,

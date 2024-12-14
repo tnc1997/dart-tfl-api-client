@@ -42,25 +42,6 @@ class StopPointSequence {
     );
   }
 
-  static List<StopPointSequence> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => StopPointSequence.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, StopPointSequence> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          StopPointSequence.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'lineId': lineId,

@@ -31,25 +31,6 @@
     );
   }
 
-  static List<LineRouteSection> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => LineRouteSection.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, LineRouteSection> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          LineRouteSection.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'routeId': routeId,

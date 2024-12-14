@@ -75,25 +75,6 @@ class MatchedStop {
     );
   }
 
-  static List<MatchedStop> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => MatchedStop.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, MatchedStop> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          MatchedStop.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'routeId': routeId,

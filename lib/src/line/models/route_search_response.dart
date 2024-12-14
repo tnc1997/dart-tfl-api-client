@@ -20,25 +20,6 @@ class RouteSearchResponse {
     );
   }
 
-  static List<RouteSearchResponse> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RouteSearchResponse.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RouteSearchResponse> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RouteSearchResponse.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'input': input,

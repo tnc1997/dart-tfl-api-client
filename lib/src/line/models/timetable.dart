@@ -20,25 +20,6 @@ class Timetable {
     );
   }
 
-  static List<Timetable> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Timetable.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Timetable> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Timetable.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'departureStopId': departureStopId,

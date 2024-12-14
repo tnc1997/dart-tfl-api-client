@@ -50,25 +50,6 @@ class TimetableResponse {
     );
   }
 
-  static List<TimetableResponse> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => TimetableResponse.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, TimetableResponse> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          TimetableResponse.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'lineId': lineId,

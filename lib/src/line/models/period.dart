@@ -34,25 +34,6 @@ class Period {
     );
   }
 
-  static List<Period> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Period.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Period> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Period.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'type': type,

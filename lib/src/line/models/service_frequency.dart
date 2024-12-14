@@ -16,25 +16,6 @@
     );
   }
 
-  static List<ServiceFrequency> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => ServiceFrequency.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, ServiceFrequency> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          ServiceFrequency.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'lowestFrequency': lowestFrequency,

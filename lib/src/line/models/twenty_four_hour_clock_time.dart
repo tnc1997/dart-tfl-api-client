@@ -16,25 +16,6 @@
     );
   }
 
-  static List<TwentyFourHourClockTime> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => TwentyFourHourClockTime.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, TwentyFourHourClockTime> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          TwentyFourHourClockTime.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'hour': hour,

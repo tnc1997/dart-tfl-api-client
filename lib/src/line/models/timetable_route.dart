@@ -23,25 +23,6 @@ class TimetableRoute {
     );
   }
 
-  static List<TimetableRoute> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => TimetableRoute.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, TimetableRoute> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          TimetableRoute.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'stationIntervals': stationIntervals,

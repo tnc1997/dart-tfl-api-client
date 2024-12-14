@@ -21,25 +21,6 @@
     );
   }
 
-  static List<OrderedRoute> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => OrderedRoute.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, OrderedRoute> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          OrderedRoute.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'name': name,

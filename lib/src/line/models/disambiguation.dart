@@ -18,25 +18,6 @@ class Disambiguation2 {
     );
   }
 
-  static List<Disambiguation2> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Disambiguation2.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Disambiguation2> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Disambiguation2.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'disambiguationOptions': disambiguationOptions,

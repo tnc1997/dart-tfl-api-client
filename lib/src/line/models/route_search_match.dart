@@ -53,25 +53,6 @@ class RouteSearchMatch {
     );
   }
 
-  static List<RouteSearchMatch> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => RouteSearchMatch.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, RouteSearchMatch> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          RouteSearchMatch.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'lineId': lineId,

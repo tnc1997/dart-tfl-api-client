@@ -16,25 +16,6 @@
     );
   }
 
-  static List<DisambiguationOption2> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => DisambiguationOption2.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, DisambiguationOption2> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          DisambiguationOption2.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'description': description,
