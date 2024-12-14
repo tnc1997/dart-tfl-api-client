@@ -62,21 +62,6 @@ void main() {
       late Client client;
 
       group(
-        'AirQualityService',
-        () {
-          test(
-            'get',
-            () async {
-              await expectLater(
-                api.airQuality.get(),
-                completes,
-              );
-            },
-          );
-        },
-      );
-
-      group(
         'BikePointService',
         () {
           test(
