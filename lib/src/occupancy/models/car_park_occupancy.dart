@@ -26,25 +26,6 @@ class CarParkOccupancy {
     );
   }
 
-  static List<CarParkOccupancy> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => CarParkOccupancy.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, CarParkOccupancy> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          CarParkOccupancy.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

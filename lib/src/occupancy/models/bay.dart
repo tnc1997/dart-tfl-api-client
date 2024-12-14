@@ -22,25 +22,6 @@
     );
   }
 
-  static List<Bay> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => Bay.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, Bay> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          Bay.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'bayType': bayType,

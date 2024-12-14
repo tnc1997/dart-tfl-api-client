@@ -25,25 +25,6 @@
     );
   }
 
-  static List<BikePointOccupancy> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => BikePointOccupancy.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, BikePointOccupancy> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          BikePointOccupancy.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'id': id,

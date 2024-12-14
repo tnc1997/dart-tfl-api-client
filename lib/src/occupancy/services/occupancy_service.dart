@@ -26,7 +26,9 @@ class OccupancyService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return CarParkOccupancy.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => CarParkOccupancy.fromJson(e))
+        .toList();
   }
 
   /// Gets the occupancy for all charge connectors
@@ -40,7 +42,9 @@ class OccupancyService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return ChargeConnectorOccupancy.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => ChargeConnectorOccupancy.fromJson(e))
+        .toList();
   }
 
   /// Gets the occupancy for a car park with a given id
@@ -72,7 +76,9 @@ class OccupancyService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return ChargeConnectorOccupancy.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => ChargeConnectorOccupancy.fromJson(e))
+        .toList();
   }
 
   /// Get the occupancy for bike points.
@@ -88,6 +94,8 @@ class OccupancyService {
 
     ClientException.checkIsSuccessStatusCode(response);
 
-    return BikePointOccupancy.listFromJson(json.decode(response.body));
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => BikePointOccupancy.fromJson(e))
+        .toList();
   }
 }
