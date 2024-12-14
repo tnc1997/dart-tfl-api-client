@@ -29,25 +29,6 @@ class LondonAirForecast {
     );
   }
 
-  static List<LondonAirForecast> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => LondonAirForecast.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, LondonAirForecast> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          LondonAirForecast.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'updatePeriod': updatePeriod,

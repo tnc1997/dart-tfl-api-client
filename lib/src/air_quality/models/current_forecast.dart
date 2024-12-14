@@ -55,25 +55,6 @@
     );
   }
 
-  static List<CurrentForecast> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => CurrentForecast.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, CurrentForecast> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          CurrentForecast.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'forecastText': forecastText,
