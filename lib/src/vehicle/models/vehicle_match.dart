@@ -28,25 +28,6 @@
     );
   }
 
-  static List<VehicleMatch> listFromJson(
-    List<dynamic> json,
-  ) =>
-      json
-          .map(
-            (value) => VehicleMatch.fromJson(value),
-          )
-          .toList();
-
-  static Map<String, VehicleMatch> mapFromJson(
-    Map<String, dynamic> json,
-  ) =>
-      json.map(
-        (key, value) => MapEntry(
-          key,
-          VehicleMatch.fromJson(value),
-        ),
-      );
-
   Map<String, dynamic> toJson() {
     return {
       'vrm': vrm,
