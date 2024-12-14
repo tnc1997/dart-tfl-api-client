@@ -524,7 +524,10 @@ void main() {
               await expectLater(
                 api.place
                     .getByGeoPointByQueryLatQueryLonQueryRadiusQueryCategoriesQueryIncludeC(
-                        placeLat, placeLon, placeRadius),
+                  placeLat,
+                  placeLon,
+                  radius: placeRadius,
+                ),
                 completes,
               );
             },
@@ -603,7 +606,9 @@ void main() {
             () async {
               await expectLater(
                 api.road.disruptedStreetsByQueryStartDateQueryEndDate(
-                    DateTime.now(), DateTime.now().add(Duration(days: 1))),
+                  startDate: DateTime.now(),
+                  endDate: DateTime.now().add(Duration(days: 1)),
+                ),
                 completes,
               );
             },
@@ -878,10 +883,11 @@ void main() {
               await expectLater(
                 api.stopPoint
                     .getByGeoPointByQueryLatQueryLonQueryStopTypesQueryRadiusQueryUseSt(
-                        stopPointTypes,
-                        stopPointLat,
-                        stopPointLon,
-                        stopPointRadius),
+                  stopPointTypes,
+                  stopPointLat,
+                  stopPointLon,
+                  radius: stopPointRadius,
+                ),
                 completes,
               );
             },

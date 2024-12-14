@@ -52,10 +52,10 @@ class RoadService {
 
   /// Gets the specified roads with the status aggregated over the date range specified, or now until the end of today if no dates are passed.
   Future<List<RoadCorridor>> statusByPathIdsQueryStartDateQueryEndDate(
-    List<String> ids, [
+    List<String> ids, {
     DateTime? startDate,
     DateTime? endDate,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -77,12 +77,12 @@ class RoadService {
   /// Get active disruptions, filtered by road ids
   Future<List<RoadDisruption>>
       disruptionByPathIdsQueryStripContentQuerySeveritiesQueryCategoriesQuery(
-    List<String> ids, [
+    List<String> ids, {
     bool? stripContent,
     List<String>? severities,
     List<String>? categories,
     bool? closures,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -105,10 +105,10 @@ class RoadService {
 
   /// Gets a list of disrupted streets. If no date filters are provided, current disruptions are returned.
   Future<List<DisruptedStreetSegment>>
-      disruptedStreetsByQueryStartDateQueryEndDate([
+      disruptedStreetsByQueryStartDateQueryEndDate({
     DateTime? startDate,
     DateTime? endDate,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -130,9 +130,9 @@ class RoadService {
   /// Gets a list of active disruptions filtered by disruption Ids.
   Future<List<RoadDisruption>>
       disruptionByIdByPathDisruptionIdsQueryStripContent(
-    List<String> disruptionIds, [
+    List<String> disruptionIds, {
     bool? stripContent,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,

@@ -122,9 +122,9 @@ class LineService {
   }
 
   /// Get all valid routes for all lines, including the name and id of the originating and terminating stops for each route.
-  Future<List<Line>> routeByQueryServiceTypes([
+  Future<List<Line>> routeByQueryServiceTypes({
     List<String>? serviceTypes,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -144,9 +144,9 @@ class LineService {
 
   /// Get all valid routes for given line ids, including the name and id of the originating and terminating stops for each route.
   Future<List<Line>> lineRoutesByIdsByPathIdsQueryServiceTypes(
-    List<String> ids, [
+    List<String> ids, {
     List<String>? serviceTypes,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -168,9 +168,9 @@ class LineService {
 
   /// Gets all lines and their valid routes for given modes, including the name and id of the originating and terminating stops for each route
   Future<List<Line>> routeByModeByPathModesQueryServiceTypes(
-    List<String> modes, [
+    List<String> modes, {
     List<String>? serviceTypes,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -192,10 +192,10 @@ class LineService {
   Future<RouteSequence>
       routeSequenceByPathIdPathDirectionQueryServiceTypesQueryExcludeCrowding(
     String id,
-    String direction, [
+    String direction, {
     List<String>? serviceTypes,
     bool? excludeCrowding,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -217,9 +217,9 @@ class LineService {
   Future<List<Line>> statusByPathIdsPathStartDatePathEndDateQueryDetail(
     List<String> ids,
     DateTime startDate,
-    DateTime endDate, [
+    DateTime endDate, {
     bool? detail,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -239,9 +239,9 @@ class LineService {
 
   /// Gets the line status of for given line ids e.g Minor Delays
   Future<List<Line>> statusByIdsByPathIdsQueryDetail(
-    List<String> ids, [
+    List<String> ids, {
     bool? detail,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -261,10 +261,10 @@ class LineService {
 
   /// Search for lines or routes matching the query string
   Future<RouteSearchResponse> searchByPathQueryQueryModesQueryServiceTypes(
-    String query, [
+    String query, {
     List<String>? modes,
     List<String>? serviceTypes,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -301,10 +301,10 @@ class LineService {
 
   /// Gets the line status of for all lines for the given modes
   Future<List<Line>> statusByModeByPathModesQueryDetailQuerySeverityLevel(
-    List<String> modes, [
+    List<String> modes, {
     bool? detail,
     String? severityLevel,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -326,9 +326,9 @@ class LineService {
   /// Gets a list of the stations that serve the given line id
   Future<List<StopPoint>>
       stopPointsByPathIdQueryTflOperatedNationalRailStationsOnly(
-    String id, [
+    String id, {
     bool? tflOperatedNationalRailStationsOnly,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -424,10 +424,10 @@ class LineService {
   Future<List<Prediction>>
       arrivalsWithStopPointByPathIdsPathStopPointIdQueryDirectionQueryDestina(
     List<String> ids,
-    String stopPointId, [
+    String stopPointId, {
     String? direction,
     String? destinationStationId,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,

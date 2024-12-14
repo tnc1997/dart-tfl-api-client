@@ -34,7 +34,7 @@ class JourneyService {
   Future<ItineraryResult>
       journeyResultsByPathFromPathToQueryViaQueryNationalSearchQueryDateQu(
     String from,
-    String to, [
+    String to, {
     String? via,
     bool? nationalSearch,
     String? date,
@@ -60,7 +60,7 @@ class JourneyService {
     bool? taxiOnlyTrip,
     bool? routeBetweenEntrances,
     bool? useRealTimeLiveArrivals,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,

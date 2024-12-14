@@ -32,9 +32,9 @@ class ModeService {
 
   /// Gets the next arrival predictions for all stops of a given mode
   Future<List<Prediction>> arrivals(
-    String mode, [
+    String mode, {
     int? count,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,

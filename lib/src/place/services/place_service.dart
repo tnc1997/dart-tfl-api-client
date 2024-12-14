@@ -49,9 +49,9 @@ class PlaceService {
 
   /// Gets all places of a given type
   Future<List<Place>> getByTypeByPathTypesQueryActiveOnly(
-    List<String> types, [
+    List<String> types, {
     bool? activeOnly,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -71,9 +71,9 @@ class PlaceService {
 
   /// Gets the place with the given id.
   Future<Place> getByPathIdQueryIncludeChildren(
-    String id, [
+    String id, {
     bool? includeChildren,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -94,14 +94,14 @@ class PlaceService {
   Future<PlacesResponse>
       getByGeoPointByQueryLatQueryLonQueryRadiusQueryCategoriesQueryIncludeC(
     double lat,
-    double lon, [
+    double lon, {
     double? radius,
     List<String>? categories,
     bool? includeChildren,
     List<String>? type,
     bool? activeOnly,
     int? numberOfPlacesToReturn,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -148,9 +148,9 @@ class PlaceService {
 
   /// Gets all places that matches the given query
   Future<List<Place>> searchByQueryNameQueryTypes(
-    String name, [
+    String name, {
     List<String>? types,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,

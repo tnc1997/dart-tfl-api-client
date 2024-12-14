@@ -73,9 +73,9 @@ class StopPointService {
 
   /// Gets a list of StopPoints corresponding to the given list of stop ids.
   Future<List<StopPoint>> getByPathIdsQueryIncludeCrowdingData(
-    List<String> ids, [
+    List<String> ids, {
     bool? includeCrowdingData,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -178,10 +178,10 @@ class StopPointService {
 
   /// Gets the service types for a given stoppoint
   Future<List<LineServiceType>> getServiceTypesByQueryIdQueryLineIdsQueryModes(
-    String id, [
+    String id, {
     List<String>? lineIds,
     List<String>? modes,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -244,9 +244,9 @@ class StopPointService {
   /// Gets Stopoints that are reachable from a station/line combination.
   Future<List<StopPoint>> reachableFromByPathIdPathLineIdQueryServiceTypes(
     String id,
-    String lineId, [
+    String lineId, {
     List<String>? serviceTypes,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -266,9 +266,9 @@ class StopPointService {
 
   /// Returns the route sections for all the lines that service the given stop point ids
   Future<List<StopPointRouteSection>> routeByPathIdQueryServiceTypes(
-    String id, [
+    String id, {
     List<String>? serviceTypes,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -289,9 +289,9 @@ class StopPointService {
   /// Gets a distinct list of disrupted stop points for the given modes
   Future<List<DisruptedPoint>>
       disruptionByModeByPathModesQueryIncludeRouteBlockedStops(
-    List<String> modes, [
+    List<String> modes, {
     bool? includeRouteBlockedStops,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -313,11 +313,11 @@ class StopPointService {
   /// Gets all disruptions for the specified StopPointId, plus disruptions for any child Naptan records it may have.
   Future<List<DisruptedPoint>>
       disruptionByPathIdsQueryGetFamilyQueryIncludeRouteBlockedStopsQuer(
-    List<String> ids, [
+    List<String> ids, {
     bool? getFamily,
     bool? includeRouteBlockedStops,
     bool? flattenResponse,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -342,9 +342,9 @@ class StopPointService {
   /// Returns the canonical direction, "inbound" or "outbound", for a given pair of stop point Ids in the direction from -> to.
   Future<String> directionByPathIdPathToStopPointIdQueryLineId(
     String id,
-    String toStopPointId, [
+    String toStopPointId, {
     String? lineId,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -365,13 +365,13 @@ class StopPointService {
       getByGeoPointByQueryLatQueryLonQueryStopTypesQueryRadiusQueryUseSt(
     List<String> stopTypes,
     double lat,
-    double lon, [
+    double lon, {
     int? radius,
     bool? useStopPointHierarchy,
     List<String>? modes,
     List<String>? categories,
     bool? returnLines,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -397,9 +397,9 @@ class StopPointService {
 
   /// Gets a list of StopPoints filtered by the modes available at that StopPoint.
   Future<StopPointsResponse> getByModeByPathModesQueryPage(
-    List<String> modes, [
+    List<String> modes, {
     int? page,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -418,14 +418,14 @@ class StopPointService {
   /// Search StopPoints by their common name, or their 5-digit Countdown Bus Stop Code.
   Future<SearchResponse>
       searchByPathQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLines(
-    String query, [
+    String query, {
     List<String>? modes,
     bool? faresOnly,
     int? maxResults,
     List<String>? lines,
     bool? includeHubs,
     bool? tflOperatedNationalRailStationsOnly,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -451,14 +451,14 @@ class StopPointService {
   /// Search StopPoints by their common name, or their 5-digit Countdown Bus Stop Code.
   Future<SearchResponse>
       searchByQueryQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLine(
-    String query, [
+    String query, {
     List<String>? modes,
     bool? faresOnly,
     int? maxResults,
     List<String>? lines,
     bool? includeHubs,
     bool? tflOperatedNationalRailStationsOnly,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -484,9 +484,9 @@ class StopPointService {
 
   /// Gets a StopPoint for a given sms code.
   Future<StopPoint> getBySmsByPathIdQueryOutput(
-    String id, [
+    String id, {
     String? output,
-  ]) async {
+  }) async {
     final response = await _client.get(
       Uri.https(authority, '/stoppoint/sms/$id', {
         if (output != null) 'output': output,
