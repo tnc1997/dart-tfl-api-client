@@ -5,7 +5,7 @@ import 'line_group.dart';
 import 'line_mode_group.dart';
 import 'place.dart';
 
-class StopPoint extends Place implements Identifiable {
+class StopPoint extends Place implements Comparable<StopPoint>, Identifiable {
   String? naptanId;
   String? platformName;
   String? indicator;
@@ -113,6 +113,13 @@ class StopPoint extends Place implements Identifiable {
       status: json['status'] as bool?,
       individualStopId: json['individualStopId'] as String?,
     );
+  }
+
+  @override
+  int compareTo(
+    StopPoint other,
+  ) {
+    return (commonName ?? '').compareTo(other.commonName ?? '');
   }
 
   @override

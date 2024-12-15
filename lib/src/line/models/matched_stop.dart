@@ -2,7 +2,8 @@
 import '../../common/models/identifier.dart';
 import '../../common/models/search_match.dart';
 
-class MatchedStop extends SearchMatch implements Identifiable {
+class MatchedStop extends SearchMatch
+    implements Comparable<MatchedStop>, Identifiable {
   int? routeId;
   String? parentId;
   String? stationId;
@@ -76,6 +77,13 @@ class MatchedStop extends SearchMatch implements Identifiable {
           .toList(),
       status: json['status'] as bool?,
     );
+  }
+
+  @override
+  int compareTo(
+    MatchedStop other,
+  ) {
+    return (name ?? '').compareTo(other.name ?? '');
   }
 
   @override
