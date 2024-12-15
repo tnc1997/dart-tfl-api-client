@@ -1,6 +1,8 @@
-﻿import 'matched_stop.dart';
+﻿import '../../common/models/identifiable.dart';
+import '../../common/models/identifier.dart';
+import 'matched_stop.dart';
 
-class StopPointSequence {
+class StopPointSequence implements Identifiable {
   String? lineId;
   String? lineName;
   String? direction;
@@ -39,6 +41,15 @@ class StopPointSequence {
           ?.map((e) => MatchedStop.fromJson(e as Map<String, dynamic>))
           .toList(),
       serviceType: json['serviceType'] as String?,
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: lineId,
+      uri: '/line/$lineId/route/sequence/$direction',
+      type: 'StopPointSequence',
     );
   }
 

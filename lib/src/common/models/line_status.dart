@@ -1,7 +1,9 @@
 ﻿import 'disruption.dart';
+import 'identifiable.dart';
+import 'identifier.dart';
 import 'validity_period.dart';
 
-class LineStatus {
+class LineStatus implements Identifiable {
   int? id;
   String? lineId;
   int? statusSeverity;
@@ -45,6 +47,16 @@ class LineStatus {
       disruption: json['disruption'] == null
           ? null
           : Disruption.fromJson(json['disruption'] as Map<String, dynamic>),
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id?.toString(),
+      name: '$statusSeverity - $statusSeverityDescription',
+      uri: '/line/$id/status',
+      type: 'LineStatus',
     );
   }
 

@@ -28,6 +28,7 @@ export 'src/common/models/crowding.dart';
 export 'src/common/models/disruption.dart';
 export 'src/common/models/disruption_override.dart';
 export 'src/common/models/distance.dart';
+export 'src/common/models/identifiable.dart';
 export 'src/common/models/identifier.dart';
 export 'src/common/models/line.dart';
 export 'src/common/models/line_group.dart';

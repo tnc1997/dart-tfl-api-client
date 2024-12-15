@@ -1,4 +1,7 @@
-﻿class CycleSuperhighway {
+﻿import '../../common/models/identifiable.dart';
+import '../../common/models/identifier.dart';
+
+class CycleSuperhighway implements Identifiable {
   String? id;
   String? label;
   String? labelShort;
@@ -30,6 +33,18 @@
           : DateTime.parse(json['modified'] as String),
       status: json['status'] as String?,
       routeType: json['routeType'] as String?,
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      name: '$labelShort:$label',
+      uri: '/cyclesuperhighway/$id',
+      type: 'CycleSuperhighway',
+      routeType: routeType,
+      status: status,
     );
   }
 

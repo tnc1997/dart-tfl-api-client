@@ -1,8 +1,9 @@
-﻿import 'identifier.dart';
+﻿import 'identifiable.dart';
+import 'identifier.dart';
 import 'stop_point.dart';
 import 'validity_period.dart';
 
-class PlannedWorks {
+class PlannedWorks implements Identifiable {
   String? id;
   String? description;
   DateTime? created;
@@ -53,6 +54,15 @@ class PlannedWorks {
           .toList(),
       isBlocking: json['isBlocking'] as bool?,
       isWholeLine: json['isWholeLine'] as bool?,
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      name: description,
+      type: 'PlannedWorks',
     );
   }
 

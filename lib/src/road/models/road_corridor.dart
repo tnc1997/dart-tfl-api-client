@@ -1,4 +1,7 @@
-﻿class RoadCorridor {
+﻿import '../../common/models/identifiable.dart';
+import '../../common/models/identifier.dart';
+
+class RoadCorridor implements Identifiable {
   String? id;
   String? displayName;
   String? group;
@@ -41,6 +44,15 @@
           ? null
           : DateTime.parse(json['statusAggregationEndDate'] as String),
       url: json['url'] as String?,
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      uri: '/road/$id',
+      type: 'RoadCorridor',
     );
   }
 

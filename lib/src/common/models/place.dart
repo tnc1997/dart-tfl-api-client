@@ -1,7 +1,9 @@
 ﻿import 'additional_properties.dart';
+import 'identifiable.dart';
+import 'identifier.dart';
 import 'point.dart';
 
-class Place extends Point {
+class Place extends Point implements Identifiable {
   String? id;
   String? url;
   String? commonName;
@@ -47,6 +49,16 @@ class Place extends Point {
       childrenUrls: (json['childrenUrls'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      name: commonName,
+      uri: '/place/$id',
+      type: 'Place',
     );
   }
 

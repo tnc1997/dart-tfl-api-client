@@ -1,6 +1,8 @@
-﻿import 'route_section_naptan_entry_sequence.dart';
+﻿import 'identifiable.dart';
+import 'identifier.dart';
+import 'route_section_naptan_entry_sequence.dart';
 
-class RouteSection {
+class RouteSection implements Identifiable {
   String? id;
   String? lineId;
   String? routeCode;
@@ -50,6 +52,15 @@ class RouteSection {
               ?.map((e) => RouteSectionNaptanEntrySequence.fromJson(
                   e as Map<String, dynamic>))
               .toList(),
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      name: name,
+      type: 'RouteSection',
     );
   }
 

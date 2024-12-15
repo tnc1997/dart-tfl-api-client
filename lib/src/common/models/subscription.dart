@@ -1,4 +1,7 @@
-﻿class Subscription {
+﻿import 'identifiable.dart';
+import 'identifier.dart';
+
+class Subscription implements Identifiable {
   String? id;
   String? connectionId;
   String? roomName;
@@ -35,6 +38,15 @@
       timeToLive: json['timeToLive'] == null
           ? null
           : DateTime.parse(json['timeToLive'] as String),
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      name: '$connectionId - $roomName',
+      type: 'Subscription',
     );
   }
 

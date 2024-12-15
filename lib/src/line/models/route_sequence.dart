@@ -1,8 +1,10 @@
-﻿import 'matched_stop.dart';
+﻿import '../../common/models/identifiable.dart';
+import '../../common/models/identifier.dart';
+import 'matched_stop.dart';
 import 'ordered_route.dart';
 import 'stop_point_sequence.dart';
 
-class RouteSequence {
+class RouteSequence implements Identifiable {
   String? lineId;
   String? lineName;
   String? direction;
@@ -46,6 +48,15 @@ class RouteSequence {
       orderedLineRoutes: (json['orderedLineRoutes'] as List<dynamic>?)
           ?.map((e) => OrderedRoute.fromJson(e as Map<String, dynamic>))
           .toList(),
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: lineId,
+      uri: '/line/$lineId/route/sequence/$direction',
+      type: 'RouteSequence',
     );
   }
 

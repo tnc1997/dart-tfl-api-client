@@ -1,10 +1,11 @@
 ﻿import 'additional_properties.dart';
+import 'identifiable.dart';
 import 'identifier.dart';
 import 'line_group.dart';
 import 'line_mode_group.dart';
 import 'place.dart';
 
-class StopPoint extends Place {
+class StopPoint extends Place implements Identifiable {
   String? naptanId;
   String? platformName;
   String? indicator;
@@ -111,6 +112,17 @@ class StopPoint extends Place {
       naptanMode: json['naptanMode'] as String?,
       status: json['status'] as bool?,
       individualStopId: json['individualStopId'] as String?,
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: naptanId,
+      name: commonName,
+      uri: '/stoppoint/$naptanId',
+      fullName: fullName,
+      type: 'StopPoint',
     );
   }
 

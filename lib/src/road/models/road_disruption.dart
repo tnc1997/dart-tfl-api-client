@@ -1,10 +1,12 @@
-﻿import 'road_disruption_impact_area.dart';
+﻿import '../../common/models/identifiable.dart';
+import '../../common/models/identifier.dart';
+import 'road_disruption_impact_area.dart';
 import 'road_disruption_line.dart';
 import 'road_disruption_schedule.dart';
 import 'road_project.dart';
 import 'street.dart';
 
-class RoadDisruption {
+class RoadDisruption implements Identifiable {
   String? id;
   String? url;
   String? point;
@@ -127,6 +129,16 @@ class RoadDisruption {
           ?.map(
               (e) => RoadDisruptionSchedule.fromJson(e as Map<String, dynamic>))
           .toList(),
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      name: roadProject?.projectName ?? 'RoadDisruption #$id',
+      uri: '/road/all/disruption/$id',
+      type: 'RoadDisruption',
     );
   }
 

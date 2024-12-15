@@ -1,6 +1,8 @@
-﻿import 'prediction_timing.dart';
+﻿import 'identifiable.dart';
+import 'identifier.dart';
+import 'prediction_timing.dart';
 
-class Prediction {
+class Prediction implements Identifiable {
   String? id;
   int? operationType;
   String? vehicleId;
@@ -91,6 +93,16 @@ class Prediction {
       timing: json['timing'] == null
           ? null
           : PredictionTiming.fromJson(json['timing'] as Map<String, dynamic>),
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: naptanId,
+      name: '$stationName - $lineName',
+      uri: '/line/$lineId/arrivals/$naptanId',
+      type: 'Prediction',
     );
   }
 

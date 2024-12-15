@@ -1,10 +1,12 @@
 ﻿import 'crowding.dart';
 import 'disruption.dart';
+import 'identifiable.dart';
+import 'identifier.dart';
 import 'line_service_type_info.dart';
 import 'line_status.dart';
 import 'matched_route.dart';
 
-class Line {
+class Line implements Identifiable {
   String? id;
   String? name;
   String? modeName;
@@ -57,6 +59,17 @@ class Line {
       crowding: json['crowding'] == null
           ? null
           : Crowding.fromJson(json['crowding'] as Map<String, dynamic>),
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      name: name,
+      uri: '/line/$id',
+      type: 'Line',
+      crowding: crowding,
     );
   }
 

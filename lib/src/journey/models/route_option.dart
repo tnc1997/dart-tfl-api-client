@@ -1,6 +1,7 @@
-﻿import '../../common/models/identifier.dart';
+﻿import '../../common/models/identifiable.dart';
+import '../../common/models/identifier.dart';
 
-class RouteOption {
+class RouteOption implements Identifiable {
   String? id;
   String? name;
   List<String>? directions;
@@ -25,6 +26,16 @@ class RouteOption {
       lineIdentifier: json['lineIdentifier'] == null
           ? null
           : Identifier.fromJson(json['lineIdentifier'] as Map<String, dynamic>),
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      name: name,
+      uri: '/routeoption/$id',
+      type: 'RouteOption',
     );
   }
 

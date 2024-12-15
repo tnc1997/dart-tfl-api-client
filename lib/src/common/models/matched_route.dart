@@ -1,4 +1,7 @@
-﻿class MatchedRoute {
+﻿import 'identifiable.dart';
+import 'identifier.dart';
+
+class MatchedRoute implements Identifiable {
   String? id;
   String? lineId;
   String? routeCode;
@@ -47,6 +50,16 @@
       validFrom: json['validFrom'] == null
           ? null
           : DateTime.parse(json['validFrom'] as String),
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      name: name,
+      uri: '/matchedroute/$id',
+      type: 'MatchedRoute',
     );
   }
 

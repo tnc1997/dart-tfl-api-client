@@ -1,7 +1,8 @@
-﻿import '../../common/models/identifier.dart';
+﻿import '../../common/models/identifiable.dart';
+import '../../common/models/identifier.dart';
 import '../../common/models/search_match.dart';
 
-class MatchedStop extends SearchMatch {
+class MatchedStop extends SearchMatch implements Identifiable {
   int? routeId;
   String? parentId;
   String? stationId;
@@ -74,6 +75,16 @@ class MatchedStop extends SearchMatch {
           ?.map((e) => Identifier.fromJson(e as Map<String, dynamic>))
           .toList(),
       status: json['status'] as bool?,
+    );
+  }
+
+  @override
+  Identifier toIdentifier() {
+    return Identifier(
+      id: id,
+      name: name,
+      uri: '/stoppoint/$id',
+      type: 'StopPoint',
     );
   }
 

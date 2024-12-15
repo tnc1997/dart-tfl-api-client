@@ -9,6 +9,8 @@ class Identifier {
   Crowding? crowding;
   String? routeType;
   String? status;
+  String? motType;
+  String? network;
 
   Identifier({
     this.id,
@@ -19,6 +21,8 @@ class Identifier {
     this.crowding,
     this.routeType,
     this.status,
+    this.motType,
+    this.network,
   });
 
   factory Identifier.fromJson(
@@ -35,6 +39,8 @@ class Identifier {
           : Crowding.fromJson(json['crowding'] as Map<String, dynamic>),
       routeType: json['routeType'] as String?,
       status: json['status'] as String?,
+      motType: json['motType'] as String?,
+      network: json['network'] as String?,
     );
   }
 
@@ -48,6 +54,8 @@ class Identifier {
       'crowding': crowding,
       'routeType': routeType,
       'status': status,
+      'motType': motType,
+      'network': network,
     };
   }
 }
