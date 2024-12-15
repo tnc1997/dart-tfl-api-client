@@ -86,7 +86,7 @@ class LineService {
   }
 
   /// Gets lines that match the specified line ids.
-  Future<List<Line>> getByPathIds(
+  Future<List<Line>> get(
     List<String> ids,
   ) async {
     final response = await _client.get(
@@ -104,7 +104,7 @@ class LineService {
   }
 
   /// Gets lines that serve the given modes.
-  Future<List<Line>> getByModeByPathModes(
+  Future<List<Line>> getByMode(
     List<String> modes,
   ) async {
     final response = await _client.get(
@@ -122,7 +122,7 @@ class LineService {
   }
 
   /// Get all valid routes for all lines, including the name and id of the originating and terminating stops for each route.
-  Future<List<Line>> routeByQueryServiceTypes({
+  Future<List<Line>> route({
     List<String>? serviceTypes,
   }) async {
     final response = await _client.get(
@@ -143,7 +143,7 @@ class LineService {
   }
 
   /// Get all valid routes for given line ids, including the name and id of the originating and terminating stops for each route.
-  Future<List<Line>> lineRoutesByIdsByPathIdsQueryServiceTypes(
+  Future<List<Line>> lineRoutesByIds(
     List<String> ids, {
     List<String>? serviceTypes,
   }) async {
@@ -167,7 +167,7 @@ class LineService {
   }
 
   /// Gets all lines and their valid routes for given modes, including the name and id of the originating and terminating stops for each route
-  Future<List<Line>> routeByModeByPathModesQueryServiceTypes(
+  Future<List<Line>> routeByMode(
     List<String> modes, {
     List<String>? serviceTypes,
   }) async {
@@ -189,8 +189,7 @@ class LineService {
   }
 
   /// Gets all valid routes for given line id, including the sequence of stops on each route.
-  Future<RouteSequence>
-      routeSequenceByPathIdPathDirectionQueryServiceTypesQueryExcludeCrowding(
+  Future<RouteSequence> routeSequence(
     String id,
     String direction, {
     List<String>? serviceTypes,
@@ -214,7 +213,7 @@ class LineService {
   }
 
   /// Gets the line status for given line ids during the provided dates e.g Minor Delays
-  Future<List<Line>> statusByPathIdsPathStartDatePathEndDateQueryDetail(
+  Future<List<Line>> status(
     List<String> ids,
     DateTime startDate,
     DateTime endDate, {
@@ -238,7 +237,7 @@ class LineService {
   }
 
   /// Gets the line status of for given line ids e.g Minor Delays
-  Future<List<Line>> statusByIdsByPathIdsQueryDetail(
+  Future<List<Line>> statusByIds(
     List<String> ids, {
     bool? detail,
   }) async {
@@ -260,7 +259,7 @@ class LineService {
   }
 
   /// Search for lines or routes matching the query string
-  Future<RouteSearchResponse> searchByPathQueryQueryModesQueryServiceTypes(
+  Future<RouteSearchResponse> search(
     String query, {
     List<String>? modes,
     List<String>? serviceTypes,
@@ -282,7 +281,7 @@ class LineService {
   }
 
   /// Gets the line status for all lines with a given severity A list of valid severity codes can be obtained from a call to Line/Meta/Severity
-  Future<List<Line>> statusBySeverityByPathSeverity(
+  Future<List<Line>> statusBySeverity(
     int severity,
   ) async {
     final response = await _client.get(
@@ -300,7 +299,7 @@ class LineService {
   }
 
   /// Gets the line status of for all lines for the given modes
-  Future<List<Line>> statusByModeByPathModesQueryDetailQuerySeverityLevel(
+  Future<List<Line>> statusByMode(
     List<String> modes, {
     bool? detail,
     String? severityLevel,
@@ -324,8 +323,7 @@ class LineService {
   }
 
   /// Gets a list of the stations that serve the given line id
-  Future<List<StopPoint>>
-      stopPointsByPathIdQueryTflOperatedNationalRailStationsOnly(
+  Future<List<StopPoint>> stopPoints(
     String id, {
     bool? tflOperatedNationalRailStationsOnly,
   }) async {
@@ -349,7 +347,7 @@ class LineService {
   }
 
   /// Gets the timetable for a specified station on the give line
-  Future<TimetableResponse> timetableByPathFromStopPointIdPathId(
+  Future<TimetableResponse> timetable(
     String fromStopPointId,
     String id,
   ) async {
@@ -366,8 +364,7 @@ class LineService {
   }
 
   /// Gets the timetable for a specified station on the give line with specified destination
-  Future<TimetableResponse>
-      timetableToByPathFromStopPointIdPathIdPathToStopPointId(
+  Future<TimetableResponse> timetableTo(
     String fromStopPointId,
     String id,
     String toStopPointId,
@@ -385,7 +382,7 @@ class LineService {
   }
 
   /// Get disruptions for the given line ids
-  Future<List<Disruption>> disruptionByPathIds(
+  Future<List<Disruption>> disruption(
     List<String> ids,
   ) async {
     final response = await _client.get(
@@ -403,7 +400,7 @@ class LineService {
   }
 
   /// Get disruptions for all lines of the given modes.
-  Future<List<Disruption>> disruptionByModeByPathModes(
+  Future<List<Disruption>> disruptionByMode(
     List<String> modes,
   ) async {
     final response = await _client.get(
@@ -421,8 +418,7 @@ class LineService {
   }
 
   /// Get the list of arrival predictions for given line ids based at the given stop
-  Future<List<Prediction>>
-      arrivalsWithStopPointByPathIdsPathStopPointIdQueryDirectionQueryDestina(
+  Future<List<Prediction>> arrivalsWithStopPoint(
     List<String> ids,
     String stopPointId, {
     String? direction,
@@ -448,7 +444,7 @@ class LineService {
   }
 
   /// Get the list of arrival predictions for given line ids based at the given stop
-  Future<List<Prediction>> arrivalsByPathIds(
+  Future<List<Prediction>> arrivals(
     List<String> ids,
   ) async {
     final response = await _client.get(

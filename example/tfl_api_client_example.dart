@@ -7,7 +7,7 @@ Future<void> main() async {
 
   final api = TflApiClient(client: client);
 
-  for (var line in await api.line.getByPathIds(['victoria'])) {
+  for (var line in await api.line.get(['victoria'])) {
     print(line);
   }
 

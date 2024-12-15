@@ -17,7 +17,7 @@ class RoadService {
   }) : _client = client;
 
   /// Gets all roads managed by TfL
-  Future<List<RoadCorridor>> get() async {
+  Future<List<RoadCorridor>> getAll() async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -33,7 +33,7 @@ class RoadService {
   }
 
   /// Gets the road with the specified id (e.g. A1)
-  Future<List<RoadCorridor>> getByPathIds(
+  Future<List<RoadCorridor>> get(
     List<String> ids,
   ) async {
     final response = await _client.get(
@@ -51,7 +51,7 @@ class RoadService {
   }
 
   /// Gets the specified roads with the status aggregated over the date range specified, or now until the end of today if no dates are passed.
-  Future<List<RoadCorridor>> statusByPathIdsQueryStartDateQueryEndDate(
+  Future<List<RoadCorridor>> status(
     List<String> ids, {
     DateTime? startDate,
     DateTime? endDate,
@@ -75,8 +75,7 @@ class RoadService {
   }
 
   /// Get active disruptions, filtered by road ids
-  Future<List<RoadDisruption>>
-      disruptionByPathIdsQueryStripContentQuerySeveritiesQueryCategoriesQuery(
+  Future<List<RoadDisruption>> disruption(
     List<String> ids, {
     bool? stripContent,
     List<String>? severities,
@@ -104,8 +103,7 @@ class RoadService {
   }
 
   /// Gets a list of disrupted streets. If no date filters are provided, current disruptions are returned.
-  Future<List<DisruptedStreetSegment>>
-      disruptedStreetsByQueryStartDateQueryEndDate({
+  Future<List<DisruptedStreetSegment>> disruptedStreets({
     DateTime? startDate,
     DateTime? endDate,
   }) async {
@@ -128,8 +126,7 @@ class RoadService {
   }
 
   /// Gets a list of active disruptions filtered by disruption Ids.
-  Future<List<RoadDisruption>>
-      disruptionByIdByPathDisruptionIdsQueryStripContent(
+  Future<List<RoadDisruption>> disruptionById(
     List<String> disruptionIds, {
     bool? stripContent,
   }) async {

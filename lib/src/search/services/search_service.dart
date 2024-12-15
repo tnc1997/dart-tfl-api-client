@@ -14,7 +14,7 @@ class SearchService {
   }) : _client = client;
 
   /// Search the site for occurrences of the query string. The maximum number of results returned is equal to the maximum page size of 100. To return subsequent pages, use the paginated overload.
-  Future<SearchResponse> getByQueryQuery(
+  Future<SearchResponse> get(
     String query,
   ) async {
     final response = await _client.get(
@@ -33,7 +33,7 @@ class SearchService {
   }
 
   /// Searches the bus schedules folder on S3 for a given bus number.
-  Future<SearchResponse> busSchedulesByQueryQuery(
+  Future<SearchResponse> busSchedules(
     String query,
   ) async {
     final response = await _client.get(

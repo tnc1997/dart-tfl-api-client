@@ -72,7 +72,7 @@ class StopPointService {
   }
 
   /// Gets a list of StopPoints corresponding to the given list of stop ids.
-  Future<List<StopPoint>> getByPathIdsQueryIncludeCrowdingData(
+  Future<List<StopPoint>> get(
     List<String> ids, {
     bool? includeCrowdingData,
   }) async {
@@ -97,7 +97,7 @@ class StopPointService {
   }
 
   /// Get a list of places corresponding to a given id and place types.
-  Future<List<Place>> getByPathIdQueryPlaceTypes(
+  Future<List<Place>> getPlaceTypes(
     String id,
     List<String> placeTypes,
   ) async {
@@ -119,7 +119,7 @@ class StopPointService {
   }
 
   /// Gets all the Crowding data (static) for the StopPointId, plus crowding data for a given line and optionally a particular direction.
-  Future<StopPoint> crowdingByPathIdPathLineQueryDirection(
+  Future<StopPoint> crowding(
     String id,
     String line,
     String direction,
@@ -140,7 +140,7 @@ class StopPointService {
   }
 
   /// Gets all stop points of a given type
-  Future<List<StopPoint>> getByTypeByPathTypes(
+  Future<List<StopPoint>> getByType(
     List<String> types,
   ) async {
     final response = await _client.get(
@@ -158,7 +158,7 @@ class StopPointService {
   }
 
   /// Gets all the stop points of given type(s) with a page number
-  Future<List<StopPoint>> getByTypeWithPaginationByPathTypesPathPage(
+  Future<List<StopPoint>> getByTypeWithPagination(
     List<String> types,
     int page,
   ) async {
@@ -177,7 +177,7 @@ class StopPointService {
   }
 
   /// Gets the service types for a given stoppoint
-  Future<List<LineServiceType>> getServiceTypesByQueryIdQueryLineIdsQueryModes(
+  Future<List<LineServiceType>> getServiceTypes(
     String id, {
     List<String>? lineIds,
     List<String>? modes,
@@ -202,7 +202,7 @@ class StopPointService {
   }
 
   /// Gets the list of arrival predictions for the given stop point id
-  Future<List<Prediction>> arrivalsByPathId(
+  Future<List<Prediction>> arrivals(
     String id,
   ) async {
     final response = await _client.get(
@@ -220,7 +220,7 @@ class StopPointService {
   }
 
   /// Gets the list of arrival and departure predictions for the given stop point id (overground and tfl rail only)
-  Future<List<ArrivalDeparture>> arrivalDeparturesByPathIdQueryLineIds(
+  Future<List<ArrivalDeparture>> arrivalDepartures(
     String id,
     List<String> lineIds,
   ) async {
@@ -242,7 +242,7 @@ class StopPointService {
   }
 
   /// Gets Stopoints that are reachable from a station/line combination.
-  Future<List<StopPoint>> reachableFromByPathIdPathLineIdQueryServiceTypes(
+  Future<List<StopPoint>> reachableFrom(
     String id,
     String lineId, {
     List<String>? serviceTypes,
@@ -265,7 +265,7 @@ class StopPointService {
   }
 
   /// Returns the route sections for all the lines that service the given stop point ids
-  Future<List<StopPointRouteSection>> routeByPathIdQueryServiceTypes(
+  Future<List<StopPointRouteSection>> route(
     String id, {
     List<String>? serviceTypes,
   }) async {
@@ -287,8 +287,7 @@ class StopPointService {
   }
 
   /// Gets a distinct list of disrupted stop points for the given modes
-  Future<List<DisruptedPoint>>
-      disruptionByModeByPathModesQueryIncludeRouteBlockedStops(
+  Future<List<DisruptedPoint>> disruptionByMode(
     List<String> modes, {
     bool? includeRouteBlockedStops,
   }) async {
@@ -311,8 +310,7 @@ class StopPointService {
   }
 
   /// Gets all disruptions for the specified StopPointId, plus disruptions for any child Naptan records it may have.
-  Future<List<DisruptedPoint>>
-      disruptionByPathIdsQueryGetFamilyQueryIncludeRouteBlockedStopsQuer(
+  Future<List<DisruptedPoint>> disruption(
     List<String> ids, {
     bool? getFamily,
     bool? includeRouteBlockedStops,
@@ -340,7 +338,7 @@ class StopPointService {
   }
 
   /// Returns the canonical direction, "inbound" or "outbound", for a given pair of stop point Ids in the direction from -> to.
-  Future<String> directionByPathIdPathToStopPointIdQueryLineId(
+  Future<String> direction(
     String id,
     String toStopPointId, {
     String? lineId,
@@ -361,8 +359,7 @@ class StopPointService {
   }
 
   /// Gets a list of StopPoints within {radius} by the specified criteria
-  Future<StopPointsResponse>
-      getByGeoPointByQueryLatQueryLonQueryStopTypesQueryRadiusQueryUseSt(
+  Future<StopPointsResponse> getByGeoPoint(
     List<String> stopTypes,
     double lat,
     double lon, {
@@ -396,7 +393,7 @@ class StopPointService {
   }
 
   /// Gets a list of StopPoints filtered by the modes available at that StopPoint.
-  Future<StopPointsResponse> getByModeByPathModesQueryPage(
+  Future<StopPointsResponse> getByMode(
     List<String> modes, {
     int? page,
   }) async {
@@ -416,41 +413,7 @@ class StopPointService {
   }
 
   /// Search StopPoints by their common name, or their 5-digit Countdown Bus Stop Code.
-  Future<SearchResponse>
-      searchByPathQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLines(
-    String query, {
-    List<String>? modes,
-    bool? faresOnly,
-    int? maxResults,
-    List<String>? lines,
-    bool? includeHubs,
-    bool? tflOperatedNationalRailStationsOnly,
-  }) async {
-    final response = await _client.get(
-      Uri.https(
-        authority,
-        '/stoppoint/search/$query',
-        {
-          if (modes != null) 'modes': modes.join(','),
-          if (faresOnly != null) 'faresOnly': faresOnly.toString(),
-          if (maxResults != null) 'maxResults': maxResults.toString(),
-          if (lines != null) 'lines': lines.join(','),
-          if (includeHubs != null) 'includeHubs': includeHubs.toString(),
-          if (tflOperatedNationalRailStationsOnly != null)
-            'tflOperatedNationalRailStationsOnly':
-                tflOperatedNationalRailStationsOnly.toString(),
-        },
-      ),
-    );
-
-    TflApiClientException.checkIsSuccessStatusCode(response);
-
-    return SearchResponse.fromJson(json.decode(response.body));
-  }
-
-  /// Search StopPoints by their common name, or their 5-digit Countdown Bus Stop Code.
-  Future<SearchResponse>
-      searchByQueryQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLine(
+  Future<SearchResponse> search(
     String query, {
     List<String>? modes,
     bool? faresOnly,
@@ -483,14 +446,18 @@ class StopPointService {
   }
 
   /// Gets a StopPoint for a given sms code.
-  Future<StopPoint> getBySmsByPathIdQueryOutput(
+  Future<StopPoint> getBySms(
     String id, {
     String? output,
   }) async {
     final response = await _client.get(
-      Uri.https(authority, '/stoppoint/sms/$id', {
-        if (output != null) 'output': output,
-      }),
+      Uri.https(
+        authority,
+        '/stoppoint/sms/$id',
+        {
+          if (output != null) 'output': output,
+        },
+      ),
     );
 
     TflApiClientException.checkIsSuccessStatusCode(response);
@@ -499,7 +466,7 @@ class StopPointService {
   }
 
   /// Gets a list of taxi ranks corresponding to the given stop point id.
-  Future<List<Place>> getTaxiRanksByIdsByPathStopPointId(
+  Future<List<Place>> getTaxiRanksById(
     String stopPointId,
   ) async {
     final response = await _client.get(
@@ -517,7 +484,7 @@ class StopPointService {
   }
 
   /// Get car parks corresponding to the given stop point id.
-  Future<List<Place>> getCarParksByIdByPathStopPointId(
+  Future<List<Place>> getCarParksById(
     String stopPointId,
   ) async {
     final response = await _client.get(

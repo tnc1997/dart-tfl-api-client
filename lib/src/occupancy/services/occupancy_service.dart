@@ -16,7 +16,7 @@ class OccupancyService {
   }) : _client = client;
 
   /// Gets the occupancy for all car parks that have occupancy data
-  Future<List<CarParkOccupancy>> get() async {
+  Future<List<CarParkOccupancy>> getAll() async {
     final response = await _client.get(
       Uri.https(
         authority,
@@ -48,7 +48,7 @@ class OccupancyService {
   }
 
   /// Gets the occupancy for a car park with a given id
-  Future<CarParkOccupancy> getByPathId(
+  Future<CarParkOccupancy> get(
     String id,
   ) async {
     final response = await _client.get(
@@ -64,7 +64,7 @@ class OccupancyService {
   }
 
   /// Gets the occupancy for a charge connectors with a given id (sourceSystemPlaceId)
-  Future<List<ChargeConnectorOccupancy>> getChargeConnectorStatusByPathIds(
+  Future<List<ChargeConnectorOccupancy>> getChargeConnectorStatus(
     List<String> ids,
   ) async {
     final response = await _client.get(
@@ -82,7 +82,7 @@ class OccupancyService {
   }
 
   /// Get the occupancy for bike points.
-  Future<List<BikePointOccupancy>> getBikePointsOccupanciesByPathIds(
+  Future<List<BikePointOccupancy>> getBikePointsOccupancies(
     List<String> ids,
   ) async {
     final response = await _client.get(

@@ -76,9 +76,7 @@ void main() {
             'journeyResultsByPathFromPathToQueryViaQueryNationalSearchQueryDateQu',
             () async {
               await expectLater(
-                api.journey
-                    .journeyResultsByPathFromPathToQueryViaQueryNationalSearchQueryDateQu(
-                        journeyFrom, journeyTo),
+                api.journey.journeyResults(journeyFrom, journeyTo),
                 completes,
               );
             },
@@ -133,7 +131,7 @@ void main() {
             'getByPathIds',
             () async {
               await expectLater(
-                api.line.getByPathIds(lineIds),
+                api.line.get(lineIds),
                 completes,
               );
             },
@@ -143,7 +141,7 @@ void main() {
             'getByModeByPathModes',
             () async {
               await expectLater(
-                api.line.getByModeByPathModes(lineModes),
+                api.line.getByMode(lineModes),
                 completes,
               );
             },
@@ -153,7 +151,7 @@ void main() {
             'routeByQueryServiceTypes',
             () async {
               await expectLater(
-                api.line.routeByQueryServiceTypes(),
+                api.line.route(),
                 completes,
               );
             },
@@ -163,7 +161,7 @@ void main() {
             'lineRoutesByIdsByPathIdsQueryServiceTypes',
             () async {
               await expectLater(
-                api.line.lineRoutesByIdsByPathIdsQueryServiceTypes(lineIds),
+                api.line.lineRoutesByIds(lineIds),
                 completes,
               );
             },
@@ -173,7 +171,7 @@ void main() {
             'routeByModeByPathModesQueryServiceTypes',
             () async {
               await expectLater(
-                api.line.routeByModeByPathModesQueryServiceTypes(lineModes),
+                api.line.routeByMode(lineModes),
                 completes,
               );
             },
@@ -183,9 +181,7 @@ void main() {
             'routeSequenceByPathIdPathDirectionQueryServiceTypesQueryExcludeCrowding',
             () async {
               await expectLater(
-                api.line
-                    .routeSequenceByPathIdPathDirectionQueryServiceTypesQueryExcludeCrowding(
-                        lineId, lineDirection),
+                api.line.routeSequence(lineId, lineDirection),
                 completes,
               );
             },
@@ -195,9 +191,7 @@ void main() {
             'statusByPathIdsPathStartDatePathEndDateQueryDetail',
             () async {
               await expectLater(
-                api.line.statusByPathIdsPathStartDatePathEndDateQueryDetail(
-                    lineIds,
-                    DateTime.now(),
+                api.line.status(lineIds, DateTime.now(),
                     DateTime.now().add(Duration(days: 1))),
                 completes,
               );
@@ -208,7 +202,7 @@ void main() {
             'statusByIdsByPathIdsQueryDetail',
             () async {
               await expectLater(
-                api.line.statusByIdsByPathIdsQueryDetail(lineIds),
+                api.line.statusByIds(lineIds),
                 completes,
               );
             },
@@ -218,8 +212,7 @@ void main() {
             'searchByPathQueryQueryModesQueryServiceTypes',
             () async {
               await expectLater(
-                api.line
-                    .searchByPathQueryQueryModesQueryServiceTypes(lineQuery),
+                api.line.search(lineQuery),
                 completes,
               );
             },
@@ -229,7 +222,7 @@ void main() {
             'statusBySeverityByPathSeverity',
             () async {
               await expectLater(
-                api.line.statusBySeverityByPathSeverity(lineSeverity),
+                api.line.statusBySeverity(lineSeverity),
                 completes,
               );
             },
@@ -239,8 +232,7 @@ void main() {
             'statusByModeByPathModesQueryDetailQuerySeverityLevel',
             () async {
               await expectLater(
-                api.line.statusByModeByPathModesQueryDetailQuerySeverityLevel(
-                    lineModes),
+                api.line.statusByMode(lineModes),
                 completes,
               );
             },
@@ -250,9 +242,7 @@ void main() {
             'stopPointsByPathIdQueryTflOperatedNationalRailStationsOnly',
             () async {
               await expectLater(
-                api.line
-                    .stopPointsByPathIdQueryTflOperatedNationalRailStationsOnly(
-                        lineId),
+                api.line.stopPoints(lineId),
                 completes,
               );
             },
@@ -262,8 +252,7 @@ void main() {
             'timetableByPathFromStopPointIdPathId',
             () async {
               await expectLater(
-                api.line.timetableByPathFromStopPointIdPathId(
-                    lineFromStopPointId, lineId),
+                api.line.timetable(lineFromStopPointId, lineId),
                 completes,
               );
             },
@@ -273,9 +262,8 @@ void main() {
             'timetableToByPathFromStopPointIdPathIdPathToStopPointId',
             () async {
               await expectLater(
-                api.line
-                    .timetableToByPathFromStopPointIdPathIdPathToStopPointId(
-                        lineFromStopPointId, lineId, lineToStopPointId),
+                api.line.timetableTo(
+                    lineFromStopPointId, lineId, lineToStopPointId),
                 completes,
               );
             },
@@ -285,7 +273,7 @@ void main() {
             'disruptionByPathIds',
             () async {
               await expectLater(
-                api.line.disruptionByPathIds(lineIds),
+                api.line.disruption(lineIds),
                 completes,
               );
             },
@@ -295,7 +283,7 @@ void main() {
             'disruptionByModeByPathModes',
             () async {
               await expectLater(
-                api.line.disruptionByModeByPathModes(lineModes),
+                api.line.disruptionByMode(lineModes),
                 completes,
               );
             },
@@ -305,9 +293,7 @@ void main() {
             'arrivalsWithStopPointByPathIdsPathStopPointIdQueryDirectionQueryDestina',
             () async {
               await expectLater(
-                api.line
-                    .arrivalsWithStopPointByPathIdsPathStopPointIdQueryDirectionQueryDestina(
-                        lineIds, lineStopPointId),
+                api.line.arrivalsWithStopPoint(lineIds, lineStopPointId),
                 completes,
               );
             },
@@ -317,7 +303,7 @@ void main() {
             'arrivalsByPathIds',
             () async {
               await expectLater(
-                api.line.arrivalsByPathIds(lineIds),
+                api.line.arrivals(lineIds),
                 completes,
               );
             },
@@ -357,7 +343,7 @@ void main() {
             'get',
             () async {
               await expectLater(
-                api.occupancy.get(),
+                api.occupancy.getAll(),
                 completes,
               );
             },
@@ -377,7 +363,7 @@ void main() {
             'getByPathId',
             () async {
               await expectLater(
-                api.occupancy.getByPathId(occupancyCarParkId),
+                api.occupancy.get(occupancyCarParkId),
                 completes,
               );
             },
@@ -387,8 +373,8 @@ void main() {
             'getChargeConnectorStatusByPathIds',
             () async {
               await expectLater(
-                api.occupancy.getChargeConnectorStatusByPathIds(
-                    occupancyChargeConnectorIds),
+                api.occupancy
+                    .getChargeConnectorStatus(occupancyChargeConnectorIds),
                 completes,
               );
             },
@@ -398,8 +384,7 @@ void main() {
             'getBikePointsOccupanciesByPathIds',
             () async {
               await expectLater(
-                api.occupancy
-                    .getBikePointsOccupanciesByPathIds(occupancyBikePointIds),
+                api.occupancy.getBikePointsOccupancies(occupancyBikePointIds),
                 completes,
               );
             },
@@ -434,7 +419,7 @@ void main() {
             'getByTypeByPathTypesQueryActiveOnly',
             () async {
               await expectLater(
-                api.place.getByTypeByPathTypesQueryActiveOnly(placeTypes),
+                api.place.getByType(placeTypes),
                 completes,
               );
             },
@@ -444,7 +429,7 @@ void main() {
             'getByPathIdQueryIncludeChildren',
             () async {
               await expectLater(
-                api.place.getByPathIdQueryIncludeChildren(placeId),
+                api.place.get(placeId),
                 completes,
               );
             },
@@ -454,8 +439,7 @@ void main() {
             'getByGeoPointByQueryLatQueryLonQueryRadiusQueryCategoriesQueryIncludeC',
             () async {
               await expectLater(
-                api.place
-                    .getByGeoPointByQueryLatQueryLonQueryRadiusQueryCategoriesQueryIncludeC(
+                api.place.getByGeoPoint(
                   placeLat,
                   placeLon,
                   radius: placeRadius,
@@ -469,8 +453,7 @@ void main() {
             'getAtByPathTypePathLatPathLon',
             () async {
               await expectLater(
-                api.place.getAtByPathTypePathLatPathLon(
-                    placeType, placeLat, placeLon),
+                api.place.getAt(placeType, placeLat, placeLon),
                 completes,
               );
             },
@@ -480,7 +463,7 @@ void main() {
             'searchByQueryNameQueryTypes',
             () async {
               await expectLater(
-                api.place.searchByQueryNameQueryTypes(placeName),
+                api.place.search(placeName),
                 completes,
               );
             },
@@ -495,7 +478,7 @@ void main() {
             'get',
             () async {
               await expectLater(
-                api.road.get(),
+                api.road.getAll(),
                 completes,
               );
             },
@@ -505,7 +488,7 @@ void main() {
             'getByPathIds',
             () async {
               await expectLater(
-                api.road.getByPathIds(roadIds),
+                api.road.get(roadIds),
                 completes,
               );
             },
@@ -515,7 +498,7 @@ void main() {
             'statusByPathIdsQueryStartDateQueryEndDate',
             () async {
               await expectLater(
-                api.road.statusByPathIdsQueryStartDateQueryEndDate(roadIds),
+                api.road.status(roadIds),
                 completes,
               );
             },
@@ -525,9 +508,7 @@ void main() {
             'disruptionByPathIdsQueryStripContentQuerySeveritiesQueryCategoriesQuery',
             () async {
               await expectLater(
-                api.road
-                    .disruptionByPathIdsQueryStripContentQuerySeveritiesQueryCategoriesQuery(
-                        roadIds),
+                api.road.disruption(roadIds),
                 completes,
               );
             },
@@ -537,7 +518,7 @@ void main() {
             'disruptedStreetsByQueryStartDateQueryEndDate',
             () async {
               await expectLater(
-                api.road.disruptedStreetsByQueryStartDateQueryEndDate(
+                api.road.disruptedStreets(
                   startDate: DateTime.now(),
                   endDate: DateTime.now().add(Duration(days: 1)),
                 ),
@@ -550,8 +531,7 @@ void main() {
             'disruptionByIdByPathDisruptionIdsQueryStripContent',
             () async {
               await expectLater(
-                api.road.disruptionByIdByPathDisruptionIdsQueryStripContent(
-                    roadDisruptionIds),
+                api.road.disruptionById(roadDisruptionIds),
                 completes,
               );
             },
@@ -586,7 +566,7 @@ void main() {
             'getByQueryQuery',
             () async {
               await expectLater(
-                api.search.getByQueryQuery(searchSiteQuery),
+                api.search.get(searchSiteQuery),
                 completes,
               );
             },
@@ -596,7 +576,7 @@ void main() {
             'busSchedulesByQueryQuery',
             () async {
               await expectLater(
-                api.search.busSchedulesByQueryQuery(searchBusSchedulesQuery),
+                api.search.busSchedules(searchBusSchedulesQuery),
                 completes,
               );
             },
@@ -671,8 +651,7 @@ void main() {
             'getByPathIdsQueryIncludeCrowdingData',
             () async {
               await expectLater(
-                api.stopPoint
-                    .getByPathIdsQueryIncludeCrowdingData(stopPointIds),
+                api.stopPoint.get(stopPointIds),
                 completes,
               );
             },
@@ -682,8 +661,7 @@ void main() {
             'getByPathIdQueryPlaceTypes',
             () async {
               await expectLater(
-                api.stopPoint
-                    .getByPathIdQueryPlaceTypes(stopPointId, stopPointTypes),
+                api.stopPoint.getPlaceTypes(stopPointId, stopPointTypes),
                 completes,
               );
             },
@@ -693,8 +671,8 @@ void main() {
             'crowdingByPathIdPathLineQueryDirection',
             () async {
               await expectLater(
-                api.stopPoint.crowdingByPathIdPathLineQueryDirection(
-                    stopPointId, stopPointLineId, stopPointDirection),
+                api.stopPoint
+                    .crowding(stopPointId, stopPointLineId, stopPointDirection),
                 completes,
               );
             },
@@ -704,7 +682,7 @@ void main() {
             'getByTypeByPathTypes',
             () async {
               await expectLater(
-                api.stopPoint.getByTypeByPathTypes(stopPointTypes),
+                api.stopPoint.getByType(stopPointTypes),
                 completes,
               );
             },
@@ -714,8 +692,8 @@ void main() {
             'getByTypeWithPaginationByPathTypesPathPage',
             () async {
               await expectLater(
-                api.stopPoint.getByTypeWithPaginationByPathTypesPathPage(
-                    stopPointTypes, stopPointPage),
+                api.stopPoint
+                    .getByTypeWithPagination(stopPointTypes, stopPointPage),
                 completes,
               );
             },
@@ -725,8 +703,7 @@ void main() {
             'getServiceTypesByQueryIdQueryLineIdsQueryModes',
             () async {
               await expectLater(
-                api.stopPoint.getServiceTypesByQueryIdQueryLineIdsQueryModes(
-                    stopPointId),
+                api.stopPoint.getServiceTypes(stopPointId),
                 completes,
               );
             },
@@ -736,7 +713,7 @@ void main() {
             'arrivalsByPathId',
             () async {
               await expectLater(
-                api.stopPoint.arrivalsByPathId(stopPointId),
+                api.stopPoint.arrivals(stopPointId),
                 completes,
               );
             },
@@ -746,8 +723,8 @@ void main() {
             'arrivalDeparturesByPathIdQueryLineIds',
             () async {
               await expectLater(
-                api.stopPoint.arrivalDeparturesByPathIdQueryLineIds(
-                    '910GHROW', ['london-overground']),
+                api.stopPoint
+                    .arrivalDepartures('910GHROW', ['london-overground']),
                 completes,
               );
             },
@@ -757,8 +734,7 @@ void main() {
             'reachableFromByPathIdPathLineIdQueryServiceTypes',
             () async {
               await expectLater(
-                api.stopPoint.reachableFromByPathIdPathLineIdQueryServiceTypes(
-                    stopPointId, stopPointLineId),
+                api.stopPoint.reachableFrom(stopPointId, stopPointLineId),
                 completes,
               );
             },
@@ -768,7 +744,7 @@ void main() {
             'routeByPathIdQueryServiceTypes',
             () async {
               await expectLater(
-                api.stopPoint.routeByPathIdQueryServiceTypes(stopPointId),
+                api.stopPoint.route(stopPointId),
                 completes,
               );
             },
@@ -778,9 +754,7 @@ void main() {
             'disruptionByModeByPathModesQueryIncludeRouteBlockedStops',
             () async {
               await expectLater(
-                api.stopPoint
-                    .disruptionByModeByPathModesQueryIncludeRouteBlockedStops(
-                        stopPointModes),
+                api.stopPoint.disruptionByMode(stopPointModes),
                 completes,
               );
             },
@@ -790,9 +764,7 @@ void main() {
             'disruptionByPathIdsQueryGetFamilyQueryIncludeRouteBlockedStopsQuer',
             () async {
               await expectLater(
-                api.stopPoint
-                    .disruptionByPathIdsQueryGetFamilyQueryIncludeRouteBlockedStopsQuer(
-                        stopPointIds),
+                api.stopPoint.disruption(stopPointIds),
                 completes,
               );
             },
@@ -802,8 +774,7 @@ void main() {
             'directionByPathIdPathToStopPointIdQueryLineId',
             () async {
               await expectLater(
-                api.stopPoint.directionByPathIdPathToStopPointIdQueryLineId(
-                    stopPointId, stopPointToStopPointId),
+                api.stopPoint.direction(stopPointId, stopPointToStopPointId),
                 completes,
               );
             },
@@ -813,8 +784,7 @@ void main() {
             'getByGeoPointByQueryLatQueryLonQueryStopTypesQueryRadiusQueryUseSt',
             () async {
               await expectLater(
-                api.stopPoint
-                    .getByGeoPointByQueryLatQueryLonQueryStopTypesQueryRadiusQueryUseSt(
+                api.stopPoint.getByGeoPoint(
                   stopPointTypes,
                   stopPointLat,
                   stopPointLon,
@@ -829,7 +799,7 @@ void main() {
             'getByModeByPathModesQueryPage',
             () async {
               await expectLater(
-                api.stopPoint.getByModeByPathModesQueryPage(stopPointModes),
+                api.stopPoint.getByMode(stopPointModes),
                 completes,
               );
             },
@@ -839,21 +809,7 @@ void main() {
             'searchByPathQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLines',
             () async {
               await expectLater(
-                api.stopPoint
-                    .searchByPathQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLines(
-                        stopPointQuery),
-                completes,
-              );
-            },
-          );
-
-          test(
-            'searchByQueryQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLine',
-            () async {
-              await expectLater(
-                api.stopPoint
-                    .searchByQueryQueryQueryModesQueryFaresOnlyQueryMaxResultsQueryLine(
-                        stopPointQuery),
+                api.stopPoint.search(stopPointQuery),
                 completes,
               );
             },
@@ -863,7 +819,7 @@ void main() {
             'getBySmsByPathIdQueryOutput',
             () async {
               await expectLater(
-                api.stopPoint.getBySmsByPathIdQueryOutput(stopPointSmsCode),
+                api.stopPoint.getBySms(stopPointSmsCode),
                 completes,
               );
             },
@@ -873,7 +829,7 @@ void main() {
             'getTaxiRanksByIdsByPathStopPointId',
             () async {
               await expectLater(
-                api.stopPoint.getTaxiRanksByIdsByPathStopPointId(stopPointId),
+                api.stopPoint.getTaxiRanksById(stopPointId),
                 completes,
               );
             },
@@ -883,7 +839,7 @@ void main() {
             'getCarParksByIdByPathStopPointId',
             () async {
               await expectLater(
-                api.stopPoint.getCarParksByIdByPathStopPointId(stopPointId),
+                api.stopPoint.getCarParksById(stopPointId),
                 completes,
               );
             },
@@ -898,7 +854,7 @@ void main() {
             'getByPathIds',
             () async {
               await expectLater(
-                api.vehicle.getByPathIds(vehicleIds),
+                api.vehicle.get(vehicleIds),
                 completes,
               );
             },
@@ -908,8 +864,7 @@ void main() {
             'getEmissionsSurchargeComplianceByQueryVrm',
             () async {
               await expectLater(
-                api.vehicle
-                    .getEmissionsSurchargeComplianceByQueryVrm(vehicleVrm),
+                api.vehicle.getEmissionsSurchargeCompliance(vehicleVrm),
                 completes,
               );
             },
@@ -919,7 +874,7 @@ void main() {
             'getUlezComplianceByQueryVrm',
             () async {
               await expectLater(
-                api.vehicle.getUlezComplianceByQueryVrm(vehicleVrm),
+                api.vehicle.getUlezCompliance(vehicleVrm),
                 completes,
               );
             },

@@ -48,7 +48,7 @@ class PlaceService {
   }
 
   /// Gets all places of a given type
-  Future<List<Place>> getByTypeByPathTypesQueryActiveOnly(
+  Future<List<Place>> getByType(
     List<String> types, {
     bool? activeOnly,
   }) async {
@@ -70,7 +70,7 @@ class PlaceService {
   }
 
   /// Gets the place with the given id.
-  Future<Place> getByPathIdQueryIncludeChildren(
+  Future<Place> get(
     String id, {
     bool? includeChildren,
   }) async {
@@ -91,8 +91,7 @@ class PlaceService {
   }
 
   /// Gets the places that lie within a geographic region. The geographic region of interest can either be specified by using a lat/lon geo-point and a radius in metres to return places within the locus defined by the lat/lon of its centre or alternatively, by the use of a bounding box defined by the lat/lon of its north-west and south-east corners. Optionally filters on type and can strip properties for a smaller payload.
-  Future<PlacesResponse>
-      getByGeoPointByQueryLatQueryLonQueryRadiusQueryCategoriesQueryIncludeC(
+  Future<PlacesResponse> getByGeoPoint(
     double lat,
     double lon, {
     double? radius,
@@ -127,7 +126,7 @@ class PlaceService {
   }
 
   /// Gets any places of the given type whose geography intersects the given latitude and longitude. In practice this means the Place must be polygonal e.g. a BoroughBoundary.
-  Future<List<Place>> getAtByPathTypePathLatPathLon(
+  Future<List<Place>> getAt(
     String type,
     double lat,
     double lon,
@@ -135,7 +134,7 @@ class PlaceService {
     final response = await _client.get(
       Uri.https(
         authority,
-        '/place/${type}/at/$lat/$lon',
+        '/place/$type/at/$lat/$lon',
       ),
     );
 
@@ -147,7 +146,7 @@ class PlaceService {
   }
 
   /// Gets all places that matches the given query
-  Future<List<Place>> searchByQueryNameQueryTypes(
+  Future<List<Place>> search(
     String name, {
     List<String>? types,
   }) async {

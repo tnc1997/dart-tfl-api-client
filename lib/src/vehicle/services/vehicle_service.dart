@@ -15,7 +15,7 @@ class VehicleService {
   }) : _client = client;
 
   /// Gets the predictions for a given list of vehicle Id's.
-  Future<List<Prediction>> getByPathIds(
+  Future<List<Prediction>> get(
     List<String> ids,
   ) async {
     final response = await _client.get(
@@ -33,13 +33,17 @@ class VehicleService {
   }
 
   /// Gets the Emissions Surcharge compliance for the Vehicle
-  Future<VehicleMatch> getEmissionsSurchargeComplianceByQueryVrm(
+  Future<VehicleMatch> getEmissionsSurchargeCompliance(
     String vrm,
   ) async {
     final response = await _client.get(
-      Uri.https(authority, '/vehicle/emissionsurcharge', {
-        'vrm': vrm,
-      }),
+      Uri.https(
+        authority,
+        '/vehicle/emissionsurcharge',
+        {
+          'vrm': vrm,
+        },
+      ),
     );
 
     TflApiClientException.checkIsSuccessStatusCode(response);
@@ -48,13 +52,17 @@ class VehicleService {
   }
 
   /// Gets the Ulez Surcharge compliance for the Vehicle
-  Future<VehicleMatch> getUlezComplianceByQueryVrm(
+  Future<VehicleMatch> getUlezCompliance(
     String vrm,
   ) async {
     final response = await _client.get(
-      Uri.https(authority, '/vehicle/ulezcompliance', {
-        'vrm': vrm,
-      }),
+      Uri.https(
+        authority,
+        '/vehicle/ulezcompliance',
+        {
+          'vrm': vrm,
+        },
+      ),
     );
 
     TflApiClientException.checkIsSuccessStatusCode(response);
