@@ -1,5 +1,7 @@
-﻿class PlacePolygon {
-  List<Object>? geoPoints;
+﻿import 'geo_point.dart';
+
+class PlacePolygon {
+  List<GeoPoint>? geoPoints;
   String? commonName;
 
   PlacePolygon({
@@ -12,7 +14,7 @@
   ) {
     return PlacePolygon(
       geoPoints: (json['geoPoints'] as List<dynamic>?)
-          ?.map((e) => e as Object)
+          ?.map((e) => GeoPoint.fromJson(e as Map<String, dynamic>))
           .toList(),
       commonName: json['commonName'] as String?,
     );

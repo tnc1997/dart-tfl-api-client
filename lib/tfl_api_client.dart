@@ -160,6 +160,7 @@ export 'src/place/models/canal_placemark.dart';
 export 'src/place/models/cycle_superhighway.dart';
 export 'src/place/models/geo_code_search_match.dart';
 export 'src/place/models/geo_json_object.dart';
+export 'src/place/models/geo_point.dart';
 export 'src/place/models/geo_point_b_box.dart';
 export 'src/place/models/place_category.dart';
 export 'src/place/models/place_polygon.dart';
