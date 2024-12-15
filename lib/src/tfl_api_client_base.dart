@@ -20,7 +20,7 @@ class TflApiClient {
   AccidentStatsService? _accidentStats;
   AirQualityService? _airQuality;
   BikePointService? _bikePoint;
-  CycleSuperhighwayService? _cycleSuperhighwayService;
+  CycleSuperhighwayService? _cycleSuperhighway;
   JourneyService? _journey;
   LineService? _line;
   ModeService? _mode;
@@ -53,8 +53,8 @@ class TflApiClient {
     );
   }
 
-  CycleSuperhighwayService get cycleSuperhighwayService {
-    return _cycleSuperhighwayService ??= CycleSuperhighwayService(
+  CycleSuperhighwayService get cycleSuperhighway {
+    return _cycleSuperhighway ??= CycleSuperhighwayService(
       client: _client,
     );
   }
