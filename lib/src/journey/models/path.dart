@@ -1,9 +1,10 @@
 ﻿import '../../common/models/identifier.dart';
+import 'elevation.dart';
 
 class Path {
   String? lineString;
   List<Identifier>? stopPoints;
-  List<Object>? elevation;
+  List<JourneyPlannerElevation>? elevation;
 
   Path({
     this.lineString,
@@ -20,7 +21,8 @@ class Path {
           ?.map((e) => Identifier.fromJson(e as Map<String, dynamic>))
           .toList(),
       elevation: (json['elevation'] as List<dynamic>?)
-          ?.map((e) => e as Object)
+          ?.map((e) =>
+              JourneyPlannerElevation.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }

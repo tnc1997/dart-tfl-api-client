@@ -93,6 +93,7 @@ export 'src/journey/models/cycle_hire_docking_station_data.dart';
 export 'src/journey/models/disambiguation.dart';
 export 'src/journey/models/disambiguation_option.dart';
 export 'src/journey/models/disambiguation_result.dart';
+export 'src/journey/models/elevation.dart';
 export 'src/journey/models/fare.dart';
 export 'src/journey/models/fare_caveat.dart';
 export 'src/journey/models/fare_tap.dart';
