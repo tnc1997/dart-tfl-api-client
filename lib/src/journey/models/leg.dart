@@ -15,8 +15,8 @@ class Leg {
   List<Obstacle>? obstacles;
   DateTime? departureTime;
   DateTime? arrivalTime;
-  Point? departurePoint;
-  Point? arrivalPoint;
+  JourneyPlannerPoint? departurePoint;
+  JourneyPlannerPoint? arrivalPoint;
   Path? path;
   List<RouteOption>? routeOptions;
   Identifier? mode;
@@ -66,10 +66,12 @@ class Leg {
           : DateTime.parse(json['arrivalTime'] as String),
       departurePoint: json['departurePoint'] == null
           ? null
-          : Point.fromJson(json['departurePoint'] as Map<String, dynamic>),
+          : JourneyPlannerPoint.fromJson(
+              json['departurePoint'] as Map<String, dynamic>),
       arrivalPoint: json['arrivalPoint'] == null
           ? null
-          : Point.fromJson(json['arrivalPoint'] as Map<String, dynamic>),
+          : JourneyPlannerPoint.fromJson(
+              json['arrivalPoint'] as Map<String, dynamic>),
       path: json['path'] == null
           ? null
           : Path.fromJson(json['path'] as Map<String, dynamic>),

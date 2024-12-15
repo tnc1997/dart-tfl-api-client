@@ -1,6 +1,7 @@
 ﻿import '../../common/models/identifier.dart';
+import '../../common/models/search_match.dart';
 
-class MatchedStop {
+class MatchedStop extends SearchMatch {
   int? routeId;
   String? parentId;
   String? stationId;
@@ -16,13 +17,13 @@ class MatchedStop {
   bool? hasDisruption;
   List<Identifier>? lines;
   bool? status;
-  String? id;
-  String? url;
-  String? name;
-  double? lat;
-  double? lon;
 
   MatchedStop({
+    String? id,
+    String? url,
+    String? name,
+    double? lat,
+    double? lon,
     this.routeId,
     this.parentId,
     this.stationId,
@@ -38,17 +39,23 @@ class MatchedStop {
     this.hasDisruption,
     this.lines,
     this.status,
-    this.id,
-    this.url,
-    this.name,
-    this.lat,
-    this.lon,
-  });
+  }) : super(
+          id: id,
+          url: url,
+          name: name,
+          lat: lat,
+          lon: lon,
+        );
 
   factory MatchedStop.fromJson(
     Map<String, dynamic> json,
   ) {
     return MatchedStop(
+      id: json['id'] as String?,
+      url: json['url'] as String?,
+      name: json['name'] as String?,
+      lat: (json['lat'] as num?)?.toDouble(),
+      lon: (json['lon'] as num?)?.toDouble(),
       routeId: (json['routeId'] as num?)?.toInt(),
       parentId: json['parentId'] as String?,
       stationId: json['stationId'] as String?,
@@ -67,16 +74,17 @@ class MatchedStop {
           ?.map((e) => Identifier.fromJson(e as Map<String, dynamic>))
           .toList(),
       status: json['status'] as bool?,
-      id: json['id'] as String?,
-      url: json['url'] as String?,
-      name: json['name'] as String?,
-      lat: (json['lat'] as num?)?.toDouble(),
-      lon: (json['lon'] as num?)?.toDouble(),
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
+      'url': url,
+      'name': name,
+      'lat': lat,
+      'lon': lon,
       'routeId': routeId,
       'parentId': parentId,
       'stationId': stationId,
@@ -92,11 +100,6 @@ class MatchedStop {
       'hasDisruption': hasDisruption,
       'lines': lines,
       'status': status,
-      'id': id,
-      'url': url,
-      'name': name,
-      'lat': lat,
-      'lon': lon,
     };
   }
 }

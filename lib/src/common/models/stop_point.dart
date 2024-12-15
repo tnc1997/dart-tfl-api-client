@@ -4,7 +4,7 @@ import 'line_group.dart';
 import 'line_mode_group.dart';
 import 'place.dart';
 
-class StopPoint {
+class StopPoint extends Place {
   String? naptanId;
   String? platformName;
   String? indicator;
@@ -21,19 +21,20 @@ class StopPoint {
   List<LineModeGroup>? lineModeGroups;
   String? fullName;
   String? naptanMode;
-  Object? status;
-  String? id;
-  String? url;
-  String? commonName;
-  double? distance;
-  String? placeType;
-  List<AdditionalProperties>? additionalProperties;
-  List<Place>? children;
-  List<String>? childrenUrls;
-  double? lat;
-  double? lon;
+  bool? status;
+  String? individualStopId;
 
   StopPoint({
+    double? lat,
+    double? lon,
+    String? id,
+    String? url,
+    String? commonName,
+    double? distance,
+    String? placeType,
+    List<AdditionalProperties>? additionalProperties,
+    List<Place>? children,
+    List<String>? childrenUrls,
     this.naptanId,
     this.platformName,
     this.indicator,
@@ -51,22 +52,40 @@ class StopPoint {
     this.fullName,
     this.naptanMode,
     this.status,
-    this.id,
-    this.url,
-    this.commonName,
-    this.distance,
-    this.placeType,
-    this.additionalProperties,
-    this.children,
-    this.childrenUrls,
-    this.lat,
-    this.lon,
-  });
+    this.individualStopId,
+  }) : super(
+          lat: lat,
+          lon: lon,
+          id: id,
+          url: url,
+          commonName: commonName,
+          distance: distance,
+          placeType: placeType,
+          additionalProperties: additionalProperties,
+          children: children,
+          childrenUrls: childrenUrls,
+        );
 
   factory StopPoint.fromJson(
     Map<String, dynamic> json,
   ) {
     return StopPoint(
+      lat: (json['lat'] as num?)?.toDouble(),
+      lon: (json['lon'] as num?)?.toDouble(),
+      id: json['id'] as String?,
+      url: json['url'] as String?,
+      commonName: json['commonName'] as String?,
+      distance: (json['distance'] as num?)?.toDouble(),
+      placeType: json['placeType'] as String?,
+      additionalProperties: (json['additionalProperties'] as List<dynamic>?)
+          ?.map((e) => AdditionalProperties.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => Place.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      childrenUrls: (json['childrenUrls'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       naptanId: json['naptanId'] as String?,
       platformName: json['platformName'] as String?,
       indicator: json['indicator'] as String?,
@@ -90,28 +109,24 @@ class StopPoint {
           .toList(),
       fullName: json['fullName'] as String?,
       naptanMode: json['naptanMode'] as String?,
-      status: json['status'],
-      id: json['id'] as String?,
-      url: json['url'] as String?,
-      commonName: json['commonName'] as String?,
-      distance: (json['distance'] as num?)?.toDouble(),
-      placeType: json['placeType'] as String?,
-      additionalProperties: (json['additionalProperties'] as List<dynamic>?)
-          ?.map((e) => AdditionalProperties.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      children: (json['children'] as List<dynamic>?)
-          ?.map((e) => Place.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      childrenUrls: (json['childrenUrls'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      lat: (json['lat'] as num?)?.toDouble(),
-      lon: (json['lon'] as num?)?.toDouble(),
+      status: json['status'] as bool?,
+      individualStopId: json['individualStopId'] as String?,
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     return {
+      'lat': lat,
+      'lon': lon,
+      'id': id,
+      'url': url,
+      'commonName': commonName,
+      'distance': distance,
+      'placeType': placeType,
+      'additionalProperties': additionalProperties,
+      'children': children,
+      'childrenUrls': childrenUrls,
       'naptanId': naptanId,
       'platformName': platformName,
       'indicator': indicator,
@@ -129,16 +144,7 @@ class StopPoint {
       'fullName': fullName,
       'naptanMode': naptanMode,
       'status': status,
-      'id': id,
-      'url': url,
-      'commonName': commonName,
-      'distance': distance,
-      'placeType': placeType,
-      'additionalProperties': additionalProperties,
-      'children': children,
-      'childrenUrls': childrenUrls,
-      'lat': lat,
-      'lon': lon,
+      'individualStopId': individualStopId,
     };
   }
 }

@@ -1,6 +1,7 @@
 ﻿import 'additional_properties.dart';
+import 'point.dart';
 
-class Place {
+class Place extends Point {
   String? id;
   String? url;
   String? commonName;
@@ -9,10 +10,10 @@ class Place {
   List<AdditionalProperties>? additionalProperties;
   List<Place>? children;
   List<String>? childrenUrls;
-  double? lat;
-  double? lon;
 
   Place({
+    double? lat,
+    double? lon,
     this.id,
     this.url,
     this.commonName,
@@ -21,14 +22,17 @@ class Place {
     this.additionalProperties,
     this.children,
     this.childrenUrls,
-    this.lat,
-    this.lon,
-  });
+  }) : super(
+          lat: lat,
+          lon: lon,
+        );
 
   factory Place.fromJson(
     Map<String, dynamic> json,
   ) {
     return Place(
+      lat: (json['lat'] as num?)?.toDouble(),
+      lon: (json['lon'] as num?)?.toDouble(),
       id: json['id'] as String?,
       url: json['url'] as String?,
       commonName: json['commonName'] as String?,
@@ -43,13 +47,14 @@ class Place {
       childrenUrls: (json['childrenUrls'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      lat: (json['lat'] as num?)?.toDouble(),
-      lon: (json['lon'] as num?)?.toDouble(),
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     return {
+      'lat': lat,
+      'lon': lon,
       'id': id,
       'url': url,
       'commonName': commonName,
@@ -58,8 +63,6 @@ class Place {
       'additionalProperties': additionalProperties,
       'children': children,
       'childrenUrls': childrenUrls,
-      'lat': lat,
-      'lon': lon,
     };
   }
 }

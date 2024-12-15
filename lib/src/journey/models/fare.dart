@@ -1,6 +1,6 @@
 ﻿import 'fare_tap.dart';
 
-class Fare {
+class JourneyPlannerFare {
   int? lowZone;
   int? highZone;
   int? cost;
@@ -11,7 +11,7 @@ class Fare {
   int? offPeak;
   List<FareTap>? taps;
 
-  Fare({
+  JourneyPlannerFare({
     this.lowZone,
     this.highZone,
     this.cost,
@@ -23,10 +23,10 @@ class Fare {
     this.taps,
   });
 
-  factory Fare.fromJson(
+  factory JourneyPlannerFare.fromJson(
     Map<String, dynamic> json,
   ) {
-    return Fare(
+    return JourneyPlannerFare(
       lowZone: (json['lowZone'] as num?)?.toInt(),
       highZone: (json['highZone'] as num?)?.toInt(),
       cost: (json['cost'] as num?)?.toInt(),

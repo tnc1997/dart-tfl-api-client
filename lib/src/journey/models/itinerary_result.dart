@@ -1,27 +1,29 @@
 ﻿import '../../common/models/line.dart';
+import 'cycle_hire_docking_station_data.dart';
 import 'journey.dart';
-import 'journey_planner_cycle_hire_docking_station_data.dart';
+import 'journey_result.dart';
 import 'journey_vector.dart';
 import 'search_criteria.dart';
 
-class ItineraryResult {
+class ItineraryResult extends JourneyResult {
   List<Journey>? journeys;
   List<Line>? lines;
   JourneyPlannerCycleHireDockingStationData? cycleHireDockingStationData;
   List<String>? stopMessages;
-  int? recommendedMaxAgeMinutes;
-  SearchCriteria? searchCriteria;
-  JourneyVector? journeyVector;
 
   ItineraryResult({
+    int? recommendedMaxAgeMinutes,
+    SearchCriteria? searchCriteria,
+    JourneyVector? journeyVector,
     this.journeys,
     this.lines,
     this.cycleHireDockingStationData,
     this.stopMessages,
-    this.recommendedMaxAgeMinutes,
-    this.searchCriteria,
-    this.journeyVector,
-  });
+  }) : super(
+          recommendedMaxAgeMinutes: recommendedMaxAgeMinutes,
+          searchCriteria: searchCriteria,
+          journeyVector: journeyVector,
+        );
 
   factory ItineraryResult.fromJson(
     Map<String, dynamic> json,
@@ -53,6 +55,7 @@ class ItineraryResult {
     );
   }
 
+  @override
   Map<String, dynamic> toJson() {
     return {
       'journeys': journeys,

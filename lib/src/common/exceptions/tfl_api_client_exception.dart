@@ -6,14 +6,14 @@ class TflApiClientException implements Exception {
   /// The timestamp of the exception.
   DateTime? timestampUtc;
 
+  /// The name of the exception.
+  String? name;
+
   /// The type of the exception.
   String? exceptionType;
 
   /// The HTTP status code of the response.
   int? httpStatusCode;
-
-  /// The HTTP status of the response.
-  String? httpStatus;
 
   /// The relative URI of the request.
   String? relativeUri;
@@ -21,14 +21,18 @@ class TflApiClientException implements Exception {
   /// The message of the exception.
   String? message;
 
+  /// The detailed message of the exception.
+  String? detailedMessage;
+
   /// Constructs a [TflApiClientException].
   TflApiClientException({
     this.timestampUtc,
+    this.name,
     this.exceptionType,
     this.httpStatusCode,
-    this.httpStatus,
     this.relativeUri,
     this.message,
+    this.detailedMessage,
   });
 
   /// Constructs a [TflApiClientException] from the [json].
@@ -39,11 +43,12 @@ class TflApiClientException implements Exception {
       timestampUtc: json['timestampUtc'] == null
           ? null
           : DateTime.parse(json['timestampUtc'] as String),
+      name: json['name'] as String?,
       exceptionType: json['exceptionType'] as String?,
-      httpStatusCode: json['httpStatusCode'] as int?,
-      httpStatus: json['httpStatus'] as String?,
+      httpStatusCode: (json['httpStatusCode'] as num?)?.toInt(),
       relativeUri: json['relativeUri'] as String?,
       message: json['message'] as String?,
+      detailedMessage: json['detailedMessage'] as String?,
     );
   }
 
@@ -51,11 +56,12 @@ class TflApiClientException implements Exception {
   Map<String, dynamic> toJson() {
     return {
       'timestampUtc': timestampUtc?.toIso8601String(),
+      'name': name,
       'exceptionType': exceptionType,
       'httpStatusCode': httpStatusCode,
-      'httpStatus': httpStatus,
       'relativeUri': relativeUri,
       'message': message,
+      'detailedMessage': detailedMessage,
     };
   }
 

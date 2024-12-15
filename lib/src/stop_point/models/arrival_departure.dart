@@ -1,4 +1,5 @@
 ﻿import '../../common/models/prediction_timing.dart';
+import 'arrival_departure_with_line.dart';
 
 class ArrivalDeparture {
   String? platformName;
@@ -36,33 +37,40 @@ class ArrivalDeparture {
   factory ArrivalDeparture.fromJson(
     Map<String, dynamic> json,
   ) {
-    return ArrivalDeparture(
-      platformName: json['platformName'] as String?,
-      destinationNaptanId: json['destinationNaptanId'] as String?,
-      destinationName: json['destinationName'] as String?,
-      naptanId: json['naptanId'] as String?,
-      stationName: json['stationName'] as String?,
-      estimatedTimeOfArrival: json['estimatedTimeOfArrival'] == null
-          ? null
-          : DateTime.parse(json['estimatedTimeOfArrival'] as String),
-      scheduledTimeOfArrival: json['scheduledTimeOfArrival'] == null
-          ? null
-          : DateTime.parse(json['scheduledTimeOfArrival'] as String),
-      estimatedTimeOfDeparture: json['estimatedTimeOfDeparture'] == null
-          ? null
-          : DateTime.parse(json['estimatedTimeOfDeparture'] as String),
-      scheduledTimeOfDeparture: json['scheduledTimeOfDeparture'] == null
-          ? null
-          : DateTime.parse(json['scheduledTimeOfDeparture'] as String),
-      minutesAndSecondsToArrival: json['minutesAndSecondsToArrival'] as String?,
-      minutesAndSecondsToDeparture:
-          json['minutesAndSecondsToDeparture'] as String?,
-      cause: json['cause'] as String?,
-      departureStatus: json['departureStatus'] as String?,
-      timing: json['timing'] == null
-          ? null
-          : PredictionTiming.fromJson(json['timing'] as Map<String, dynamic>),
-    );
+    switch (json['\$type']) {
+      case 'Tfl.Api.Presentation.Entities.ArrivalDepartureWithLine, Tfl.Api.Presentation.Entities':
+        return ArrivalDepartureWithLine.fromJson(json);
+      default:
+        return ArrivalDeparture(
+          platformName: json['platformName'] as String?,
+          destinationNaptanId: json['destinationNaptanId'] as String?,
+          destinationName: json['destinationName'] as String?,
+          naptanId: json['naptanId'] as String?,
+          stationName: json['stationName'] as String?,
+          estimatedTimeOfArrival: json['estimatedTimeOfArrival'] == null
+              ? null
+              : DateTime.parse(json['estimatedTimeOfArrival'] as String),
+          scheduledTimeOfArrival: json['scheduledTimeOfArrival'] == null
+              ? null
+              : DateTime.parse(json['scheduledTimeOfArrival'] as String),
+          estimatedTimeOfDeparture: json['estimatedTimeOfDeparture'] == null
+              ? null
+              : DateTime.parse(json['estimatedTimeOfDeparture'] as String),
+          scheduledTimeOfDeparture: json['scheduledTimeOfDeparture'] == null
+              ? null
+              : DateTime.parse(json['scheduledTimeOfDeparture'] as String),
+          minutesAndSecondsToArrival:
+              json['minutesAndSecondsToArrival'] as String?,
+          minutesAndSecondsToDeparture:
+              json['minutesAndSecondsToDeparture'] as String?,
+          cause: json['cause'] as String?,
+          departureStatus: json['departureStatus'] as String?,
+          timing: json['timing'] == null
+              ? null
+              : PredictionTiming.fromJson(
+                  json['timing'] as Map<String, dynamic>),
+        );
+    }
   }
 
   Map<String, dynamic> toJson() {
