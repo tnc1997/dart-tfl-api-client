@@ -1,4 +1,4 @@
-﻿import 'message.dart';
+﻿import '../../common/models/message.dart';
 import 'ticket_time.dart';
 import 'ticket_type.dart';
 

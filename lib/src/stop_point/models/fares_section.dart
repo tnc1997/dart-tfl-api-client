@@ -1,6 +1,6 @@
-﻿import 'fare_details.dart';
-import 'journey.dart';
-import 'message.dart';
+﻿import '../../common/models/message.dart';
+import 'fare_details.dart';
+import 'fare_journey.dart';
 
 class FaresSection {
   String? header;

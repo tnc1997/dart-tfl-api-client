@@ -1,4 +1,4 @@
-﻿import 'message.dart';
+﻿import '../../common/models/message.dart';
 import 'ticket.dart';
 
 class FareDetails {
@@ -63,7 +63,7 @@ class FareDetails {
           : DateTime.parse(json['endDate'] as String),
       mode: json['mode'] as String?,
       passengerType: json['passengerType'] as String?,
-      contactlessPaygOnlyFare: json['contactlessPaygOnlyFare'] as bool?,
+      contactlessPaygOnlyFare: json['contactlessPAYGOnlyFare'] as bool?,
       from: json['from'] as String?,
       to: json['to'] as String?,
       fromStation: json['fromStation'] as String?,
@@ -94,7 +94,7 @@ class FareDetails {
       'endDate': endDate?.toIso8601String(),
       'mode': mode,
       'passengerType': passengerType,
-      'contactlessPaygOnlyFare': contactlessPaygOnlyFare,
+      'contactlessPAYGOnlyFare': contactlessPaygOnlyFare,
       'from': from,
       'to': to,
       'fromStation': fromStation,

@@ -11,6 +11,7 @@ import '../../common/models/search_response.dart';
 import '../../common/models/stop_point.dart';
 import '../models/arrival_departure.dart';
 import '../models/disrupted_point.dart';
+import '../models/fares_section.dart';
 import '../models/line_service_type.dart';
 import '../models/stop_point_category.dart';
 import '../models/stop_point_route_section.dart';
@@ -356,6 +357,25 @@ class StopPointService {
     TflApiClientException.checkIsSuccessStatusCode(response);
 
     return json.decode(response.body) as String;
+  }
+
+  /// Returns the fare for a given pair of stop point Ids in the direction from -> to.
+  Future<List<FaresSection>> fare(
+    String id,
+    String toStopPointId,
+  ) async {
+    final response = await _client.get(
+      Uri.https(
+        authority,
+        '/stoppoint/$id/fareto/$toStopPointId',
+      ),
+    );
+
+    TflApiClientException.checkIsSuccessStatusCode(response);
+
+    return (json.decode(response.body) as List<dynamic>)
+        .map((e) => FaresSection.fromJson(e))
+        .toList();
   }
 
   /// Gets a list of StopPoints within {radius} by the specified criteria
