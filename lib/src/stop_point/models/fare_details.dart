@@ -1,5 +1,5 @@
 ﻿import '../../common/models/message.dart';
-import 'ticket.dart';
+import 'fare_ticket.dart';
 
 class FareDetails {
   int? boundsId;
@@ -22,7 +22,7 @@ class FareDetails {
   bool? specialFare;
   bool? throughFare;
   bool? isTour;
-  List<Ticket>? ticketsAvailable;
+  List<FareTicket>? ticketsAvailable;
   List<Message>? messages;
 
   FareDetails({
@@ -79,7 +79,7 @@ class FareDetails {
       throughFare: json['throughFare'] as bool?,
       isTour: json['isTour'] as bool?,
       ticketsAvailable: (json['ticketsAvailable'] as List<dynamic>?)
-          ?.map((e) => Ticket.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => FareTicket.fromJson(e as Map<String, dynamic>))
           .toList(),
       messages: (json['messages'] as List<dynamic>?)
           ?.map((e) => Message.fromJson(e as Map<String, dynamic>))

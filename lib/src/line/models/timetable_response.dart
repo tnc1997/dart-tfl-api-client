@@ -1,6 +1,6 @@
-﻿import 'disambiguation.dart';
-import 'matched_stop.dart';
+﻿import 'matched_stop.dart';
 import 'timetable.dart';
+import 'timetable_disambiguation.dart';
 
 class TimetableResponse {
   String? lineId;
@@ -10,7 +10,7 @@ class TimetableResponse {
   List<MatchedStop>? stations;
   List<MatchedStop>? stops;
   Timetable? timetable;
-  Disambiguation? disambiguation;
+  TimetableDisambiguation? disambiguation;
   String? statusErrorMessage;
 
   TimetableResponse({
@@ -44,7 +44,7 @@ class TimetableResponse {
           : Timetable.fromJson(json['timetable'] as Map<String, dynamic>),
       disambiguation: json['disambiguation'] == null
           ? null
-          : Disambiguation.fromJson(
+          : TimetableDisambiguation.fromJson(
               json['disambiguation'] as Map<String, dynamic>),
       statusErrorMessage: json['statusErrorMessage'] as String?,
     );

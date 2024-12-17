@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 import '../../common/constants/uri_constants.dart';
 import '../../common/exceptions/tfl_api_client_exception.dart';
-import '../models/wrapper.dart';
+import '../models/cabwise_wrapper.dart';
 
 class CabwiseService {
   final http.Client _client;

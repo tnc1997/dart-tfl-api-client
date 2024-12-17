@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 import '../../common/constants/uri_constants.dart';
 import '../../common/exceptions/tfl_api_client_exception.dart';
-import '../models/accident_detail.dart';
+import '../models/accident_stats_accident_detail.dart';
 
 class AccidentStatsService {
   final http.Client _client;
@@ -14,7 +14,7 @@ class AccidentStatsService {
   }) : _client = client;
 
   /// Gets all accident details for accidents occuring in the specified year
-  Future<List<AccidentDetail>> get(
+  Future<List<AccidentStatsAccidentDetail>> get(
     int year,
   ) async {
     final response = await _client.get(
@@ -27,7 +27,7 @@ class AccidentStatsService {
     TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
-        .map((e) => AccidentDetail.fromJson(e))
+        .map((e) => AccidentStatsAccidentDetail.fromJson(e))
         .toList();
   }
 }

@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import '../../common/constants/uri_constants.dart';
 import '../../common/exceptions/tfl_api_client_exception.dart';
 import '../../common/models/mode.dart';
-import '../models/journey_result.dart';
+import '../models/journey_planner_journey_result.dart';
 
 class JourneyService {
   final http.Client _client;
@@ -31,7 +31,7 @@ class JourneyService {
   }
 
   /// Perform a Journey Planner search from the parameters specified in simple types
-  Future<JourneyResult> journeyResults(
+  Future<JourneyPlannerJourneyResult> journeyResults(
     String from,
     String to, {
     String? via,
@@ -107,6 +107,6 @@ class JourneyService {
 
     TflApiClientException.checkIsSuccessStatusCode(response);
 
-    return JourneyResult.fromJson(json.decode(response.body));
+    return JourneyPlannerJourneyResult.fromJson(json.decode(response.body));
   }
 }
