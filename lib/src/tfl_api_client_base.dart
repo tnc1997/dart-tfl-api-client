@@ -8,6 +8,7 @@ import 'cycle_superhighway/services/cycle_superhighway_service.dart';
 import 'journey/services/journey_service.dart';
 import 'line/services/line_service.dart';
 import 'mode/services/mode_service.dart';
+import 'network_status/services/network_status_service.dart';
 import 'occupancy/services/occupancy_service.dart';
 import 'place/services/place_service.dart';
 import 'road/services/road_service.dart';
@@ -26,6 +27,7 @@ class TflApiClient {
   JourneyService? _journey;
   LineService? _line;
   ModeService? _mode;
+  NetworkStatusService? _networkStatus;
   OccupancyService? _occupancy;
   PlaceService? _place;
   RoadService? _road;
@@ -81,6 +83,12 @@ class TflApiClient {
 
   ModeService get mode {
     return _mode ??= ModeService(
+      client: _client,
+    );
+  }
+
+  NetworkStatusService get networkStatus {
+    return _networkStatus ??= NetworkStatusService(
       client: _client,
     );
   }
