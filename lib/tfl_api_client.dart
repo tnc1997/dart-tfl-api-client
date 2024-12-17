@@ -2,7 +2,6 @@ library tfl_api_client;
 
 export 'src/accident_stats/models/accident_detail.dart';
 export 'src/accident_stats/models/casualty.dart';
-export 'src/accident_stats/models/ordered_summary.dart';
 export 'src/accident_stats/models/vehicle.dart';
 export 'src/accident_stats/services/accident_stats_service.dart';
 export 'src/air_quality/models/current_forecast.dart';
