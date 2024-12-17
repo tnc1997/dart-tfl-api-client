@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'accident_stats/services/accident_stats_service.dart';
 import 'air_quality/services/air_quality_service.dart';
 import 'bike_point/services/bike_point_service.dart';
+import 'cabwise/services/cabwise_service.dart';
 import 'cycle_superhighway/services/cycle_superhighway_service.dart';
 import 'journey/services/journey_service.dart';
 import 'line/services/line_service.dart';
@@ -20,6 +21,7 @@ class TflApiClient {
   AccidentStatsService? _accidentStats;
   AirQualityService? _airQuality;
   BikePointService? _bikePoint;
+  CabwiseService? _cabwise;
   CycleSuperhighwayService? _cycleSuperhighway;
   JourneyService? _journey;
   LineService? _line;
@@ -49,6 +51,12 @@ class TflApiClient {
 
   BikePointService get bikePoint {
     return _bikePoint ??= BikePointService(
+      client: _client,
+    );
+  }
+
+  CabwiseService get cabwise {
+    return _cabwise ??= CabwiseService(
       client: _client,
     );
   }

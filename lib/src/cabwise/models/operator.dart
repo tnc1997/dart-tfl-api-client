@@ -1,4 +1,4 @@
-﻿class Operator {
+﻿class CabwiseOperator {
   int? operatorId;
   String? organisationName;
   String? tradingName;
@@ -41,7 +41,7 @@
   List<String>? operatorTypes;
   double? distance;
 
-  Operator({
+  CabwiseOperator({
     this.operatorId,
     this.organisationName,
     this.tradingName,
@@ -85,10 +85,10 @@
     this.distance,
   });
 
-  factory Operator.fromJson(
+  factory CabwiseOperator.fromJson(
     Map<String, dynamic> json,
   ) {
-    return Operator(
+    return CabwiseOperator(
       operatorId: (json['operatorId'] as num?)?.toInt(),
       organisationName: json['organisationName'] as String?,
       tradingName: json['tradingName'] as String?,

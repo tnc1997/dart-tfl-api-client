@@ -1,6 +1,6 @@
 ﻿import 'attribution.dart';
 
-class Header {
+class CabwiseHeader {
   DateTime? publishDateTime;
   String? identifier;
   String? displayTitle;
@@ -13,9 +13,9 @@ class Header {
   String? schedule;
   String? logo;
   String? language;
-  Attribution? attribution;
+  CabwiseAttribution? attribution;
 
-  Header({
+  CabwiseHeader({
     this.publishDateTime,
     this.identifier,
     this.displayTitle,
@@ -31,10 +31,10 @@ class Header {
     this.attribution,
   });
 
-  factory Header.fromJson(
+  factory CabwiseHeader.fromJson(
     Map<String, dynamic> json,
   ) {
-    return Header(
+    return CabwiseHeader(
       publishDateTime: json['publishDateTime'] == null
           ? null
           : DateTime.parse(json['publishDateTime'] as String),
@@ -51,7 +51,8 @@ class Header {
       language: json['language'] as String?,
       attribution: json['attribution'] == null
           ? null
-          : Attribution.fromJson(json['attribution'] as Map<String, dynamic>),
+          : CabwiseAttribution.fromJson(
+              json['attribution'] as Map<String, dynamic>),
     );
   }
 

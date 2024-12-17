@@ -1,18 +1,18 @@
 ﻿import 'operator.dart';
 
-class Operators {
-  List<Operator>? operatorList;
+class CabwiseOperators {
+  List<CabwiseOperator>? operatorList;
 
-  Operators({
+  CabwiseOperators({
     this.operatorList,
   });
 
-  factory Operators.fromJson(
+  factory CabwiseOperators.fromJson(
     Map<String, dynamic> json,
   ) {
-    return Operators(
+    return CabwiseOperators(
       operatorList: (json['operatorList'] as List<dynamic>?)
-          ?.map((e) => Operator.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => CabwiseOperator.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }

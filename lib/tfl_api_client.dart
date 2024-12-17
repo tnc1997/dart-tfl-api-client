@@ -18,6 +18,7 @@ export 'src/cabwise/models/header.dart';
 export 'src/cabwise/models/operator.dart';
 export 'src/cabwise/models/operators.dart';
 export 'src/cabwise/models/wrapper.dart';
+export 'src/cabwise/services/cabwise_service.dart';
 export 'src/common/clients/app_key_client.dart';
 export 'src/common/constants/uri_constants.dart';
 export 'src/common/exceptions/tfl_api_client_exception.dart';

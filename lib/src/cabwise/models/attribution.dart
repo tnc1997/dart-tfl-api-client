@@ -1,18 +1,18 @@
-﻿class Attribution {
+﻿class CabwiseAttribution {
   String? link;
   String? text;
   String? logo;
 
-  Attribution({
+  CabwiseAttribution({
     this.link,
     this.text,
     this.logo,
   });
 
-  factory Attribution.fromJson(
+  factory CabwiseAttribution.fromJson(
     Map<String, dynamic> json,
   ) {
-    return Attribution(
+    return CabwiseAttribution(
       link: json['link'] as String?,
       text: json['text'] as String?,
       logo: json['logo'] as String?,

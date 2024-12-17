@@ -1,44 +1,45 @@
 ﻿import 'header.dart';
 import 'operators.dart';
 
-class Wrapper {
-  Operators? operators;
-  Header? header;
+class CabwiseWrapper {
+  CabwiseOperators? operators;
+  CabwiseHeader? header;
 
-  Wrapper({
+  CabwiseWrapper({
     this.operators,
     this.header,
   });
 
-  factory Wrapper.fromJson(
+  factory CabwiseWrapper.fromJson(
     Map<String, dynamic> json,
   ) {
-    return Wrapper(
+    return CabwiseWrapper(
       operators: json['operators'] == null
           ? null
-          : Operators.fromJson(json['operators'] as Map<String, dynamic>),
+          : CabwiseOperators.fromJson(
+              json['operators'] as Map<String, dynamic>),
       header: json['header'] == null
           ? null
-          : Header.fromJson(json['header'] as Map<String, dynamic>),
+          : CabwiseHeader.fromJson(json['header'] as Map<String, dynamic>),
     );
   }
 
-  static List<Wrapper> listFromJson(
+  static List<CabwiseWrapper> listFromJson(
     List<dynamic> json,
   ) =>
       json
           .map(
-            (value) => Wrapper.fromJson(value),
+            (value) => CabwiseWrapper.fromJson(value),
           )
           .toList();
 
-  static Map<String, Wrapper> mapFromJson(
+  static Map<String, CabwiseWrapper> mapFromJson(
     Map<String, dynamic> json,
   ) =>
       json.map(
         (key, value) => MapEntry(
           key,
-          Wrapper.fromJson(value),
+          CabwiseWrapper.fromJson(value),
         ),
       );
 
