@@ -2,6 +2,7 @@
 import 'identifiable.dart';
 import 'identifier.dart';
 import 'point.dart';
+import 'stop_point.dart';
 
 class Place extends Point implements Identifiable {
   String? id;
@@ -32,24 +33,30 @@ class Place extends Point implements Identifiable {
   factory Place.fromJson(
     Map<String, dynamic> json,
   ) {
-    return Place(
-      lat: (json['lat'] as num?)?.toDouble(),
-      lon: (json['lon'] as num?)?.toDouble(),
-      id: json['id'] as String?,
-      url: json['url'] as String?,
-      commonName: json['commonName'] as String?,
-      distance: (json['distance'] as num?)?.toDouble(),
-      placeType: json['placeType'] as String?,
-      additionalProperties: (json['additionalProperties'] as List<dynamic>?)
-          ?.map((e) => AdditionalProperties.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      children: (json['children'] as List<dynamic>?)
-          ?.map((e) => Place.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      childrenUrls: (json['childrenUrls'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-    );
+    switch (json['\$type']) {
+      case 'Tfl.Api.Presentation.Entities.StopPoint, Tfl.Api.Presentation.Entities':
+        return StopPoint.fromJson(json);
+      default:
+        return Place(
+          lat: (json['lat'] as num?)?.toDouble(),
+          lon: (json['lon'] as num?)?.toDouble(),
+          id: json['id'] as String?,
+          url: json['url'] as String?,
+          commonName: json['commonName'] as String?,
+          distance: (json['distance'] as num?)?.toDouble(),
+          placeType: json['placeType'] as String?,
+          additionalProperties: (json['additionalProperties'] as List<dynamic>?)
+              ?.map((e) =>
+                  AdditionalProperties.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          children: (json['children'] as List<dynamic>?)
+              ?.map((e) => Place.fromJson(e as Map<String, dynamic>))
+              .toList(),
+          childrenUrls: (json['childrenUrls'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList(),
+        );
+    }
   }
 
   @override

@@ -11,7 +11,7 @@ class LineStatus implements Identifiable {
   String? reason;
   DateTime? created;
   DateTime? modified;
-  List<ValidityPeriod>? validityPeriod;
+  List<ValidityPeriod>? validityPeriods;
   Disruption? disruption;
 
   LineStatus({
@@ -22,7 +22,7 @@ class LineStatus implements Identifiable {
     this.reason,
     this.created,
     this.modified,
-    this.validityPeriod,
+    this.validityPeriods,
     this.disruption,
   });
 
@@ -41,7 +41,7 @@ class LineStatus implements Identifiable {
       modified: json['modified'] == null
           ? null
           : DateTime.parse(json['modified'] as String),
-      validityPeriod: (json['validityPeriod'] as List<dynamic>?)
+      validityPeriods: (json['validityPeriods'] as List<dynamic>?)
           ?.map((e) => ValidityPeriod.fromJson(e as Map<String, dynamic>))
           .toList(),
       disruption: json['disruption'] == null
@@ -69,7 +69,7 @@ class LineStatus implements Identifiable {
       'reason': reason,
       'created': created?.toIso8601String(),
       'modified': modified?.toIso8601String(),
-      'validityPeriod': validityPeriod,
+      'validityPeriods': validityPeriods,
       'disruption': disruption,
     };
   }

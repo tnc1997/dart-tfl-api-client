@@ -1,4 +1,5 @@
 ﻿import 'place.dart';
+import 'stop_point.dart';
 
 class Point {
   double? lat;
@@ -15,6 +16,8 @@ class Point {
     switch (json['\$type']) {
       case 'Tfl.Api.Presentation.Entities.Place, Tfl.Api.Presentation.Entities':
         return Place.fromJson(json);
+      case 'Tfl.Api.Presentation.Entities.StopPoint, Tfl.Api.Presentation.Entities':
+        return StopPoint.fromJson(json);
       default:
         return Point(
           lat: (json['lat'] as num?)?.toDouble(),

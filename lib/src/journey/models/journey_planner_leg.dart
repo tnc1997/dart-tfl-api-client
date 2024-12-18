@@ -1,11 +1,10 @@
 ﻿import '../../common/models/disruption.dart';
 import '../../common/models/identifier.dart';
-import '../../common/models/stop_point.dart';
+import '../../common/models/place.dart';
 import 'instruction.dart';
 import 'journey_planner_obstacle.dart';
 import 'journey_planner_path.dart';
 import 'journey_planner_planned_work.dart';
-import 'journey_planner_point.dart';
 import 'journey_planner_route_option.dart';
 
 class JourneyPlannerLeg {
@@ -15,14 +14,17 @@ class JourneyPlannerLeg {
   List<JourneyPlannerObstacle>? obstacles;
   DateTime? departureTime;
   DateTime? arrivalTime;
-  JourneyPlannerPoint? departurePoint;
-  JourneyPlannerPoint? arrivalPoint;
+  Place? departurePoint;
+  Place? arrivalPoint;
   JourneyPlannerPath? path;
   List<JourneyPlannerRouteOption>? routeOptions;
   Identifier? mode;
   List<Disruption>? disruptions;
   List<JourneyPlannerPlannedWork>? plannedWorks;
-  double? distance;
+  bool? isDisrupted;
+  bool? hasFixedLocations;
+  DateTime? scheduledDepartureTime;
+  DateTime? scheduledArrivalTime;
 
   JourneyPlannerLeg({
     this.duration,
@@ -38,13 +40,11 @@ class JourneyPlannerLeg {
     this.mode,
     this.disruptions,
     this.plannedWorks,
-    this.distance,
+    this.isDisrupted,
+    this.hasFixedLocations,
+    this.scheduledDepartureTime,
+    this.scheduledArrivalTime,
   });
-
-  bool get isDisrupted => disruptions?.isNotEmpty ?? false;
-
-  bool get hasFixedLocations =>
-      departurePoint is StopPoint && arrivalPoint is StopPoint;
 
   factory JourneyPlannerLeg.fromJson(
     Map<String, dynamic> json,
@@ -67,12 +67,10 @@ class JourneyPlannerLeg {
           : DateTime.parse(json['arrivalTime'] as String),
       departurePoint: json['departurePoint'] == null
           ? null
-          : JourneyPlannerPoint.fromJson(
-              json['departurePoint'] as Map<String, dynamic>),
+          : Place.fromJson(json['departurePoint'] as Map<String, dynamic>),
       arrivalPoint: json['arrivalPoint'] == null
           ? null
-          : JourneyPlannerPoint.fromJson(
-              json['arrivalPoint'] as Map<String, dynamic>),
+          : Place.fromJson(json['arrivalPoint'] as Map<String, dynamic>),
       path: json['path'] == null
           ? null
           : JourneyPlannerPath.fromJson(json['path'] as Map<String, dynamic>),
@@ -90,7 +88,14 @@ class JourneyPlannerLeg {
           ?.map((e) =>
               JourneyPlannerPlannedWork.fromJson(e as Map<String, dynamic>))
           .toList(),
-      distance: (json['distance'] as num?)?.toDouble(),
+      isDisrupted: json['isDisrupted'] as bool?,
+      hasFixedLocations: json['hasFixedLocations'] as bool?,
+      scheduledDepartureTime: json['scheduledDepartureTime'] == null
+          ? null
+          : DateTime.parse(json['scheduledDepartureTime'] as String),
+      scheduledArrivalTime: json['scheduledArrivalTime'] == null
+          ? null
+          : DateTime.parse(json['scheduledArrivalTime'] as String),
     );
   }
 
@@ -109,7 +114,10 @@ class JourneyPlannerLeg {
       'mode': mode,
       'disruptions': disruptions,
       'plannedWorks': plannedWorks,
-      'distance': distance,
+      'isDisrupted': isDisrupted,
+      'hasFixedLocations': hasFixedLocations,
+      'scheduledDepartureTime': scheduledDepartureTime?.toIso8601String(),
+      'scheduledArrivalTime': scheduledArrivalTime?.toIso8601String(),
     };
   }
 }

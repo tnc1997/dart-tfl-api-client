@@ -6,12 +6,14 @@ class JourneyPlannerRouteOption implements Identifiable {
   String? name;
   List<String>? directions;
   Identifier? lineIdentifier;
+  String? direction;
 
   JourneyPlannerRouteOption({
     this.id,
     this.name,
     this.directions,
     this.lineIdentifier,
+    this.direction,
   });
 
   factory JourneyPlannerRouteOption.fromJson(
@@ -26,6 +28,7 @@ class JourneyPlannerRouteOption implements Identifiable {
       lineIdentifier: json['lineIdentifier'] == null
           ? null
           : Identifier.fromJson(json['lineIdentifier'] as Map<String, dynamic>),
+      direction: json['direction'] as String?,
     );
   }
 
@@ -45,6 +48,7 @@ class JourneyPlannerRouteOption implements Identifiable {
       'name': name,
       'directions': directions,
       'lineIdentifier': lineIdentifier,
+      'direction': direction,
     };
   }
 }

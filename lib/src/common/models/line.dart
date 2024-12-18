@@ -13,7 +13,7 @@ class Line implements Identifiable {
   List<Disruption>? disruptions;
   DateTime? created;
   DateTime? modified;
-  List<LineStatus>? lineStatus;
+  List<LineStatus>? lineStatuses;
   List<MatchedRoute>? routeSections;
   List<LineServiceTypeInfo>? serviceTypes;
   Crowding? crowding;
@@ -25,7 +25,7 @@ class Line implements Identifiable {
     this.disruptions,
     this.created,
     this.modified,
-    this.lineStatus,
+    this.lineStatuses,
     this.routeSections,
     this.serviceTypes,
     this.crowding,
@@ -47,7 +47,7 @@ class Line implements Identifiable {
       modified: json['modified'] == null
           ? null
           : DateTime.parse(json['modified'] as String),
-      lineStatus: (json['lineStatus'] as List<dynamic>?)
+      lineStatuses: (json['lineStatuses'] as List<dynamic>?)
           ?.map((e) => LineStatus.fromJson(e as Map<String, dynamic>))
           .toList(),
       routeSections: (json['routeSections'] as List<dynamic>?)
@@ -81,7 +81,7 @@ class Line implements Identifiable {
       'disruptions': disruptions,
       'created': created?.toIso8601String(),
       'modified': modified?.toIso8601String(),
-      'lineStatus': lineStatus,
+      'lineStatuses': lineStatuses,
       'routeSections': routeSections,
       'serviceTypes': serviceTypes,
       'crowding': crowding,
