@@ -3,14 +3,14 @@
 class LondonAirForecast {
   String? updatePeriod;
   String? updateFrequency;
-  String? forecastURL;
+  String? forecastUrl;
   String? disclaimerText;
   List<CurrentForecast>? currentForecast;
 
   LondonAirForecast({
     this.updatePeriod,
     this.updateFrequency,
-    this.forecastURL,
+    this.forecastUrl,
     this.disclaimerText,
     this.currentForecast,
   });
@@ -21,7 +21,7 @@ class LondonAirForecast {
     return LondonAirForecast(
       updatePeriod: json['updatePeriod'] as String?,
       updateFrequency: json['updateFrequency'] as String?,
-      forecastURL: json['forecastURL'] as String?,
+      forecastUrl: json['forecastURL'] as String?,
       disclaimerText: json['disclaimerText'] as String?,
       currentForecast: (json['currentForecast'] as List<dynamic>?)
           ?.map((e) => CurrentForecast.fromJson(e as Map<String, dynamic>))
@@ -33,7 +33,7 @@ class LondonAirForecast {
     return {
       'updatePeriod': updatePeriod,
       'updateFrequency': updateFrequency,
-      'forecastURL': forecastURL,
+      'forecastURL': forecastUrl,
       'disclaimerText': disclaimerText,
       'currentForecast': currentForecast,
     };

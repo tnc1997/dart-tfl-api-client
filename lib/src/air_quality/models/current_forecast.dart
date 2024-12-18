@@ -1,32 +1,32 @@
 ﻿class CurrentForecast {
   String? forecastText;
   String? forecastType;
-  String? forecastID;
+  String? forecastId;
   DateTime? publishedDate;
   DateTime? fromDate;
   DateTime? toDate;
   String? forecastBand;
   String? forecastSummary;
-  String? nO2Band;
+  String? no2Band;
   String? o3Band;
-  String? pM10Band;
-  String? pM25Band;
-  String? sO2Band;
+  String? pm10Band;
+  String? pm25Band;
+  String? so2Band;
 
   CurrentForecast({
     this.forecastText,
     this.forecastType,
-    this.forecastID,
+    this.forecastId,
     this.publishedDate,
     this.fromDate,
     this.toDate,
     this.forecastBand,
     this.forecastSummary,
-    this.nO2Band,
+    this.no2Band,
     this.o3Band,
-    this.pM10Band,
-    this.pM25Band,
-    this.sO2Band,
+    this.pm10Band,
+    this.pm25Band,
+    this.so2Band,
   });
 
   factory CurrentForecast.fromJson(
@@ -35,7 +35,7 @@
     return CurrentForecast(
       forecastText: json['forecastText'] as String?,
       forecastType: json['forecastType'] as String?,
-      forecastID: json['forecastID'] as String?,
+      forecastId: json['forecastID'] as String?,
       publishedDate: json['publishedDate'] == null
           ? null
           : DateTime.parse(json['publishedDate'] as String),
@@ -47,11 +47,11 @@
           : DateTime.parse(json['toDate'] as String),
       forecastBand: json['forecastBand'] as String?,
       forecastSummary: json['forecastSummary'] as String?,
-      nO2Band: json['nO2Band'] as String?,
+      no2Band: json['nO2Band'] as String?,
       o3Band: json['o3Band'] as String?,
-      pM10Band: json['pM10Band'] as String?,
-      pM25Band: json['pM25Band'] as String?,
-      sO2Band: json['sO2Band'] as String?,
+      pm10Band: json['pM10Band'] as String?,
+      pm25Band: json['pM25Band'] as String?,
+      so2Band: json['sO2Band'] as String?,
     );
   }
 
@@ -59,17 +59,17 @@
     return {
       'forecastText': forecastText,
       'forecastType': forecastType,
-      'forecastID': forecastID,
+      'forecastID': forecastId,
       'publishedDate': publishedDate?.toIso8601String(),
       'fromDate': fromDate?.toIso8601String(),
       'toDate': toDate?.toIso8601String(),
       'forecastBand': forecastBand,
       'forecastSummary': forecastSummary,
-      'nO2Band': nO2Band,
+      'nO2Band': no2Band,
       'o3Band': o3Band,
-      'pM10Band': pM10Band,
-      'pM25Band': pM25Band,
-      'sO2Band': sO2Band,
+      'pM10Band': pm10Band,
+      'pM25Band': pm25Band,
+      'sO2Band': so2Band,
     };
   }
 }

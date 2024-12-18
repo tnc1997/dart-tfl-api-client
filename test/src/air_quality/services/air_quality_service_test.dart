@@ -73,7 +73,7 @@ void main() {
               );
 
               expect(
-                result.forecastURL,
+                result.forecastUrl,
                 equals('string'),
               );
 
@@ -88,7 +88,7 @@ void main() {
               );
 
               expect(
-                result.currentForecast?[0].forecastID,
+                result.currentForecast?[0].forecastId,
                 equals('string'),
               );
 
@@ -103,7 +103,7 @@ void main() {
               );
 
               expect(
-                result.currentForecast?[0].nO2Band,
+                result.currentForecast?[0].no2Band,
                 equals('string'),
               );
 
@@ -113,17 +113,17 @@ void main() {
               );
 
               expect(
-                result.currentForecast?[0].pM10Band,
+                result.currentForecast?[0].pm10Band,
                 equals('string'),
               );
 
               expect(
-                result.currentForecast?[0].pM25Band,
+                result.currentForecast?[0].pm25Band,
                 equals('string'),
               );
 
               expect(
-                result.currentForecast?[0].sO2Band,
+                result.currentForecast?[0].so2Band,
                 equals('string'),
               );
 
