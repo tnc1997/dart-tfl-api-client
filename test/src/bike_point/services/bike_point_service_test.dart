@@ -32,15 +32,16 @@ void main() {
                 (_) {
                   return Future.value(
                     http.Response(
-                      '''[
+                      r'''[
   {
+    "$type": "Tfl.Api.Presentation.Entities.Place, Tfl.Api.Presentation.Entities",
     "id": "string",
     "url": "string",
     "commonName": "string",
-    "distance": 0,
     "placeType": "string",
     "additionalProperties": [
       {
+        "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
         "category": "string",
         "key": "string",
         "sourceSystemKey": "string",
@@ -50,8 +51,8 @@ void main() {
     ],
     "children": [],
     "childrenUrls": [],
-    "lat": 0,
-    "lon": 0
+    "lat": 0.0,
+    "lon": 0.0
   }
 ]''',
                       200,
@@ -77,11 +78,6 @@ void main() {
               expect(
                 result[0].commonName,
                 equals('string'),
-              );
-
-              expect(
-                result[0].distance,
-                equals(0),
               );
 
               expect(
@@ -115,13 +111,23 @@ void main() {
               );
 
               expect(
+                result[0].children,
+                isEmpty,
+              );
+
+              expect(
+                result[0].childrenUrls,
+                isEmpty,
+              );
+
+              expect(
                 result[0].lat,
-                equals(0),
+                equals(0.0),
               );
 
               expect(
                 result[0].lon,
-                equals(0),
+                equals(0.0),
               );
             },
           );
@@ -135,7 +141,7 @@ void main() {
             'should return the result',
             () async {
               // Arrange
-              final id = 'id';
+              const id = 'id';
 
               when(
                 client.get(
@@ -148,14 +154,15 @@ void main() {
                 (_) {
                   return Future.value(
                     http.Response(
-                      '''{
+                      r'''{
+  "$type": "Tfl.Api.Presentation.Entities.Place, Tfl.Api.Presentation.Entities",
   "id": "string",
   "url": "string",
   "commonName": "string",
-  "distance": 0,
   "placeType": "string",
   "additionalProperties": [
     {
+      "$type": "Tfl.Api.Presentation.Entities.AdditionalProperties, Tfl.Api.Presentation.Entities",
       "category": "string",
       "key": "string",
       "sourceSystemKey": "string",
@@ -165,8 +172,8 @@ void main() {
   ],
   "children": [],
   "childrenUrls": [],
-  "lat": 0,
-  "lon": 0
+  "lat": 0.0,
+  "lon": 0.0
 }''',
                       200,
                     ),
@@ -191,11 +198,6 @@ void main() {
               expect(
                 result.commonName,
                 equals('string'),
-              );
-
-              expect(
-                result.distance,
-                equals(0),
               );
 
               expect(
@@ -229,13 +231,23 @@ void main() {
               );
 
               expect(
+                result.children,
+                isEmpty,
+              );
+
+              expect(
+                result.childrenUrls,
+                isEmpty,
+              );
+
+              expect(
                 result.lat,
-                equals(0),
+                equals(0.0),
               );
 
               expect(
                 result.lon,
-                equals(0),
+                equals(0.0),
               );
             },
           );
@@ -249,7 +261,7 @@ void main() {
             'should return the result',
             () async {
               // Arrange
-              final query = 'query';
+              const query = 'query';
 
               when(
                 client.get(
@@ -265,26 +277,18 @@ void main() {
                 (_) {
                   return Future.value(
                     http.Response(
-                      '''[
+                      r'''[
   {
+    "$type": "Tfl.Api.Presentation.Entities.Place, Tfl.Api.Presentation.Entities",
     "id": "string",
     "url": "string",
     "commonName": "string",
-    "distance": 0,
     "placeType": "string",
-    "additionalProperties": [
-      {
-        "category": "string",
-        "key": "string",
-        "sourceSystemKey": "string",
-        "value": "string",
-        "modified": "1970-01-01T00:00:00Z"
-      }
-    ],
+    "additionalProperties": [],
     "children": [],
     "childrenUrls": [],
-    "lat": 0,
-    "lon": 0
+    "lat": 0.0,
+    "lon": 0.0
   }
 ]''',
                       200,
@@ -313,48 +317,33 @@ void main() {
               );
 
               expect(
-                result[0].distance,
-                equals(0),
-              );
-
-              expect(
                 result[0].placeType,
                 equals('string'),
               );
 
               expect(
-                result[0].additionalProperties?[0].category,
-                equals('string'),
+                result[0].additionalProperties,
+                isEmpty,
               );
 
               expect(
-                result[0].additionalProperties?[0].key,
-                equals('string'),
+                result[0].children,
+                isEmpty,
               );
 
               expect(
-                result[0].additionalProperties?[0].sourceSystemKey,
-                equals('string'),
-              );
-
-              expect(
-                result[0].additionalProperties?[0].value,
-                equals('string'),
-              );
-
-              expect(
-                result[0].additionalProperties?[0].modified,
-                equals(DateTime.parse('1970-01-01T00:00:00Z')),
+                result[0].childrenUrls,
+                isEmpty,
               );
 
               expect(
                 result[0].lat,
-                equals(0),
+                equals(0.0),
               );
 
               expect(
                 result[0].lon,
-                equals(0),
+                equals(0.0),
               );
             },
           );
