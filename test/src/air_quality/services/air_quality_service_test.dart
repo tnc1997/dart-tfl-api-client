@@ -32,13 +32,17 @@ void main() {
                 (_) {
                   return Future.value(
                     http.Response(
-                      '''{
+                      r'''{
+  "$id": "1",
+  "$type": "Tfl.Api.Presentation.Entities.LondonAirForecast, Tfl.Api.Presentation.Entities",
   "updatePeriod": "string",
   "updateFrequency": "string",
   "forecastURL": "string",
   "disclaimerText": "string",
   "currentForecast": [
     {
+      "$id": "2",
+      "$type": "Tfl.Api.Presentation.Entities.CurrentForecast, Tfl.Api.Presentation.Entities",
       "forecastType": "string",
       "forecastID": "string",
       "forecastBand": "string",
