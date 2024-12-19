@@ -21,7 +21,7 @@ void main() {
             'should return the result',
             () async {
               // Arrange
-              final year = 1970;
+              const year = 1970;
 
               when(
                 client.get(
@@ -34,17 +34,19 @@ void main() {
                 (_) {
                   return Future.value(
                     http.Response(
-                      '''[
+                      r'''[
   {
+    "$type": "Tfl.Api.Presentation.Entities.AccidentStats.AccidentDetail, Tfl.Api.Presentation.Entities",
     "id": 0,
-    "lat": 0,
-    "lon": 0,
+    "lat": 0.0,
+    "lon": 0.0,
     "location": "string",
     "date": "1970-01-01T00:00:00Z",
     "severity": "string",
     "borough": "string",
     "casualties": [
       {
+        "$type": "Tfl.Api.Presentation.Entities.AccidentStats.Casualty, Tfl.Api.Presentation.Entities",
         "age": 0,
         "class": "string",
         "severity": "string",
@@ -54,6 +56,7 @@ void main() {
     ],
     "vehicles": [
       {
+        "$type": "Tfl.Api.Presentation.Entities.AccidentStats.Vehicle, Tfl.Api.Presentation.Entities",
         "type": "string"
       }
     ]
@@ -76,12 +79,12 @@ void main() {
 
               expect(
                 result[0].lat,
-                equals(0),
+                equals(0.0),
               );
 
               expect(
                 result[0].lon,
-                equals(0),
+                equals(0.0),
               );
 
               expect(
