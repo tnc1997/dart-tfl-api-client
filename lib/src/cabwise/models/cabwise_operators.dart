@@ -11,13 +11,13 @@ class CabwiseOperators {
     Map<String, dynamic> json,
   ) {
     return CabwiseOperators(
-      operatorList: (json['operatorList'] as List<dynamic>?)
+      operatorList: (json['OperatorList'] as List<dynamic>?)
           ?.map((e) => CabwiseOperator.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'operatorList': operatorList,
+        'OperatorList': operatorList,
       };
 }

@@ -14,13 +14,13 @@ class CabwiseWrapper {
     Map<String, dynamic> json,
   ) {
     return CabwiseWrapper(
-      operators: json['operators'] == null
+      operators: json['Operators'] == null
           ? null
           : CabwiseOperators.fromJson(
-              json['operators'] as Map<String, dynamic>),
-      header: json['header'] == null
+              json['Operators'] as Map<String, dynamic>),
+      header: json['Header'] == null
           ? null
-          : CabwiseHeader.fromJson(json['header'] as Map<String, dynamic>),
+          : CabwiseHeader.fromJson(json['Header'] as Map<String, dynamic>),
     );
   }
 
@@ -45,8 +45,8 @@ class CabwiseWrapper {
 
   Map<String, dynamic> toJson() {
     return {
-      'operators': operators,
-      'header': header,
+      'Operators': operators,
+      'Header': header,
     };
   }
 }

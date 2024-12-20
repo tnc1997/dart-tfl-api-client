@@ -35,42 +35,42 @@ class CabwiseHeader {
     Map<String, dynamic> json,
   ) {
     return CabwiseHeader(
-      publishDateTime: json['publishDateTime'] == null
+      publishDateTime: json['PublishDateTime'] == null
           ? null
-          : DateTime.parse(json['publishDateTime'] as String),
-      identifier: json['identifier'] as String?,
-      displayTitle: json['displayTitle'] as String?,
-      version: json['version'] as String?,
-      author: json['author'] as String?,
-      owner: json['owner'] as String?,
-      refreshRate: json['refreshRate'] as int?,
-      maxLatency: json['maxLatency'] as int?,
-      timeToError: json['timeToError'] as int?,
-      schedule: json['schedule'] as String?,
-      logo: json['logo'] as String?,
-      language: json['language'] as String?,
-      attribution: json['attribution'] == null
+          : DateTime.parse(json['PublishDateTime'] as String),
+      identifier: json['Identifier'] as String?,
+      displayTitle: json['DisplayTitle'] as String?,
+      version: json['Version'] as String?,
+      author: json['Author'] as String?,
+      owner: json['Owner'] as String?,
+      refreshRate: (json['RefreshRate'] as num?)?.toInt(),
+      maxLatency: (json['Max_Latency'] as num?)?.toInt(),
+      timeToError: (json['TimeToError'] as num?)?.toInt(),
+      schedule: json['Schedule'] as String?,
+      logo: json['Logo'] as String?,
+      language: json['Language'] as String?,
+      attribution: json['Attribution'] == null
           ? null
           : CabwiseAttribution.fromJson(
-              json['attribution'] as Map<String, dynamic>),
+              json['Attribution'] as Map<String, dynamic>),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'publishDateTime': publishDateTime?.toIso8601String(),
-      'identifier': identifier,
-      'displayTitle': displayTitle,
-      'version': version,
-      'author': author,
-      'owner': owner,
-      'refreshRate': refreshRate,
-      'maxLatency': maxLatency,
-      'timeToError': timeToError,
-      'schedule': schedule,
-      'logo': logo,
-      'language': language,
-      'attribution': attribution,
+      'PublishDateTime': publishDateTime?.toIso8601String(),
+      'Identifier': identifier,
+      'DisplayTitle': displayTitle,
+      'Version': version,
+      'Author': author,
+      'Owner': owner,
+      'RefreshRate': refreshRate,
+      'Max_Latency': maxLatency,
+      'TimeToError': timeToError,
+      'Schedule': schedule,
+      'Logo': logo,
+      'Language': language,
+      'Attribution': attribution,
     };
   }
 }
