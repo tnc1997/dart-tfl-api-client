@@ -29,15 +29,15 @@ class CabwiseService {
         authority,
         '/cabwise/search',
         {
-          'lat': lat,
-          'lon': lon,
+          'lat': lat.toString(),
+          'lon': lon.toString(),
           if (optype != null) 'optype': optype,
           if (wc != null) 'wc': wc,
-          if (radius != null) 'radius': radius,
+          if (radius != null) 'radius': radius.toString(),
           if (name != null) 'name': name,
-          if (maxResults != null) 'maxResults': maxResults,
+          if (maxResults != null) 'maxResults': maxResults.toString(),
           if (twentyFourSevenOnly != null)
-            'twentyFourSevenOnly': twentyFourSevenOnly,
+            'twentyFourSevenOnly': twentyFourSevenOnly.toString(),
         },
       ),
     );
