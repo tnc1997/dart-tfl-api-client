@@ -15,7 +15,7 @@ void main() {
     'CabwiseService',
     () {
       group(
-        'get',
+        'search',
         () {
           test(
             'should return the result',
