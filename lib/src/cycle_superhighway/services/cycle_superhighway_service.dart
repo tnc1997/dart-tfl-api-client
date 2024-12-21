@@ -42,6 +42,16 @@ class CycleSuperhighwayService {
 
     TflApiClientException.checkIsSuccessStatusCode(response);
 
+    if (json.decode(response.body) == null) {
+      throw TflApiClientException(
+        timestampUtc: DateTime.now().toUtc(),
+        exceptionType: 'EntityNotFoundException',
+        httpStatusCode: 404,
+        relativeUri: '/CycleSuperhighway/$id',
+        message: 'The following cycle superhighway id is not recognised: $id',
+      );
+    }
+
     return CycleSuperhighway.fromJson(json.decode(response.body));
   }
 }
