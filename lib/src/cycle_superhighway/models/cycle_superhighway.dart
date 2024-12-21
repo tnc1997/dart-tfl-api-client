@@ -1,10 +1,12 @@
-﻿import '../../common/models/identifiable.dart';
+﻿import '../../common/models/geography.dart';
+import '../../common/models/identifiable.dart';
 import '../../common/models/identifier.dart';
 
 class CycleSuperhighway implements Identifiable {
   String? id;
   String? label;
   String? labelShort;
+  Geography? geography;
   bool? segmented;
   DateTime? modified;
   String? status;
@@ -14,6 +16,7 @@ class CycleSuperhighway implements Identifiable {
     this.id,
     this.label,
     this.labelShort,
+    this.geography,
     this.segmented,
     this.modified,
     this.status,
@@ -27,6 +30,9 @@ class CycleSuperhighway implements Identifiable {
       id: json['id'] as String?,
       label: json['label'] as String?,
       labelShort: json['labelShort'] as String?,
+      geography: json['geography'] == null
+          ? null
+          : Geography.fromJson(json['geography'] as Map<String, dynamic>),
       segmented: json['segmented'] as bool?,
       modified: json['modified'] == null
           ? null
@@ -53,6 +59,7 @@ class CycleSuperhighway implements Identifiable {
       'id': id,
       'label': label,
       'labelShort': labelShort,
+      'geography': geography,
       'segmented': segmented,
       'modified': modified?.toIso8601String(),
       'status': status,
