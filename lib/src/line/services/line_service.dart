@@ -349,12 +349,16 @@ class LineService {
   /// Gets the timetable for a specified station on the give line
   Future<TimetableResponse> timetable(
     String fromStopPointId,
-    String id,
-  ) async {
+    String id, {
+    String? direction,
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
         '/line/$id/timetable/$fromStopPointId',
+        {
+          if (direction != null) 'direction': direction,
+        },
       ),
     );
 
@@ -367,12 +371,16 @@ class LineService {
   Future<TimetableResponse> timetableTo(
     String fromStopPointId,
     String id,
-    String toStopPointId,
-  ) async {
+    String toStopPointId, {
+    String? direction,
+  }) async {
     final response = await _client.get(
       Uri.https(
         authority,
         '/line/$id/timetable/$fromStopPointId/to/$toStopPointId',
+        {
+          if (direction != null) 'direction': direction,
+        },
       ),
     );
 
@@ -443,7 +451,7 @@ class LineService {
         .toList();
   }
 
-  /// Get the list of arrival predictions for given line ids based at the given stop
+  /// Get the list of arrival predictions for given line ids
   Future<List<Prediction>> arrivals(
     List<String> ids,
   ) async {
