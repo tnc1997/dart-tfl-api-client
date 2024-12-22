@@ -1,4 +1,5 @@
-﻿import '../../common/models/identifiable.dart';
+﻿import '../../common/models/geography.dart';
+import '../../common/models/identifiable.dart';
 import '../../common/models/identifier.dart';
 import 'road_disruption_impact_area.dart';
 import 'road_disruption_line.dart';
@@ -24,6 +25,8 @@ class RoadDisruption implements Identifiable {
   String? levelOfInterest;
   String? location;
   String? status;
+  Geography? geography;
+  Geography? geometry;
   List<Street>? streets;
   bool? isProvisional;
   bool? hasClosures;
@@ -55,6 +58,8 @@ class RoadDisruption implements Identifiable {
     this.levelOfInterest,
     this.location,
     this.status,
+    this.geography,
+    this.geometry,
     this.streets,
     this.isProvisional,
     this.hasClosures,
@@ -100,6 +105,12 @@ class RoadDisruption implements Identifiable {
       levelOfInterest: json['levelOfInterest'] as String?,
       location: json['location'] as String?,
       status: json['status'] as String?,
+      geography: json['geography'] == null
+          ? null
+          : Geography.fromJson(json['geography'] as Map<String, dynamic>),
+      geometry: json['geometry'] == null
+          ? null
+          : Geography.fromJson(json['geometry'] as Map<String, dynamic>),
       streets: (json['streets'] as List<dynamic>?)
           ?.map((e) => Street.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -161,6 +172,8 @@ class RoadDisruption implements Identifiable {
       'levelOfInterest': levelOfInterest,
       'location': location,
       'status': status,
+      'geography': geography,
+      'geometry': geometry,
       'streets': streets,
       'isProvisional': isProvisional,
       'hasClosures': hasClosures,
