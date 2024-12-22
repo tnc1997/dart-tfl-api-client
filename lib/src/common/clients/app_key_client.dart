@@ -1,16 +1,16 @@
 import 'dart:async';
 
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
-class AppKeyClient extends BaseClient {
+class AppKeyClient extends http.BaseClient {
   final String _appKey;
-  final Client _inner;
+  final http.Client _inner;
 
   AppKeyClient({
     required String appKey,
-    Client? inner,
+    http.Client? inner,
   })  : _appKey = Uri.encodeQueryComponent(appKey),
-        _inner = inner ?? Client();
+        _inner = inner ?? http.Client();
 
   @override
   void close() {
@@ -19,23 +19,32 @@ class AppKeyClient extends BaseClient {
   }
 
   @override
-  Future<StreamedResponse> send(BaseRequest request) {
-    if (request.url.queryParameters.containsKey('app_key')) {
-      throw Exception(
+  Future<http.StreamedResponse> send(
+    http.BaseRequest request,
+  ) {
+    var url = request.url;
+    if (url.queryParameters.containsKey('app_key')) {
+      throw ArgumentError.value(
+        request,
+        'request',
         'Attempted to make an HTTP request which already has an "app_key" query parameter. Adding the "app_key" would override that existing value.',
       );
     }
 
-    String getCurrentQuery() {
-      return '${request.url.query.isNotEmpty ? '${request.url.query}&' : ''}';
+    if (url.query.isEmpty) {
+      url = url.replace(
+        query: 'app_key=$_appKey',
+      );
+    } else {
+      url = url.replace(
+        query: '${url.query}&app_key=$_appKey',
+      );
     }
 
     return _inner.send(
-      Request(
+      http.Request(
         request.method,
-        request.url.replace(
-          query: '${getCurrentQuery()}app_key=$_appKey',
-        ),
+        url,
       )..headers.addAll(request.headers),
     );
   }
@@ -48,7 +57,10 @@ class AppKeyClient extends BaseClient {
 ///
 /// The user is responsible for closing the returned HTTP [Client].
 /// Closing the returned HTTP [Client] will also close the [inner] client.
-Client clientViaAppKey(String appKey, {Client? inner}) {
+http.Client clientViaAppKey(
+  String appKey, {
+  http.Client? inner,
+}) {
   return AppKeyClient(
     appKey: appKey,
     inner: inner,
