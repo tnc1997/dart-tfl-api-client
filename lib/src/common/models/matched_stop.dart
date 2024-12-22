@@ -1,6 +1,6 @@
-﻿import '../../common/models/identifiable.dart';
-import '../../common/models/identifier.dart';
-import '../../common/models/search_match.dart';
+﻿import 'identifiable.dart';
+import 'identifier.dart';
+import 'search_match.dart';
 
 class MatchedStop extends SearchMatch
     implements Comparable<MatchedStop>, Identifiable {

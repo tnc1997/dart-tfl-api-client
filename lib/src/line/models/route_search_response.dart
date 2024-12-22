@@ -1,4 +1,4 @@
-﻿import 'route_search_match.dart';
+﻿import '../../common/models/route_search_match.dart';
 
 class RouteSearchResponse {
   String? input;

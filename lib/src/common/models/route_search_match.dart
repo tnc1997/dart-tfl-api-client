@@ -1,7 +1,7 @@
-﻿import '../../common/models/search_match.dart';
-import 'line_route_section.dart';
-import 'matched_route_sections.dart';
+﻿import '../../line/models/line_route_section.dart';
+import '../../line/models/matched_route_sections.dart';
 import 'matched_stop.dart';
+import 'search_match.dart';
 
 class RouteSearchMatch extends SearchMatch {
   String? lineId;

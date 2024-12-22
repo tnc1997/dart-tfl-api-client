@@ -1,6 +1,6 @@
 ﻿import '../../common/models/identifiable.dart';
 import '../../common/models/identifier.dart';
-import 'matched_stop.dart';
+import '../../common/models/matched_stop.dart';
 import 'ordered_route.dart';
 import 'stop_point_sequence.dart';
 

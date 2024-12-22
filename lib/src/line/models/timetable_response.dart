@@ -1,4 +1,4 @@
-﻿import 'matched_stop.dart';
+﻿import '../../common/models/matched_stop.dart';
 import 'timetable.dart';
 import 'timetable_disambiguation.dart';
 
