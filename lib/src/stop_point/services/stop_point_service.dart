@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 import '../../common/constants/uri_constants.dart';
 import '../../common/exceptions/tfl_api_client_exception.dart';
+import '../../common/models/identifier.dart';
 import '../../common/models/mode.dart';
 import '../../common/models/place.dart';
 import '../../common/models/prediction.dart';
@@ -243,7 +244,7 @@ class StopPointService {
   }
 
   /// Gets Stopoints that are reachable from a station/line combination.
-  Future<List<StopPoint>> reachableFrom(
+  Future<List<Identifier>> reachableFrom(
     String id,
     String lineId, {
     List<String>? serviceTypes,
@@ -261,7 +262,7 @@ class StopPointService {
     TflApiClientException.checkIsSuccessStatusCode(response);
 
     return (json.decode(response.body) as List<dynamic>)
-        .map((e) => StopPoint.fromJson(e))
+        .map((e) => Identifier.fromJson(e))
         .toList();
   }
 
