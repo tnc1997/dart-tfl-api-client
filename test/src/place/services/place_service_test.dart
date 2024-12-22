@@ -431,7 +431,8 @@ void main() {
           "category": "string",
           "key": "string",
           "sourceSystemKey": "string",
-          "value": "string"
+          "value": "string",
+          "modified": "1970-01-01T00:00:00Z"
         }
       ],
       "lat": 0.0,
@@ -585,6 +586,13 @@ void main() {
               expect(
                 (result.places?[0] as StopPoint).additionalProperties?[0].value,
                 equals('string'),
+              );
+
+              expect(
+                (result.places?[0] as StopPoint)
+                    .additionalProperties?[0]
+                    .modified,
+                equals(DateTime.parse('1970-01-01T00:00:00Z')),
               );
 
               expect(
