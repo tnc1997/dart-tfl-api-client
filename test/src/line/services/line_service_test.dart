@@ -2100,7 +2100,8 @@ void main() {
         "category": "string",
         "key": "string",
         "sourceSystemKey": "string",
-        "value": "string"
+        "value": "string",
+        "modified": "1970-01-01T00:00:00Z"
       }
     ],
     "children": [],
@@ -2237,6 +2238,11 @@ void main() {
               expect(
                 result[0].additionalProperties?[0].value,
                 equals('string'),
+              );
+
+              expect(
+                result[0].additionalProperties?[0].modified,
+                equals(DateTime.parse('1970-01-01T00:00:00Z')),
               );
 
               expect(
