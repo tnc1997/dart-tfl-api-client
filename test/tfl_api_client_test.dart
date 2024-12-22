@@ -854,7 +854,7 @@ void main() {
             'getByPathIds',
             () async {
               await expectLater(
-                api.vehicle.get(vehicleIds),
+                api.vehicle.arrivals(vehicleIds),
                 completes,
               );
             },

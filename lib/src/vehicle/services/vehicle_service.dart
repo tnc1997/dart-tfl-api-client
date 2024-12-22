@@ -15,7 +15,7 @@ class VehicleService {
   }) : _client = client;
 
   /// Gets the predictions for a given list of vehicle Id's.
-  Future<List<Prediction>> get(
+  Future<List<Prediction>> arrivals(
     List<String> ids,
   ) async {
     final response = await _client.get(
