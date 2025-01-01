@@ -138,4 +138,3 @@ export 'src/stop_point/services/stop_point_service.dart';
 export 'src/tfl_api_client_base.dart';
 export 'src/vehicle/models/vehicle_match.dart';
 export 'src/vehicle/services/vehicle_service.dart';
-export 'tfl_api_client.dart';
