@@ -15,7 +15,7 @@ class JourneyService {
   }) : _client = client;
 
   /// Gets a list of all of the available journey planner modes
-  Future<List<Mode>> meta() async {
+  Future<List<Mode>> metaModes() async {
     final response = await _client.get(
       Uri.https(
         authority,
