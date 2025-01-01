@@ -15,6 +15,67 @@ void main() {
     'JourneyService',
     () {
       group(
+        'metaModes',
+        () {
+          test(
+            'should return the result',
+            () async {
+              // Arrange
+              when(
+                client.get(
+                  Uri.https(
+                    authority,
+                    '/journey/meta/modes',
+                  ),
+                ),
+              ).thenAnswer(
+                (_) {
+                  return Future.value(
+                    http.Response(
+                      r'''[
+  {
+    "$type": "Tfl.Api.Presentation.Entities.Mode, Tfl.Api.Presentation.Entities",
+    "isTflService": true,
+    "isFarePaying": true,
+    "isScheduledService": true,
+    "modeName": "string"
+  }
+]''',
+                      200,
+                    ),
+                  );
+                },
+              );
+
+              // Act
+              final result = await api.journey.metaModes();
+
+              // Assert
+              expect(
+                result[0].isTflService,
+                isTrue,
+              );
+
+              expect(
+                result[0].isFarePaying,
+                isTrue,
+              );
+
+              expect(
+                result[0].isScheduledService,
+                isTrue,
+              );
+
+              expect(
+                result[0].modeName,
+                equals('string'),
+              );
+            },
+          );
+        },
+      );
+
+      group(
         'journeyResults',
         () {
           test(
