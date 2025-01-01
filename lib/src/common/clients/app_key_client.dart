@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:http/http.dart' as http;
 
+/// Adds 'app_key' query parameter when making HTTP requests.
+///
+/// If 'app_key' is already present on the URI, it will complete with an exception. This will prevent accidental overrides of a query parameter with the app key.
 class AppKeyClient extends http.BaseClient {
   final String _appKey;
   final http.Client _inner;
@@ -15,7 +18,6 @@ class AppKeyClient extends http.BaseClient {
   @override
   void close() {
     _inner.close();
-    super.close();
   }
 
   @override
@@ -50,13 +52,13 @@ class AppKeyClient extends http.BaseClient {
   }
 }
 
-/// Obtains an HTTP [Client] which uses an [appKey].
+/// Obtains a [Client] which uses the given [appKey] for making HTTP requests.
 ///
-/// Note that the returned client should *only* be used for making HTTP requests
-/// to the TfL API. The parameters should not be disclosed to third parties.
+/// If [inner] is provided, all HTTP requests will be made with it. Otherwise, a new [Client] instance will be created.
 ///
-/// The user is responsible for closing the returned HTTP [Client].
-/// Closing the returned HTTP [Client] will also close the [inner] client.
+/// Note that the returned client should *only* be used for making HTTP requests to the TfL API. The [appKey] should not be disclosed to third parties.
+///
+/// The user is responsible for closing the returned HTTP [Client]. Closing the returned [Client] will also close the [inner] client.
 http.Client clientViaAppKey(
   String appKey, {
   http.Client? inner,
