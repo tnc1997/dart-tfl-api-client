@@ -4,30 +4,34 @@ A client for accessing the TfL API.
 
 Please note that Client for TfL API is unofficial and not endorsed by TfL.
 
-## Usage
+## Getting Started
 
-A simple usage example:
+1. Add this package to your application.
 
-```dart
-import 'dart:io';
+   ```shell
+   dart pub add tfl_api_client
+   ```
 
-import 'package:tfl_api_client/tfl_api_client.dart';
+1. Create a variable to store your app key.
 
-Future<void> main() async {
-  final client = clientViaAppKey(Platform.environment['APP_KEY']!);
+   ```dart
+   final appKey = Platform.environment['APP_KEY'];
+   ```
 
-  final api = TflApiClient(client: client);
+1. Obtain an HTTP client using your app key.
 
-  for (var line in await api.line.get(['victoria'])) {
-    print(line);
-  }
+   ```dart
+   final client = clientViaAppKey(appKey);
+   ```
 
-  client.close();
-}
-```
+1. Create an API client using the HTTP client.
 
-## Features and bugs
+   ```dart
+   final api = TflApiClient(client: client);
+   ```
+   
+1. Fetch data from the TfL API using the API client.
 
-Please file feature requests and bugs at the [issue tracker][issue-tracker].
-
-[issue-tracker]: https://github.com/tnc1997/dart-tfl-api-client/issues
+   ```dart
+   final lines = await api.line.get(['metropolitan']);
+   ```
