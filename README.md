@@ -1,8 +1,8 @@
-# TfL API Client
+# Client for TfL API
 
 A client for accessing the TfL API.
 
-Please note that the TfL API Client is unofficial and not endorsed by TfL.
+Please note that Client for TfL API is unofficial and not endorsed by TfL.
 
 ## Usage
 
